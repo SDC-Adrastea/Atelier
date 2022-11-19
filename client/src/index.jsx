@@ -17,7 +17,7 @@ const App = () => {
   return (
     <div>
       <h1>Atelier</h1>
-      {/* <Overview productNum={productNum} /> */}
+      <Overview productNum={productNum} />
       {/* <Related productNum={productNum} setProduct={setProduct}/> */}
       <Questions productNum={productNum}/>
       {/* <Reviews productNum={productNum}/> */}
