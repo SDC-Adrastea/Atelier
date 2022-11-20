@@ -9,3 +9,6 @@ it("SHALLOW: renders Overview Widget without crashing", ()=> {
   shallow(<Overview />);
 });
 
+// IDEAS
+// check for 'mount' of the subcomponents
+
