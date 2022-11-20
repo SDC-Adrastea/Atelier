@@ -5,10 +5,15 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({adapter: new Adapter()});
 
-it("SHALLOW: renders Overview Widget without crashing", ()=> {
-  shallow(<Overview />);
+describe('Confirm initial load:', () => {
+  it("SHALLOW: renders Overview Widget without crashing", ()=> {
+    shallow(<Overview />);
+  });
+
+  // check for 'mount' of the subcomponents
 });
 
-// IDEAS
-// check for 'mount' of the subcomponents
 
+// IDEAS
+// test for props
+// test for state
