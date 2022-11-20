@@ -6,11 +6,19 @@ import { Related } from './components/Related.jsx';
 import { Questions } from './components/Questions.jsx';
 import { Reviews } from './components/Reviews.jsx';
 // API functions
-import { ProductsGet } from './api-docs/ProductsAPI.js';
+import { ProductsGet, SingleProductGet, Styles, Similar } from './api-docs/ProductsAPI.js';
 
 const App = () => {
 
-  console.log('ProductsGet:', ProductsGet(71697));
+  let products = ProductsGet();
+  let thisProduct = SingleProductGet(71697);
+  let styles = Styles(71697);
+  let similar = Similar(71697);
+
+  console.log('Products:', products);
+  console.log('Single Product:', thisProduct);
+  console.log('Single Product Styles:', styles);
+  console.log('Similar Products:', similar);
 
   const [productNum, setProduct] = useState(71697);
 
