@@ -1,10 +1,13 @@
 const path = require("path");
+const dotEnv = require('dotenv-webpack')
+
 module.exports = {
    entry: '/client/src/index.jsx',
    output: {
       path: path.join(__dirname, '/client/dist'),
       filename: 'bundle.js'
    },
+   plugins: [new dotEnv()],
    module: {
       rules: [
          {
