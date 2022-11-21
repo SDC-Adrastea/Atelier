@@ -11,10 +11,18 @@ import { ProductsGet, currentProduct } from './api-docs/ProductsAPI.js';
 const App = () => {
   const sampleID = 71697;
 
-  let products = ProductsGet();
-  let current = currentProduct(sampleID);
+  let products = Promise.resolve(ProductsGet());
+  let current = Promise.resolve(currentProduct(sampleID));
 
-  console.log('sample Products API:', products, current);
+  Promise.allSettled([products, current])
+    .then(results => {
+      let productList = [];
+      results.forEach(result => {
+        productList.push(result.value);
+      });
+      console.log('results', productList);
+    })
+    .catch(err => console.log('err in allsettled', err));
 
   const [productNum, setProduct] = useState(sampleID);
 
@@ -23,7 +31,7 @@ const App = () => {
       <h1>Atelier</h1>
       <Overview productNum={productNum} />
       {/* <Related productNum={productNum} setProduct={setProduct}/> */}
-      <Questions productNum={productNum}/>
+      <Questions productNum={productNum} />
       {/* <Reviews productNum={productNum}/> */}
       <h2>Meow</h2>
     </div>

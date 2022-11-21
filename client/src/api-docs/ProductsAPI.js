@@ -1,16 +1,18 @@
 // Quick Link to this API Doc: https://learn-2.galvanize.com/cohorts/3414/blocks/94/content_files/Front%20End%20Capstone/project-atelier/products.md
 // require('dotenv').config();
 let axios = require('axios');
-// const TOKEN = "replace this token";
-const TOKEN = "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";
+const TOKEN = "replace this token";
+
+let options = {
+  method: 'get',
+  url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/`,
+  headers: { "Authorization": TOKEN },
+};
 
 module.exports.ProductsGet = async () => {
   try {
-    return await axios({
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/`,
-      headers: { "Authorization": TOKEN },
-    });
+    let products = await axios(options);
+    return products.data;
   }
   catch (err) {
     console.log('err in products get', err);
@@ -19,11 +21,9 @@ module.exports.ProductsGet = async () => {
 
 let SingleProductGet = async (id) => {
   try {
-    return await axios({
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}`,
-      headers: { "Authorization": TOKEN },
-    })
+    options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}`;
+    let current = await axios(options);
+    return current.data;
   }
   catch (err) {
     console.log('err in single product get', err);
@@ -32,11 +32,9 @@ let SingleProductGet = async (id) => {
 
 let Styles = async (id) => {
   try {
-    return await axios({
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}/styles`,
-      headers: { "Authorization": TOKEN },
-    })
+    options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}/styles`;
+    let styles = await axios(options);
+    return styles.data;
   }
   catch (err) {
     console.log('err in styles get', err);
@@ -45,11 +43,9 @@ let Styles = async (id) => {
 
 let Similar = async (id) => {
   try {
-    return await axios({
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}/related`,
-      headers: { "Authorization": TOKEN },
-    });
+    options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}/related`;
+    let similar = await axios(options);
+    return similar.data;
   }
   catch (err) {
     console.log('err in similar products get', err);
