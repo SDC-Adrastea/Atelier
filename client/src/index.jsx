@@ -6,20 +6,32 @@ import { Related } from './components/Related.jsx';
 import { Questions } from './components/Questions.jsx';
 import { Reviews } from './components/Reviews.jsx';
 // API functions
-import { ProductsGet } from './api-docs/ProductsAPI.js';
+import { ProductsGet, currentProduct } from './api-docs/ProductsAPI.js';
 
 const App = () => {
+  const sampleID = 71697;
 
-  console.log('ProductsGet:', ProductsGet(71697));
+  let products = Promise.resolve(ProductsGet());
+  let current = Promise.resolve(currentProduct(sampleID));
 
-  const [productNum, setProduct] = useState(71697);
+  Promise.allSettled([products, current])
+    .then(results => {
+      let productList = [];
+      results.forEach(result => {
+        productList.push(result.value);
+      });
+      console.log('results', productList);
+    })
+    .catch(err => console.log('err in allsettled', err));
+
+  const [productNum, setProduct] = useState(sampleID);
 
   return (
     <div>
       <h1>Atelier</h1>
-      {/* <Overview productNum={productNum} /> */}
+      <Overview productNum={productNum} />
       {/* <Related productNum={productNum} setProduct={setProduct}/> */}
-      <Questions productNum={productNum}/>
+      <Questions productNum={productNum} />
       {/* <Reviews productNum={productNum}/> */}
       <h2>Meow</h2>
     </div>
