@@ -105,7 +105,115 @@ eval("function _typeof(obj) { \"@babel/helpers - typeof\"; return _typeof = \"fu
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Overview\", function() { return Overview; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar Overview = function Overview(props) {\n  console.log('props for overview: ', props);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, \"Overview\"));\n};\n\n//# sourceURL=webpack:///./client/src/components/Overview.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Overview\", function() { return Overview; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Overview_StarsReviews_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Overview/StarsReviews.jsx */ \"./client/src/components/Overview/StarsReviews.jsx\");\n/* harmony import */ var _Overview_ProductCategoryTitle_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Overview/ProductCategoryTitle.jsx */ \"./client/src/components/Overview/ProductCategoryTitle.jsx\");\n/* harmony import */ var _Overview_Price_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Overview/Price.jsx */ \"./client/src/components/Overview/Price.jsx\");\n/* harmony import */ var _Overview_ProductOverview_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Overview/ProductOverview.jsx */ \"./client/src/components/Overview/ProductOverview.jsx\");\n/* harmony import */ var _Overview_ToggleOutfitStar_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Overview/ToggleOutfitStar.jsx */ \"./client/src/components/Overview/ToggleOutfitStar.jsx\");\n/* harmony import */ var _Overview_StyleSelector_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Overview/StyleSelector.jsx */ \"./client/src/components/Overview/StyleSelector.jsx\");\n/* harmony import */ var _Overview_AddToCart_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Overview/AddToCart.jsx */ \"./client/src/components/Overview/AddToCart.jsx\");\n/* harmony import */ var _Overview_DefaultGallery_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Overview/DefaultGallery.jsx */ \"./client/src/components/Overview/DefaultGallery.jsx\");\n/* harmony import */ var _Overview_ExpandedGallery_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Overview/ExpandedGallery.jsx */ \"./client/src/components/Overview/ExpandedGallery.jsx\");\n\n\n\n\n\n\n\n\n\n\n\nvar Overview = function Overview(props) {\n  console.log('props for overview: ', props);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, \"Overview Component\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_StarsReviews_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_ProductCategoryTitle_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_Price_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_ProductOverview_jsx__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_ToggleOutfitStar_jsx__WEBPACK_IMPORTED_MODULE_5__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_StyleSelector_jsx__WEBPACK_IMPORTED_MODULE_6__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_StarsReviews_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_AddToCart_jsx__WEBPACK_IMPORTED_MODULE_7__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_DefaultGallery_jsx__WEBPACK_IMPORTED_MODULE_8__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview_ExpandedGallery_jsx__WEBPACK_IMPORTED_MODULE_9__[\"default\"], null)));\n};\n\n//# sourceURL=webpack:///./client/src/components/Overview.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/Overview/AddToCart.jsx":
+/*!******************************************************!*\
+  !*** ./client/src/components/Overview/AddToCart.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar AddToCart = function AddToCart(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, \"Overview - Add to Cart (button and functionality)\");\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (AddToCart);\n\n//# sourceURL=webpack:///./client/src/components/Overview/AddToCart.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/Overview/DefaultGallery.jsx":
+/*!***********************************************************!*\
+  !*** ./client/src/components/Overview/DefaultGallery.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar DefaultGallery = function DefaultGallery(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, \"Overview - Default Gallery View\");\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (DefaultGallery);\n\n//# sourceURL=webpack:///./client/src/components/Overview/DefaultGallery.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/Overview/ExpandedGallery.jsx":
+/*!************************************************************!*\
+  !*** ./client/src/components/Overview/ExpandedGallery.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ExpandedGallery = function ExpandedGallery(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, \"Overview - Expanded Gallery View\");\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (ExpandedGallery);\n\n//# sourceURL=webpack:///./client/src/components/Overview/ExpandedGallery.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/Overview/Price.jsx":
+/*!**************************************************!*\
+  !*** ./client/src/components/Overview/Price.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar Price = function Price(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, \"Overview - Price [from Style]\");\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (Price);\n\n//# sourceURL=webpack:///./client/src/components/Overview/Price.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/Overview/ProductCategoryTitle.jsx":
+/*!*****************************************************************!*\
+  !*** ./client/src/components/Overview/ProductCategoryTitle.jsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ProductCategoryTitle = function ProductCategoryTitle(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, \"Overview - Product Category / Title\");\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (ProductCategoryTitle);\n\n//# sourceURL=webpack:///./client/src/components/Overview/ProductCategoryTitle.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/Overview/ProductOverview.jsx":
+/*!************************************************************!*\
+  !*** ./client/src/components/Overview/ProductOverview.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ProductOverview = function ProductOverview(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, \"Overview - Product Overview\");\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (ProductOverview);\n\n//# sourceURL=webpack:///./client/src/components/Overview/ProductOverview.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/Overview/StarsReviews.jsx":
+/*!*********************************************************!*\
+  !*** ./client/src/components/Overview/StarsReviews.jsx ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar StarsReviews = function StarsReviews(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, \"Overview - Stars & Reviews\");\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (StarsReviews);\n\n//# sourceURL=webpack:///./client/src/components/Overview/StarsReviews.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/Overview/StyleSelector.jsx":
+/*!**********************************************************!*\
+  !*** ./client/src/components/Overview/StyleSelector.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar StyleSelector = function StyleSelector(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, \"Overview - Style Selector\");\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (StyleSelector);\n\n//# sourceURL=webpack:///./client/src/components/Overview/StyleSelector.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/Overview/ToggleOutfitStar.jsx":
+/*!*************************************************************!*\
+  !*** ./client/src/components/Overview/ToggleOutfitStar.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ToggleOutfitStar = function ToggleOutfitStar() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, \"Overview - Toggle Outfit Star\");\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (ToggleOutfitStar);\n\n//# sourceURL=webpack:///./client/src/components/Overview/ToggleOutfitStar.jsx?");
 
 /***/ }),
 
