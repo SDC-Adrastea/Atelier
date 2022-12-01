@@ -1,15 +1,7 @@
 import Enzyme, { shallow, configure } from 'enzyme';
 import { Overview } from '../../Overview.jsx';
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
-<<<<<<< HEAD
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-=======
-import Adapter from 'enzyme-adapter-react-16';
->>>>>>> 89038e1 (create skeleton for overview)
-=======
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
->>>>>>> 4dfdc40 (Questions: Widget Skeleton built)
 // subcomponents
 import StarsReviews from '../StarsReviews.jsx';
 import ProductCategoryTitle from '../ProductCategoryTitle.jsx';
