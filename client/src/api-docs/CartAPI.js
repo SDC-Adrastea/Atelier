@@ -9,7 +9,7 @@ let getOptions = {
 
 let postOptions = {
   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/cart/`,
-  headers: { "Authorization": process.env.API_TOKEN }
+  headers: { "Authorization": process.env.API_TOKEN },
 };
 
 module.exports.CartGet = async () => {

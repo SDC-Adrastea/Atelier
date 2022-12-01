@@ -11,14 +11,12 @@ import { CartGet, CartPost } from './api-docs/CartAPI.js';
 
 const App = () => {
   const sampleID = 71697;
-  const sampleSku = 2580535;
 
   let products = Promise.resolve(ProductsGet());
   let current = Promise.resolve(currentProduct(sampleID));
   let currentCart = Promise.resolve(CartGet());
-  let addToCart = Promise.resolve(CartPost(sampleSku));
 
-  Promise.allSettled([products, current, currentCart, addToCart])
+  Promise.allSettled([products, current, currentCart])
     .then(results => {
       let productList = [];
       results.forEach(result => {
