@@ -12,18 +12,20 @@ import { CartGet, CartPost } from './api-docs/CartAPI.js';
 const App = () => {
   const sampleID = 71697;
 
-  // let products = Promise.resolve(ProductsGet());
-  // let current = Promise.resolve(currentProduct(sampleID));
+  let products = ProductsGet();
+  let current = currentProduct(sampleID);
+  let currentCart = CartGet();
 
-  // Promise.allSettled([products, current])
-  //   .then(results => {
-  //     let productList = [];
-  //     results.forEach(result => {
-  //       productList.push(result.value);
-  //     })
-  //     console.log('results', productList);
-  //   })
-  //   .catch(err => console.log('err in allsettled', err));
+  Promise.allSettled([products, current, currentCart])
+    .then(results => {
+      let productList = [];
+      results.forEach(result => {
+        productList.push(result.value);
+      });
+      console.log('results', productList);
+      return productList;
+    })
+    .catch(err => console.log('err in allsettled', err));
 
   const [productNum, setProduct] = useState(sampleID);
 

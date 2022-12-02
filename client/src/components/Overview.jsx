@@ -16,7 +16,7 @@ export const Overview = (props) => {
   return (
     <div>
       <h1>Overview Component</h1>
-      <div>
+      <div className="subcomponents">
         <StarsReviews />
         <ProductCategoryTitle />
         <Price />
