@@ -7,14 +7,16 @@ import { Questions } from './components/Questions.jsx';
 import { Reviews } from './components/Reviews.jsx';
 // API functions
 import { ProductsGet, currentProduct } from './api-docs/ProductsAPI.js';
+import { CartGet, CartPost } from './api-docs/CartAPI.js';
 
 const App = () => {
   const sampleID = 71697;
 
   let products = Promise.resolve(ProductsGet());
   let current = Promise.resolve(currentProduct(sampleID));
+  let currentCart = Promise.resolve(CartGet());
 
-  Promise.allSettled([products, current])
+  Promise.allSettled([products, current, currentCart])
     .then(results => {
       let productList = [];
       results.forEach(result => {
