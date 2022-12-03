@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { AnswerList } from "./AnswerList.jsx";
 import { AddAnswer } from "./AddAnswer.jsx"
 
 
 export const Question = (props) => {
+//addAnswer Button
 
   return (
     <div>
-      <h3>Question Item to be mapped in list</h3>
-      <AnswerList />
+      <h4>Q: {props.data.question_body}</h4> <button>Add Answer</button>
+      <p>Helpful? <button>Yes</button>{props.data.question_helpfulness}</p>
+      <button>See More Answers</button>
+      <AnswerList questionId={props.data.question_id} />
       <AddAnswer />
     </div>
   );

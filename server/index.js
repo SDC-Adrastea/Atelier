@@ -13,6 +13,7 @@ app.use(express.static(DIST_DIR));
 
 // Questions Controllers
 const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
+const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
 
 // Products Funcs
 
@@ -26,6 +27,14 @@ app.get('/qa/questions',function (req, res) {
   })
 });
 
+app.get('/answers',function (req, res) {
+  AnswersGet(req.query.questionId, TOKEN)
+    .then((data)=>{res.send(data)})
+  .catch(function (error) {
+    res.send(error);
+    console.error(error);
+  })
+});
 
 
 app.listen(port, () => {
