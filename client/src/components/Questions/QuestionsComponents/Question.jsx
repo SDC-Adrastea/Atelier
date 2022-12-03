@@ -10,7 +10,6 @@ export const Question = (props) => {
     <div>
       <h4>Q: {props.data.question_body}</h4> <button>Add Answer</button>
       <p>Helpful? <button>Yes</button>{props.data.question_helpfulness}</p>
-      <button>See More Answers</button>
       <AnswerList questionId={props.data.question_id} />
       <AddAnswer />
     </div>
