@@ -15,27 +15,38 @@ app.use(express.static(DIST_DIR));
 // Questions Controllers
 const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
 const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
+const { currentProduct } = require('./api-helpers/ProductsAPI.js');
 
 // Products Funcs
 
 
-app.get('/qa/questions',function (req, res) {
+app.get('/qa/questions', function (req, res) {
   QuestionsGet(req.query.productNum, TOKEN)
-    .then((data)=>{res.send(data)})
-  .catch(function (error) {
-    res.send(error);
-    console.error(error);
-  })
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
 });
 
-app.get('/answers',function (req, res) {
+app.get('/answers', function (req, res) {
   AnswersGet(req.query.questionId, TOKEN)
-    .then((data)=>{res.send(data)})
-  .catch(function (error) {
-    res.send(error);
-    console.error(error);
-  })
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
 });
+
+app.get('/currentProduct', (req, res) => {
+  console.log(req.query)
+  currentProduct(req.query.productNum, TOKEN)
+    .then(data => res.send(data))
+    .catch(err => {
+      res.send(err)
+      console.log('err in currentProduct get server-side', err)
+    })
+})
 
 
 app.listen(port, () => {

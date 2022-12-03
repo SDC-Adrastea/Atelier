@@ -8,7 +8,6 @@ import { AnswerList } from "./Questions/QuestionsComponents/AnswerList.jsx";
 import { Question } from "./Questions/QuestionsComponents/Question.jsx";
 import { QuestionsList } from "./Questions/QuestionsComponents/QuestionsList.jsx";
 import { SearchQuestions } from "./Questions/QuestionsComponents/SearchQuestions.jsx";
-import { QuestionsGet } from "../api-docs/QuestionsAPI.js";
 
 
 export const Questions = (props) => {

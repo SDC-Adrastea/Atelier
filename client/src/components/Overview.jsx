@@ -13,8 +13,6 @@ import DefaultGallery from './Overview/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ExpandedGallery.jsx'
 
 // API functions
-import { currentProduct } from '../api-docs/ProductsAPI.js'
-
 
 export const Overview = (props) => {
   console.log('props in Overview', props)
