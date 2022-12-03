@@ -18,7 +18,6 @@ const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
 
 // Products Funcs
 
-
 app.get('/qa/questions',function (req, res) {
   QuestionsGet(req.query.productNum, TOKEN)
     .then((data)=>{res.send(data)})
