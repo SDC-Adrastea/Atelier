@@ -18,15 +18,16 @@ import { currentProduct } from '../api-docs/ProductsAPI.js'
 
 export const Overview = (props) => {
   console.log('props in Overview', props)
+  let product = props.product
 
   return (
     <div>
       <h1>Overview Component</h1>
       <div className="subcomponents">
         <StarsReviews />
-        <ProductCategoryTitle product={props.product} />
-        <Price />
-        <ProductOverview />
+        <ProductCategoryTitle name={product.name} category={product.category} />
+        <Price defaultPrice={product.default_price} stylesForPrice={props.styles} />
+        <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
         <ToggleOutfitStar />
         <StyleSelector styles={props.styles} />
         <SizeQuantity />
