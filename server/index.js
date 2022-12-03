@@ -5,6 +5,7 @@ const port = 3000;
 app.use(express.json());
 const axios = require("axios");
 require('dotenv').config();
+const TOKEN = process.env.API_TOKEN;
 
 //TECH DEBT add routers
 
