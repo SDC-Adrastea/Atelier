@@ -24,15 +24,15 @@ module.exports.QuestionsGet = async (productId, token) => {
   }
 }
 
-module.exports.AnswersGet = async (questionId) => {
+module.exports.AnswersGet = async (questionId, token) => {
   const options = {
     method: "get",
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${questionId}/answers`,
-    headers: { "Authorization": TOKEN },
+    headers: { "Authorization": token },
     params: {
       question_id: questionId,
       page: 1,
-      count: 5
+      count: 100
     }
   }
   try {

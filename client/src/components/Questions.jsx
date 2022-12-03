@@ -15,7 +15,7 @@ export const Questions = (props) => {
 
 
   const [returnedQs, setQs] = useState([]);
-
+  const [searchQ, setSearch] =useState('');
 
 
   useEffect(() => {
@@ -27,10 +27,10 @@ export const Questions = (props) => {
 
   return (
     <div>
-      {/* {returnedQs.map(q=> <Question q={q}/>)} */}
       <h1>Questions Component</h1>
-      <SearchQuestions />
-      <QuestionsList productNum={props.productNum} returnedQs={returnedQs}/>
+      <SearchQuestions setSearch={setSearch} />
+
+      {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} returnedQs={returnedQs} searchQ={searchQ}/>}
       <AddQuestion />
     </div>
   )
