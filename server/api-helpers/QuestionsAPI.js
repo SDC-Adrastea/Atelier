@@ -7,7 +7,7 @@ module.exports.QuestionsGet = async (productId, token) => {
   const options = {
     method: "get",
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions`,
-    headers: { "Authorization": token },
+    headers: { "Authorization": TOKEN },
     params: {
       product_id: productId,
       page: 1,
