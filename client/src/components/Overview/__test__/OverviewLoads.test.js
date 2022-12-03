@@ -22,11 +22,11 @@ import DefaultGallery from '../DefaultGallery.jsx'
 import ExpandedGallery from '../ExpandedGallery.jsx'
 
 // Parent component
-test('Confirm initial Overview component load', () => {
-  render(<Overview />)
-  const h1Element = screen.getByText(/Overview Component/i)
-  expect(h1Element).toBeInTheDocument()
-})
+// test('Confirm initial Overview component load', () => {
+//   render(<Overview />)
+//   const h1Element = screen.getByText(/Overview Component/i)
+//   expect(h1Element).toBeInTheDocument()
+// })
 
 // Subcomponents
 test('Confirm initial load of Stars & Reviews subcomponent', () => {
