@@ -5,16 +5,18 @@ export const QuestionsList = (props) => {
 
 const [moreQs, addQs] = useState(2);
 
-const handleMoreQsClick = () => {
-  var currentQNum = moreQs;
-  currentQNum = currentQNum + 2;
-  addQs(currentQNum);
-}
+  const handleMoreQsClick = () => {
+    var currentQNum = moreQs;
+    currentQNum = currentQNum + 2;
+    addQs(currentQNum);
+  }
 
   return (
     <div style={{color: 'blue'}}>
       <h2>Questions List</h2>
-      {props.returnedQs.slice(0, moreQs)?.map((data, idx)=> (<Question data={data} key={idx}/>)) }
+
+      {props.returnedQs.filter(data => data.question_body.match(new RegExp(props.searchQ, "u")))
+      .slice(0, moreQs)?.map((data, idx)=> (<Question data={data} key={idx}/>)) }
       <button onClick={handleMoreQsClick}>Load More Questions</button>
     </div>
   );
