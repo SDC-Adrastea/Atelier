@@ -3,19 +3,17 @@ const axios = require('axios');
 const TOKEN = process.env.API_TOKEN;
 
 
-module.exports.QuestionsGet = async (productId) => {
+module.exports.QuestionsGet = async (productId, token) => {
   const options = {
     method: "get",
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions`,
-    headers: { "Authorization": TOKEN },
+    headers: { "Authorization": token },
     params: {
-      product_id: '',
+      product_id: productId,
       page: 1,
       count: 100
     }
   }
-
-  options.params.product_id = productId;
 
   try {
     let Questions = await axios(options);
@@ -45,6 +43,7 @@ module.exports.AnswersGet = async (questionId) => {
     console.log('error in AnswersGet: ', err);
   }
 }
+
 module.exports.QuestionPost = async (productId, questionFormData) => {
   // tech debt object literals will need to be swapped with values from questionFormData once form is built
   const options = {
