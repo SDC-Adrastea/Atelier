@@ -4,8 +4,8 @@ const app = express();
 const port = 3000;
 app.use(express.json());
 const axios = require("axios");
-const { TOKEN } = require("../token.js")
-console.log(process.env)
+require('dotenv').config();
+
 //TECH DEBT add routers
 
 const DIST_DIR = path.join(__dirname, '../client/dist');
