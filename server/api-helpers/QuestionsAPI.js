@@ -3,7 +3,7 @@ const axios = require('axios');
 const TOKEN = process.env.API_TOKEN;
 
 
-module.exports.QuestionsGet = async (productId, token) => {
+module.exports.QuestionsGet = async (productId, TOKEN) => {
   const options = {
     method: "get",
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions`,
@@ -24,11 +24,11 @@ module.exports.QuestionsGet = async (productId, token) => {
   }
 }
 
-module.exports.AnswersGet = async (questionId, token) => {
+module.exports.AnswersGet = async (questionId, TOKEN) => {
   const options = {
     method: "get",
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${questionId}/answers`,
-    headers: { "Authorization": token },
+    headers: { "Authorization": TOKEN },
     params: {
       question_id: questionId,
       page: 1,
@@ -44,17 +44,17 @@ module.exports.AnswersGet = async (questionId, token) => {
   }
 }
 
-module.exports.QuestionPost = async (productId, questionFormData) => {
-  // tech debt object literals will need to be swapped with values from questionFormData once form is built
+module.exports.QuestionPost = async (questionFormData, TOKEN) => {
+  console.log('here is form data from client',questionFormData)
   const options = {
     method: "post",
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions`,
     headers: { "Authorization": TOKEN },
     data: {
-      body: 'hello',
-      name: 'user32',
-      email: 'joeBob@aol.com',
-      product_id: 71697
+      body: questionFormData.question,
+      name: questionFormData.nickname,
+      email: questionFormData.email,
+      product_id: questionFormData.productNum
     }
   }
 

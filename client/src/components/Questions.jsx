@@ -30,7 +30,7 @@ export const Questions = (props) => {
       <SearchQuestions setSearch={setSearch} />
 
       {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} returnedQs={returnedQs} searchQ={searchQ}/>}
-      <AddQuestion />
+      <AddQuestion product={props.product} productNum={props.productNum}/>
     </div>
   )
 };

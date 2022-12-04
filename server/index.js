@@ -15,13 +15,24 @@ app.use(express.static(DIST_DIR));
 // Questions Controllers
 const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
 const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
-const { currentProduct } = require('./api-helpers/ProductsAPI.js');
+const { QuestionPost } = require("./api-helpers/QuestionsAPI.js");
 
 // Products Funcs
+const { currentProduct } = require('./api-helpers/ProductsAPI.js');
 
 
 app.get('/qa/questions', function (req, res) {
   QuestionsGet(req.query.productNum, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+});
+
+app.post('/qa/questions', function (req, res) {
+  // console.log('here is query', req.body.formInfo)
+  QuestionPost(req.body.formInfo, TOKEN)
     .then((data) => { res.send(data) })
     .catch(function (error) {
       res.send(error);
@@ -39,7 +50,6 @@ app.get('/answers', function (req, res) {
 });
 
 app.get('/currentProduct', (req, res) => {
-  console.log(req.query)
   currentProduct(req.query.productNum, TOKEN)
     .then(data => res.send(data))
     .catch(err => {
