@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Price = (props) => {
-  let defaultPrice = props.defaultPrice
+  let defaultPrice = '$' + props.defaultPrice
 
   // if (defaultPrice.includes('.00')) {
   //   defaultPrice = defaultPrice.substring(0, defaultPrice.length - 3)
@@ -10,7 +10,7 @@ const Price = (props) => {
   return (
     <div className="price">
       <h4>Overview - Price [from Style]</h4>
-      ${defaultPrice}
+      {defaultPrice}
     </div>
   )
 }

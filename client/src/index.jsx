@@ -14,24 +14,33 @@ const App = (props) => {
   const [product, setProduct] = useState({})
   const [styles, setStyles] = useState([])
   const [related, setRelated] = useState([])
+  const [metadata, setMetadata] = useState({})
 
   useEffect(() => {
     axios.get('/currentProduct', {
       params: { productNum }
     })
       .then(data => {
-        console.log('data in index.jsx', data)
+        // console.log('data in index.jsx', data)
         setProduct(data.data.product)
         setStyles(data.data.styles.results)
-        setRelated(data.data.related)
+        setRelated(data.data)
       })
-      .catch(err => console.log('err in index.jsx fetch', err))
+      .catch(err => console.log('err in index.jsx getProduct', err))
+
+    axios.get('/getMetadata', {
+      params: { productNum }
+    })
+      .then(data => {
+        setMetadata(data.data)
+      })
+      .catch(err => console.log('err in index.jsx metadata'))
   }, [])
 
   return (
     <div>
       <h1>Atelier</h1>
-      <Overview productNum={productNum} product={product} styles={styles} />
+      <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} />
       {/* <Related productNum={productNum} setProduct={setProduct}/> */}
       <Questions productNum={productNum} />
       {/* <Reviews productNum={productNum}/> */}

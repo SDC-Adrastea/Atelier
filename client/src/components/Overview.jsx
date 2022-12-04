@@ -7,7 +7,7 @@ import Price from './Overview/Price.jsx'
 import ProductOverview from './Overview/ProductOverview.jsx'
 import ToggleOutfitStar from './Overview/ToggleOutfitStar.jsx'
 import StyleSelector from './Overview/StyleSelector.jsx'
-import SizeQuantity from './Overview/StarsReviews.jsx'
+import SizeQuantity from './Overview/SizeQuantity.jsx'
 import AddToCart from './Overview/AddToCart.jsx'
 import DefaultGallery from './Overview/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ExpandedGallery.jsx'
@@ -17,13 +17,19 @@ import ExpandedGallery from './Overview/ExpandedGallery.jsx'
 export const Overview = (props) => {
   console.log('props in Overview', props)
   let product = props.product
+  let ratings = props.metadata.ratings
+
+  if (product === {}) {
+    product.name = ''
+    product.styles = []
+  }
 
   return (
     <div>
       <h1>Overview Component</h1>
       <div className="subcomponents">
-        <StarsReviews />
-        <ProductCategoryTitle name={product.name} category={product.category} />
+        <StarsReviews ratings={ratings} />
+        <ProductCategoryTitle title={product.name} category={product.category} />
         <Price defaultPrice={product.default_price} stylesForPrice={props.styles} />
         <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
         <ToggleOutfitStar />
