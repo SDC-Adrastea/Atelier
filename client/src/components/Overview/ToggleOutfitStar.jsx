@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ToggleOutfitStar = () => {
+const ToggleOutfitStar = (props) => {
   return (
     <div className="toggle-star-btn">
       <h4>Overview - Toggle Outfit Star</h4>
@@ -10,6 +10,7 @@ const ToggleOutfitStar = () => {
         onClick={() => {
           // initial tester to send data to related section
           console.log('clicked Star button')
+          props.onClick('test')
         }
         }>
         STAR

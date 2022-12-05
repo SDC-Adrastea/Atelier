@@ -22,6 +22,8 @@ export const Overview = (props) => {
   let productOverview;
   let styleSection;
 
+  const [outfitToggle, setOutfitToggle] = useState([])
+
   if (product === {}) {
     product.name = ''
     product.styles = []
@@ -51,7 +53,10 @@ export const Overview = (props) => {
         <ProductCategoryTitle title={product.name} category={product.category} />
         <Price defaultPrice={product.default_price} styles={props.styles} />
         {productOverview}
-        <ToggleOutfitStar />
+        <ToggleOutfitStar onClick={(data) => {
+          console.log('data in overview', [data])
+          setOutfitToggle([data])
+        }} />
         {styleSection}
         <SizeQuantity />
         <AddToCart />
