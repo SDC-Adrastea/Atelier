@@ -23,6 +23,7 @@ export const Overview = (props) => {
   let styleSection;
 
   const [outfitToggle, setOutfitToggle] = useState([])
+  const [currentStyle, setCurrentStyle] = useState({})
 
   if (product === {}) {
     product.name = ''
@@ -39,6 +40,13 @@ export const Overview = (props) => {
 
   if (props.styles.length > 0) {
     styleSection = <StyleSelector styles={props.styles} />
+    if (Object.keys(currentStyle).length === 0) {
+      props.styles.forEach(style => {
+        if (style['default?']) {
+          setCurrentStyle(style)
+        }
+      })
+    }
   }
 
   if (product.description !== undefined && product.slogan !== undefined && product.features !== undefined) {
