@@ -25,8 +25,8 @@ export const Questions = (props) => {
   },[]);
 
   return (
-    <div>
-      <h1>Questions Component</h1>
+    <div data-testid="Questions Component">
+      <h1>Questions</h1>
       <SearchQuestions setSearch={setSearch} />
 
       {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} returnedQs={returnedQs} searchQ={searchQ}/>}
