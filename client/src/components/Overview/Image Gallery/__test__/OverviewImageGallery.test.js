@@ -14,8 +14,16 @@ import { Overview } from '../../../Overview.jsx'
 import DefaultGallery from '../DefaultGallery.jsx'
 import ExpandedGallery from '../ExpandedGallery.jsx'
 
-test('sample', () => {
+describe('Image Gallery: Default View', () => {
+  test('sample', () => { })
 
+  //
+})
+
+describe('Image Gallery: Expanded View', () => {
+  test('sample', () => { })
+
+  //
 })
 
 // IDEAS

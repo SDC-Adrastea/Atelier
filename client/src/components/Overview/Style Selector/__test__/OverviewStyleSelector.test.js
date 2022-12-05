@@ -12,9 +12,18 @@ import React, { useEffect, useState } from "react"
 import { Overview } from '../../../Overview.jsx'
 // subcomponents
 import StyleSelector from '../StyleSelector.jsx'
+import SizeQuantity from '../SizeQuantity.jsx'
 
-test('sample', () => {
+describe('Style Selector: Size & Quantity', () => {
+  test('sample', () => { })
 
+  //
+})
+
+describe('Style Selector: Style Selector', () => {
+  test('sample', () => { })
+
+  //
 })
 
 // IDEAS

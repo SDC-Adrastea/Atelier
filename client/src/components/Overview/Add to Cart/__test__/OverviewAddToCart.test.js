@@ -13,8 +13,10 @@ import { Overview } from '../../../Overview.jsx'
 // subcomponents
 import AddToCart from '../AddToCart.jsx'
 
-test('sample', () => {
+describe('Add to Cart Functionality', () => {
+  test('sample', () => { })
 
+  //
 })
 
 // IDEAS
