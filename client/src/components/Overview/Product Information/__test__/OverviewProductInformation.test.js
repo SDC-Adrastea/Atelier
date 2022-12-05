@@ -28,19 +28,25 @@ describe('Product Information: Stars Rating & Reviews', () => {
 describe('Product Information: Category & Title', () => {
   test('sample', () => { })
 
-  //
+  // check that the category is displayed; in the correct area
+  // check that the title is displayed; in the correct area
+
 })
 
 describe('Product Information: Price', () => {
   test('sample', () => { })
 
-  //
+  // Confirm default style is selected and price matches
+  // Confirm that changing a style will update to the accurate price
+  // Confirm that selected the current style doesn’t break the app or change anything
+  // Test an on sale item, ensure the text is red and followed by the original price which is struck through
 })
 
 describe('Product Information: Toggle Outfit Star', () => {
   test('sample', () => { })
 
-  //
+  // Toggling once adds the item to the outfit carousel (or the props/state?)
+  // Toggling twice removes the item from the outfit carousel (or the props/state?)
 })
 
 // IDEAS

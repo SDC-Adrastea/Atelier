@@ -39,7 +39,6 @@ export const Overview = (props) => {
   }
 
   if (props.styles.length > 0) {
-    styleSection = <StyleSelector styles={props.styles} />
     if (Object.keys(currentStyle).length === 0) {
       props.styles.forEach(style => {
         if (style['default?']) {
@@ -47,6 +46,7 @@ export const Overview = (props) => {
         }
       })
     }
+    styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle}/>
   }
 
   if (product.description !== undefined && product.slogan !== undefined && product.features !== undefined) {

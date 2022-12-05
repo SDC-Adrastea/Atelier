@@ -3,10 +3,11 @@ import Style from './Style.jsx'
 
 const StyleSelector = (props) => {
   let currentStyles = props.styles
+  let toggledStyle = props.toggledStyle
   let mapStyles;
 
   if (currentStyles !== undefined || currentStyles.length === 0) {
-    mapStyles = currentStyles.map(style => <Style key={style.style_id} style={style} />)
+    mapStyles = currentStyles.map(style => <Style key={style.style_id} style={style} toggled={toggledStyle} />)
   }
 
   return (
