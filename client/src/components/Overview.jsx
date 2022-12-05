@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import StarsReviews from './Overview/StarsReviews.jsx'
-import ProductCategoryTitle from './Overview/ProductCategoryTitle.jsx'
-import Price from './Overview/Price.jsx'
-import ProductOverview from './Overview/ProductOverview.jsx'
-import ToggleOutfitStar from './Overview/ToggleOutfitStar.jsx'
-import StyleSelector from './Overview/StyleSelector.jsx'
-import SizeQuantity from './Overview/SizeQuantity.jsx'
-import AddToCart from './Overview/AddToCart.jsx'
-import DefaultGallery from './Overview/DefaultGallery.jsx'
-import ExpandedGallery from './Overview/ExpandedGallery.jsx'
+import StarsReviews from './Overview/Product Information/StarsReviews.jsx'
+import ProductCategoryTitle from './Overview/Product Information/ProductCategoryTitle.jsx'
+import Price from './Overview/Product Information/Price.jsx'
+import ProductOverview from './Overview/Product Information/ProductOverview.jsx'
+import ToggleOutfitStar from './Overview/Product Information/ToggleOutfitStar.jsx'
+import StyleSelector from './Overview/Style Selector/StyleSelector.jsx'
+import SizeQuantity from './Overview/Product Information/SizeQuantity.jsx'
+import AddToCart from './Overview/Add To Cart/AddToCart.jsx'
+import DefaultGallery from './Overview/Image Gallery/DefaultGallery.jsx'
+import ExpandedGallery from './Overview/Image Gallery/ExpandedGallery.jsx'
 
 // API functions
 
