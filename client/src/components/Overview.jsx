@@ -17,17 +17,26 @@ import ExpandedGallery from './Overview/ExpandedGallery.jsx'
 export const Overview = (props) => {
   console.log('props in overview', props)
   let product = props.product
-  let ratings = props.metadata.ratings
+  let ratings = props.metadata
   let reviewSection;
   let productOverview;
+  let styleSection;
 
   if (product === {}) {
     product.name = ''
     product.styles = []
   }
 
+  if (ratings !== {} || ratings !== undefined) {
+    ratings = ratings.ratings
+  }
+
   if (ratings !== undefined) {
     reviewSection = <StarsReviews ratings={ratings} />
+  }
+
+  if (props.styles.length > 0) {
+    styleSection = <StyleSelector styles={props.styles} />
   }
 
   if (product.description !== undefined && product.slogan !== undefined && product.features !== undefined) {
@@ -43,7 +52,7 @@ export const Overview = (props) => {
         <Price defaultPrice={product.default_price} styles={props.styles} />
         {productOverview}
         <ToggleOutfitStar />
-        <StyleSelector styles={props.styles} />
+        {styleSection}
         <SizeQuantity />
         <AddToCart />
         <DefaultGallery />

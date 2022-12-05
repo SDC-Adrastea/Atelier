@@ -30,61 +30,62 @@ test('Confirm initial Overview component load', () => {
 
 // Subcomponents
 test('Confirm initial load of Stars & Reviews subcomponent', () => {
-  render (<StarsReviews />)
+  render(<StarsReviews />)
   const h4Element = screen.getByText(/Stars & Reviews/i)
   expect(h4Element).toBeInTheDocument()
 })
 
 test('Confirm initial load of Product Category & Title subcomponent', () => {
-  render (<ProductCategoryTitle />)
+  render(<ProductCategoryTitle />)
   const h4Element = screen.getByText(/Product Category/i)
   expect(h4Element).toBeInTheDocument()
 })
 
 test('Confirm initial load of Price subcomponent', () => {
-  render (<Price />)
+  render(<Price />)
   const h4Element = screen.getByText(/Price/i)
   expect(h4Element).toBeInTheDocument()
 })
 
 test('Confirm initial load of Product Overview subcomponent', () => {
-  render (<ProductOverview />)
+  render(<ProductOverview />)
   const h4Element = screen.getByText(/Product Overview/i)
   expect(h4Element).toBeInTheDocument()
 })
 
 test('Confirm initial load of Toggle the Outfit Star subcomponent', () => {
-  render (<ToggleOutfitStar />)
+  render(<ToggleOutfitStar />)
   const h4Element = screen.getByText(/Toggle Outfit Star/i)
   expect(h4Element).toBeInTheDocument()
 })
 
-test('Confirm initial load of Style Selector subcomponent', () => {
-  render (<StyleSelector />)
-  const h4Element = screen.getByText(/Style Selector/i)
-  expect(h4Element).toBeInTheDocument()
+test('Confirm initial load of Style Selector subcomponent', async () => {
+  render(<StyleSelector />)
+
+  expect(screen.queryByText(/Style Selector/)).toBeNull();
+  expect(await screen.findByText(/Style Selector/)).toBeInTheDocument();
 })
 
 test('Confirm initial load of Size & Quantity subcomponent', () => {
-  render (<SizeQuantity />)
+  render(<SizeQuantity />)
   const h4Element = screen.getByText(/Size & Quantity/i)
   expect(h4Element).toBeInTheDocument()
 })
 
 test('Confirm initial load of Add to Cart subcomponent', () => {
-  render (<AddToCart />)
+  render(<AddToCart />)
   const h4Element = screen.getByText(/Add to Cart/i)
   expect(h4Element).toBeInTheDocument()
 })
 
 test('Confirm initial load of Default Gallery View subcomponent', () => {
-  render (<DefaultGallery />)
+  render(<DefaultGallery />)
   const h4Element = screen.getByText(/Default Gallery View/i)
   expect(h4Element).toBeInTheDocument()
 })
 
 test('Confirm initial load of Expanded Gallery View subcomponent', () => {
-  render (<ExpandedGallery />)
+  render(<ExpandedGallery />)
   const h4Element = screen.getByText(/Expanded Gallery View/i)
   expect(h4Element).toBeInTheDocument()
 })
