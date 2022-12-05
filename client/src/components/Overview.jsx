@@ -15,23 +15,33 @@ import ExpandedGallery from './Overview/ExpandedGallery.jsx'
 // API functions
 
 export const Overview = (props) => {
-  console.log('props in Overview', props)
+  console.log('props in overview', props)
   let product = props.product
   let ratings = props.metadata.ratings
+  let reviewSection;
+  let productOverview;
 
   if (product === {}) {
     product.name = ''
     product.styles = []
   }
 
+  if (ratings !== undefined) {
+    reviewSection = <StarsReviews ratings={ratings} />
+  }
+
+  if (product.description !== undefined && product.slogan !== undefined && product.features !== undefined) {
+    productOverview =  <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
+  }
+
   return (
     <div>
       <h1>Overview Component</h1>
       <div className="subcomponents">
-        <StarsReviews ratings={ratings} />
+        {reviewSection}
         <ProductCategoryTitle title={product.name} category={product.category} />
-        <Price defaultPrice={product.default_price} stylesForPrice={props.styles} />
-        <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
+        <Price defaultPrice={product.default_price} styles={props.styles} />
+        {productOverview}
         <ToggleOutfitStar />
         <StyleSelector styles={props.styles} />
         <SizeQuantity />

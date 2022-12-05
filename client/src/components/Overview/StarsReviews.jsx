@@ -24,7 +24,7 @@ const StarsReviews = (props) => {
     }
 
     let average = parseFloat(avgStars(ratings) * 100).toFixed(2)
-    thisRating = average + '% | Read all ' + allRatings + ' reviews'
+    thisRating = average + '% | Read all ' + allRatings + '  reviews'
   }
 
   return (
