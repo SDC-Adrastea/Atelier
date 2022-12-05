@@ -1,14 +1,13 @@
 // Quick Link to this API Doc: https://learn-2.galvanize.com/cohorts/3414/blocks/94/content_files/Front%20End%20Capstone/project-atelier/products.md
 let axios = require('axios');
-const TOKEN = process.env.API_TOKEN;
 
 let options = {
   method: 'get',
   url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/`,
-  headers: { "Authorization": TOKEN },
+  headers: { "Authorization": process.env.API_TOKEN },
 };
 
-module.exports.ProductsGet = async () => {
+module.exports.ProductsGet = async (token) => {
   try {
     let products = await axios(options);
     return products.data;
@@ -18,7 +17,7 @@ module.exports.ProductsGet = async () => {
   }
 }
 
-let SingleProductGet = async (id) => {
+let SingleProductGet = async (id, token) => {
   try {
     options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}`;
     let current = await axios(options);
@@ -29,7 +28,7 @@ let SingleProductGet = async (id) => {
   }
 }
 
-let Styles = async (id) => {
+let Styles = async (id, token) => {
   try {
     options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}/styles`;
     let styles = await axios(options);
@@ -40,7 +39,7 @@ let Styles = async (id) => {
   }
 }
 
-let Similar = async (id) => {
+let Similar = async (id, token) => {
   try {
     options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}/related`;
     let similar = await axios(options);
@@ -51,7 +50,7 @@ let Similar = async (id) => {
   }
 }
 
-module.exports.currentProduct = async (id) => {
+module.exports.currentProduct = async (id, token) => {
   try {
     let productDetails = {};
 

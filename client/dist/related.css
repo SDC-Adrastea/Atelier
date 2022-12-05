@@ -1,18 +1,24 @@
-.carousel {
-  color: red;
+.related-carousel-container {
   width: 100%;
-  height: 100%;
-  position: relative;
+  height: 350px;
+  overflow: hidden
 }
 
-.product {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  width: 350px;
+.carousel-proudct-container {
+  width: auto;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  transition: margin-left 1s ease;
+}
+
+.related-product-card {
+  width: 300px;
   height: 350px;
-  object-fit: cover;
+  display: inline-block;
+  margin: none;
+}
+
+.related-product-image {
+  height: 200px;
+  width: 200px;
 }
