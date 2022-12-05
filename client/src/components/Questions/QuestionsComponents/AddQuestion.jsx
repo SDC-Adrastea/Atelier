@@ -88,9 +88,3 @@ export const AddQuestion = (props) => {
 
 
 
-// Upon selecting submit the form’s inputs should be validated.
-// If there are any invalid entries, the submission should be prevented, and a warning message will appear.
-// This message should be titled “You must enter the following:”
-// This error will occur if :
-// Any mandatory fields are blank
-// The email address provided is not in correct email format

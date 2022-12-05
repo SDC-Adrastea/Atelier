@@ -8,10 +8,10 @@ export const Question = (props) => {
 
   return (
     <div>
-      <h4>Q: {props.data.question_body}</h4> <button>Add Answer</button>
+      <h4>Q: {props.data.question_body}</h4>
       <p>Helpful? <button>Yes</button>{props.data.question_helpfulness}</p>
       <AnswerList questionId={props.data.question_id} />
-      <AddAnswer />
+      <AddAnswer data={props.data} product={props.product} questionId={props.data.question_id} />
     </div>
   );
 };

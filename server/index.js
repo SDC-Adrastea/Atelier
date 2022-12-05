@@ -16,6 +16,7 @@ app.use(express.static(DIST_DIR));
 const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
 const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
 const { QuestionPost } = require("./api-helpers/QuestionsAPI.js");
+const { AnswerPost } = require("./api-helpers/QuestionsAPI.js");
 
 // Products Funcs
 const { currentProduct } = require('./api-helpers/ProductsAPI.js');
@@ -46,6 +47,15 @@ app.get('/answers', function (req, res) {
     .catch(function (error) {
       res.send(error);
       console.error(error);
+    })
+});
+
+app.post('/answers', function (req, res) {
+  AnswerPost(req.body.formInfo, TOKEN)
+    .then((data) => { res.send(data)})
+    .catch(function (error) {
+      res.send(error);
+      console.error('here is answer post', error);
     })
 });
 

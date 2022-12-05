@@ -68,21 +68,20 @@ module.exports.QuestionPost = async (questionFormData, TOKEN) => {
   }
 }
 
-module.exports.AnswerPost = async (questionId, answerFormData) => {
+module.exports.AnswerPost = async (answerFormData, TOKEN) => {
   // tech debt object literals will need to be swapped with values from answerFormData once form is built
-  questionId = 642681;
   const options = {
     method: "post",
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${questionId}/answers`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${answerFormData.questionId}/answers`,
     headers: { "Authorization": TOKEN },
     data: {
-      body: 'Here is the answer',
-      name: 'user32',
-      email: 'joeBob32@aol.com',
+      body: answerFormData.answer,
+      name: answerFormData.nickname,
+      email: answerFormData.email,
       photos: []
     }
   }
-
+  console.log('here is options ',options )
   try {
     let questionPost = await axios(options);
     return questionPost.data;

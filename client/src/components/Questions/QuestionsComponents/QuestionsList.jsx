@@ -16,7 +16,7 @@ const [moreQs, addQs] = useState(2);
       <h3>Questions</h3>
 
       {props.returnedQs.filter(data => data.question_body.match(new RegExp(props.searchQ, "u")))
-      .slice(0, moreQs)?.map((data, idx)=> (<Question data={data} key={idx}/>)) }
+      .slice(0, moreQs)?.map((data, idx)=> (<Question data={data} key={idx} product={props.product}/>)) }
       <button onClick={handleMoreQsClick}>Load More Questions</button>
     </div>
   );

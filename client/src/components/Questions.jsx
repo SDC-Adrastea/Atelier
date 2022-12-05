@@ -29,7 +29,7 @@ export const Questions = (props) => {
       <h1>Questions</h1>
       <SearchQuestions setSearch={setSearch} />
 
-      {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} returnedQs={returnedQs} searchQ={searchQ}/>}
+      {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} product={props.product} returnedQs={returnedQs} searchQ={searchQ}/>}
       <AddQuestion product={props.product} productNum={props.productNum}/>
     </div>
   )
