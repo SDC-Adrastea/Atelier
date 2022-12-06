@@ -46,7 +46,6 @@ app.get('/currentProduct', (req, res) => {
     })
 })
 
-<<<<<<<<< Temporary merge branch 1
 app.get('/relatedProductCardInformation', (req, res) => {
   let formattedResponseData = {}
   currentProduct(req.query.productNum, TOKEN)
@@ -79,14 +78,16 @@ app.get('/relatedProductCardInformation', (req, res) => {
     })
     .then(() => {
       res.send(formattedResponseData)
-=========
+    })
+  }
+)
+
 app.get('/getMetadata', (req, res) => {
   getMetadata(req.query.productNum)
     .then(data => res.send(data))
     .catch(err => {
       res.send(err)
-      console.lof('err in getMetadata server-side', err)
->>>>>>>>> Temporary merge branch 2
+      console.log('err in getMetadata server-side', err)
     })
 })
 
