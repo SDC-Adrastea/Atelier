@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
-import { format, parseISO } from 'date-fns'
+import { format, parseISO } from 'date-fns';
+import { StarRating } from '../shared/starRating.jsx';
 
 export const ReviewTile = (props) => {
   const { review } = props;
@@ -9,7 +10,8 @@ export const ReviewTile = (props) => {
   return (
     <div>
       {/* refactor for out of 5 stars with 1/4 increments */}
-      star rating: {review.rating}
+      {/* star rating: {review.rating} */}
+      <StarRating rating={review.rating} />
       <br/>
       {/* date of review Month DD, YYYY */}
       {format(parseISO(review.date), 'MMMM dd, yyyy')}

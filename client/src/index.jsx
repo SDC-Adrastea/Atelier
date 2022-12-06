@@ -34,7 +34,7 @@ const App = (props) => {
       <Overview productNum={productNum} product={product} styles={styles} />
       <Related productNum={productNum} setProduct={setProduct} product={product} styles={styles} related={related}/>
       <Questions productNum={productNum} />
-      {/* <Reviews productNum={productNum}/> */}
+      <Reviews productNum={productNum}/>
 
       <h2>Meow</h2>
     </div>
