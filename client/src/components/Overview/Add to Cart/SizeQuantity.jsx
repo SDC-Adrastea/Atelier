@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 
 const SizeQuantity = (props) => {
-  let options = props.style.skus
-  console.log('skus', options)
+  let styleOptions = props.style.skus
+  console.log('props in SizeQuantity', props.style.skus)
+
+  const [options, setOptions] = useState({})
+
+  useEffect(() => {
+    setOptions(styleOptions)
+  })
 
   return (
-    <h4>Overview - Size & Quantity Dropdowns</h4>
+    <div>
+      <h4>Size & Quantity Dropdowns</h4>
+    </div>
   )
 }
 
