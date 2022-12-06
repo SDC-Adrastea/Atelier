@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
+import { ReviewTile } from "./ReviewTile.jsx";
+
 
 export const ReviewsList = (props) => {
   // console.log('props in ReviewsList', props)
@@ -33,7 +35,7 @@ export const ReviewsList = (props) => {
       <br />
       <br />
       { reviews.slice(0,reviewsShowing).map((review, index)=> {
-          return (<div key={index + 1} >{index + 1}. {review.body} <br /> <br /> </div>) ;
+          return (<div key={index + 1} ><ReviewTile review={review} /> <br /> <br /> </div>) ;
         }) }
       { reviews.length > 2 && reviewsShowing < reviews.length ? <button onClick={() => setReviewsShowing(reviewsShowing+2)}>More Reviews</button> : null }
       <button>Add a Review</button>
