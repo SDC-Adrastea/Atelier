@@ -15,7 +15,7 @@ import ExpandedGallery from './Overview/ExpandedGallery.jsx'
 // API functions
 
 export const Overview = (props) => {
-  console.log('props in Overview', props)
+  // console.log('props in Overview', props)
   let product = props.product
 
   return (

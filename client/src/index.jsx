@@ -32,7 +32,7 @@ const App = (props) => {
     <div>
       <h1>Atelier</h1>
       <Overview productNum={productNum} product={product} styles={styles} />
-      {/* <Related productNum={productNum} setProduct={setProduct}/> */}
+      <Related productNum={productNum} setProduct={setProduct} product={product} styles={styles} related={related}/>
       <Questions productNum={productNum} />
       {/* <Reviews productNum={productNum}/> */}
       <h2>Meow</h2>

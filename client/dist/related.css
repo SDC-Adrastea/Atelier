@@ -1,0 +1,24 @@
+.related-carousel-container {
+  width: 100%;
+  height: 350px;
+  overflow: hidden
+}
+
+.carousel-proudct-container {
+  width: auto;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  transition: margin-left 1s ease;
+}
+
+.related-product-card {
+  width: 300px;
+  height: 350px;
+  display: inline-block;
+  margin: none;
+}
+
+.related-product-image {
+  height: 200px;
+  width: 200px;
+}
