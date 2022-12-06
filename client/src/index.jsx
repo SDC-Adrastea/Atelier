@@ -21,7 +21,6 @@ const App = (props) => {
       params: { productNum }
     })
       .then(data => {
-        // console.log('data in index.jsx', data)
         setProduct(data.data.product)
         setStyles(data.data.styles.results)
         setRelated(data.data)
