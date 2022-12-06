@@ -17,6 +17,7 @@ const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
 const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
 const { QuestionPost } = require("./api-helpers/QuestionsAPI.js");
 const { AnswerPost } = require("./api-helpers/QuestionsAPI.js");
+const { helpfulQuestion } = require("./api-helpers/QuestionsAPI.js");
 
 // Products Funcs
 const { currentProduct } = require('./api-helpers/ProductsAPI.js');
@@ -41,6 +42,15 @@ app.post('/qa/questions', function (req, res) {
     })
 });
 
+app.put('/questions/helpful', function (req, res) {
+  console.log('here is query', req.body.question_id)
+  helpfulQuestion(req.body.question_id, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+});
 app.get('/answers', function (req, res) {
   AnswersGet(req.query.questionId, TOKEN)
     .then((data) => { res.send(data) })

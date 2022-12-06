@@ -91,7 +91,7 @@ module.exports.AnswerPost = async (answerFormData, TOKEN) => {
   }
 }
 
-module.exports.helpfulQuestion = async (questionId) => {
+module.exports.helpfulQuestion = async (questionId, TOKEN) => {
   const options = {
     method: "put",
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${questionId}/helpful`,

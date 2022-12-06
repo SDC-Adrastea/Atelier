@@ -24,7 +24,7 @@ export const AnswerList = (props) => {
 
   return (
     <div style={{color: 'green'}}>
-      <h3>Answers</h3>
+      {/* <h3>Answers</h3> */}
       {returnedAs.slice(0, moreAs)?.map((answerData, idx)=> <Answer answerData={answerData} key={idx}/>)}
       {moreAs <= returnedAs.length && <button onClick={handleMoreAsClick}>Load More Answers</button>}
     </div>
