@@ -5,16 +5,21 @@ const Style = (props) => {
   let toggled = props.toggled
   let styleName
 
-  // if (style.style_id === toggled.style_id) {
-  //   styleName = {style.name}
-  // }
+  if (toggled.style_id === style.style_id) {
+    styleName = style.name
+  }
 
   return (
     <div className="each-style">
-      {style.name}
+      {styleName}
       <img
         className="style-thumbnail"
         src={style.photos[0].thumbnail_url}
+        width="100"
+        height="100"
+        onClick={() => {
+          props.onClick(style)
+        }}
       />
     </div>
   )

@@ -15,14 +15,14 @@ import ExpandedGallery from './Overview/Image Gallery/ExpandedGallery.jsx'
 // API functions
 
 export const Overview = (props) => {
-  console.log('props in overview', props)
+  // console.log('props in overview', props)
   let product = props.product
   let ratings = props.metadata
   let reviewSection;
   let productOverview;
   let styleSection;
 
-  const [outfitToggle, setOutfitToggle] = useState([])
+  const [outfitToggle, setOutfitToggle] = useState({})
   const [currentStyle, setCurrentStyle] = useState({})
 
   if (product === {}) {
@@ -43,10 +43,11 @@ export const Overview = (props) => {
       props.styles.forEach(style => {
         if (style['default?']) {
           setCurrentStyle(style)
+          setOutfitToggle(style)
         }
       })
     }
-    styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle}/>
+    styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle} onClick={(selectedStyle) => { setCurrentStyle(selectedStyle) }} />
   }
 
   if (product.description !== undefined && product.slogan !== undefined && product.features !== undefined) {

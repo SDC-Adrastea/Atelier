@@ -55,7 +55,6 @@ app.get('/getMetadata', (req, res) => {
     })
 })
 
-
 app.listen(port, () => {
   console.log(`Atelier is listening on port ${port}`)
 })

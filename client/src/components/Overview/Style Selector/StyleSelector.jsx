@@ -7,7 +7,18 @@ const StyleSelector = (props) => {
   let mapStyles;
 
   if (currentStyles !== undefined || currentStyles.length === 0) {
-    mapStyles = currentStyles.map(style => <Style key={style.style_id} style={style} toggled={toggledStyle} />)
+    mapStyles = currentStyles.map(style => {
+      return (
+        <Style
+          key={style.style_id}
+          style={style}
+          toggled={toggledStyle}
+          onClick={(selectedStyle) => {
+            props.onClick(selectedStyle)
+          }}
+        />
+      )
+    })
   }
 
   return (
