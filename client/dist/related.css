@@ -1,24 +1,32 @@
 .related-carousel-container {
-  width: 100%;
-  height: 350px;
-  overflow: hidden
+  height: 320px;
+  flex-wrap: nowrap;
+  border: 1px solid red;
+  padding: 10px;
+  transition: margin-left 1s;
 }
 
-.carousel-proudct-container {
-  width: auto;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  transition: margin-left 1s ease;
+.overflow-window {
+  overflow: hidden;
+  height:350px;
+  width:1210px;
+  border: 1px solid green;
 }
+
+.related-product-card:first-child {
+  margin-left: 0px;
+}
+
 
 .related-product-card {
-  width: 300px;
-  height: 350px;
+  width: 250px;
+  height: 300px;
   display: inline-block;
-  margin: none;
+  margin-left: 15px;
 }
 
 .related-product-image {
-  height: 200px;
-  width: 200px;
+  object-fit: cover;
+  height: 80%;
+  width: 100%;
 }

@@ -16,7 +16,6 @@ app.use(express.static(DIST_DIR));
 const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
 const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
 const { currentProduct } = require('./api-helpers/ProductsAPI.js');
-const { getMetadata } = require('./api-helpers/ReviewsAPI.js')
 
 const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
 // const { getReviews, getMetadata, addReview } = require('./api-helpers/ReviewsAPI.js');
