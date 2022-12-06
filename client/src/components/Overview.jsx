@@ -18,13 +18,13 @@ export const Overview = (props) => {
   // console.log('props in Overview', props)
   let product = props.product
   let ratings = props.metadata
-  let reviewSection
-  let priceSection
-  let productOverview
-  let styleSection
+  let reviewSection, titleSection, priceSection, toggleSection, productOverview,
+    styleSection, sizeQuantitySection, cartSection
+  let currentView = <DefaultGallery />
 
   const [outfitToggle, setOutfitToggle] = useState({})
   const [currentStyle, setCurrentStyle] = useState({})
+  const [view, setView] = useState('default')
 
   if (product === {}) {
     product.name = ''
@@ -48,27 +48,34 @@ export const Overview = (props) => {
         }
       })
     }
-    styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle} onClick={(selectedStyle) => { setCurrentStyle(selectedStyle) }} />
+    titleSection = <ProductCategoryTitle title={product.name} category={product.category} />
     priceSection = <Price defaultPrice={product.default_price} styles={props.styles} />
+    toggleSection = <ToggleOutfitStar onClick={(data) => setOutfitToggle([data])} />
+    sizeQuantitySection = <SizeQuantity style={currentStyle} />
+    cartSection = <AddToCart />
+    styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle} onClick={(selectedStyle) => { setCurrentStyle(selectedStyle) }} />
   }
 
-  if (product.description !== undefined && product.slogan !== undefined && product.features !== undefined) {
+  if (product.description !== undefined || product.slogan !== undefined || product.features !== undefined) {
     productOverview =  <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
+  }
+
+  if (view === 'expanded') {
+    currentView = <ExpandedGallery />
   }
 
   return (
     <div>
       <div className="subcomponents">
         {reviewSection}
-        <ProductCategoryTitle title={product.name} category={product.category} />
+        {titleSection}
         {priceSection}
         {productOverview}
-        <ToggleOutfitStar onClick={(data) => setOutfitToggle([data])} />
+        {toggleSection}
         {styleSection}
-        <SizeQuantity />
-        <AddToCart />
-        <DefaultGallery />
-        <ExpandedGallery />
+        {sizeQuantitySection}
+        {cartSection}
+        {currentView}
       </div>
     </div>
   )
