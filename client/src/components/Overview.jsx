@@ -15,7 +15,7 @@ import ExpandedGallery from './Overview/Image Gallery/ExpandedGallery.jsx'
 // API functions
 
 export const Overview = (props) => {
-  // console.log('props in overview', props)
+  // console.log('props in Overview', props)
   let product = props.product
   let ratings = props.metadata
   let reviewSection
