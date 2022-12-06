@@ -23,7 +23,7 @@ const StyleSelector = (props) => {
 
   return (
     <div className="styles">
-      <h4>Overview - Style Selector</h4>
+      <h3>Styles:</h3>
       {mapStyles}
     </div>
   )

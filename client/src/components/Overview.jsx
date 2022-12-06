@@ -18,9 +18,10 @@ export const Overview = (props) => {
   // console.log('props in overview', props)
   let product = props.product
   let ratings = props.metadata
-  let reviewSection;
-  let productOverview;
-  let styleSection;
+  let reviewSection
+  let priceSection
+  let productOverview
+  let styleSection
 
   const [outfitToggle, setOutfitToggle] = useState({})
   const [currentStyle, setCurrentStyle] = useState({})
@@ -48,6 +49,7 @@ export const Overview = (props) => {
       })
     }
     styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle} onClick={(selectedStyle) => { setCurrentStyle(selectedStyle) }} />
+    priceSection = <Price defaultPrice={product.default_price} styles={props.styles} />
   }
 
   if (product.description !== undefined && product.slogan !== undefined && product.features !== undefined) {
@@ -56,16 +58,12 @@ export const Overview = (props) => {
 
   return (
     <div>
-      <h1>Overview Component</h1>
       <div className="subcomponents">
         {reviewSection}
         <ProductCategoryTitle title={product.name} category={product.category} />
-        <Price defaultPrice={product.default_price} styles={props.styles} />
+        {priceSection}
         {productOverview}
-        <ToggleOutfitStar onClick={(data) => {
-          console.log('data in overview', [data])
-          setOutfitToggle([data])
-        }} />
+        <ToggleOutfitStar onClick={(data) => setOutfitToggle([data])} />
         {styleSection}
         <SizeQuantity />
         <AddToCart />
