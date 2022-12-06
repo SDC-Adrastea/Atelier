@@ -20,7 +20,6 @@ const App = (props) => {
       params: { productNum }
     })
       .then(data => {
-        console.log('data in index.jsx', data)
         setProduct(data.data.product)
         setStyles(data.data.styles.results)
         setRelated(data.data.related)
@@ -31,10 +30,10 @@ const App = (props) => {
   return (
     <div>
       <h1>Atelier</h1>
-      <Overview productNum={productNum} product={product} styles={styles} />
+      {/* <Overview productNum={productNum} product={product} styles={styles} /> */}
       {/* <Related productNum={productNum} setProduct={setProduct}/> */}
-      <Questions productNum={productNum} />
-      {/* <Reviews productNum={productNum}/> */}
+      {/* <Questions productNum={productNum} /> */}
+      <Reviews productNum={productNum}/>
       <h2>Meow</h2>
     </div>
   )
