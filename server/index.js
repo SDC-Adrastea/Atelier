@@ -53,7 +53,7 @@ app.get('/getMetadata', (req, res) => {
     .then(data => res.send(data))
     .catch(err => {
       res.send(err)
-      console.lof('err in getMetadata server-side', err)
+      console.log('err in getMetadata server-side', err)
     })
 })
 
