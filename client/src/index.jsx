@@ -9,7 +9,7 @@ import { Reviews } from './components/Reviews.jsx';
 
 
 const App = (props) => {
-  const sampleID = 71698;
+  const sampleID = 71697;
   const [productNum, setProductNum] = useState(sampleID)
   const [product, setProduct] = useState({})
   const [styles, setStyles] = useState([])

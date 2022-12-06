@@ -84,8 +84,6 @@ app.get('/relatedProductCardInformation', (req, res) => {
     })
 })
 
-
-
 app.listen(port, () => {
   console.log(`Atelier is listening on port ${port}`)
 })
