@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 export const Answer = (props) => {
-  console.log('here are props for Answer Component', props)
+  // console.log('here are props for Answer Component', props)
   return (
     <div>
       <p>A: {props.answerData.body}</p>

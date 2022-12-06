@@ -55,6 +55,41 @@ app.get('/getMetadata', (req, res) => {
     })
 })
 
+app.get('/relatedProductCardInformation', (req, res) => {
+  let formattedResponseData = {}
+  currentProduct(req.query.productNum, TOKEN)
+    .then((data) => {
+      formattedResponseData.category = data.product.category;
+      formattedResponseData.productName = data.product.name
+      formattedResponseData.originalPrice = data.styles.results[0].original_price
+      formattedResponseData.salePrice = data.styles.results[0].sale_price
+      formattedResponseData.imageUrl = data.styles.results[0].photos[0].thumbnail_url
+      return getMetadata(req.query.productNum)
+    })
+    .catch((err) => {
+      res.send(err)
+      console.log('err in relatedProductCardInformation get server-side', err)
+    })
+    .then((data) => {
+      let ratingData = Object.entries(data.ratings)
+      let sum = 0
+      let count = 0
+      ratingData.forEach(rating => {
+        sum += (Number(rating[0]) * Number(rating[1]));
+        count += (Number(rating[1]))
+      });
+      let average = (sum / count)
+      formattedResponseData.averageReview = Math.round(average * 100) / 100
+    })
+    .catch((err) => {
+      res.send(err)
+      console.log('err in getMetaData get server-side', err)
+    })
+    .then(() => {
+      res.send(formattedResponseData)
+    })
+})
+
 app.listen(port, () => {
   console.log(`Atelier is listening on port ${port}`)
 })
