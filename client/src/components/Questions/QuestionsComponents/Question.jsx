@@ -13,8 +13,14 @@ export const Question = (props) => {
     if (sentHelpful === false) {
       axios.put('/questions/helpful', {
         question_id
-      }).then((data)=> {console.log(data.data)
-      setHelpful(true)}
+      }).then(()=> {
+        axios.get('/qa/questions',{
+          params:{productNum: props.productNum}
+        })
+        .then((data)=>{props.setQs(data.data.results)
+          setHelpful(true)
+        })
+        }
       );
     }
   }
