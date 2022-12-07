@@ -21,7 +21,6 @@ const App = (props) => {
       params: { productNum }
     })
       .then(data => {
-        // console.log('data in index.jsx', data)
         setProduct(data.data.product)
         setStyles(data.data.styles.results)
         setRelated(data.data)
@@ -44,6 +43,7 @@ const App = (props) => {
       <Related productNum={productNum} setProduct={setProduct} product={product} styles={styles} related={related}/>
       <Questions productNum={productNum} />
       {/* <Reviews productNum={productNum}/> */}
+
       <h2>Meow</h2>
     </div>
   )
