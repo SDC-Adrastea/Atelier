@@ -7,7 +7,7 @@ import Price from './Overview/Product Information/Price.jsx'
 import ProductOverview from './Overview/Product Information/ProductOverview.jsx'
 import ToggleOutfitStar from './Overview/Product Information/ToggleOutfitStar.jsx'
 import StyleSelector from './Overview/Style Selector/StyleSelector.jsx'
-import SizeQuantity from './Overview/Style Selector/SizeQuantity.jsx'
+import SizeQuantity from './Overview/Add To Cart/SizeQuantity.jsx'
 import AddToCart from './Overview/Add To Cart/AddToCart.jsx'
 import DefaultGallery from './Overview/Image Gallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/Image Gallery/ExpandedGallery.jsx'
@@ -18,11 +18,12 @@ export const Overview = (props) => {
   // console.log('props in Overview', props)
   let product = props.product
   let ratings = props.metadata
-  let reviewSection;
-  let productOverview;
-  let styleSection;
+  let reviewSection
+  let priceSection
+  let productOverview
+  let styleSection
 
-  const [outfitToggle, setOutfitToggle] = useState([])
+  const [outfitToggle, setOutfitToggle] = useState({})
   const [currentStyle, setCurrentStyle] = useState({})
 
   if (product === {}) {
@@ -39,14 +40,16 @@ export const Overview = (props) => {
   }
 
   if (props.styles.length > 0) {
-    styleSection = <StyleSelector styles={props.styles} />
     if (Object.keys(currentStyle).length === 0) {
       props.styles.forEach(style => {
         if (style['default?']) {
           setCurrentStyle(style)
+          setOutfitToggle(style)
         }
       })
     }
+    styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle} onClick={(selectedStyle) => { setCurrentStyle(selectedStyle) }} />
+    priceSection = <Price defaultPrice={product.default_price} styles={props.styles} />
   }
 
   if (product.description !== undefined && product.slogan !== undefined && product.features !== undefined) {
@@ -55,16 +58,12 @@ export const Overview = (props) => {
 
   return (
     <div>
-      <h1>Overview Component</h1>
       <div className="subcomponents">
         {reviewSection}
         <ProductCategoryTitle title={product.name} category={product.category} />
-        <Price defaultPrice={product.default_price} styles={props.styles} />
+        {priceSection}
         {productOverview}
-        <ToggleOutfitStar onClick={(data) => {
-          console.log('data in overview', [data])
-          setOutfitToggle([data])
-        }} />
+        <ToggleOutfitStar onClick={(data) => setOutfitToggle([data])} />
         {styleSection}
         <SizeQuantity />
         <AddToCart />
@@ -74,4 +73,3 @@ export const Overview = (props) => {
     </div>
   )
 }
-

@@ -29,7 +29,6 @@ const StarsReviews = (props) => {
 
   return (
     <div>
-      <h4>Overview - Stars & Reviews</h4>
       {thisRating}
     </div>
   )

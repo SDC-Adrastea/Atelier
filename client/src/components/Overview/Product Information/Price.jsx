@@ -9,7 +9,6 @@ const Price = (props) => {
 
   return (
     <div>
-      <h4>Overview - Price [from Style]</h4>
       {defaultPrice}
     </div>
   )
