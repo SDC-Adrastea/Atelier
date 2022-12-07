@@ -17,7 +17,7 @@ module.exports.ProductsGet = async (token) => {
   }
 }
 
-let SingleProductGet = async (id, token) => {
+let SingleProductGet = async (id) => {
   try {
     options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}`;
     let current = await axios(options);
@@ -28,7 +28,7 @@ let SingleProductGet = async (id, token) => {
   }
 }
 
-let Styles = async (id, token) => {
+let Styles = async (id) => {
   try {
     options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}/styles`;
     let styles = await axios(options);
@@ -39,7 +39,7 @@ let Styles = async (id, token) => {
   }
 }
 
-let Similar = async (id, token) => {
+let Similar = async (id) => {
   try {
     options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}/related`;
     let similar = await axios(options);
@@ -50,7 +50,7 @@ let Similar = async (id, token) => {
   }
 }
 
-module.exports.currentProduct = async (id, token) => {
+module.exports.currentProduct = async (id) => {
   try {
     let productDetails = {};
 
