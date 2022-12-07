@@ -15,11 +15,16 @@ app.use(express.static(DIST_DIR));
 // Questions Controllers
 const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
 const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
-const { currentProduct } = require('./api-helpers/ProductsAPI.js');
-const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
-// const { getReviews, getMetadata, addReview } = require('./api-helpers/ReviewsAPI.js');
+const { QuestionPost } = require("./api-helpers/QuestionsAPI.js");
+const { AnswerPost } = require("./api-helpers/QuestionsAPI.js");
+const { helpfulQuestion } = require("./api-helpers/QuestionsAPI.js");
 
 // Products Funcs
+const { currentProduct } = require('./api-helpers/ProductsAPI.js');
+const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
+
+// Products Funcs
+
 app.get('/qa/questions', function (req, res) {
   QuestionsGet(req.query.productNum, TOKEN)
     .then((data) => { res.send(data) })
@@ -29,6 +34,25 @@ app.get('/qa/questions', function (req, res) {
     })
 })
 
+app.post('/qa/questions', function (req, res) {
+  // console.log('here is query', req.body.formInfo)
+  QuestionPost(req.body.formInfo, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+});
+
+app.put('/questions/helpful', function (req, res) {
+  console.log('here is query', req.body.question_id)
+  helpfulQuestion(req.body.question_id, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+});
 app.get('/answers', function (req, res) {
   AnswersGet(req.query.questionId, TOKEN)
     .then((data) => { res.send(data) })
@@ -38,8 +62,16 @@ app.get('/answers', function (req, res) {
     })
 })
 
+app.post('/answers', function (req, res) {
+  AnswerPost(req.body.formInfo, TOKEN)
+    .then((data) => { res.send(data)})
+    .catch(function (error) {
+      res.send(error);
+      console.error('here is answer post', error);
+    })
+});
+
 app.get('/currentProduct', (req, res) => {
-  console.log('current product:', req.query)
   currentProduct(req.query.productNum, TOKEN)
     .then(data => res.send(data))
     .catch(err => {
