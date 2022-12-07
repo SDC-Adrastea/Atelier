@@ -129,7 +129,7 @@ module.exports.reportQuestion = async (questionId) => {
   }
 }
 
-module.exports.helpfulAnswer = async (answerId) => {
+module.exports.helpfulAnswer = async (answerId, TOKEN) => {
   const options = {
     method: "put",
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${answerId}/helpful`,
