@@ -39,7 +39,7 @@ app.get('/answers', function (req, res) {
 })
 
 app.get('/currentProduct', (req, res) => {
-  console.log('current product:', req.query)
+  // console.log('current product:', req.query)
   currentProduct(req.query.productNum, TOKEN)
     .then(data => res.send(data))
     .catch(err => {
@@ -58,7 +58,7 @@ app.get('/getMetadata', (req, res) => {
 })
 
 app.get('/reviews', function (req, res) {
-  console.log('GET /reviews');
+  // console.log('GET /reviews');
   var product_id = req.query.product_id;
   var page = req.query.page;
   var count = req.query.count;
@@ -96,8 +96,7 @@ app.get('/reviews', function (req, res) {
 // });
 
 app.get('/reviews/meta', function (req, res) {
-  console.log('GET /reviews/meta');
-
+  // console.log('GET /reviews/meta');
   var product_id = req.query.product_id;
 
   getMetadata(product_id)

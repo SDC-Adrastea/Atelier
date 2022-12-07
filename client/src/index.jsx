@@ -23,7 +23,7 @@ const App = (props) => {
       .then(data => {
         setProduct(data.data.product)
         setStyles(data.data.styles.results)
-        setRelated(data.data)
+        setRelated(data.data.related)
       })
       .catch(err => console.log('err in index.jsx getProduct', err))
 

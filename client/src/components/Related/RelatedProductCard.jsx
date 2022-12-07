@@ -22,7 +22,7 @@ const RelatedProductCard = (props) => {
 
   return (
     <div onClick ={setModal} className="related-product-card">
-      {console.log(cardData)}
+      {/* {console.log(cardData)} */}
       <img className="related-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>
