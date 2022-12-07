@@ -30,7 +30,6 @@ describe('Product Information: Category & Title', () => {
 
   // check that the category is displayed; in the correct area
   // check that the title is displayed; in the correct area
-
 })
 
 describe('Product Information: Price', () => {

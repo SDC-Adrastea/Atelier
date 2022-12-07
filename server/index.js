@@ -16,7 +16,8 @@ app.use(express.static(DIST_DIR));
 const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
 const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
 const { currentProduct } = require('./api-helpers/ProductsAPI.js');
-const { getMetadata } = require('./api-helpers/ReviewsAPI.js');
+const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
+// const { getReviews, getMetadata, addReview } = require('./api-helpers/ReviewsAPI.js');
 
 // Products Funcs
 app.get('/qa/questions', function (req, res) {
@@ -38,13 +39,74 @@ app.get('/answers', function (req, res) {
 })
 
 app.get('/currentProduct', (req, res) => {
-  currentProduct(req.query.productNum)
+  console.log('current product:', req.query)
+  currentProduct(req.query.productNum, TOKEN)
     .then(data => res.send(data))
     .catch(err => {
       res.send(err)
       console.log('err in currentProduct get server-side', err)
     })
 })
+
+app.get('/getMetadata', (req, res) => {
+  getMetadata(req.query.productNum)
+    .then(data => res.send(data))
+    .catch(err => {
+      res.send(err)
+      console.lof('err in getMetadata server-side', err)
+    })
+})
+
+app.get('/reviews', function (req, res) {
+  console.log('GET /reviews');
+  var product_id = req.query.product_id;
+  var page = req.query.page;
+  var count = req.query.count;
+  var sort = req.query.sort;
+
+  getReviews(product_id, page, count, sort)
+    .then(reviews => res.send(reviews))
+    .catch(err => {
+      res.send(err);
+      console.log('err in getReviews get server-side', err);
+    })
+});
+
+// app.post('/reviews', function (req, res) {
+//   console.log('POST /reviews');
+
+//   console.log(req.query)
+//   var product_id = req.query.product_id;
+//   var rating = req.query.rating;
+//   var summary = req.query.summary;
+//   var body = req.query.body;
+//   var recommend = req.query.recommend;
+//   var name = req.query.name;
+//   var email = req.query.email;
+//   var photos = req.query.photos;
+//   var characteristics = req.query.characteristics;
+
+//   addReview(product_id, rating, summary, body, recommend, name, email, photos, characteristics)
+//   addReview()
+//     .then(reviews => res.send(reviews))
+//     .catch(err => {
+//       res.send(err);
+//       console.log('err in addReview post server-side', err);
+//     })
+// });
+
+app.get('/reviews/meta', function (req, res) {
+  console.log('GET /reviews/meta');
+
+  var product_id = req.query.product_id;
+
+  getMetadata(product_id)
+    .then(reviews => res.send(reviews))
+    .catch(err => {
+      res.send(err);
+      console.log('err in getReviews get server-side', err);
+    })
+});
 
 app.get('/relatedProductCardInformation', (req, res) => {
   let formattedResponseData = {}

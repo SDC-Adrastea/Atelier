@@ -27,9 +27,6 @@ describe('Style Selector: Style Selector', () => {
   // Check that only one style can be selected at a time.
 })
 
-
-
-
 // IDEAS
 // test for props
 // test for state
