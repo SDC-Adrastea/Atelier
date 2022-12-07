@@ -15,13 +15,15 @@ app.use(express.static(DIST_DIR));
 // Questions Controllers
 const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
 const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
-const { currentProduct } = require('./api-helpers/ProductsAPI.js');
-
-const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
-// const { getReviews, getMetadata, addReview } = require('./api-helpers/ReviewsAPI.js');
+const { QuestionPost } = require("./api-helpers/QuestionsAPI.js");
+const { AnswerPost } = require("./api-helpers/QuestionsAPI.js");
+const { helpfulQuestion } = require("./api-helpers/QuestionsAPI.js");
 
 // Products Funcs
+const { currentProduct } = require('./api-helpers/ProductsAPI.js');
+const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
 
+// Products Funcs
 
 app.get('/qa/questions', function (req, res) {
   QuestionsGet(req.query.productNum, TOKEN)
@@ -30,10 +32,11 @@ app.get('/qa/questions', function (req, res) {
       res.send(error);
       console.error(error);
     })
-});
+})
 
-app.get('/answers', function (req, res) {
-  AnswersGet(req.query.questionId, TOKEN)
+app.post('/qa/questions', function (req, res) {
+  // console.log('here is query', req.body.formInfo)
+  QuestionPost(req.body.formInfo, TOKEN)
     .then((data) => { res.send(data) })
     .catch(function (error) {
       res.send(error);
@@ -41,8 +44,34 @@ app.get('/answers', function (req, res) {
     })
 });
 
+app.put('/questions/helpful', function (req, res) {
+  console.log('here is query', req.body.question_id)
+  helpfulQuestion(req.body.question_id, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+});
+app.get('/answers', function (req, res) {
+  AnswersGet(req.query.questionId, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+})
+
+app.post('/answers', function (req, res) {
+  AnswerPost(req.body.formInfo, TOKEN)
+    .then((data) => { res.send(data)})
+    .catch(function (error) {
+      res.send(error);
+      console.error('here is answer post', error);
+    })
+});
+
 app.get('/currentProduct', (req, res) => {
-  console.log('current product:', req.query)
   currentProduct(req.query.productNum, TOKEN)
     .then(data => res.send(data))
     .catch(err => {
@@ -51,6 +80,14 @@ app.get('/currentProduct', (req, res) => {
     })
 })
 
+app.get('/getMetadata', (req, res) => {
+  getMetadata(req.query.productNum)
+    .then(data => res.send(data))
+    .catch(err => {
+      res.send(err)
+      console.lof('err in getMetadata server-side', err)
+    })
+})
 
 app.get('/reviews', function (req, res) {
   console.log('GET /reviews');
@@ -135,6 +172,16 @@ app.get('/relatedProductCardInformation', (req, res) => {
     })
     .then(() => {
       res.send(formattedResponseData)
+    })
+  }
+)
+
+app.get('/getMetadata', (req, res) => {
+  getMetadata(req.query.productNum)
+    .then(data => res.send(data))
+    .catch(err => {
+      res.send(err)
+      console.log('err in getMetadata server-side', err)
     })
 })
 

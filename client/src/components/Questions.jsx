@@ -25,12 +25,12 @@ export const Questions = (props) => {
   },[]);
 
   return (
-    <div>
-      <h1>Questions Component</h1>
+    <div data-testid="Questions Component">
+      <h1>Questions & Answers</h1>
       <SearchQuestions setSearch={setSearch} />
 
-      {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} returnedQs={returnedQs} searchQ={searchQ}/>}
-      <AddQuestion />
+      {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} product={props.product} returnedQs={returnedQs} searchQ={searchQ}/>}
+      <AddQuestion product={props.product} productNum={props.productNum}/>
     </div>
   )
 };

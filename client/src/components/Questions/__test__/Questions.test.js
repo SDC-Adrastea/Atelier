@@ -1,6 +1,12 @@
-import Enzyme, {shallow, configure} from 'enzyme';
+/** @jest-environment jsdom */
+
+import { fireEvent, render, screen } from '@testing-library/react'
+import { queries } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
+import '@testing-library/jest-dom'
 import React, { useEffect, useState } from "react";
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+
+// Questions components
 import { Questions } from '../../Questions.jsx';
 import { AddAnswer } from "../QuestionsComponents/AddAnswer.jsx";
 import { AddQuestion } from "../QuestionsComponents/AddQuestion.jsx";
@@ -11,38 +17,37 @@ import { QuestionsList } from "../QuestionsComponents/QuestionsList.jsx";
 import { SearchQuestions } from "../QuestionsComponents/SearchQuestions.jsx";
 
 
-configure({adapter: new Adapter()});
+// test("Renders QuestionsList Widget without crashing", ()=> {
+//   render(<Questions />)
+//   const QCompElement = screen.queryBy('Questions')
+//   expect(QCompElement).toBeInTheDocument()
+// })
 
+// it("SHALLOW: renders AddAnswer Widget without crashing", ()=> {
+//   shallow(<AddAnswer />);
+// });
 
-it("SHALLOW: renders Questions Widget without crashing", ()=> {
-  shallow(<Questions />);
-});
+// it("SHALLOW: renders AddQuestion Widget without crashing", ()=> {
+//   shallow(<AddQuestion />);
+// });
 
-it("SHALLOW: renders AddAnswer Widget without crashing", ()=> {
-  shallow(<AddAnswer />);
-});
+// it("SHALLOW: renders Answer Widget without crashing", ()=> {
+//   shallow(<Answer />);
+// });
 
-it("SHALLOW: renders AddQuestion Widget without crashing", ()=> {
-  shallow(<AddQuestion />);
-});
+// it("SHALLOW: renders AnswerList Widget without crashing", ()=> {
+//   shallow(<AnswerList />);
+// });
 
-it("SHALLOW: renders Answer Widget without crashing", ()=> {
-  shallow(<Answer />);
-});
+// it("SHALLOW: renders Question Widget without crashing", ()=> {
+//   shallow(<Question />);
+// });
 
-it("SHALLOW: renders AnswerList Widget without crashing", ()=> {
-  shallow(<AnswerList />);
-});
+// it("SHALLOW: renders QuestionsList Widget without crashing", ()=> {
+//   shallow(<QuestionsList />);
+// });
 
-it("SHALLOW: renders Question Widget without crashing", ()=> {
-  shallow(<Question />);
-});
-
-it("SHALLOW: renders QuestionsList Widget without crashing", ()=> {
-  shallow(<QuestionsList />);
-});
-
-it("SHALLOW: renders SearchQuestions Widget without crashing", ()=> {
-  shallow(<SearchQuestions />);
-});
+// it("SHALLOW: renders SearchQuestions Widget without crashing", ()=> {
+//   shallow(<SearchQuestions />);
+// });
 
