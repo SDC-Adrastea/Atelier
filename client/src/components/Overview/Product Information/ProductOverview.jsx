@@ -13,7 +13,6 @@ const ProductOverview = (props) => {
 
   return (
     <div className="product-overview">
-      <h4>Overview - Product Overview</h4>
       <div className="product-slogan"><strong>{slogan}</strong></div>
       <div className="product-description">{description}</div>
       <br></br>
