@@ -19,6 +19,7 @@ const { QuestionPost } = require("./api-helpers/QuestionsAPI.js");
 const { AnswerPost } = require("./api-helpers/QuestionsAPI.js");
 const { helpfulQuestion } = require("./api-helpers/QuestionsAPI.js");
 const { helpfulAnswer } = require("./api-helpers/QuestionsAPI.js");
+const { reportAnswer } = require("./api-helpers/QuestionsAPI.js");
 
 // Products Funcs
 const { currentProduct } = require('./api-helpers/ProductsAPI.js');
@@ -83,6 +84,17 @@ app.post('/answers', function (req, res) {
       console.error('here is answer post', error);
     })
 });
+
+app.put('/answers/report', function (req, res) {
+  console.log('here is query', req.body.answer_id, TOKEN)
+  reportAnswer(req.body.answer_id, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+});
+
 
 app.get('/currentProduct', (req, res) => {
   currentProduct(req.query.productNum, TOKEN)
