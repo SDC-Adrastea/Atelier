@@ -15,8 +15,8 @@ const Style = (props) => {
       <img
         className="style-thumbnail"
         src={style.photos[0].thumbnail_url}
-        width="100"
-        height="100"
+        width="50"
+        height="50"
         onClick={() => {
           props.onClick(style)
         }}
