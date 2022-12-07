@@ -72,7 +72,7 @@ describe('Unit: Initial rendering of all Overview components', () => {
   })
 
   test('Confirm initial load of Size & Quantity subcomponent', () => {
-    render(<SizeQuantity style={{}} />)
+    render(<SizeQuantity style={{name: "test", skus: {2580604: {size: 'test'}, 2580605: {size: 'test'}}}} />)
     const h4Element = screen.getByText(/Size & Quantity/i)
     expect(h4Element).toBeInTheDocument()
   })

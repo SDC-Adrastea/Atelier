@@ -45,7 +45,7 @@ app.post('/qa/questions', function (req, res) {
 });
 
 app.put('/questions/helpful', function (req, res) {
-  console.log('here is query', req.body.question_id)
+  // console.log('here is query', req.body.question_id)
   helpfulQuestion(req.body.question_id, TOKEN)
     .then((data) => { res.send(data) })
     .catch(function (error) {
