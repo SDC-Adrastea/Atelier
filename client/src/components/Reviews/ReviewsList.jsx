@@ -10,7 +10,7 @@ export const ReviewsList = (props) => {
   const [reviewsSortBy, setSort] = useState('relevant');
 
   useEffect(() => {
-    console.log('sorting by:', reviewsSortBy);
+    // console.log('sorting by:', reviewsSortBy);
     axios.get('/reviews',{
       params:{
         product_id: props.productNum,

@@ -10,6 +10,7 @@ const SizeQuantity = (props) => {
   useEffect(() => {
     setOptions(styleOptions)
     skus = Object.keys(skus)
+    console.log(skus)
   })
 
   return (
