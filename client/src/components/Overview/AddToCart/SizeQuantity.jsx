@@ -31,6 +31,18 @@ const SizeQuantity = (props) => {
 
   }
 
+  let quantitySection
+
+  quantitySection = (
+    <div>
+      <label htmlFor="quantity-select">Quantity:</label >
+      <select name="quantity" id="quantity-select">
+        <option value="">1</option>
+
+      </select>
+    </div>
+  )
+
   return (
     <div>
       <label htmlFor="size-select">Select a Size:</label >
@@ -38,14 +50,9 @@ const SizeQuantity = (props) => {
         <option value="">--</option>
         {mapped}
       </select>
-      <label htmlFor="quantity-select">Quantity:</label >
-      <select name="quantity" id="quantity-select">
-        <option value="">--</option>
-
-      </select>
+      {quantitySection}
     </div>
   )
-
 }
 
-export default SizeQuantity;
+export  default SizeQuantity ;
