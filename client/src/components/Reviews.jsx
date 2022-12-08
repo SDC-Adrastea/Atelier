@@ -26,15 +26,15 @@ export const Reviews = (props) => {
   },[reviewsSortBy]);
 
   useEffect(() => {
-    console.log(reviews);
-    var average = (reviews.reduce((accumulator, currentReview) => accumulator + currentReview.rating, 0) / reviews.length).toFixed(2);
+    var reviewsLength = reviews.length || 1;
+    var average = (reviews.reduce((accumulator, currentReview) => accumulator + currentReview.rating, 0) / reviewsLength).toFixed(2);
     setAverageRating(average);
-  });
+  },[reviews]);
 
   return (
     <div>
     <h1>Ratings & Reviews</h1>
-    <div style={{ display: "grid", gridTemplateColumns: "20% 66%", gridGap: 20 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "50% 50%", gridGap: 20 }}>
       <div>
         <RatingsColumn productNum={props.productNum} averageRating={averageRating} />
       </div>
