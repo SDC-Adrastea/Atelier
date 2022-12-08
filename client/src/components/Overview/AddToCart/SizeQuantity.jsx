@@ -4,7 +4,6 @@ const SizeQuantity = (props) => {
   let styleOptions = props.style.skus
   let skus = []
   let sizeOptions = []
-  console.log('props in SizeQuantity', props)
 
   const [options, setOptions] = useState({})
   const [sku, setSku] = useState('')
@@ -14,18 +13,35 @@ const SizeQuantity = (props) => {
   useEffect(() => {
     setOptions(styleOptions)
     skus = Object.keys(styleOptions)
-    skus.forEach(sku => {
-      let thisSize = styleOptions.sku
-      console.log('this size', thisSize)
-    })
+    if (skus.length > 0) {
+      let array = []
+      for (var i = 0; i < skus.length; i++) {
+        let thisSize = styleOptions[skus[i]]
+        array.push(thisSize.size)
+      }
+      setSizes(array)
+    }
+  }, [])
+
+  let mapped = sizes.map(size => {
+    return <option key={size} value={size}>{size}</option>
   })
 
   return (
     <div>
-      <h4>Size & Quantity Dropdowns</h4>
-      <h3>Sample</h3>
+      <label htmlFor="size-select">Select a Size:</label >
+      <select name="size" id="size-select">
+        <option value="">--</option>
+        {mapped}
+      </select>
+      <label htmlFor="quantity-select">Quantity:</label >
+      <select name="quantity" id="quantity-select">
+        <option value="">--</option>
+
+      </select>
     </div>
   )
+
 }
 
 export default SizeQuantity;
