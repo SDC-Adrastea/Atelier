@@ -8,7 +8,8 @@ export const RatingsColumn = (props) => {
 
   return (
     <div>
-      <p>{averageRating} <StarRating rating={averageRating} width={15} /></p>
+      <h1>{averageRating}</h1>
+      <StarRating rating={averageRating} width={20} />
     </div>
   )
 };

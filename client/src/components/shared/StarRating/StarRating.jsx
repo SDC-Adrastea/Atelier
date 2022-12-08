@@ -39,12 +39,16 @@ export const StarRating = ({rating = 0, width = 20}) => {
             height: `${width}px`,
             width: `${parseInt(star * width, 10)}px`,
             backgroundColor: 'black',
+            // top: '100%',
             position: 'relative',
             display: 'inline-block',
+            top: "50%",
+            transform: "translateY(-50%)",
           }}>
                 <img src="star.png" style={{
                   height: `${width}px`,
                   width: `${width}px`,
+                  // position: 'relative',
                 }} />
           </div>
 
