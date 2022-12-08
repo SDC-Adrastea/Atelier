@@ -4,31 +4,39 @@ import { ReviewTile } from "./ReviewTile.jsx";
 
 
 export const ReviewsList = (props) => {
-  const [reviews, setReviews] = useState([]);
-  const [reviewsShowing, setReviewsShowing] = useState(2);
-  const [reviewsSortBy, setSort] = useState('relevant');
+  // const [reviews, setReviews] = useState([]);
+  // const [reviewsShowing, setReviewsShowing] = useState(2);
+  // const [reviewsSortBy, setSort] = useState('relevant');
 
-  useEffect(() => {
-    axios.get('/reviews',{
-      params:{
-        product_id: props.productNum,
-        count: 999999999,
-        sort: reviewsSortBy
-      }
-    })
-      .then((results) => {
-        setReviews(results.data.results);
-      });
-  },[reviewsSortBy]);
+  // useEffect(() => {
+  //   axios.get('/reviews',{
+  //     params:{
+  //       product_id: props.productNum,
+  //       count: 999999999,
+  //       sort: reviewsSortBy
+  //     }
+  //   })
+  //     .then((results) => {
+  //       setReviews(results.data.results);
+  //     });
+  // },[reviewsSortBy]);
+  var reviews = props.reviews;
+  var setReviews = props.setReviews;
+  var reviewsShowing = props.reviewsShowing;
+  var setReviewsShowing = props.setReviewsShowing;
+  var reviewsSortBy = props.reviewsSortBy;
+  var setSort = props.setSort;
 
   return (
     <div>
+      <p>
       {reviews.length} reviews, sorted by&nbsp;
       <select onChange={e => {setSort(e.target.value)}}>
         <option value="relevant">relevance</option>
         <option value="newest">newest</option>
         <option value="helpful">most helpful</option>
       </select>
+      </p>
       <br />
       <br />
       { reviews.slice(0,reviewsShowing).map((review, index)=> {
