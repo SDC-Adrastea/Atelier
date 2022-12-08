@@ -18,7 +18,7 @@ export const AnswerList = (props) => {
 
   const handleMoreAsClick = () => {
   var currentANum = moreAs;
-  currentANum = currentANum + 2;
+  currentANum = returnedAs.length;
   addAs(currentANum);
 }
 
