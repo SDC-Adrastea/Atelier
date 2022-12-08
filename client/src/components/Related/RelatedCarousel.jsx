@@ -18,7 +18,7 @@ const RelatedCarousel = (props) => {
         <div className="related-carousel-container" style={{marginLeft: `${leftOffset}px`}}>
           {relatedProducts.map((item, index) => {
             return (
-              <RelatedProductCard cardInfo={item} key={index} />
+              <RelatedProductCard cardInfo={item} key={index} productNum={props.productNum} setProductNum={() => {props.setProductNum}}/>
             )
           })}
         </div>

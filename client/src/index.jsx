@@ -41,7 +41,7 @@ const App = (props) => {
       <h1>Atelier</h1>
 
       <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} />
-      <Related productNum={productNum} setProduct={setProduct} product={product} styles={styles} related={related}/>
+      <Related productNum={productNum} setProductNum={setProductNum} product={product} styles={styles} related={related}/>
       <Questions productNum={productNum} product={product}/>
       <Reviews productNum={productNum}/>
 

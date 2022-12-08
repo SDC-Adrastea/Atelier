@@ -20,7 +20,7 @@ const { AnswerPost } = require("./api-helpers/QuestionsAPI.js");
 const { helpfulQuestion } = require("./api-helpers/QuestionsAPI.js");
 
 // Products Funcs
-const { currentProduct } = require('./api-helpers/ProductsAPI.js');
+const { currentProduct, SingleProductGet } = require('./api-helpers/ProductsAPI.js');
 const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
 
 // Products Funcs
@@ -64,7 +64,7 @@ app.get('/answers', function (req, res) {
 
 app.post('/answers', function (req, res) {
   AnswerPost(req.body.formInfo, TOKEN)
-    .then((data) => { res.send(data)})
+    .then((data) => { res.send(data) })
     .catch(function (error) {
       res.send(error);
       console.error('here is answer post', error);
@@ -143,6 +143,7 @@ app.get('/relatedProductCardInformation', (req, res) => {
   let formattedResponseData = {}
   currentProduct(req.query.productNum, TOKEN)
     .then((data) => {
+      formattedResponseData.product_id = data.product.id
       formattedResponseData.category = data.product.category;
       formattedResponseData.productName = data.product.name
       formattedResponseData.originalPrice = data.styles.results[0].original_price
@@ -172,8 +173,27 @@ app.get('/relatedProductCardInformation', (req, res) => {
     .then(() => {
       res.send(formattedResponseData)
     })
-  }
+}
 )
+
+app.get('/comparisonModal', (req, res) => {
+  formattedResponseData = {}
+  currentProduct(req.query.primaryProduct, TOKEN)
+    .then((data) => {
+      formattedResponseData[data.product.name] = data.product.features
+      currentProduct(req.query.relatedProductCurrent, TOKEN)
+      .then((data) => {
+        formattedResponseData[data.product.name] = data.product.features
+      })
+      .catch((err) => {
+        console.log('err in comparison modal get')
+      })
+      .then(() => {
+        res.send(formattedResponseData)
+      })
+    })
+
+})
 
 app.get('/getMetadata', (req, res) => {
   getMetadata(req.query.productNum)

@@ -4,6 +4,7 @@ import ComparisonModal from './ComparisonModal.jsx'
 import { StarRating } from '../shared/StarRating/StarRating.jsx';
 
 const RelatedProductCard = (props) => {
+  const id = props.cardInfo
 
   const [cardData , setCardData] = useState({})
   const [showModal, setModal] = useState(false)
@@ -19,17 +20,19 @@ const RelatedProductCard = (props) => {
     setModal(true)
   }
 
-
   return (
-    <div onClick ={setModal} className="related-product-card">
+    <div onClick={() => {console.log('ive been clicked')
+    props.setProductNum(id)}} className="related-product-card">
+      <button onClick ={setModal}>COMPARE</button>
       <img className="related-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>
       <div>${cardData.originalPrice}</div>
       <StarRating rating={cardData.averageReview}/>
-      {showModal && <ComparisonModal />}
+      {showModal && <ComparisonModal primaryProduct={props.productNum} relatedProductCurrent={id}/>}
     </div>
   )
 }
 
 export default RelatedProductCard;
+//
