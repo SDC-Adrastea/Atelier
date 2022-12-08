@@ -16,7 +16,7 @@ export const RatingsColumn = (props) => {
       <br />
       <br />
       <br />
-      <RatingsBreakdown />
+      <RatingsBreakdown reviews={props.reviews}/>
       <br />
       <br />
       <ProductBreakdown />

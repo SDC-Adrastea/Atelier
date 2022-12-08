@@ -36,7 +36,7 @@ export const Reviews = (props) => {
     <h1>Ratings & Reviews</h1>
     <div style={{ display: "grid", gridTemplateColumns: "300px 85%", gridGap: 20 }}>
       <div>
-        <RatingsColumn productNum={props.productNum} averageRating={averageRating} />
+        <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} />
       </div>
       <div>
         <ReviewsList productNum={props.productNum} reviews={reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} />
