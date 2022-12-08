@@ -8,7 +8,7 @@ const SizeQuantity = (props) => {
   const [options, setOptions] = useState({})
   const [sku, setSku] = useState('')
   const [sizes, setSizes] = useState([])
-  const [quantity, setQuantity] = useState('-')
+  const [quantity, setQuantity] = useState([])
 
   useEffect(() => {
     setOptions(styleOptions)
@@ -26,6 +26,10 @@ const SizeQuantity = (props) => {
   let mapped = sizes.map(size => {
     return <option key={size} value={size}>{size}</option>
   })
+
+  const amount = (quantity) => {
+
+  }
 
   return (
     <div>
