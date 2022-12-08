@@ -30,3 +30,17 @@
   height: 80%;
   width: 100%;
 }
+
+
+/* *****************Questions*********************** */
+.answersList {
+  color: green;
+  height: 50vh;
+  overflow-y: scroll;
+
+}
+
+.Question {
+  color: blue;
+  overflow: hidden;
+}
