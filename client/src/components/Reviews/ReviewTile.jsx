@@ -5,7 +5,6 @@ import { StarRating } from '../shared/StarRating/StarRating.jsx';
 
 export const ReviewTile = (props) => {
   const { review } = props;
-  console.log('props in Review Tile', props)
 
   return (
     <div>

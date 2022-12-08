@@ -4,13 +4,11 @@ import { ReviewTile } from "./ReviewTile.jsx";
 
 
 export const ReviewsList = (props) => {
-  // console.log('props in ReviewsList', props)
   const [reviews, setReviews] = useState([]);
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [reviewsSortBy, setSort] = useState('relevant');
 
   useEffect(() => {
-    console.log('sorting by:', reviewsSortBy);
     axios.get('/reviews',{
       params:{
         product_id: props.productNum,
@@ -19,7 +17,6 @@ export const ReviewsList = (props) => {
       }
     })
       .then((results) => {
-        // console.log('reviews:', results.data.results);
         setReviews(results.data.results);
       });
   },[reviewsSortBy]);
