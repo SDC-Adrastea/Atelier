@@ -1,25 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { ReviewTile } from "./ReviewTile.jsx";
+import { ReviewTile } from './ReviewTile.jsx';
 
 
 export const ReviewsList = (props) => {
-  // const [reviews, setReviews] = useState([]);
-  // const [reviewsShowing, setReviewsShowing] = useState(2);
-  // const [reviewsSortBy, setSort] = useState('relevant');
-
-  // useEffect(() => {
-  //   axios.get('/reviews',{
-  //     params:{
-  //       product_id: props.productNum,
-  //       count: 999999999,
-  //       sort: reviewsSortBy
-  //     }
-  //   })
-  //     .then((results) => {
-  //       setReviews(results.data.results);
-  //     });
-  // },[reviewsSortBy]);
   var reviews = props.reviews;
   var setReviews = props.setReviews;
   var reviewsShowing = props.reviewsShowing;

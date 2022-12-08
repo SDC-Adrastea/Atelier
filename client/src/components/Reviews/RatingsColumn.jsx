@@ -1,4 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect} from 'react';
+import { StarRating } from '../shared/StarRating/StarRating.jsx';
+
 
 export const RatingsColumn = (props) => {
 
