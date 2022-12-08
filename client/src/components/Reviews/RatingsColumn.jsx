@@ -9,7 +9,7 @@ export const RatingsColumn = (props) => {
 
   return (
     <div>
-      <h1 style={{float:'left'}}>{averageRatingRounded}</h1><StarRating rating={averageRating} width={20} />
+      <h1 style={{float:'left'}}>{averageRatingRounded}</h1><br/><StarRating rating={averageRating} width={20} />
     </div>
   )
 };
