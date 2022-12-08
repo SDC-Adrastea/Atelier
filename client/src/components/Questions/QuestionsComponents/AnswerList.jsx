@@ -32,7 +32,8 @@ const resetAlist = () => {
       {/* <h3>Answers</h3> */}
       {returnedAs.slice(0, moreAs)?.map((answerData, idx)=> <Answer answerData={answerData} key={idx} setAs={setAs} questionId={props.questionId}/>)}
 
-      {moreAs <= returnedAs.length-1 && <button onClick={handleMoreAsClick}>Load More Answers</button> || <button onClick={resetAlist}>collapse Answers</button>}
+      {moreAs <= returnedAs.length-1 && <button onClick={handleMoreAsClick}>Load More Answers</button> || returnedAs.length > 2 &&  <button onClick={resetAlist}>Collapse Answers</button>}
+
 
     </div>
   );
