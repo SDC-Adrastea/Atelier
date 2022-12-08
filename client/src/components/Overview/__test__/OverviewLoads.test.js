@@ -10,16 +10,16 @@ import React, { useEffect, useState } from "react"
 
 // subcomponents
 import { Overview } from '../../Overview.jsx'
-import StarsReviews from '../Product Information/StarsReviews.jsx'
-import ProductCategoryTitle from '../Product Information/ProductCategoryTitle.jsx'
-import Price from '../Product Information/Price.jsx'
-import ProductOverview from '../Product Information/ProductOverview.jsx'
-import ToggleOutfitStar from '../Product Information/ToggleOutfitStar.jsx'
-import StyleSelector from '../Style Selector/StyleSelector.jsx'
-import SizeQuantity from '../Add To Cart/SizeQuantity'
-import AddToCart from '../Add to Cart/AddToCart.jsx'
-import DefaultGallery from '../Image Gallery/DefaultGallery.jsx'
-import ExpandedGallery from '../Image Gallery/ExpandedGallery.jsx'
+import StarsReviews from '../ProductInformation/StarsReviews.jsx'
+import ProductCategoryTitle from '../ProductInformation/ProductCategoryTitle.jsx'
+import Price from '../ProductInformation/Price.jsx'
+import ProductOverview from '../ProductInformation/ProductOverview.jsx'
+import ToggleOutfitStar from '../ProductInformation/ToggleOutfitStar.jsx'
+import StyleSelector from '../StyleSelector/StyleSelector.jsx'
+import SizeQuantity from '../AddToCart/SizeQuantity'
+import AddToCart from '../AddToCart/Cart.jsx'
+import DefaultGallery from '../ImageGallery/DefaultGallery.jsx'
+import ExpandedGallery from '../ImageGallery/ExpandedGallery.jsx'
 
 describe('Unit: Initial rendering of all Overview components', () => {
   // Parent component --> need to consider a new test option for the parent after removing the heading

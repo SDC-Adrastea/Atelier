@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import StarsReviews from './Overview/Product Information/StarsReviews.jsx'
-import ProductCategoryTitle from './Overview/Product Information/ProductCategoryTitle.jsx'
-import Price from './Overview/Product Information/Price.jsx'
-import ProductOverview from './Overview/Product Information/ProductOverview.jsx'
-import ToggleOutfitStar from './Overview/Product Information/ToggleOutfitStar.jsx'
-import StyleSelector from './Overview/Style Selector/StyleSelector.jsx'
-import SizeQuantity from './Overview/Add To Cart/SizeQuantity.jsx'
-import AddToCart from './Overview/Add To Cart/AddToCart.jsx'
-import DefaultGallery from './Overview/Image Gallery/DefaultGallery.jsx'
-import ExpandedGallery from './Overview/Image Gallery/ExpandedGallery.jsx'
+import StarsReviews from './Overview/ProductInformation/StarsReviews.jsx'
+import ProductCategoryTitle from './Overview/ProductInformation/ProductCategoryTitle.jsx'
+import Price from './Overview/ProductInformation/Price.jsx'
+import ProductOverview from './Overview/ProductInformation/ProductOverview.jsx'
+import ToggleOutfitStar from './Overview/ProductInformation/ToggleOutfitStar.jsx'
+import StyleSelector from './Overview/StyleSelector/StyleSelector.jsx'
+import SizeQuantity from './Overview/AddToCart/SizeQuantity.jsx'
+import AddToCart from './Overview/AddToCart/Cart.jsx'
+import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
+import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 
 // API functions
 
