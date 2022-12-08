@@ -27,12 +27,9 @@ export const AddQuestion = (props) => {
       })
       .then((data)=>{console.log(data.data)
         alert('Question posted!')
-        setQuestion('')
-        setNickName('')
-        setEmail('')
         handleCloseClick()
       })
-      // need to refactor alert message to be conditional to response status
+
     }
   };
 

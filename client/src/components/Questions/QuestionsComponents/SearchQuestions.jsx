@@ -8,9 +8,12 @@ export const SearchQuestions = (props) => {
       type="text"
       placeholder="Have a question? Search for answers…"
       name="searchQuestions"
-      onChange={(event) => {props.setSearch(event.target.value)}}
-      minLength={3}
-
+      onChange={(event) => {
+        if (event.target.value.length > 2){
+          props.setSearch(event.target.value)} else {
+            props.setSearch('');
+          }
+        }}
       />
     </div>
   );
