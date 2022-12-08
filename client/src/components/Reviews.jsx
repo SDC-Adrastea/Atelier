@@ -10,6 +10,7 @@ export const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [reviewsSortBy, setSort] = useState('relevant');
+  const [averageRating, setAverageRating] = useState(0);
 
   useEffect(() => {
     axios.get('/reviews',{
@@ -24,13 +25,18 @@ export const Reviews = (props) => {
       });
   },[reviewsSortBy]);
 
+  useEffect(() => {
+    console.log(reviews);
+    var average = (reviews.reduce((accumulator, currentReview) => accumulator + currentReview.rating, 0) / reviews.length).toFixed(2);
+    setAverageRating(average);
+  });
 
   return (
     <div>
     <h1>Ratings & Reviews</h1>
     <div style={{ display: "grid", gridTemplateColumns: "20% 66%", gridGap: 20 }}>
       <div>
-        <RatingsColumn productNum={props.productNum} />
+        <RatingsColumn productNum={props.productNum} averageRating={averageRating} />
       </div>
       <div>
         <ReviewsList productNum={props.productNum} reviews={reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} />
