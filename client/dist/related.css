@@ -33,9 +33,16 @@
 
 
 /* *****************Questions*********************** */
+.Questions {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 .answersList {
   color: green;
   height: 50vh;
+  width: 80vw;
+
   overflow-y: scroll;
 
 }

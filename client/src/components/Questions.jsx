@@ -25,7 +25,7 @@ export const Questions = (props) => {
   },[]);
 
   return (
-    <div data-testid="Questions Component">
+    <div data-testid="Questions Component" className="Questions">
       <h1>Questions & Answers</h1>
       <SearchQuestions setSearch={setSearch} />
 
