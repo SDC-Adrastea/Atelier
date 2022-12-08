@@ -4,8 +4,10 @@ const ComparisonModal = (props) => {
 
 
   return (
-    <div className="comparison Modal">
-      {console.log('comparrison modal clicked')}
+    <div className="overlay">
+      <div className="modalContainer">
+       <h2>test </h2>
+      </div>
     </div>
   )
 }

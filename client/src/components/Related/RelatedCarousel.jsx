@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import RelatedProductCard from './RelatedProductCard.jsx'
 import ComparisonModal from './ComparisonModal.jsx'
 
+
 const RelatedCarousel = (props) => {
   var relatedProducts = props.related
 
@@ -11,7 +12,7 @@ const RelatedCarousel = (props) => {
   return (
     <>
       <div>
-        <button onClick={() => {setLeftOffset(leftOffset - 280)}}>Next</button>
+        <button onClick={() => {setLeftOffset(leftOffset - 265)}}>Next</button>
       </div>
       <div className="overflow-window">
         <div className="related-carousel-container" style={{marginLeft: `${leftOffset}px`}}>
@@ -23,7 +24,7 @@ const RelatedCarousel = (props) => {
         </div>
       </div>
       <div>
-        <button onClick={() => {setLeftOffset(leftOffset + 280)}}>Back</button>
+        <button onClick={() => {setLeftOffset(leftOffset + 265)}}>Back</button>
       </div>
     </>
   )

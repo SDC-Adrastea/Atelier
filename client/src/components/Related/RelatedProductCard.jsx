@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import StarRating from "./StarRating.jsx"
 import ComparisonModal from './ComparisonModal.jsx'
+import { StarRating } from '../shared/StarRating/StarRating.jsx';
 
 const RelatedProductCard = (props) => {
 
