@@ -41,23 +41,23 @@ export const RatingsBreakdown = (props) => {
     <div>
       <h4>{parseInt(Math.round((recommendCount/props.reviews.length)*100))}% of reviews recommend this product</h4>
       <div id="parent">
-        <p class="child">5 stars</p>
+        <p class="child">5 Stars</p>
         <progress class="child" id="file" value={ratingsObject[5]/maxRatingCount*100} max="100"> </progress>
       </div>
       <div id="parent">
-        <p class="child">4 stars</p>
+        <p class="child">4 Stars</p>
         <progress class="child" id="file" value={ratingsObject[4]/maxRatingCount*100} max="100"> </progress>
       </div>
       <div id="parent">
-        <p class="child">3 stars</p>
+        <p class="child">3 Stars</p>
         <progress class="child" id="file" value={ratingsObject[3]/maxRatingCount*100} max="100"> </progress>
       </div>
       <div id="parent">
-        <p class="child">2 stars</p>
+        <p class="child">2 Stars</p>
         <progress class="child" id="file" value={ratingsObject[2]/maxRatingCount*100} max="100"> </progress>
       </div>
       <div id="parent">
-        <p class="child">1 stars</p>
+        <p class="child">1 Stars</p>
         <progress class="child" id="file" value={ratingsObject[1]/maxRatingCount*100} max="100"> </progress>
       </div>
     </div>
