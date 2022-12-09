@@ -50,6 +50,7 @@ const SizeQuantity = (props) => {
           count++
         }
         setQuantity(array)
+        setChosenQuantity(1)
       }
     }
   }

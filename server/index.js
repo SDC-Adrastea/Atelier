@@ -25,6 +25,9 @@ const { reportAnswer } = require("./api-helpers/QuestionsAPI.js");
 // Products Controllers
 const { currentProduct, SingleProductGet } = require('./api-helpers/ProductsAPI.js');
 
+// Cart Controllers
+const { CartGet, CartPost } = require('./api-helpers/CartAPI.js');
+
 // Ratings and Reviews Controllers
 const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
 
@@ -106,11 +109,35 @@ app.put('/answers/report', function (req, res) {
 // ==============================================
 
 app.get('/currentProduct', (req, res) => {
-  currentProduct(req.query.productNum, TOKEN)
+  currentProduct(req.query.productNum)
     .then(data => res.send(data))
     .catch(err => {
       res.send(err)
       console.log('err in currentProduct get server-side', err)
+    })
+})
+
+
+// ==============================================
+//       Cart Routes
+// ==============================================
+
+app.get('/cart', (req, res) => {
+  CartGet()
+    .then(data => res.send(data))
+    .catch(err => {
+      res.send(err)
+      console.log('err in cart get server-side', err)
+    })
+})
+
+app.post('/cart', (req, res) => {
+  console.log('sku', req.body.sku)
+  CartPost(req.body.sku)
+    .then(data => res.send(data))
+    .catch(err => {
+      res.send(err)
+      console.log('err in cart post server-side', err)
     })
 })
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const AddToCart = (props) => {
   let sku = props.sku
@@ -14,7 +15,18 @@ const AddToCart = (props) => {
     } else if (sku === '') {
       alert('Unknown issue, please try again')
     } else {
-      console.log('success, we\'ll call the api')
+      let total = 0
+      while (total < quantity) {
+        axios.post('/cart', { sku })
+          .then(data => console.log('post response', data.statusText))
+          .catch(err => console.log('err in Cart.jsx post', err))
+        total++
+      }
+      axios.get('/cart')
+      .then(data => {
+        console.log('get after post', data.data)
+      })
+      .catch(err => console.log('err in Cart.jsx get', err))
     }
   }
 
