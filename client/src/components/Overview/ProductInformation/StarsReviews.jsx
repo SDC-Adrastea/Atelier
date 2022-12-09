@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { StarRating } from '../../shared/StarRating/StarRating.jsx'
 
 const StarsReviews = (props) => {
   let ratings = props.ratings
@@ -24,7 +25,7 @@ const StarsReviews = (props) => {
     }
 
     let average = parseFloat(avgStars(ratings) * 100).toFixed(2)
-    thisRating = average + '% | Read all ' + allRatings + '  reviews'
+    thisRating = <div><StarRating rating={ratings} /> | Read all {allRatings} reviews</div>
   }
 
   return (
