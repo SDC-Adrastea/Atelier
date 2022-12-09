@@ -3,6 +3,13 @@ import axios from "axios"
 
 const ComparisonModal = (props) => {
 
+  const [productFeatures , setProductFeatures] = useState([])
+  const [primaryProductName , setPrimaryProductName] = useState('')
+  const [relatedProductName , setRelatedProductName] = useState('')
+  const [primaryProductFeatures , setPrimaryProductFeatures] = useState('')
+  const [relatedProductFeatures , setRelatedProductFeatures] = useState('')
+
+
   useEffect(() => {
     axios.get('/comparisonModal' , {
       params: {
@@ -11,16 +18,28 @@ const ComparisonModal = (props) => {
       }
     })
     .then((data) => {
-      console.log('response data from server', data.data)
+      const unformattedData = data.data
+      const formattedData = Object.entries(unformattedData)
+      setPrimaryProductName(formattedData[0][0])
+      setRelatedProductName(formattedData[1][0])
+      setPrimaryProductFeatures(formattedData[0][1])
+      setRelatedProductFeatures(formattedData[1][1])
     })
-  })
+  }, [])
 
 
   return (
     <div className="overlay">
+
       <div className="modalContainer">
-       <h2>test </h2>
-      {console.log('props in comparison modal', props)}
+       <div className="primary-product-features">
+       {console.log(primaryProductFeatures)}
+        <h2>{primaryProductName}</h2>
+       </div>
+       <div className="related-product-features">
+        <h2>{relatedProductName}</h2>
+       </div>
+
       </div>
     </div>
   )
