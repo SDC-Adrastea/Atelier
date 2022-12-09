@@ -6,7 +6,7 @@ const AddToCart = (props) => {
   let size = props.size
   let quantity = props.quantity
 
-  let handleClick = (e) => {
+  let handleClick = async (e) => {
     console.log('clicked cart button')
     if (size === '') {
       alert('Please select a size')
@@ -17,12 +17,12 @@ const AddToCart = (props) => {
     } else {
       let total = 0
       while (total < quantity) {
-        axios.post('/cart', { sku })
+        await axios.post('/cart', { sku })
           .then(data => console.log('post response', data.statusText))
           .catch(err => console.log('err in Cart.jsx post', err))
         total++
       }
-      axios.get('/cart')
+      await axios.get('/cart')
       .then(data => {
         console.log('get after post', data.data)
       })

@@ -15,7 +15,7 @@ let postOptions = {
 module.exports.CartGet = async () => {
   try {
     let cart = await axios(getOptions);
-    return cart;
+    return cart.data;
   }
   catch (err) {
     console.log('err in cart get', err);
