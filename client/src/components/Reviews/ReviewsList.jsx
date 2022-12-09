@@ -10,7 +10,7 @@ export const ReviewsList = (props) => {
   var setReviewsShowing = props.setReviewsShowing;
   var reviewsSortBy = props.reviewsSortBy;
   var setSort = props.setSort;
-
+  console.log(reviews[0]);
   return (
     <div>
       <p>

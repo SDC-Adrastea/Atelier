@@ -6,9 +6,17 @@ import { StarRating } from '../shared/StarRating/StarRating.jsx';
 export const ReviewTile = (props) => {
   const { review } = props;
 
+  const [responseExists, setResponse] = useState(false);
+
+  // useEffect(() => {
+  //   console.log(review.response);
+  // });
+
+
   return (
     <div>
       <StarRating rating={review.rating} />
+      {review.reviewer_name}
       <br/>
       {format(parseISO(review.date), 'MMMM dd, yyyy')}
       <br/>
@@ -20,6 +28,7 @@ export const ReviewTile = (props) => {
       <br/>
       {review.body}
       {review.recommend ? <p>&#10003; I recommend this product</p> : null}
+      {review.response ? (<p> {review.response} </p>) : null}
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? review.photos.map((photo, index)=> {
