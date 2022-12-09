@@ -41,8 +41,6 @@ export const StarRating = ({rating = 0, width = 20}) => {
             backgroundColor: 'black',
             position: 'relative',
             display: 'inline-block',
-            top: "50%",
-            transform: "translateY(-50%)",
           }}>
                 <img src="star.png" style={{
                   height: `${width}px`,
