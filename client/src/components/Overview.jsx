@@ -65,14 +65,14 @@ export const Overview = (props) => {
   return (
     <div>
       <div className="subcomponents">
+        {currentView}
         {reviewSection}
         {titleSection}
         {priceSection}
-        {productOverview}
         {toggleSection}
         {styleSection}
         {sizeQuantitySection}
-        {currentView}
+        {productOverview}
       </div>
     </div>
   )
