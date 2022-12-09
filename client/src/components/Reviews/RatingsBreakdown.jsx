@@ -10,7 +10,8 @@ export const RatingsBreakdown = (props) => {
     4: 0,
     3: 0,
     2: 0,
-    1: 0
+    1: 0,
+    recommend: 0
   });
 
   useEffect(() => {
@@ -19,17 +20,21 @@ export const RatingsBreakdown = (props) => {
       4: 0,
       3: 0,
       2: 0,
-      1: 0
+      1: 0,
+      recommend: 0
     };
     props.reviews.forEach(review => {
       tempObj[review.rating]++;
+      if (review.recommend) {
+        tempObj.recommend++
+      }
     })
     setRatings(tempObj);
   },[props.reviews])
 
   return (
     <div>
-      <h3>Ratings Breakdown</h3>
+      <h4>{parseInt((ratingsObject.recommend/props.reviews.length)*100)}% of reviews recommend this product</h4>
       <h4>
       5 Stars: {ratingsObject[5]}
       </h4>
