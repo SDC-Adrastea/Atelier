@@ -13,14 +13,20 @@ export const Question = (props) => {
     if (sentHelpful === false) {
       axios.put('/questions/helpful', {
         question_id
-      }).then((data)=> {console.log(data.data)
-      setHelpful(true)}
+      }).then(()=> {
+        axios.get('/qa/questions',{
+          params:{productNum: props.productNum}
+        })
+        .then((data)=>{props.setQs(data.data.results)
+          setHelpful(true)
+        })
+        }
       );
     }
   }
 
   return (
-    <div>
+    <div className={Question}>
       <h4>Q: {props.data.question_body}</h4>
       <p>Helpful? <button onClick={handleQHelpfulness}>Yes</button>{props.data.question_helpfulness}</p>
       <AnswerList questionId={props.data.question_id} />

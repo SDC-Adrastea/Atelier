@@ -25,11 +25,11 @@ export const Questions = (props) => {
   },[]);
 
   return (
-    <div data-testid="Questions Component">
+    <div data-testid="Questions Component" className="Questions">
       <h1>Questions & Answers</h1>
       <SearchQuestions setSearch={setSearch} />
 
-      {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} product={props.product} returnedQs={returnedQs} searchQ={searchQ}/>}
+      {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} product={props.product} returnedQs={returnedQs} searchQ={searchQ} setQs={setQs}/>}
       <AddQuestion product={props.product} productNum={props.productNum}/>
     </div>
   )
