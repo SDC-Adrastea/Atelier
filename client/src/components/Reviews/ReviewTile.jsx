@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { format, parseISO } from 'date-fns';
 import { StarRating } from '../shared/StarRating/StarRating.jsx';
 
 export const ReviewTile = (props) => {
   const { review } = props;
-  console.log('props in Review Tile', props)
 
   return (
     <div>

@@ -1,0 +1,32 @@
+.youroutfit-carousel-container {
+  height: 320px;
+  flex-wrap: nowrap;
+  border: 1px solid red;
+  padding: 10px;
+  transition: margin-left 1s;
+}
+
+.overflow-window {
+  overflow: hidden;
+  height:332px;
+  width:1210px;
+  border: 1px solid green;
+}
+
+.related-product-card:first-child {
+  margin-left: 0px;
+}
+
+
+.related-product-card {
+  width: 250px;
+  height: 300px;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.related-product-image {
+  object-fit: cover;
+  height: 80%;
+  width: 100%;
+}

@@ -1,10 +1,14 @@
-import React, {useState , useEffect} from "react"
+import React, { useState, useEffect } from "react"
+import OutfitCarousel from "./OutfitCarousel.jsx"
 
 const YourOutfit = (props) => {
   return (
-    <div>
+    <>
       <h4>Your Outfit</h4>
-    </div>
+      <div>
+        <OutfitCarousel />
+      </div>
+    </>
   )
 }
 
