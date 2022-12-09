@@ -13,8 +13,8 @@ export const AddQuestion = (props) => {
 
   const handleQuestionSubmit = (event) => {
     event.preventDefault();
-    if(question.length === 0 || nickname.length === 0 || email.length === 0) {
-      setQuestionError(true);
+    if(question.length == 0 || nickname.length == 0 || email.length == 0) {
+      setQuestionError(true)
     } else {
       const formInfo= {
         question: question,
@@ -27,12 +27,8 @@ export const AddQuestion = (props) => {
       })
       .then((data)=>{console.log(data.data)
         alert('Question posted!')
-        setQuestion('')
-        setNickName('')
-        setEmail('')
         handleCloseClick()
       })
-      // need to refactor alert message to be conditional to response status
     }
   };
 
@@ -60,22 +56,19 @@ export const AddQuestion = (props) => {
         <form onSubmit={handleQuestionSubmit}>
           Your Question * <input size={1000} name="question" type="text" onChange={event=>setQuestion(event.target.value)} placeholder={"Why did you like the product or not?"}/>
           <div>
-          {error && question.length<0?
-          <p>Question must be entered</p>:""}
+          {error && question.length=== 0 && <p style={{ color: 'red' }}>Question must be entered</p>}
           </div>
 
           What is your nickname * <input size={60} name="nickname" type="text" onChange={event=>setNickName(event.target.value)} placeholder={"Example: jackson11!"}/>
           <p>“For privacy reasons, do not use your full name or email address”</p>
           <div>
-          {error && nickname.length<0?
-          <p>Nickname must be entered</p>:""}
+          {error && nickname.length === 0 && <p style={{ color: 'red' }}>Nickname must be entered</p>}
           </div>
 
           Your Email * <input size={60} name="email" type="email" onChange={event=>setEmail(event.target.value)} placeholder={"Example: TSwiftyFan32@hotmail.com"}/>
           <p>“For authentication reasons, you will not be emailed”</p>
           <div>
-          {error && email.length<0?
-          <p>email must be entered</p>:""}
+          {error && email.length === 0 && <p style={{ color:'red'}}>email must be entered</p>}
           </div>
 
           <button>Submit Question</button>

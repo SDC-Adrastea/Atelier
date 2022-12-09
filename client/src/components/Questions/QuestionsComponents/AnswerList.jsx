@@ -18,15 +18,23 @@ export const AnswerList = (props) => {
 
   const handleMoreAsClick = () => {
   var currentANum = moreAs;
-  currentANum = currentANum + 2;
+  currentANum = returnedAs.length;
+  addAs(currentANum);
+}
+
+const resetAlist = () => {
+  var currentANum = 2;
   addAs(currentANum);
 }
 
   return (
-    <div style={{color: 'green'}}>
+    <div className="answersList">
       {/* <h3>Answers</h3> */}
-      {returnedAs.slice(0, moreAs)?.map((answerData, idx)=> <Answer answerData={answerData} key={idx}/>)}
-      {moreAs <= returnedAs.length && <button onClick={handleMoreAsClick}>Load More Answers</button>}
+      {returnedAs.slice(0, moreAs)?.map((answerData, idx)=> <Answer answerData={answerData} key={idx} setAs={setAs} questionId={props.questionId}/>)}
+
+      {moreAs <= returnedAs.length-1 && <button onClick={handleMoreAsClick}>Load More Answers</button> || returnedAs.length > 2 &&  <button onClick={resetAlist}>Collapse Answers</button>}
+
+
     </div>
   );
 };

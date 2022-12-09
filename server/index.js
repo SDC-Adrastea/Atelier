@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const port = 3000;
 app.use(express.json());
-const axios = require("axios");
+const axios = require('axios');
 require('dotenv').config();
 const TOKEN = process.env.API_TOKEN;
 
@@ -12,18 +12,25 @@ const TOKEN = process.env.API_TOKEN;
 const DIST_DIR = path.join(__dirname, '../client/dist');
 app.use(express.static(DIST_DIR));
 
-// Questions Controllers
-const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
-const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
-const { QuestionPost } = require("./api-helpers/QuestionsAPI.js");
-const { AnswerPost } = require("./api-helpers/QuestionsAPI.js");
-const { helpfulQuestion } = require("./api-helpers/QuestionsAPI.js");
 
-// Products Funcs
-const { currentProduct } = require('./api-helpers/ProductsAPI.js');
+// Questions Controllers
+const { QuestionsGet } = require('./api-helpers/QuestionsAPI.js');
+const { AnswersGet } = require('./api-helpers/QuestionsAPI.js');
+const { QuestionPost } = require('./api-helpers/QuestionsAPI.js');
+const { AnswerPost } = require('./api-helpers/QuestionsAPI.js');
+const { helpfulQuestion } = require('./api-helpers/QuestionsAPI.js');
+const { helpfulAnswer } = require("./api-helpers/QuestionsAPI.js");
+const { reportAnswer } = require("./api-helpers/QuestionsAPI.js");
+
+// Products Controllers
+const { currentProduct, SingleProductGet } = require('./api-helpers/ProductsAPI.js');
+
+// Ratings and Reviews Controllers
 const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
 
-// Products Funcs
+// ==============================================
+//       Questions Routes
+// ==============================================
 
 app.get('/qa/questions', function (req, res) {
   QuestionsGet(req.query.productNum, TOKEN)
@@ -53,6 +60,18 @@ app.put('/questions/helpful', function (req, res) {
       console.error(error);
     })
 });
+
+app.put('/answers/helpful', function (req, res) {
+  console.log('here is query', req.body.answer_id)
+  helpfulAnswer(req.body.answer_id, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+});
+
+
 app.get('/answers', function (req, res) {
   AnswersGet(req.query.questionId, TOKEN)
     .then((data) => { res.send(data) })
@@ -64,12 +83,27 @@ app.get('/answers', function (req, res) {
 
 app.post('/answers', function (req, res) {
   AnswerPost(req.body.formInfo, TOKEN)
-    .then((data) => { res.send(data)})
+    .then((data) => { res.send(data) })
     .catch(function (error) {
       res.send(error);
       console.error('here is answer post', error);
     })
 });
+
+app.put('/answers/report', function (req, res) {
+  console.log('here is query', req.body.answer_id, TOKEN)
+  reportAnswer(req.body.answer_id, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+});
+
+
+// ==============================================
+//       Products Routes
+// ==============================================
 
 app.get('/currentProduct', (req, res) => {
   currentProduct(req.query.productNum, TOKEN)
@@ -80,14 +114,9 @@ app.get('/currentProduct', (req, res) => {
     })
 })
 
-app.get('/getMetadata', (req, res) => {
-  getMetadata(req.query.productNum)
-    .then(data => res.send(data))
-    .catch(err => {
-      res.send(err)
-      console.log('err in getMetadata server-side', err)
-    })
-})
+// ==============================================
+//       Ratings and Reviews Routes
+// ==============================================
 
 app.get('/reviews', function (req, res) {
   // console.log('GET /reviews');
@@ -104,45 +133,24 @@ app.get('/reviews', function (req, res) {
     })
 });
 
-// app.post('/reviews', function (req, res) {
-//   console.log('POST /reviews');
-
-//   console.log(req.query)
-//   var product_id = req.query.product_id;
-//   var rating = req.query.rating;
-//   var summary = req.query.summary;
-//   var body = req.query.body;
-//   var recommend = req.query.recommend;
-//   var name = req.query.name;
-//   var email = req.query.email;
-//   var photos = req.query.photos;
-//   var characteristics = req.query.characteristics;
-
-//   addReview(product_id, rating, summary, body, recommend, name, email, photos, characteristics)
-//   addReview()
-//     .then(reviews => res.send(reviews))
-//     .catch(err => {
-//       res.send(err);
-//       console.log('err in addReview post server-side', err);
-//     })
-// });
-
-app.get('/reviews/meta', function (req, res) {
-  // console.log('GET /reviews/meta');
-  var product_id = req.query.product_id;
-
-  getMetadata(product_id)
-    .then(reviews => res.send(reviews))
+app.get('/getMetadata', (req, res) => {
+  getMetadata(req.query.productNum)
+    .then(data => res.send(data))
     .catch(err => {
-      res.send(err);
-      console.log('err in getReviews get server-side', err);
+      res.send(err)
+      console.lof('err in getMetadata server-side', err)
     })
-});
+})
+
+// ==============================================
+//       Related Routes
+// ==============================================
 
 app.get('/relatedProductCardInformation', (req, res) => {
   let formattedResponseData = {}
   currentProduct(req.query.productNum, TOKEN)
     .then((data) => {
+      formattedResponseData.product_id = data.product.id
       formattedResponseData.category = data.product.category;
       formattedResponseData.productName = data.product.name
       formattedResponseData.originalPrice = data.styles.results[0].original_price
@@ -172,8 +180,27 @@ app.get('/relatedProductCardInformation', (req, res) => {
     .then(() => {
       res.send(formattedResponseData)
     })
-  }
+}
 )
+
+app.get('/comparisonModal', (req, res) => {
+  formattedResponseData = {}
+  currentProduct(req.query.primaryProduct, TOKEN)
+    .then((data) => {
+      formattedResponseData[data.product.name] = data.product.features
+      currentProduct(req.query.relatedProductCurrent, TOKEN)
+      .then((data) => {
+        formattedResponseData[data.product.name] = data.product.features
+      })
+      .catch((err) => {
+        console.log('err in comparison modal get')
+      })
+      .then(() => {
+        res.send(formattedResponseData)
+      })
+    })
+
+})
 
 app.get('/getMetadata', (req, res) => {
   getMetadata(req.query.productNum)
