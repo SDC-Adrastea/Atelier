@@ -1,0 +1,12 @@
+.thumbnails-container {
+  height:100px;
+  flex-wrap: nowrap;
+  border: 1px solid red;
+  padding: 10px;
+  transition: margin-left 1s;
+}
+
+.thumbnail {
+  display: inline-block;
+  margin-left: 15px;
+}

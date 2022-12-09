@@ -10,10 +10,9 @@ const Style = (props) => {
   }
 
   return (
-    <div className="each-style">
+    <div className="thumbnail">
       {styleName}
       <img
-        className="style-thumbnail"
         src={style.photos[0].thumbnail_url}
         width="50"
         height="50"
