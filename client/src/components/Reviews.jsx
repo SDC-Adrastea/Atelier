@@ -34,7 +34,7 @@ export const Reviews = (props) => {
   return (
     <div>
     <h1>Ratings & Reviews</h1>
-    <div style={{ display: "grid", gridTemplateColumns: "300px 85%", gridGap: 20 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "300px 60%", gridGap: 20 }}>
       <div>
         <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} />
       </div>
