@@ -5,17 +5,27 @@ export const RatingsBreakdown = (props) => {
   // var reviews = props.reviews;
   // console.log(reviews);
 
-  // const [ratingsObject, setRatings] = useState({
-  //   5: 0,
-  //   4: 0,
-  //   3: 0,
-  //   2: 0,
-  //   1: 0
-  // });
+  const [ratingsObject, setRatings] = useState({
+    5: 0,
+    4: 0,
+    3: 0,
+    2: 0,
+    1: 0
+  });
 
-  // useEffect(() => {
-  //   setRatings({1:1})
-  // }[reviews])
+  useEffect(() => {
+    var tempObj = {
+      5: 0,
+      4: 0,
+      3: 0,
+      2: 0,
+      1: 0
+    };
+    props.reviews.forEach(review => {
+      tempObj[review.rating]++;
+    })
+    setRatings(tempObj);
+  },[props.reviews])
 
   return (
     <div>
