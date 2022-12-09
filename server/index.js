@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const port = 3000;
 app.use(express.json());
-const axios = require("axios");
+const axios = require('axios');
 require('dotenv').config();
 const TOKEN = process.env.API_TOKEN;
 
@@ -12,18 +12,23 @@ const TOKEN = process.env.API_TOKEN;
 const DIST_DIR = path.join(__dirname, '../client/dist');
 app.use(express.static(DIST_DIR));
 
-// Questions Controllers
-const { QuestionsGet } = require("./api-helpers/QuestionsAPI.js");
-const { AnswersGet } = require("./api-helpers/QuestionsAPI.js");
-const { QuestionPost } = require("./api-helpers/QuestionsAPI.js");
-const { AnswerPost } = require("./api-helpers/QuestionsAPI.js");
-const { helpfulQuestion } = require("./api-helpers/QuestionsAPI.js");
+// Questions API Functions
+const { QuestionsGet } = require('./api-helpers/QuestionsAPI.js');
+const { AnswersGet } = require('./api-helpers/QuestionsAPI.js');
+const { QuestionPost } = require('./api-helpers/QuestionsAPI.js');
+const { AnswerPost } = require('./api-helpers/QuestionsAPI.js');
+const { helpfulQuestion } = require('./api-helpers/QuestionsAPI.js');
 
-// Products Funcs
+
+// Products API Functions
 const { currentProduct, SingleProductGet } = require('./api-helpers/ProductsAPI.js');
+
+// Ratings and Reviews API Functions
 const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
 
-// Products Funcs
+// ==============================================
+//       Questions Routes
+// ==============================================
 
 app.get('/qa/questions', function (req, res) {
   QuestionsGet(req.query.productNum, TOKEN)
@@ -71,6 +76,11 @@ app.post('/answers', function (req, res) {
     })
 });
 
+
+// ==============================================
+//       Products Routes
+// ==============================================
+
 app.get('/currentProduct', (req, res) => {
   currentProduct(req.query.productNum, TOKEN)
     .then(data => res.send(data))
@@ -80,14 +90,9 @@ app.get('/currentProduct', (req, res) => {
     })
 })
 
-app.get('/getMetadata', (req, res) => {
-  getMetadata(req.query.productNum)
-    .then(data => res.send(data))
-    .catch(err => {
-      res.send(err)
-      console.lof('err in getMetadata server-side', err)
-    })
-})
+// ==============================================
+//       Ratings and Reviews Routes
+// ==============================================
 
 app.get('/reviews', function (req, res) {
   // console.log('GET /reviews');
@@ -104,40 +109,18 @@ app.get('/reviews', function (req, res) {
     })
 });
 
-// app.post('/reviews', function (req, res) {
-//   console.log('POST /reviews');
-
-//   console.log(req.query)
-//   var product_id = req.query.product_id;
-//   var rating = req.query.rating;
-//   var summary = req.query.summary;
-//   var body = req.query.body;
-//   var recommend = req.query.recommend;
-//   var name = req.query.name;
-//   var email = req.query.email;
-//   var photos = req.query.photos;
-//   var characteristics = req.query.characteristics;
-
-//   addReview(product_id, rating, summary, body, recommend, name, email, photos, characteristics)
-//   addReview()
-//     .then(reviews => res.send(reviews))
-//     .catch(err => {
-//       res.send(err);
-//       console.log('err in addReview post server-side', err);
-//     })
-// });
-
-app.get('/reviews/meta', function (req, res) {
-  // console.log('GET /reviews/meta');
-  var product_id = req.query.product_id;
-
-  getMetadata(product_id)
-    .then(reviews => res.send(reviews))
+app.get('/getMetadata', (req, res) => {
+  getMetadata(req.query.productNum)
+    .then(data => res.send(data))
     .catch(err => {
-      res.send(err);
-      console.log('err in getReviews get server-side', err);
+      res.send(err)
+      console.lof('err in getMetadata server-side', err)
     })
-});
+})
+
+// ==============================================
+//       Related Routes
+// ==============================================
 
 app.get('/relatedProductCardInformation', (req, res) => {
   let formattedResponseData = {}

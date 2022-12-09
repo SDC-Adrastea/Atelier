@@ -44,8 +44,6 @@ const App = (props) => {
       <Related productNum={productNum} setProductNum={setProductNum} product={product} styles={styles} related={related}/>
       <Questions productNum={productNum} product={product}/>
       <Reviews productNum={productNum}/>
-
-      <h2>Meow</h2>
     </div>
   )
 }
