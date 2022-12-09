@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react"
 import { Overview } from '../../../Overview.jsx'
 // subcomponents
 import SizeQuantity from '../SizeQuantity.jsx'
-import AddToCart from '../AddToCart.jsx'
+import AddToCart from '../Cart.jsx'
 
 describe('Size & Quantity Options', () => {
   test('sample', () => { })

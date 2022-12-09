@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import Style from './Style.jsx'
 
 const StyleSelector = (props) => {
@@ -22,8 +22,8 @@ const StyleSelector = (props) => {
   }
 
   return (
-    <div className="styles">
-      <h3>Styles:</h3>
+    <div className="thumbnails-container">
+      <h3>Styles: </h3>
       {mapStyles}
     </div>
   )
