@@ -20,6 +20,8 @@ export const ReviewTile = (props) => {
       <br/>
       {review.body}
       {review.recommend ? <p>&#10003; I recommend this product</p> : null}
+      { review.photos.length > 0 ? <br /> : null }
+      { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? review.photos.map((photo, index)=> {
         // need to resize photo and turn into modal when clicked
           return (<img key={index} width="100" hspace="5" src={`${photo.url}`} />);
