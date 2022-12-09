@@ -29,7 +29,22 @@ export const RatingsBreakdown = (props) => {
 
   return (
     <div>
-      Ratings Breakdown
+      <h3>Ratings Breakdown</h3>
+      <h4>
+      5 Stars: {ratingsObject[5]}
+      </h4>
+      <h4>
+      4 Stars: {ratingsObject[4]}
+      </h4>
+      <h4>
+      3 Stars: {ratingsObject[3]}
+      </h4>
+      <h4>
+      2 Stars: {ratingsObject[2]}
+      </h4>
+      <h4>
+      1 Star: {ratingsObject[1]}
+      </h4>
     </div>
   )
 };
