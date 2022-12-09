@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react'
+import AddToCart from './Cart.jsx'
+
 
 const SizeQuantity = (props) => {
   let styleOptions = props.style.skus
+  // let styleOptions = {} // testing for no data or no stock
   let skus = []
   let sizeOptions = []
-
-  console.log(styleOptions)
+  let pageLoad
 
   const [options, setOptions] = useState({})
   const [sku, setSku] = useState('')
   const [sizes, setSizes] = useState([])
   const [quantity, setQuantity] = useState([])
+  const [chosenSize, setChosenSize] = useState('')
+  const [chosenQuantity, setChosenQuantity] = useState('')
 
   useEffect(() => {
     setOptions(styleOptions)
@@ -19,7 +23,9 @@ const SizeQuantity = (props) => {
       let array = []
       for (var i = 0; i < skus.length; i++) {
         let thisSize = styleOptions[skus[i]]
-        array.push(thisSize.size)
+        if (thisSize.quantity >= 1) {
+          array.push(thisSize.size)
+        }
       }
       setSizes(array)
     }
@@ -33,7 +39,8 @@ const SizeQuantity = (props) => {
     for (var i = 0; i < skus.length; i++) {
       let thisSku = styleOptions[skus[i]]
       if (selectedSize === thisSku.size) {
-        setSku(thisSku)
+        setSku(skus[i])
+        setChosenSize(selectedSize)
 
         let total = thisSku.quantity
         let count = 1
@@ -47,6 +54,12 @@ const SizeQuantity = (props) => {
     }
   }
 
+  let handleQuantity = (e) => {
+    e.preventDefault();
+    let selectedQuantity = e.target.value
+    setChosenQuantity(selectedQuantity)
+  }
+
   let mappedSizes = sizes.map(size => {
     return <option key={size} value={size}>{size}</option>
   })
@@ -57,7 +70,6 @@ const SizeQuantity = (props) => {
 
   let quantitySection = (
     <div>
-      <label htmlFor="quantity-select">Quantity:</label >
       <select name="quantity" id="quantity-select">
         <option value="">--</option>
       </select>
@@ -67,22 +79,33 @@ const SizeQuantity = (props) => {
   if (quantity.length > 0) {
     quantitySection = (
       <div>
-        <label htmlFor="quantity-select">Quantity:</label >
-        <select name="quantity" id="quantity-select">
+        <select name="quantity" id="quantity-select" onChange={handleQuantity}>
           {mappedQuantity}
         </select>
       </div>
     )
   }
 
+  if (sizes.length > 0) {
+    pageLoad = (
+      <div>
+        <select name="size" id="size-select" onChange={handleSize}>
+          <option value="">Select Size</option>
+          {mappedSizes}
+        </select>
+        {quantitySection}
+        <AddToCart sku={sku} size={chosenSize} quantity={chosenQuantity} />
+      </div>)
+  } else {
+    pageLoad = (
+      <div>OUT OF STOCK</div>
+    )
+  }
+
+
   return (
     <div>
-      <label htmlFor="size-select">Select a Size:</label >
-      <select name="size" id="size-select" onChange={handleSize}>
-        <option value="">--</option>
-        {mappedSizes}
-      </select>
-      {quantitySection}
+      {pageLoad}
     </div>
   )
 }

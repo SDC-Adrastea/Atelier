@@ -8,7 +8,6 @@ import ProductOverview from './Overview/ProductInformation/ProductOverview.jsx'
 import ToggleOutfitStar from './Overview/ProductInformation/ToggleOutfitStar.jsx'
 import StyleSelector from './Overview/StyleSelector/StyleSelector.jsx'
 import SizeQuantity from './Overview/AddToCart/SizeQuantity.jsx'
-import AddToCart from './Overview/AddToCart/Cart.jsx'
 import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 
@@ -19,7 +18,7 @@ export const Overview = (props) => {
   let product = props.product
   let ratings = props.metadata
   let reviewSection, titleSection, priceSection, toggleSection, productOverview,
-    styleSection, sizeQuantitySection, cartSection
+    styleSection, sizeQuantitySection
   let currentView = <DefaultGallery />
 
   const [outfitToggle, setOutfitToggle] = useState({})
@@ -52,7 +51,6 @@ export const Overview = (props) => {
     priceSection = <Price defaultPrice={product.default_price} styles={props.styles} />
     toggleSection = <ToggleOutfitStar onClick={(data) => setOutfitToggle([data])} />
     sizeQuantitySection = <SizeQuantity style={currentStyle} />
-    cartSection = <AddToCart />
     styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle} onClick={(selectedStyle) => { setCurrentStyle(selectedStyle) }} />
   }
 
@@ -74,7 +72,6 @@ export const Overview = (props) => {
         {toggleSection}
         {styleSection}
         {sizeQuantitySection}
-        {cartSection}
         {currentView}
       </div>
     </div>
