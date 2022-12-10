@@ -17,9 +17,8 @@ export const Overview = (props) => {
   // console.log('props in Overview', props)
   let product = props.product
   let ratings = props.metadata
-  let reviewSection, titleSection, priceSection, toggleSection, productOverview,
-    styleSection, sizeQuantitySection
-  let currentView = <DefaultGallery style={currentStyle} onClick={() => setView('expanded')} />
+  let currentView, reviewSection, titleSection, priceSection, toggleSection,
+    productOverview,styleSection, sizeQuantitySection
 
   const [outfitToggle, setOutfitToggle] = useState({})
   const [currentStyle, setCurrentStyle] = useState({})
@@ -52,6 +51,7 @@ export const Overview = (props) => {
     toggleSection = <ToggleOutfitStar onClick={(data) => setOutfitToggle([data])} />
     sizeQuantitySection = <SizeQuantity style={currentStyle} />
     styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle} onClick={(selectedStyle) => { setCurrentStyle(selectedStyle) }} />
+    currentView = <DefaultGallery style={currentStyle} onClick={() => setView('expanded')} />
   }
 
   if (product.description !== undefined || product.slogan !== undefined || product.features !== undefined) {
