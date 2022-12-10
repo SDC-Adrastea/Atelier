@@ -8,10 +8,9 @@ export const ReviewTile = (props) => {
 
   const [responseExists, setResponse] = useState(false);
 
-  useEffect(() => {
-    console.log(review);
-  });
-
+  // useEffect(() => {
+  //   console.log(review);
+  // });
 
   return (
     <div>
@@ -35,7 +34,8 @@ export const ReviewTile = (props) => {
         // need to resize photo and turn into modal when clicked
           return (<img key={index} className="reviewImage" hspace="5" src={`${photo.url}`} />);
         }) : null }
-      <p>Helpful? Yes {review.helpfulness ? `(${review.helpfulness})` : null}</p>
+        {/* Need to add helpfulness voting function (with cookies maybe?) */}
+      <p>Helpful? <u>Yes</u> ({review.helpfulness})</p>
       <hr />
     </div>
   )
