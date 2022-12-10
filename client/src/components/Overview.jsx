@@ -19,7 +19,7 @@ export const Overview = (props) => {
   let ratings = props.metadata
   let reviewSection, titleSection, priceSection, toggleSection, productOverview,
     styleSection, sizeQuantitySection
-  let currentView = <DefaultGallery />
+  let currentView = <DefaultGallery style={currentStyle} onClick={() => setView('expanded')} />
 
   const [outfitToggle, setOutfitToggle] = useState({})
   const [currentStyle, setCurrentStyle] = useState({})
@@ -59,7 +59,7 @@ export const Overview = (props) => {
   }
 
   if (view === 'expanded') {
-    currentView = <ExpandedGallery />
+    currentView = <ExpandedGallery style={currentStyle} onClick={() => setView('default')} />
   }
 
   return (
