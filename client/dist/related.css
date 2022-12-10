@@ -1,5 +1,5 @@
 .related-carousel-container {
-  height: 320px;
+  height: 358px;
   flex-wrap: nowrap;
   border: 1px solid red;
   padding: 10px;
@@ -8,7 +8,7 @@
 
 .overflow-window {
   overflow: hidden;
-  height:332px;
+  height:358px;
   width:1210px;
   border: 1px solid green;
 }
@@ -20,7 +20,7 @@
 
 .related-product-card {
   width: 250px;
-  height: 300px;
+  height: 340px;
   display: inline-block;
   margin-left: 15px;
 }
