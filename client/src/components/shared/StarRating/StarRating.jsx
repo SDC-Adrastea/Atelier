@@ -17,7 +17,9 @@ export const StarRating = ({rating = 0, width = 20}) => {
   }
 
   // push partial stars rounded to the nearest .25 into array
-  stars.push((Math.round(parseFloat(decimals) * 4) / 4).toFixed(2))
+  if (decimals > 0) {
+    stars.push((Math.round(parseFloat(decimals) * 4) / 4).toFixed(2))
+  }
 
   // push partial stars rounded to the nearest .10 into array
   // stars.push((Math.round(parseFloat(decimals) * 10) / 10).toFixed(2))
