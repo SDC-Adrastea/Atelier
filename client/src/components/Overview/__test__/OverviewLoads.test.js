@@ -72,10 +72,16 @@ describe('Unit: Initial rendering of all Overview components', () => {
     expect(starButton).toBeInTheDocument()
   })
 
-  test('Confirm initial load of Style Selector subcomponent', async () => {
+  test('Confirm initial load of Style Selector subcomponent', () => {
     render(<StyleSelector styles={[]} />)
     const h3Element = screen.getByText(/Styles:/i)
     expect(h3Element).toBeInTheDocument()
+  })
+
+  test('Confirm initial load of Style subcomponent', () => {
+    render(<Style key={123456} style={{name: "Black", photos: [{thumbnail_url: '', url: ''}]}} toggled={{name: "Black", photos: [{thumbnail_url: '', url: ''}]}} onClick={() => 'onClick test'} />)
+    const styleName = screen.getByText(/Black/i)
+    expect(styleName).toBeInTheDocument()
   })
 
   test('Confirm initial load of Size & Quantity subcomponent', () => {
