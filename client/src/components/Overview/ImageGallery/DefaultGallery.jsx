@@ -15,11 +15,12 @@ const DefaultGallery = (props) => {
     currentImage = imageArr[0]
   }
 
-  console.log('props in default gallery', currentStyle)
+  // console.log('props in default gallery', currentStyle)
 
   let handleClick = (e) => {
     e.preventDefault()
-    console.log(e.target.src)
+    currentImage = e.target.src
+    console.log(currentImage)
   }
 
   return (
