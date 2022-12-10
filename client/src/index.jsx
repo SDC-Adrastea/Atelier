@@ -14,6 +14,7 @@ const App = (props) => {
   const [product, setProduct] = useState({})
   const [styles, setStyles] = useState([])
   const [related, setRelated] = useState([])
+  const [outfitList, setOutfitList] = useState([])
   const [metadata, setMetadata] = useState({})
 
   useEffect(() => {
@@ -36,10 +37,26 @@ const App = (props) => {
       .catch(err => console.log('err in index.jsx metadata'))
   }, [])
 
+  let toggleStar = (id) => {
+    let newArr = outfitList
+    if (newArr.length === 0) {
+      newArr.push(id)
+    } else {
+      for (var i = 0; i < newArr.length; i++) {
+        if (newArr[i] === id) {
+          newArr.splice(i, 1)
+        } else {
+          newArr.push(id)
+        }
+      }
+    }
+    setOutfitList(newArr)
+  }
+
   return (
     <div>
       <h1>Atelier</h1>
-      <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} />
+      <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} toggleStar={(id) => toggleStar(id)} />
       <Related productNum={productNum} setProductNum={setProductNum} product={product} styles={styles} related={related}/>
       <Questions productNum={productNum} product={product}/>
       <Reviews productNum={productNum}/>

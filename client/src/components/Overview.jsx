@@ -54,7 +54,12 @@ export const Overview = (props) => {
     }
     titleSection = <ProductCategoryTitle title={product.name} category={product.category} />
     priceSection = <Price defaultPrice={product.default_price} styles={props.styles} />
-    toggleSection = <ToggleOutfitStar onClick={(data) => setOutfitToggle([data])} />
+    toggleSection = (
+      <ToggleOutfitStar
+        id={currentStyle.style_id}
+        toggleStar={(id) => {props.toggleStar(id)}}
+      />
+    )
     sizeQuantitySection = <SizeQuantity style={currentStyle} />
     styleSection = (
       <StyleSelector
