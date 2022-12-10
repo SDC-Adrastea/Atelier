@@ -20,6 +20,7 @@ const RelatedProductCard = (props) => {
     setModal(true)
   }
 
+
   return (
     <div onClick={() => {console.log('ive been clicked')
     props.setProductNum(id)}} className="related-product-card">
