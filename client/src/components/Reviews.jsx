@@ -12,6 +12,8 @@ export const Reviews = (props) => {
   const [reviewsSortBy, setSort] = useState('relevant');
   const [averageRating, setAverageRating] = useState(0);
 
+  var metadata = props.metadata;
+
   useEffect(() => {
     axios.get('/reviews',{
       params:{
@@ -36,7 +38,7 @@ export const Reviews = (props) => {
     <h1>Ratings & Reviews</h1>
     <div style={{ display: "grid", gridTemplateColumns: "300px 60%", gridGap: 20 }}>
       <div>
-        <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} />
+        <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} metadata={props.metadata}/>
       </div>
       <div>
         <ReviewsList productNum={props.productNum} reviews={reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} />
