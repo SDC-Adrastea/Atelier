@@ -17,16 +17,36 @@ const DefaultGallery = (props) => {
 
   console.log('props in default gallery', currentStyle)
 
+  let handleClick = (e) => {
+    e.preventDefault()
+    console.log(e.target.src)
+  }
 
   return (
-    <div className="default-view" onClick={() => props.onClick()}>
+    <div className="default-view">
       <div className="default-main">
-        <h4>Default Main</h4>
-        <img src={currentImage} alt={currentStyle.name} height="400" />
+        <img
+          src={currentImage}
+          alt={currentStyle.name}
+          height="400"
+          onClick={() => props.onClick()}
+        />
       </div>
 
       <div className="default-overlay">
         <h4>Default Overlay</h4>
+        {imageArr.map((photo, index) => {
+          return (
+            <img
+              className="thumbnail-image"
+              key={index}
+              src={photo}
+              alt="thumnail image"
+              height="100"
+              onClick={(e) => handleClick(e)}
+            />
+          )
+        })}
       </div>
     </div>
   )
