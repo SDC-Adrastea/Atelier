@@ -1,4 +1,6 @@
-/** @jest-environment jsdom */
+/**
+ * @jest-environment jsdom
+ */
 
 import { fireEvent, render, screen } from '@testing-library/react'
 import { queries } from '@testing-library/dom'
@@ -16,38 +18,58 @@ import { Question } from "../QuestionsComponents/Question.jsx";
 import { QuestionsList } from "../QuestionsComponents/QuestionsList.jsx";
 import { SearchQuestions } from "../QuestionsComponents/SearchQuestions.jsx";
 
+import { dummyProductData } from "../../../../../dummyTestData/productDummy.js";
+import { dummyQuestions, dummyAnswers } from "../../../../../dummyTestData/questionDummy.js";
 
-// test("Renders QuestionsList Widget without crashing", ()=> {
-//   render(<Questions />)
-//   const QCompElement = screen.queryBy('Questions')
-//   expect(QCompElement).toBeInTheDocument()
-// })
+describe('Unit: Initial rendering of all Questions components', () => {
 
-// it("SHALLOW: renders AddAnswer Widget without crashing", ()=> {
-//   shallow(<AddAnswer />);
-// });
 
-// it("SHALLOW: renders AddQuestion Widget without crashing", ()=> {
-//   shallow(<AddQuestion />);
-// });
+  test("Renders Questions Widget without crashing", ()=> {
+    render(<Questions productNum={71700} product={dummyProductData}/>)
+    const QCompElement = screen.getByText('Questions & Answers')
+    expect(QCompElement).toBeInTheDocument()
+  })
 
-// it("SHALLOW: renders Answer Widget without crashing", ()=> {
-//   shallow(<Answer />);
-// });
+  test("Renders SearchQuestions Widget without crashing", ()=> {
+    render(<SearchQuestions setSearch={'test'}/>)
+    const SearchCompElement = screen.getByTestId('SearchComponent')
+    expect(SearchCompElement).toBeInTheDocument()
+  })
 
-// it("SHALLOW: renders AnswerList Widget without crashing", ()=> {
-//   shallow(<AnswerList />);
-// });
+  test("Renders QuestionsList Widget without crashing", ()=> {
+    render(<QuestionsList productNum={71700} product={dummyProductData} returnedQs={dummyQuestions} searchQ={'test'} setQs={'setQs'} />)
+    const QCompElement = screen.getByTestId('QuestionsList')
+    expect(QCompElement).toBeInTheDocument()
+  })
 
-// it("SHALLOW: renders Question Widget without crashing", ()=> {
-//   shallow(<Question />);
-// });
+  test("Renders AddQuestion Widget without crashing", ()=> {
+    render(<AddQuestion productNum={71700} product={dummyProductData}/>)
+    const QCompElement = screen.getByText('Add A Question')
+    expect(QCompElement).toBeInTheDocument()
+  })
 
-// it("SHALLOW: renders QuestionsList Widget without crashing", ()=> {
-//   shallow(<QuestionsList />);
-// });
+  test("Renders Question Widget without crashing", ()=> {
+    render( <Question data={dummyQuestions[0]} key={1} productNum={71700} product={dummyProductData} />)
+    const QCompElement = screen.getByTestId('QuestionComponent')
+    expect(QCompElement).toBeInTheDocument()
+  })
 
-// it("SHALLOW: renders SearchQuestions Widget without crashing", ()=> {
-//   shallow(<SearchQuestions />);
-// });
+  test("Renders AddAnswer Widget without crashing", ()=> {
+    render( <AddAnswer data={dummyQuestions[0]} product={dummyProductData} questionId={43} />)
+    const AddQuestionCompElement = screen.getByText('Add Your Answer')
+    expect(AddQuestionCompElement).toBeInTheDocument()
+  })
 
+  test("Renders AnswerList Widget without crashing", ()=> {
+    render( <AnswerList questionId={43} /> )
+    const AnswerListCompId = screen.getByTestId('AnswerList')
+    expect(AnswerListCompId).toBeInTheDocument()
+  })
+
+  test("Renders Answer Widget without crashing", ()=> {
+    render( <Answer answerData={dummyAnswers[1]} key={1}  questionId={43}/> )
+    const AnswerCompId = screen.getByTestId('Answer')
+    expect(AnswerCompId).toBeInTheDocument()
+  })
+
+})
