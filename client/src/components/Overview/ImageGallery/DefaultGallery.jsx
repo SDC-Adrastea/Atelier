@@ -24,6 +24,7 @@ const DefaultGallery = (props) => {
 
   return (
     <div className="default-view">
+      Default
       <div className="default-main">
         <img
           src={currentImage}
@@ -34,7 +35,6 @@ const DefaultGallery = (props) => {
       </div>
 
       <div className="default-overlay">
-        <h4>Default Overlay</h4>
         {imageArr.map((photo, index) => {
           return (
             <img

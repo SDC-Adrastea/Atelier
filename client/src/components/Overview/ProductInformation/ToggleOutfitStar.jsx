@@ -8,8 +8,7 @@ const ToggleOutfitStar = (props) => {
         className="toggle-star"
         type="button"
         onClick={(e) => {
-          // initial tester to send data to related section
-          console.log('clicked Star button', props.id)
+          // currently using the style_id
           props.toggleStar(props.id)
         }
         }>
