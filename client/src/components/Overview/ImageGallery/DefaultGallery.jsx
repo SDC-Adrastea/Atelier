@@ -29,7 +29,7 @@ const DefaultGallery = (props) => {
         <img
           src={currentImage}
           alt={currentStyle.name}
-          height="400"
+          height="250"
           onClick={() => props.onClick()}
         />
       </div>
@@ -43,7 +43,7 @@ const DefaultGallery = (props) => {
               key={index}
               src={photo}
               alt="thumnail image"
-              height="100"
+              height="75"
               onClick={(e) => handleClick(e)}
             />
           )
