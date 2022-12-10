@@ -13,12 +13,18 @@ export const ProductBreakdown = (props) => {
 
     return (
       <div>
-        {characteristics.Size ? <p>Size <br/> <BreakdownSlider rating={characteristics.Size.value} /></p>: null}
-        {characteristics.Width ? <p>Width <br/> <BreakdownSlider rating={characteristics.Width.value} /></p>: null}
-        {characteristics.Comfort ? <p>Comfort <br/> <BreakdownSlider rating={characteristics.Comfort.value} /></p>: null}
-        {characteristics.Quality ? <p>Quality <br/> <BreakdownSlider rating={characteristics.Quality.value} /></p>: null}
-        {characteristics.Length ? <p>Length <br/> <BreakdownSlider rating={characteristics.Length.value} /></p>: null}
-        {characteristics.Fit ? <p>Fit <br/> <BreakdownSlider rating={characteristics.Fit.value} /></p>: null}
+        {characteristics.Size ? <p>Size<br/></p> : null}
+        {characteristics.Size ? <BreakdownSlider rating={characteristics.Size.value} /> : null}
+        {characteristics.Width ? <p>Width<br/></p> : null}
+        {characteristics.Width ? <BreakdownSlider rating={characteristics.Size.value} /> : null}
+        {characteristics.Comfort ? <p>Comfort<br/></p> : null}
+        {characteristics.Comfort ? <BreakdownSlider rating={characteristics.Comfort.value} /> : null}
+        {characteristics.Quality ? <p>Quality<br/></p> : null}
+        {characteristics.Quality ? <BreakdownSlider rating={characteristics.Quality.value} /> : null}
+        {characteristics.Length ? <p>Length<br/></p> : null}
+        {characteristics.Length ? <BreakdownSlider rating={characteristics.Length.value} /> : null}
+        {characteristics.Fit ? <p>Fit<br/></p> : null}
+        {characteristics.Fit ? <BreakdownSlider rating={characteristics.Fit.value} />: null}
       </div>
     )
   } else {
