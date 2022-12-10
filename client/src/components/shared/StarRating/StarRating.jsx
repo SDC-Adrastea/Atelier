@@ -28,7 +28,7 @@ export const StarRating = ({rating = 0, width = 20}) => {
   }
 
   return (
-    <div>
+    <div data-testid="StarRating">
       {stars.map((star, index) => (
         <div style={{
           height: `${width}px`,

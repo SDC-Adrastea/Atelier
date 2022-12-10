@@ -12,7 +12,7 @@ export const ReviewsList = (props) => {
   var setSort = props.setSort;
 
   return (
-    <div>
+    <div data-testid="reviews-list">
       <p>
       {reviews.length} reviews, sorted by&nbsp;
       <select onChange={e => {setSort(e.target.value)}}>

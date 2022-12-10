@@ -11,7 +11,7 @@ export const RatingsColumn = (props) => {
   var averageRatingRounded = Number(props.averageRating).toFixed(1);
 
   return (
-    <div>
+    <div data-testid="ratings-column">
       <h1 style={{float:'left'}}>{averageRatingRounded}</h1><br/><StarRating rating={averageRating} width={20} />
       <br />
       <br />
