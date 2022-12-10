@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 const DefaultGallery = (props) => {
   let currentStyle = props.style
-  let currentImage = ''
+  let currentImage = props.main
   let imageArr = []
 
   if (props.style === {}) {
@@ -12,15 +12,14 @@ const DefaultGallery = (props) => {
     currentStyle.photos.map(photo => {
       imageArr.push(photo.url)
     })
-    currentImage = imageArr[0]
   }
 
   // console.log('props in default gallery', currentStyle)
 
   let handleClick = (e) => {
     e.preventDefault()
-    currentImage = e.target.src
-    console.log(currentImage)
+    let url = e.target.src
+    props.thumbnailChange(url)
   }
 
   return (

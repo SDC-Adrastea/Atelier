@@ -6,7 +6,8 @@ const ExpandedGallery = (props) => {
   return (
     <div className="expanded-view" onClick={() => props.onClick()}>
       <h4>Expanded Main</h4>
-      <h4>Expanded Overlay</h4>    </div>
+      <h4>Overlay</h4>
+    </div>
   )
 
 }

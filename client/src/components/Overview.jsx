@@ -23,6 +23,8 @@ export const Overview = (props) => {
   const [outfitToggle, setOutfitToggle] = useState({})
   const [currentStyle, setCurrentStyle] = useState({})
   const [view, setView] = useState('default')
+  const [mainImage, setMainImage] = useState('')
+  const [imageArr, setImageArr] = useState([])
 
   if (product === {}) {
     product.name = ''
@@ -43,6 +45,10 @@ export const Overview = (props) => {
         if (style['default?']) {
           setCurrentStyle(style)
           setOutfitToggle(style)
+
+          let firstPhoto = style.photos[0]
+          setMainImage(firstPhoto.url)
+          setImageArr(style.photos)
         }
       })
     }
@@ -50,8 +56,26 @@ export const Overview = (props) => {
     priceSection = <Price defaultPrice={product.default_price} styles={props.styles} />
     toggleSection = <ToggleOutfitStar onClick={(data) => setOutfitToggle([data])} />
     sizeQuantitySection = <SizeQuantity style={currentStyle} />
-    styleSection = <StyleSelector styles={props.styles} toggledStyle={currentStyle} onClick={(selectedStyle) => { setCurrentStyle(selectedStyle) }} />
-    currentView = <DefaultGallery style={currentStyle} onClick={() => setView('expanded')} />
+    styleSection = (
+      <StyleSelector
+        styles={props.styles}
+        toggledStyle={currentStyle}
+        onClick={(selectedStyle) => {
+          setCurrentStyle(selectedStyle)
+          let newImage = selectedStyle.photos[0]
+          setMainImage(newImage.url)
+        }}
+      />
+    )
+    currentView = (
+      <DefaultGallery
+        style={currentStyle}
+        main={mainImage}
+        images={imageArr}
+        onClick={() => setView('expanded')}
+        thumbnailChange={img => setMainImage(img)}
+      />
+    )
   }
 
   if (product.description !== undefined || product.slogan !== undefined || product.features !== undefined) {
