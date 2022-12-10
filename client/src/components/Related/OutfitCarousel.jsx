@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
-import RelatedProductCard from './RelatedProductCard.jsx'
+import YourOutfitCard from "./YourOutfitCard.jsx"
 
 
 const OutfitCarousel = (props) => {
-  var dummydata = [
-    71698,
-    71699,
-    71704,
-    71703
-  ]
+
 
   const [leftOffset, setLeftOffset] = useState(0)
 
@@ -18,11 +13,13 @@ const OutfitCarousel = (props) => {
       <div>
         <button onClick={() => { setLeftOffset(leftOffset - 265) }}>Next</button>
       </div>
+      {console.log(props)}
       <div className="overflow-window">
         <div className="youroutfit-carousel-container" style={{ marginLeft: `${leftOffset}px` }}>
-          {dummydata.map((item, index) => {
+          <button onClick={(num) => {props.test(props.productNum)}}>Add To Outfit List</button>
+          {props.dummyData.map((item, index) => {
             return (
-              <RelatedProductCard cardInfo={item} key={index} />
+              <YourOutfitCard cardInfo={item} key={index} />
             )
           })}
         </div>

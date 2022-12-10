@@ -9,6 +9,7 @@ const RelatedCarousel = (props) => {
   const [leftOffset, setLeftOffset] = useState(0)
 
 
+
   return (
     <>
       <div>
