@@ -11,7 +11,7 @@ const RelatedCarousel = (props) => {
 
 
   return (
-    <>
+    <div data-testid="related-carousel">
       <div>
         <button onClick={() => {setLeftOffset(leftOffset - 265)}}>Next</button>
       </div>
@@ -27,7 +27,8 @@ const RelatedCarousel = (props) => {
       <div>
         <button onClick={() => {setLeftOffset(leftOffset + 265)}}>Back</button>
       </div>
-    </>
+    </div>
+
   )
 }
 

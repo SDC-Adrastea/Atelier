@@ -25,7 +25,9 @@ const RelatedProductCard = (props) => {
     <div onClick={
       (newNum) => {props.setProductNum(id)
      console.log('ive been clicked')}
-     } className="related-product-card">
+     } className="related-product-card"
+     data-testid="related-product-card-test"
+     >
       <button onClick ={setModal}>COMPARE</button>
       <img className="related-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>

@@ -9,7 +9,7 @@ const OutfitCarousel = (props) => {
 
 
   return (
-    <>
+    <div data-testid="outfit-carousel">
       <div>
         <button onClick={() => { setLeftOffset(leftOffset - 265) }}>Next</button>
       </div>
@@ -19,14 +19,14 @@ const OutfitCarousel = (props) => {
           {props.dummyData.map((item, index) => {
             return (
               <YourOutfitCard cardInfo={item} key={index} />
-            )
-          })}
+              )
+            })}
         </div>
       </div>
       <div>
         <button onClick={() => { setLeftOffset(leftOffset + 265) }}>Back</button>
       </div>
-    </>
+  </div>
   )
 }
 

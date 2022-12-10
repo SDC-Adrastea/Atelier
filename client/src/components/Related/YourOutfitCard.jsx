@@ -25,7 +25,10 @@ const YourOutfitCard = (props) => {
 
   return (
     <div onClick={() => {console.log('ive been clicked')
-    props.setProductNum(id)}} className="related-product-card">
+    props.setProductNum(id)}}
+    className="related-product-card"
+    data-testid="your-outfit-card"
+    >
       {/* <button onClick ={setModal}>COMPARE</button> */}
       <img className="related-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>
