@@ -11,6 +11,7 @@ export const RatingsBreakdown = (props) => {
     1: 0
   });
   const [recommendCount, setRecommend] = useState(0);
+
   const [maxRatingCount, setMaxRatingCount] = useState(1);
 
   useEffect(() => {
