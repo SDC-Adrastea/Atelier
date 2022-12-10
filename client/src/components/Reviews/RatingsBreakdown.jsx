@@ -38,7 +38,7 @@ export const RatingsBreakdown = (props) => {
   },[props.reviews])
 
   return (
-    <div>
+    <div data-testid="ratings-breakdown">
       <h4>{parseInt(Math.round((recommendCount/props.reviews.length)*100))}% of reviews recommend this product</h4>
       <div id="parent">
         <p className="child">5 Stars</p>

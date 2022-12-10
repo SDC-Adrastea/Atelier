@@ -13,7 +13,7 @@ export const ReviewTile = (props) => {
   // });
 
   return (
-    <div>
+    <div data-testid="reviews-list">
       <StarRating rating={review.rating} />
       {review.reviewer_name}
       <br/>

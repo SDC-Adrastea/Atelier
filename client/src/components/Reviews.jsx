@@ -34,7 +34,7 @@ export const Reviews = (props) => {
   },[reviews]);
 
   return (
-    <div>
+    <div data-testid="reviews">
     <h1>Ratings & Reviews</h1>
     <div style={{ display: "grid", gridTemplateColumns: "300px 60%", gridGap: 20 }}>
       <div>

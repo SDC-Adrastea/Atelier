@@ -12,7 +12,7 @@ export const ProductBreakdown = (props) => {
   let characteristics = props.metadata.characteristics;
 
     return (
-      <div>
+      <div data-testid="product-breakdown">
         {characteristics.Size ? <p>Size<br/></p> : null}
         {characteristics.Size ? <BreakdownSlider rating={characteristics.Size.value} /> : null}
         {characteristics.Width ? <p>Width<br/></p> : null}
