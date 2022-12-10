@@ -100,7 +100,7 @@ export const Overview = (props) => {
   }
 
   return (
-    <div>
+    <div data-testid="overview-component">
       <div className="subcomponents">
         {currentView}
         {reviewSection}
