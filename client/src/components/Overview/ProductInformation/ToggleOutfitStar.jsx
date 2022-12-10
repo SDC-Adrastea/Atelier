@@ -9,10 +9,10 @@ const ToggleOutfitStar = (props) => {
         type="button"
         onClick={(e) => {
           // currently using the style_id
+          console.log('star clicked')
           props.toggleStar(props.id)
-        }
-        }>
-        STAR
+        }}>
+        STAR <img src="star.png" alt="star" width="10" />
       </button>
     </div>
   )
