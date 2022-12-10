@@ -35,7 +35,7 @@ const App = (props) => {
         setMetadata(data.data)
       })
       .catch(err => console.log('err in index.jsx metadata'))
-  }, [])
+  }, [productNum])
 
   let toggleStar = (id) => {
     let newArr = outfitList
