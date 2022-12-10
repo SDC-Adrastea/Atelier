@@ -6,8 +6,9 @@ import { ProductBreakdown } from './ProductBreakdown.jsx';
 
 export const RatingsColumn = (props) => {
 
-  var averageRating= props.averageRating;
-  var averageRatingRounded= Number(props.averageRating).toFixed(1);
+  var metadata = props.metadata;
+  var averageRating = props.averageRating;
+  var averageRatingRounded = Number(props.averageRating).toFixed(1);
 
   return (
     <div>
@@ -19,7 +20,7 @@ export const RatingsColumn = (props) => {
       <RatingsBreakdown reviews={props.reviews}/>
       <br />
       <br />
-      <ProductBreakdown />
+      <ProductBreakdown metadata={props.metadata}/>
     </div>
   )
 };

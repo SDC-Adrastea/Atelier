@@ -39,11 +39,11 @@ const App = (props) => {
   return (
     <div>
       <h1>Atelier</h1>
-
+{/*
       <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} />
       <Related productNum={productNum} setProductNum={setProductNum} product={product} styles={styles} related={related}/>
-      <Questions productNum={productNum} product={product}/>
-      <Reviews productNum={productNum}/>
+      <Questions productNum={productNum} product={product}/> */}
+      <Reviews productNum={productNum} metadata={metadata}/>
     </div>
   )
 }
