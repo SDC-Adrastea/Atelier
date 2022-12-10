@@ -84,14 +84,14 @@ describe('Unit: Initial rendering of all Overview components', () => {
   })
 
   test('Confirm initial load of Default Gallery View subcomponent', () => {
-    render(<DefaultGallery />)
-    const h4Element = screen.getByText(/Default Gallery View/i)
-    expect(h4Element).toBeInTheDocument()
+    render(<DefaultGallery style={{name: "test", photos: []}} main={''} images={[]} onClick={() => 'onClick test'} />)
+    const imgElement = screen.getAllByRole('img')
+    expect(imgElement.length >= 1)
   })
 
   test('Confirm initial load of Expanded Gallery View subcomponent', () => {
-    render(<ExpandedGallery />)
-    const h4Element = screen.getByText(/Expanded Gallery View/i)
-    expect(h4Element).toBeInTheDocument()
+    render(<ExpandedGallery style={{name: "test", photos: []}} main={''} images={[]} onClick={() => 'onClick test'} />)
+    const imgElement = screen.getAllByRole('img')
+    expect(imgElement.length >= 1)
   })
 })

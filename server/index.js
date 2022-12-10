@@ -132,7 +132,6 @@ app.get('/cart', (req, res) => {
 })
 
 app.post('/cart', (req, res) => {
-  console.log('sku', req.body.sku)
   CartPost(req.body.sku)
     .then(data => res.send(data))
     .catch(err => {
