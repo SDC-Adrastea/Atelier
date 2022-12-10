@@ -1,2 +1,7 @@
 #parent { white-space: nowrap; }
+
 .child { display: inline-block; }
+
+.reviewImage {
+  height: 100px;
+   }

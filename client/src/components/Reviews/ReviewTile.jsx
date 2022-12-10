@@ -6,9 +6,16 @@ import { StarRating } from '../shared/StarRating/StarRating.jsx';
 export const ReviewTile = (props) => {
   const { review } = props;
 
+  const [responseExists, setResponse] = useState(false);
+
+  // useEffect(() => {
+  //   console.log(review);
+  // });
+
   return (
     <div>
       <StarRating rating={review.rating} />
+      {review.reviewer_name}
       <br/>
       {format(parseISO(review.date), 'MMMM dd, yyyy')}
       <br/>
@@ -20,12 +27,15 @@ export const ReviewTile = (props) => {
       <br/>
       {review.body}
       {review.recommend ? <p>&#10003; I recommend this product</p> : null}
+      {review.response ? (<p> {review.response} </p>) : null}
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? review.photos.map((photo, index)=> {
         // need to resize photo and turn into modal when clicked
-          return (<img key={index} width="100" hspace="5" src={`${photo.url}`} />);
+          return (<img key={index} className="reviewImage" hspace="5" src={`${photo.url}`} />);
         }) : null }
+        {/* Need to add helpfulness voting function (with cookies maybe?) */}
+      <p>Helpful? <u>Yes</u> ({review.helpfulness})</p>
       <hr />
     </div>
   )

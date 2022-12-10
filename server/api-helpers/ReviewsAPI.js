@@ -15,7 +15,7 @@ module.exports.getReviews = (product_id, page = 1, count = 5, sort = 'newest') =
     sort: sort,
     count: count
   }
-  console.log(options.params);
+  // console.log(options.params);
   return axios(options)
     .then(response => {
       return response.data;
