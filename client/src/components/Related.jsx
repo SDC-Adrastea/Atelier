@@ -9,7 +9,8 @@ export const Related = (props) => {
     <div data-testid="related">
       <h1>Related Component</h1>
       <RelatedCarousel styles={props.styles} product={props.product} related={props.related} productNum={props.productNum} setProductNum={(newNum) => {props.setProductNum(newNum)}}/>
-      <YourOutfit productNum={props.productNum}/>
+      {/* <YourOutfit productNum={props.productNum}/> */}
     </div>
   );
 };
+

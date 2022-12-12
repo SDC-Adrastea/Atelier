@@ -210,21 +210,29 @@ app.get('/relatedProductCardInformation', (req, res) => {
 )
 
 app.get('/comparisonModal', (req, res) => {
-  formattedResponseData = {}
+  console.log(req.query)
+  const datacontainer = []
   currentProduct(req.query.primaryProduct, TOKEN)
-    .then((data) => {
-      formattedResponseData[data.product.name] = data.product.features
-      currentProduct(req.query.relatedProductCurrent, TOKEN)
-      .then((data) => {
-        formattedResponseData[data.product.name] = data.product.features
-      })
-      .catch((err) => {
-        console.log('err in comparison modal get')
-      })
-      .then(() => {
-        res.send(formattedResponseData)
-      })
+    .then((primaryProductData) => {
+      let primaryProductFormat = {}
+      primaryProductFormat.productName = primaryProductData.product.name
+      primaryProductFormat.features = primaryProductData.product.features
+      datacontainer.push(primaryProductFormat)
+      return currentProduct(req.query.relatedProductCurrent, TOKEN)
     })
+    .catch((err) => {
+      res.send(err)
+      console.log('err in relatedProductCardInformation get server-side', err)
+    })
+  .then((relatedProductCurrentData) => {
+    let relatedProductFormat = {}
+    relatedProductFormat.productName = relatedProductCurrentData.product.name
+    relatedProductFormat.features = relatedProductCurrentData.product.features
+    datacontainer.push(relatedProductFormat)
+  })
+  .then(() => {
+    res.send(datacontainer)
+  })
 
 })
 
