@@ -41,7 +41,27 @@ describe('Product Information: Category & Title', () => {
 })
 
 describe('Product Information: Price', () => {
-  test('sample', () => { })
+  test('Price section does not render when no price is present', () => {
+    render(<Price price={""} sale={""} styles={[]} />)
+    let priceSection = screen.queryByTestId('price-section')
+    expect(priceSection === null)
+  })
+
+  test('Price section renders when no sale price is present', () => {
+    render(<Price price={"40.00"} sale={null} styles={dummyProductsData} />)
+    let priceSection = screen.queryByTestId('price-section')
+    expect(priceSection).toBeInTheDocument()
+  })
+
+  test('Price section renders with the sale price and strikes the original price', () => {
+    render(<Price price={"40.00"} sale={"35.00"} styles={dummyProductsData} />)
+
+    let originalPrice = screen.queryByTestId('strike-price')
+    let salePrice = screen.queryByTestId('sale-price')
+
+    expect(originalPrice).toBeInTheDocument()
+    expect(salePrice).toBeInTheDocument()
+  })
 
   // Confirm default style is selected and price matches
   // Confirm that changing a style will update to the accurate price

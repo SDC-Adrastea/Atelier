@@ -13,12 +13,12 @@ const Price = (props) => {
     if (sale.includes('.00')) {
       sale = sale.substring(0, sale.length - 3)
     }
-    defaultPrice = <s>{defaultPrice}</s>
-    salePrice = <span className="sale-price">${sale}</span>
+    defaultPrice = <s data-testid="strike-price">{defaultPrice}</s>
+    salePrice = <span className="sale-price" data-testid="sale-price">${sale}</span>
   }
 
   return (
-    <div>
+    <div data-testid="price-section">
       {salePrice} {defaultPrice}
     </div>
   )
