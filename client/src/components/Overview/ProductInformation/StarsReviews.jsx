@@ -13,19 +13,18 @@ const StarsReviews = (props) => {
       let all = 0
 
       for (var i = 0; i < keys.length; i++) {
-        let current = keys[i] * 20
+        let current = keys[i]
         let ratingNum = ratings[keys[i]]
-        all += parseInt(ratings[keys[i]])
+        all += parseInt(ratingNum)
         total += (current * ratingNum)
       }
 
       allRatings = all
-      all *= 100
       return total / all
     }
 
-    let average = parseFloat(avgStars(ratings) * 100).toFixed(2)
-    thisRating = <div><StarRating rating={ratings} /> | Read all {allRatings} reviews</div>
+    let average = Number(parseFloat(avgStars(ratings)).toFixed(2))
+    thisRating = <div><StarRating rating={average} /> | <a href ="#reviews-anchor">Read all {allRatings} reviews</a></div>
   }
 
   return (
