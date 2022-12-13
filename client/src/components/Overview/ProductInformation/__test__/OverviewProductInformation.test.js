@@ -29,7 +29,6 @@ describe('Product Information: Stars Rating & Reviews', () => {
     expect(stars === null)
   })
 
-  // no reviews - section should be hidden
   // 5 stars - check that all 5 full stars are filled in
   // 2.5 stars - check that 2 and 1/2 stars are filled
 })

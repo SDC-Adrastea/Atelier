@@ -1,3 +1,7 @@
+.sale-price {
+  color: red;
+}
+
 .thumbnails-container {
   height:100px;
   flex-wrap: nowrap;
