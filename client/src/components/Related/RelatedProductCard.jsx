@@ -46,7 +46,8 @@ const RelatedProductCard = (props) => {
     <div className="related-product-card"
       data-testid="related-product-card-test"
     >
-      <button onClick={modalSearch}>COMPARE</button>
+      {/* <button onClick={setModal}>COMPARE</button> */}
+      <img className="related-action-button" src="star2.png" onClick={modalSearch}/>
       <img className="related-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>

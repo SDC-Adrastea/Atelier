@@ -8,7 +8,6 @@ const ComparisonModal = (props) => {
       <div className="modalContainer">
       <button onClick={(value) => props.setModal(false)} >close</button>
        <div>
-        {console.log(props.primaryProduct)}
         <h2>{props.primaryProduct.productName}</h2>
         {props.primaryProduct.features.map((feature , index) => {
           return (

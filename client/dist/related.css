@@ -1,49 +1,3 @@
-
-/*Related Carousel / Product Styling */
-
-.related-carousel-transparent-container {
-  height: 358px;
-  width: 1210px;
-  /* background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgb(201, 134, 134)); */
-}
-
-.related-next-button {
-
-}
-
-.related-carousel-container {
-  height: 358px;
-  flex-wrap: nowrap;
-  border: 1px solid red;
-  padding: 10px;
-  transition: margin-left 1s;
-}
-
-.overflow-window-related {
-  overflow: hidden;
-  height: 358px;
-  width: 1210px;
-  border: 1px solid green;
-}
-
-.related-product-card:first-child {
-  margin-left: 0px;
-}
-
-
-.related-product-card {
-  width: 250px;
-  height: 340px;
-  display: inline-block;
-  margin-left: 15px;
-}
-
-.related-product-image {
-  object-fit: cover;
-  height: 80%;
-  width: 100%;
-}
-
 /* Related Modal Styling */
 .overlay {
   position: fixed;
@@ -61,7 +15,74 @@
   display: flex;
   background-color: #ffffff;
   box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, .75);
+  z-index: 1000;
 }
+
+
+/*Related Carousel / Product Styling */
+
+.realted-items-component-container{
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.related-carousel-transparent-container {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  height: 330px;
+  width: 1210px;
+}
+
+.related-next-button {
+  display: flex;
+  align-items: center;
+  float: right;
+}
+
+.related-action-button {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 5;
+}
+
+.related-carousel-container {
+  height: 330px;
+  flex-wrap: nowrap;
+  border: 1px solid red;
+  padding: 10px;
+  transition: margin-left 1s;
+}
+
+.overflow-window-related {
+  overflow: hidden;
+  height: 330px;
+  width: 1210px;
+  border: 1px solid green;
+}
+
+.related-product-card:first-child {
+  margin-left: 0px;
+}
+
+
+.related-product-card {
+  position: relative;
+  width: 250px;
+  height: 340px;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.related-product-image {
+  object-fit: cover;
+  height: 80%;
+  width: 100%;
+}
+
+
 
 
 

@@ -30,6 +30,7 @@ const YourOutfitCard = (props) => {
     data-testid="your-outfit-card"
     >
       {/* <button onClick ={setModal}>COMPARE</button> */}
+      <img className="your-outfit-action-button" src="circleWithX.png"/>
       <img className="related-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>
