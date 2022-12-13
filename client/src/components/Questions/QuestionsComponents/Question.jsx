@@ -8,6 +8,7 @@ export const Question = (props) => {
 
   const question_id = props.data.question_id;
   const [sentHelpful, setHelpful] = useState(false);
+  const [returnedAs, setAs] = useState([]);
 
   const handleQHelpfulness = () => {
     if (sentHelpful === false) {
@@ -29,8 +30,8 @@ export const Question = (props) => {
     <div className="Question" data-testid="QuestionComponent">
       <h4>Q: {props.data.question_body}</h4>
       <p>Helpful? <button onClick={handleQHelpfulness}>Yes</button>{props.data.question_helpfulness}</p>
-      <AnswerList questionId={props.data.question_id} />
-      <AddAnswer data={props.data} product={props.product} questionId={props.data.question_id} />
+      <AnswerList questionId={props.data.question_id} setAs={setAs} returnedAs={returnedAs}/>
+      <AddAnswer data={props.data} product={props.product} questionId={props.data.question_id} setAs={setAs}/>
     </div>
   );
 };
