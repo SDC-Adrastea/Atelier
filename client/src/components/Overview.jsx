@@ -53,7 +53,7 @@ export const Overview = (props) => {
       })
     }
     titleSection = <ProductCategoryTitle title={product.name} category={product.category} />
-    priceSection = <Price defaultPrice={product.default_price} styles={props.styles} />
+    priceSection = <Price price={currentStyle.original_price} sale={currentStyle.sale_price} styles={props.styles} />
     toggleSection = (
       <ToggleOutfitStar
         id={currentStyle.style_id}
