@@ -13,7 +13,7 @@ const OutfitCarousel = (props) => {
       <div>
         <button onClick={() => { setLeftOffset(leftOffset - 265) }}>Next</button>
       </div>
-      <div className="overflow-window">
+      <div className="overflow-window-outfit">
         <div className="youroutfit-carousel-container" style={{ marginLeft: `${leftOffset}px` }}>
           <button onClick={(num) => {props.test(props.productNum)}}>Add To Outfit List</button>
           {props.dummyData.map((item, index) => {

@@ -1,3 +1,8 @@
+.your-outfit-component-container{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .youroutfit-carousel-container {
   height: 320px;
   flex-wrap: nowrap;
@@ -6,7 +11,16 @@
   transition: margin-left 1s;
 }
 
-.overflow-window {
+.your-outfit-action-button{
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 5;
+}
+
+.overflow-window-outfit {
   overflow: hidden;
   height:332px;
   width:1210px;

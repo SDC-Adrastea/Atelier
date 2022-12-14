@@ -14,11 +14,11 @@ const YourOutfit = (props) => {
   return (
     <div data-testid="your-outfit">
       <h4>Your Outfit</h4>
-      <div>
         <OutfitCarousel productNum={props.productNum} dummyData={dummyData} test={test}/>
-      </div>
     </div>
   )
 }
+
+
 
 export default YourOutfit;

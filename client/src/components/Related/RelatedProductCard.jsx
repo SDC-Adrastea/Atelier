@@ -6,35 +6,54 @@ import { StarRating } from '../shared/StarRating/StarRating.jsx';
 const RelatedProductCard = (props) => {
   const id = props.cardInfo
 
-  const [cardData , setCardData] = useState({})
+  const [cardData, setCardData] = useState({})
   const [showModal, setModal] = useState(false)
+  const [productComparisonData , setProductComparisonData] = useState([])
+
 
   useEffect(() => {
     axios.get('/relatedProductCardInformation', {
       params: { productNum: props.cardInfo }
     })
-      .then((data) => {setCardData(data.data)})
+      .then((data) => { setCardData(data.data) })
   }, []);
 
-  const modalClick = () => {
-    setModal(true)
+  const modalSearch = () => {
+    axios.get('/comparisonModal' , {
+      params: {
+        primaryProduct: props.productNum,
+        relatedProductCurrent: id
+      }
+    })
+    .then((serverResponseData) => {
+      setProductComparisonData(serverResponseData.data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .then(() => {
+      setModal(true)
+    })
   }
 
-
   return (
-    <div onClick={
-      (newNum) => {props.setProductNum(id)
-     console.log('ive been clicked')}
-     } className="related-product-card"
-     data-testid="related-product-card-test"
-     >
-      <button onClick ={setModal}>COMPARE</button>
+    // <div onClick={
+    //   (newNum) => {props.setProductNum(id)}
+    //  } className="related-product-card"
+    //  data-testid="related-product-card-test"
+    //  >
+
+    <div className="related-product-card"
+      data-testid="related-product-card-test"
+    >
+      {/* <button onClick={setModal}>COMPARE</button> */}
+      <img className="related-action-button" src="star2.png" onClick={modalSearch}/>
       <img className="related-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>
       <div>${cardData.originalPrice}</div>
-      <StarRating rating={cardData.averageReview}/>
-      {showModal && <ComparisonModal primaryProduct={props.productNum} relatedProductCurrent={id}/>}
+      <StarRating rating={cardData.averageReview} />
+      {showModal && <ComparisonModal primaryProduct={productComparisonData[0]} relatedProductCurrent={productComparisonData[1]} setModal={(value) => setModal(value)} />}
     </div>
   )
 }

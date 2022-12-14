@@ -53,6 +53,8 @@ const App = (props) => {
     setOutfitList(newArr)
   }
 
+
+
   return (
     <div>
       <h1>Atelier</h1>
@@ -63,5 +65,7 @@ const App = (props) => {
     </div>
   )
 }
+
+
 
 ReactDOM.render(<App />, document.getElementById('app'));
