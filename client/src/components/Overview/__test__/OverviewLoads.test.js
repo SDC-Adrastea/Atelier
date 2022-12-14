@@ -12,9 +12,11 @@ import React, { useEffect, useState } from "react"
 import { Overview } from '../../Overview.jsx'
 import StarsReviews from '../ProductInformation/StarsReviews.jsx'
 import ProductCategoryTitle from '../ProductInformation/ProductCategoryTitle.jsx'
+import FeaturesList from '../ProductInformation/FeaturesList.jsx'
 import Price from '../ProductInformation/Price.jsx'
 import ProductOverview from '../ProductInformation/ProductOverview.jsx'
 import ToggleOutfitStar from '../ProductInformation/ToggleOutfitStar.jsx'
+import Style from '../StyleSelector/Style.jsx'
 import StyleSelector from '../StyleSelector/StyleSelector.jsx'
 import SizeQuantity from '../AddToCart/SizeQuantity'
 import AddToCart from '../AddToCart/Cart.jsx'
@@ -22,13 +24,12 @@ import DefaultGallery from '../ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from '../ImageGallery/ExpandedGallery.jsx'
 
 describe('Unit: Initial rendering of all Overview components', () => {
-  // Parent component --> need to consider a new test option for the parent after removing the heading
 
-  // test('Confirm initial Overview component load', () => {
-  //   render(<Overview productNum={71697} product={{}} styles={[]} metadata={{}} />)
-  //   const divElement = screen.getByRole('div')
-  //   expect(divElement).toHaveClass('subcomponents')
-  // })
+  test('Confirm initial Overview component load', () => {
+    render(<Overview productNum={71697} product={{}} styles={[]} metadata={{}} />)
+    const divElement = screen.getByTestId('overview-component')
+    expect(divElement).toBeInTheDocument()
+  })
 
   // Subcomponents
   test('Confirm initial load of Stars & Reviews subcomponent', () => {
@@ -59,20 +60,32 @@ describe('Unit: Initial rendering of all Overview components', () => {
     expect(descriptionElement).toBeInTheDocument()
   })
 
+  test('Confirm initial load of Features List subcomponent', () => {
+    render(<FeaturesList key={1} feature={{feature: "Fabric", value: "100% Cotton"}} />)
+    const featureElement = screen.getByText(/Fabric/i)
+    expect(featureElement).toBeInTheDocument()
+  })
+
   test('Confirm initial load of Toggle the Outfit Star subcomponent', () => {
     render(<ToggleOutfitStar onClick={() => 'onClick test'} />)
     const starButton = screen.getByRole('button')
     expect(starButton).toBeInTheDocument()
   })
 
-  test('Confirm initial load of Style Selector subcomponent', async () => {
+  test('Confirm initial load of Style Selector subcomponent', () => {
     render(<StyleSelector styles={[]} />)
     const h3Element = screen.getByText(/Styles:/i)
     expect(h3Element).toBeInTheDocument()
   })
 
+  test('Confirm initial load of Style subcomponent', () => {
+    render(<Style key={123456} style={{name: "Black", photos: [{thumbnail_url: '', url: ''}]}} toggled={{name: "Black", photos: [{thumbnail_url: '', url: ''}]}} onClick={() => 'onClick test'} />)
+    const styleName = screen.getByText(/Black/i)
+    expect(styleName).toBeInTheDocument()
+  })
+
   test('Confirm initial load of Size & Quantity subcomponent', () => {
-    render(<SizeQuantity style={{name: "test", skus: {2580604: {size: 'test1', quantity: 1}, 2580605: {size: 'test2', quantity: 2}}}} />)
+    render(<SizeQuantity style={{ name: "test", skus: { 2580604: { size: 'test1', quantity: 1 }, 2580605: { size: 'test2', quantity: 2 } } }} />)
     const h4Element = screen.getByText(/Select Size/i)
     expect(h4Element).toBeInTheDocument()
   })
@@ -84,13 +97,13 @@ describe('Unit: Initial rendering of all Overview components', () => {
   })
 
   test('Confirm initial load of Default Gallery View subcomponent', () => {
-    render(<DefaultGallery style={{name: "test", photos: []}} main={''} images={[]} onClick={() => 'onClick test'} />)
+    render(<DefaultGallery style={{ name: "test", photos: [] }} main={''} images={[]} onClick={() => 'onClick test'} />)
     const imgElement = screen.getAllByRole('img')
     expect(imgElement.length >= 1)
   })
 
   test('Confirm initial load of Expanded Gallery View subcomponent', () => {
-    render(<ExpandedGallery style={{name: "test", photos: []}} main={''} images={[]} onClick={() => 'onClick test'} />)
+    render(<ExpandedGallery style={{ name: "test", photos: [] }} main={''} images={[]} onClick={() => 'onClick test'} />)
     const imgElement = screen.getAllByRole('img')
     expect(imgElement.length >= 1)
   })
