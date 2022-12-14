@@ -35,7 +35,7 @@ export const Reviews = (props) => {
 
   return (
     <div data-testid="reviews">
-    <h1>Ratings & Reviews</h1>
+    <h1 id="reviews-anchor">Ratings & Reviews</h1>
     <div style={{ display: "grid", gridTemplateColumns: "300px 60%", gridGap: 20 }}>
       <div>
         <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} metadata={props.metadata}/>

@@ -8,6 +8,11 @@ import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import React, { useEffect, useState } from "react"
 
+//dummy data
+import dummyProductData from '../../../../../../dummyTestData/productDummy.js'
+import dummyProductsData from '../../../../../../dummyTestData/productDummy.js'
+import dummyMetaReviews from '../../../../../../dummyTestData/reviewsDummy.js'
+
 // component
 import { Overview } from '../../../Overview.jsx'
 // subcomponents
@@ -18,7 +23,11 @@ import ProductOverview from '../ProductOverview.jsx'
 import ToggleOutfitStar from '../ToggleOutfitStar.jsx'
 
 describe('Product Information: Stars Rating & Reviews', () => {
-  test('sample', () => { })
+  test('Section should not render when no reivews are present', () => {
+    render(<Overview productNum={12345} product={dummyProductData} styles={dummyProductsData} metadata={{}} />)
+    let stars = screen.queryByText(/reviews/i)
+    expect(stars === null)
+  })
 
   // no reviews - section should be hidden
   // 5 stars - check that all 5 full stars are filled in
