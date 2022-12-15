@@ -6,6 +6,9 @@ const OutfitCarousel = (props) => {
 
   const addToOutfitList = () => {
     props.changeOutfit((oldArr) => {
+      if(oldArr.includes(props.productNum)) {
+        return [...oldArr]
+      }
       return [...oldArr , props.productNum]
     })
   }
