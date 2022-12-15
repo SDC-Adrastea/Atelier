@@ -27,7 +27,6 @@ const YourOutfitCard = (props) => {
           oldArr.splice(i,1)
         }
       }
-      console.log(oldArr)
       return [...oldArr]
     })
   }
