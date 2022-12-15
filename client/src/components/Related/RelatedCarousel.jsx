@@ -7,6 +7,14 @@ const RelatedCarousel = (props) => {
 
   const [leftOffset, setLeftOffset] = useState(0)
 
+  console.log('related products', props.related)
+
+  // const [internalState, setInternalState] = useState([]);
+
+  // useEffect(() => {
+  //   setInternalState(props.related)
+  // }, [props.related])
+
 
 
   return (

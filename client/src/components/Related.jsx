@@ -11,7 +11,7 @@ export const Related = (props) => {
       <RelatedCarousel styles={props.styles} product={props.product} related={props.related} productNum={props.productNum} setProductNum={(newNum) => {props.setProductNum(newNum)}}/>
       </div>
       <div className="your-outfit-component-container">
-      <YourOutfit productNum={props.productNum}/>
+      <YourOutfit productNum={props.productNum} yourOutfit={props.yourOutfit} changeOutfit={(arr) => {props.changeOutfit(arr)}}/>
       </div>
     </div>
   );
