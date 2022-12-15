@@ -3,22 +3,12 @@ import YourOutfitCard from "./YourOutfitCard.jsx"
 
 
 const OutfitCarousel = (props) => {
-  const test = [props.productNum]
-
 
   const addToOutfitList = () => {
     props.changeOutfit((oldArr) => {
       return [...oldArr , props.productNum]
     })
   }
-
-  const removeFrom = () => {
-    props.changeOutfit((oldArr) => {
-      oldArr.pop()
-      return [...oldArr]
-    })
-  }
-
 
   //state for viewing window
   const [leftOffset, setLeftOffset] = useState(0)
@@ -31,10 +21,9 @@ const OutfitCarousel = (props) => {
       <div className="overflow-window-outfit">
         <div className="youroutfit-carousel-container" style={{ marginLeft: `${leftOffset}px` }}>
           <button onClick={() => addToOutfitList()}>Add To Outfit List</button>
-          <button onClick={() => { removeFrom() }}> Remove From Outfit List</button>
           {props.yourOutfit.map((item, index) => {
             return (
-              <YourOutfitCard cardInfo={item} key={index} />
+              <YourOutfitCard cardInfo={item} key={index} changeOutfit={(arr) => {props.changeOutfit(arr)}}/>
             )
           })}
         </div>
