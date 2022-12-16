@@ -54,17 +54,10 @@ export const Overview = (props) => {
     }
     titleSection = <ProductCategoryTitle title={product.name} category={product.category} />
     priceSection = <Price price={currentStyle.original_price} sale={currentStyle.sale_price} styles={props.styles} />
-    toggleSection = (
-      <ToggleOutfitStar
-        id={currentStyle.style_id}
-        toggleStar={(id) => { props.toggleStar(id) }}
-      />
-    )
+    toggleSection = ( <ToggleOutfitStar id={props.productNum} outfit={props.outfit} changeOutfit={(arr) => {props.changeOutfit(arr)}} /> )
     sizeQuantitySection = <SizeQuantity style={currentStyle} />
     styleSection = (
-      <StyleSelector
-        styles={props.styles}
-        toggledStyle={currentStyle}
+      <StyleSelector styles={props.styles} toggledStyle={currentStyle}
         onClick={(selectedStyle) => {
           setCurrentStyle(selectedStyle)
           let newImage = selectedStyle.photos[0]
