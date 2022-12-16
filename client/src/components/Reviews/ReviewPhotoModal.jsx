@@ -23,8 +23,7 @@ export const ReviewPhotoModal = ({ open, children, image, onClose }) => {
   }
 
   const IMAGE_STYLES = {
-    maxHeight: '80%',
-    // maxWidth: '80%'
+    maxHeight: '80%'
   }
 
   if (!open) return null
@@ -33,9 +32,6 @@ export const ReviewPhotoModal = ({ open, children, image, onClose }) => {
     <>
       <div style={OVERLAY_STYLES}>
       <div style={MODAL_STYLES}>
-        <button onClick={onClose}>&#10006;</button>
-        <br/>
-        <br/>
         <button onClick={onClose}>&#10006;</button>
         <br/>
         <br/>
