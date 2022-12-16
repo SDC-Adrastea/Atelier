@@ -14,23 +14,34 @@ const YourOutfitCard = (props) => {
       params: { productNum: props.cardInfo }
     })
       .then((data) => {setCardData(data.data)})
-  }, []);
+  }, [id]);
 
   const modalClick = () => {
     setModal(true)
   }
 
+  const removeFrom = () => {
+    props.changeOutfit((oldArr) => {
+      for (var i = 0; i < oldArr.length; i++) {
+        if(oldArr[i] === id) {
+          oldArr.splice(i,1)
+        }
+      }
+      return [...oldArr]
+    })
+  }
+
+
+
 
 
 
   return (
-    <div onClick={() => {console.log('ive been clicked')
-    props.setProductNum(id)}}
+    <div
     className="related-product-card"
     data-testid="your-outfit-card"
     >
-      {/* <button onClick ={setModal}>COMPARE</button> */}
-      <img className="your-outfit-action-button" src="circleWithX.png"/>
+      <img onClick={() => removeFrom()} className="your-outfit-action-button" src="circleWithX.png"/>
       <img className="related-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>

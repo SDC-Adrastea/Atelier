@@ -7,8 +7,6 @@ const RelatedCarousel = (props) => {
 
   const [leftOffset, setLeftOffset] = useState(0)
 
-
-
   return (
     <div data-testid="related-carousel">
       <div className="related-carousel-transparent-container">

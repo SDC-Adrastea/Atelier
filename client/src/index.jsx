@@ -16,6 +16,7 @@ const App = (props) => {
   const [related, setRelated] = useState([])
   const [outfitList, setOutfitList] = useState([])
   const [metadata, setMetadata] = useState({})
+  const [yourOutfit , changeOutfit] = useState([])
 
   useEffect(() => {
     axios.get('/currentProduct', {
@@ -37,6 +38,11 @@ const App = (props) => {
       .catch(err => console.log('err in index.jsx metadata'))
   }, [productNum])
 
+  useEffect(() => {
+
+  }, [related])
+
+
   let toggleStar = (id) => {
     let newArr = outfitList
     if (newArr.length === 0) {
@@ -54,17 +60,17 @@ const App = (props) => {
   }
 
 
-
   return (
     <div>
       <h1>Atelier</h1>
       <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} toggleStar={(id) => toggleStar(id)} />
-      <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related}/>
+      <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
       <Questions productNum={productNum} product={product}/>
       <Reviews productNum={productNum} metadata={metadata}/>
     </div>
   )
 }
+
 
 
 

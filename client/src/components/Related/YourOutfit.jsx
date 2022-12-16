@@ -3,18 +3,11 @@ import OutfitCarousel from "./OutfitCarousel.jsx"
 
 const YourOutfit = (props) => {
 
-  const [dummyData , addToDummyData] = useState([71700])
-
-  const test = (num) => {
-    let temp = dummyData
-    let test1 = dummyData.push(num)
-    addToDummyData(test1)
-  }
 
   return (
     <div data-testid="your-outfit">
       <h4>Your Outfit</h4>
-        <OutfitCarousel productNum={props.productNum} dummyData={dummyData} test={test}/>
+        <OutfitCarousel productNum={props.productNum} yourOutfit={props.yourOutfit} changeOutfit={(arr) => {props.changeOutfit(arr)}}/>
     </div>
   )
 }
