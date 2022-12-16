@@ -43,12 +43,12 @@ export const AddReviewForm = ({ open, children, image, onClose }) => {
           {/* <form> */}
             Overall Rating*
             <br/>
-            Size: <AddReviewStars/>
-            {/* Width: <AddReviewStars rating={5}/>
-            Comfort: <AddReviewStars rating={5}/>
-            Quality: <AddReviewStars rating={5}/>
-            Length: <AddReviewStars rating={5}/>
-            Fit: <AddReviewStars rating={5}/> */}
+            Size: <AddReviewStars/><br/>
+            Width: <AddReviewStars/><br/>
+            Comfort: <AddReviewStars/><br/>
+            Quality: <AddReviewStars/><br/>
+            Length: <AddReviewStars/><br/>
+            Fit: <AddReviewStars/><br/>
           {/* </form> */}
         </div>
       </div>
