@@ -34,12 +34,16 @@ export const ReviewTile = (props) => {
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? review.photos.map((photo, index)=> {
         // need to resize photo and turn into modal when clicked
-          return (<img key={index} onClick={() => setModalIsOpen(!modalIsOpen)} className="reviewImage" hspace="5" src={`${photo.url}`} />);
-        }) : null }
-        {/* <button onClick={() => setModalIsOpen(!modalIsOpen)}>Open Modal</button> */}
-        <ReviewPhotoModal open={modalIsOpen}>
-          Review Modal
-        </ReviewPhotoModal>
+          return (
+            <>
+            <img key={index} onClick={() => setModalIsOpen(!modalIsOpen)} className="reviewImage" hspace="5" src={`${photo.url}`} />
+            <ReviewPhotoModal open={modalIsOpen}>
+              Review Modal
+            </ReviewPhotoModal>
+            </>
+            )
+          })
+        : null }
         {/* Need to add helpfulness voting function (with cookies maybe?) */}
       <p>Helpful? <u>Yes</u> ({review.helpfulness})</p>
       <hr />
