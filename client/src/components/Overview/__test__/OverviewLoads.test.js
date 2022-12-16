@@ -26,7 +26,7 @@ import ExpandedGallery from '../ImageGallery/ExpandedGallery.jsx'
 describe('Unit: Initial rendering of all Overview components', () => {
 
   test('Confirm initial Overview component load', () => {
-    render(<Overview productNum={71697} product={{}} styles={[]} metadata={{}} />)
+    render(<Overview productNum={71697} product={{}} styles={[]} metadata={{}} outfit={[]} toggleStar={() => 'add outfit'} />)
     const divElement = screen.getByTestId('overview-component')
     expect(divElement).toBeInTheDocument()
   })

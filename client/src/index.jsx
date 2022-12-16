@@ -14,7 +14,6 @@ const App = (props) => {
   const [product, setProduct] = useState({})
   const [styles, setStyles] = useState([])
   const [related, setRelated] = useState([])
-  const [outfitList, setOutfitList] = useState([])
   const [metadata, setMetadata] = useState({})
   const [yourOutfit , changeOutfit] = useState([])
 
@@ -43,35 +42,16 @@ const App = (props) => {
   }, [related])
 
 
-  let toggleStar = (id) => {
-    let newArr = outfitList
-    if (newArr.length === 0) {
-      newArr.push(id)
-    } else {
-      for (var i = 0; i < newArr.length; i++) {
-        if (newArr[i] === id) {
-          newArr.splice(i, 1)
-        } else {
-          newArr.push(id)
-        }
-      }
-    }
-    setOutfitList(newArr)
-  }
-
-
   return (
     <div>
       <h1>Atelier</h1>
-      <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} toggleStar={(id) => toggleStar(id)} />
+      <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} outfit={yourOutfit} changeOutfit={(arr) => { changeOutfit(arr) }} />
       <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
       <Questions productNum={productNum} product={product}/>
       <Reviews productNum={productNum} metadata={metadata}/>
     </div>
   )
 }
-
-
 
 
 ReactDOM.render(<App />, document.getElementById('app'));
