@@ -27,19 +27,29 @@
   border: 1px solid green;
 }
 
-.related-product-card:first-child {
+.outfit-product-card:first-child {
   margin-left: 0px;
 }
 
+.outfit-product-card-1 {
+  margin-top: 0%;
+  position:static;
+  width: 250px;
+  height: 300px;
+  display: inline-block;
+  margin-left: 15px;
+  background-color: grey;
+}
 
-.related-product-card {
+.outfit-product-card {
+  position: relative;
   width: 250px;
   height: 300px;
   display: inline-block;
   margin-left: 15px;
 }
 
-.related-product-image {
+.your-outfit-product-image {
   object-fit: cover;
   height: 80%;
   width: 100%;

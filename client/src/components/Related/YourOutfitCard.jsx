@@ -38,11 +38,11 @@ const YourOutfitCard = (props) => {
 
   return (
     <div
-    className="related-product-card"
+    className="outfit-product-card"
     data-testid="your-outfit-card"
     >
       <img onClick={() => removeFrom()} className="your-outfit-action-button" src="circleWithX.png"/>
-      <img className="related-product-image" src={cardData.imageUrl} />
+      <img className="your-outfit-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>
       <div>${cardData.originalPrice}</div>
