@@ -45,13 +45,9 @@ const App = (props) => {
   return (
     <div>
       <h1>Atelier</h1>
-<<<<<<< HEAD
       <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} outfit={yourOutfit} changeOutfit={(arr) => { changeOutfit(arr) }} />
-=======
-      {/* <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} toggleStar={(id) => toggleStar(id)} />
->>>>>>> 781c7e2 (added HOC to wrap image into a component that supports modals)
       <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
-      <Questions productNum={productNum} product={product}/> */}
+      <Questions productNum={productNum} product={product}/>
       <Reviews productNum={productNum} metadata={metadata}/>
     </div>
   )
