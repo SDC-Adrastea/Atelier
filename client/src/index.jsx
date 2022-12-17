@@ -71,6 +71,11 @@ const App = (props) => {
     }
   }, [styles])
 
+  useEffect(() => {
+    let photos = currentStyle.photos
+    setImageArr(photos)
+  }, [currentStyle])
+
 
   return (
     <div>

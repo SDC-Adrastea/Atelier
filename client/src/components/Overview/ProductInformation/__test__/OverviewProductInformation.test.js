@@ -24,7 +24,25 @@ import ToggleOutfitStar from '../ToggleOutfitStar.jsx'
 
 describe('Product Information: Stars Rating & Reviews', () => {
   test('Section should not render when no reivews are present', () => {
-    render(<Overview productNum={12345} product={dummyProductData} styles={dummyProductsData} metadata={{}} />)
+    render(<Overview
+      // initial data
+      productNum={71699} product={dummyProductData} metadata={dummyMetaReviews}
+      // styles
+      styles={dummyProductStyles.results}
+      currentStyle={dummyProductStyles.results[0]}
+      setCurrentStyle={(style) => setCurrentStyle(style)}
+      view={'default'}
+      setView={(newView) => setView(newView)}
+      mainImage={'mainImage'}
+      setMainImage={(url) => setMainImage(url)}
+      imageArr={[]}
+      setImageArr={(arr) => setImageArr(arr)}
+      // outfit
+      outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
+      // cart selection
+      skus={{}} currentSku={'123456'}
+      setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+    />)
     let stars = screen.queryByText(/reviews/i)
     expect(stars === null)
   })
