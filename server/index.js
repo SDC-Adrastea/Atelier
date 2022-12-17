@@ -5,6 +5,9 @@ const port = 3000;
 app.use(express.json());
 const axios = require('axios');
 require('dotenv').config();
+const fileupload = require("express-fileupload");
+
+
 const TOKEN = process.env.API_TOKEN;
 
 //TECH DEBT add routers
@@ -73,6 +76,7 @@ app.put('/answers/helpful', function (req, res) {
       console.error(error);
     })
 });
+
 
 
 app.get('/answers', function (req, res) {
