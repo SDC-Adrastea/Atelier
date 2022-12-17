@@ -3,33 +3,32 @@ import AddToCart from './Cart.jsx'
 
 
 const SizeQuantity = (props) => {
-  let styleOptions = props.style.skus
-  // let styleOptions = {} // testing for no data or no stock
+  let styleOptions = props.skus
+  // let styleOptions = {} // test for no stock
   let skus = []
   let sizeOptions = []
   let pageLoad
 
-  const [options, setOptions] = useState({})
-  const [sku, setSku] = useState('')
   const [sizes, setSizes] = useState([])
   const [quantity, setQuantity] = useState([])
   const [chosenSize, setChosenSize] = useState('')
   const [chosenQuantity, setChosenQuantity] = useState('')
 
   useEffect(() => {
-    setOptions(styleOptions)
     skus = Object.keys(styleOptions)
     if (skus.length > 0) {
       let array = []
+
       for (var i = 0; i < skus.length; i++) {
         let thisSize = styleOptions[skus[i]]
         if (thisSize.quantity >= 1) {
           array.push(thisSize.size)
         }
       }
+
       setSizes(array)
     }
-  }, [quantity])
+  }, [props.skus])
 
   let handleSize = (e) => {
     e.preventDefault();
@@ -39,7 +38,7 @@ const SizeQuantity = (props) => {
     for (var i = 0; i < skus.length; i++) {
       let thisSku = styleOptions[skus[i]]
       if (selectedSize === thisSku.size) {
-        setSku(skus[i])
+        props.setCurrentSku(skus[i])
         setChosenSize(selectedSize)
 
         let total = thisSku.quantity
@@ -95,7 +94,7 @@ const SizeQuantity = (props) => {
           {mappedSizes}
         </select>
         {quantitySection}
-        <AddToCart sku={sku} size={chosenSize} quantity={chosenQuantity} />
+        <AddToCart sku={props.currentSku} size={chosenSize} quantity={chosenQuantity} />
       </div>)
   } else {
     pageLoad = (
@@ -105,7 +104,7 @@ const SizeQuantity = (props) => {
 
 
   return (
-    <div>
+    <div className="size-quantity">
       {pageLoad}
     </div>
   )

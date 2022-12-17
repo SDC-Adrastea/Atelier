@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Style = (props) => {
+  console.log('style props', props)
   let style = props.style
   let toggled = props.toggled
   let styleName

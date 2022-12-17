@@ -8,6 +8,7 @@ import { AnswerList } from "./Questions/QuestionsComponents/AnswerList.jsx";
 import { Question } from "./Questions/QuestionsComponents/Question.jsx";
 import { QuestionsList } from "./Questions/QuestionsComponents/QuestionsList.jsx";
 import { SearchQuestions } from "./Questions/QuestionsComponents/SearchQuestions.jsx";
+import { AddQuestionModal } from  "./Questions/QuestionsComponents/AddQuestionModal.jsx";
 
 
 export const Questions = (props) => {
@@ -15,6 +16,7 @@ export const Questions = (props) => {
 
   const [returnedQs, setQs] = useState([]);
   const [searchQ, setSearch] =useState('');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
 
   useEffect(() => {
@@ -22,7 +24,11 @@ export const Questions = (props) => {
       params:{productNum: props.productNum}
     })
     .then((data)=>{setQs(data.data.results)})
-  },[]);
+  },[props.productNum]);
+// tech debt No error boundaries
+// look into optional chaining setQs() to undefined
+// wrap api call
+// data.data.results the second ".data" could fail and .catch will not save
 
   return (
     <div data-testid="Questions Component" className="Questions">
@@ -30,7 +36,11 @@ export const Questions = (props) => {
       <SearchQuestions setSearch={setSearch} />
 
       {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} product={props.product} returnedQs={returnedQs} searchQ={searchQ} setQs={setQs}/>}
-      <AddQuestion product={props.product} productNum={props.productNum}/>
+      <button onClick={() => setModalIsOpen(true)}>
+        Add Question
+      </button>
+      {modalIsOpen && <AddQuestionModal setModalIsOpen={setModalIsOpen} product={props.product} productNum={props.productNum}/>}
     </div>
   )
 };
+// look at questions component. If more than 4 arguments, create an object to pass props

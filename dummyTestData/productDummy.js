@@ -6,11 +6,11 @@ module.exports.dummyProductData = {
     "category": "Basketball Shoes",
     "default_price": "0",
     "features": [
-    {
+        {
             "feature": "Sole",
             "value": "Rubber"
         },
-    {
+        {
             "feature": "Material",
             "value": "FullControlSkin"
         }
@@ -20,7 +20,7 @@ module.exports.dummyProductData = {
 
 //needed to add a squaure bracket. Haven't tested it functionality
 module.exports.dummyProductsData = [
-  {
+    {
         "id": 1,
         "name": "Camo Onesie",
         "slogan": "Blend in to your crowd",
@@ -28,7 +28,7 @@ module.exports.dummyProductsData = [
         "category": "Jackets",
         "default_price": "140"
     },
-  {
+    {
         "id": 2,
         "name": "Bright Future Sunglasses",
         "slogan": "You've got to wear shades",
@@ -36,7 +36,7 @@ module.exports.dummyProductsData = [
         "category": "Accessories",
         "default_price": "69"
     },
-  {
+    {
         "id": 3,
         "name": "Morning Joggers",
         "slogan": "Make yourself a morning person",
@@ -48,91 +48,123 @@ module.exports.dummyProductsData = [
 
 
 module.exports.dummyProduct_id = {
-  "id": 11,
-  "name": "Air Minis 250",
-  "slogan": "Full court support",
-  "description": "This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.",
-  "category": "Basketball Shoes",
-  "default_price": "0",
-  "features": [
-  {
-          "feature": "Sole",
-          "value": "Rubber"
-      },
-  {
-          "feature": "Material",
-          "value": "FullControlSkin"
-      }
-  ]
+    "id": 11,
+    "name": "Air Minis 250",
+    "slogan": "Full court support",
+    "description": "This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.",
+    "category": "Basketball Shoes",
+    "default_price": "0",
+    "features": [
+        {
+            "feature": "Sole",
+            "value": "Rubber"
+        },
+        {
+            "feature": "Material",
+            "value": "FullControlSkin"
+        }
+    ]
+}
+
+module.exports.singleDummyProductStyle = {
+    "style_id": 1,
+    "name": "Forest Green & Black",
+    "original_price": "140",
+    "sale_price": "0",
+    "default?": true,
+    "photos": [
+        {
+            "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+            "url": "urlplaceholder/style_1_photo_number.jpg"
+        },
+        {
+            "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+            "url": "urlplaceholder/style_1_photo_number.jpg"
+        }
+    ],
+    "skus": {
+        "37": {
+            "quantity": 8,
+            "size": "XS"
+        },
+        "38": {
+            "quantity": 16,
+            "size": "S"
+        },
+        "39": {
+            "quantity": 17,
+            "size": "M"
+        }
+    }
 }
 
 module.exports.dummyProductStyles = {
-  "product_id": "1",
-  "results": [
-    {
-          "style_id": 1,
-          "name": "Forest Green & Black",
-          "original_price": "140",
-          "sale_price": "0",
-          "default?": true,
-          "photos": [
-      {
-                  "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
-                  "url": "urlplaceholder/style_1_photo_number.jpg"
-              },
-      {
-                  "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
-                  "url": "urlplaceholder/style_1_photo_number.jpg"
-              }
-          ],
-      "skus": {
+    "product_id": "1",
+    "results": [
+        {
+            "style_id": 1,
+            "name": "Forest Green & Black",
+            "original_price": "140",
+            "sale_price": "0",
+            "default?": true,
+            "photos": [
+                {
+                    "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                    "url": "urlplaceholder/style_1_photo_number.jpg"
+                },
+                {
+                    "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+                    "url": "urlplaceholder/style_1_photo_number.jpg"
+                }
+            ],
+            "skus": {
                 "37": {
-                      "quantity": 8,
-                      "size": "XS"
+                    "quantity": 8,
+                    "size": "XS"
                 },
                 "38": {
-                      "quantity": 16,
-                      "size": "S"
+                    "quantity": 16,
+                    "size": "S"
                 },
                 "39": {
-                      "quantity": 17,
-                      "size": "M"
+                    "quantity": 17,
+                    "size": "M"
                 }
             }
-  },
-  {
-      "style_id": 2,
-      "name": "Desert Brown & Tan",
-      "original_price": "140",
-      "sale_price": "0",
-      "default?": false,
-      "photos": [
-      {
-                  "thumbnail_url": "urlplaceholder/style_2_photo_number_thumbnail.jpg",
-                  "url": "urlplaceholder/style_2_photo_number.jpg"
-      }
-          ],
-      "skus": {
+        },
+        {
+            "style_id": 2,
+            "name": "Desert Brown & Tan",
+            "original_price": "140",
+            "sale_price": "0",
+            "default?": false,
+            "photos": [
+                {
+                    "thumbnail_url": "urlplaceholder/style_2_photo_number_thumbnail.jpg",
+                    "url": "urlplaceholder/style_2_photo_number.jpg"
+                }
+            ],
+            "skus": {
                 "37": {
-                      "quantity": 8,
-                      "size": "XS"
+                    "quantity": 8,
+                    "size": "XS"
                 },
                 "38": {
-                      "quantity": 16,
-                      "size": "S"
+                    "quantity": 16,
+                    "size": "S"
                 },
                 "39": {
-                      "quantity": 17,
-                      "size": "M"
+                    "quantity": 17,
+                    "size": "M"
                 }
             }
-    }
-  ]
+        }
+    ]
 }
 
 module.exports.dummyRelatedProducts = [
-  2,
-  3,
-  8,
-  7
+    2,
+    3,
+    8,
+    7
 ]

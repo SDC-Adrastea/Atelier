@@ -78,7 +78,7 @@ module.exports.AnswerPost = async (answerFormData, TOKEN) => {
       body: answerFormData.answer,
       name: answerFormData.nickname,
       email: answerFormData.email,
-      photos: []
+      photos: answerFormData.photos
     }
   }
   console.log('here is options ',options )

@@ -5,7 +5,6 @@ import { RatingsColumn } from './Reviews/RatingsColumn.jsx';
 
 
 export const Reviews = (props) => {
-  // console.log('props in Reviews', props)
 
   const [reviews, setReviews] = useState([]);
   const [reviewsShowing, setReviewsShowing] = useState(2);
@@ -41,7 +40,7 @@ export const Reviews = (props) => {
         <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} metadata={props.metadata}/>
       </div>
       <div>
-        <ReviewsList productNum={props.productNum} reviews={reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} />
+        <ReviewsList productNum={props.productNum} product={props.product} reviews={reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} />
       </div>
     </div>
   </div>

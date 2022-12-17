@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { ReviewTile } from './ReviewTile.jsx';
+import { AddReviewWrapper } from './AddReviewWrapper.jsx';
 
 
 export const ReviewsList = (props) => {
@@ -10,6 +11,8 @@ export const ReviewsList = (props) => {
   var setReviewsShowing = props.setReviewsShowing;
   var reviewsSortBy = props.reviewsSortBy;
   var setSort = props.setSort;
+
+  // console.log(props.product);
 
   return (
     <div data-testid="reviews-list">
@@ -27,7 +30,8 @@ export const ReviewsList = (props) => {
           return (<div key={index + 1} ><ReviewTile review={review} /></div>) ;
         }) }
       { reviews.length > 2 && reviewsShowing < reviews.length ? <button onClick={() => setReviewsShowing(reviewsShowing+2)}>More Reviews</button> : null }
-      <button>Add a Review</button>
+      {/* <button>Add a Review</button> */}
+      <AddReviewWrapper product={props.product} />
     </div>
   )
 };
