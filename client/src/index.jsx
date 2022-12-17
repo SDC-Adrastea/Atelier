@@ -14,7 +14,12 @@ const App = (props) => {
   const [styles, setStyles] = useState([])
   const [related, setRelated] = useState([])
   const [metadata, setMetadata] = useState({})
-  const [yourOutfit , changeOutfit] = useState([])
+  const [yourOutfit, changeOutfit] = useState([])
+  // Overview-Specific State
+  const [currentStyle, setCurrentStyle] = useState({})
+  const [view, setView] = useState('default')
+  const [mainImage, setMainImage] = useState('')
+  const [imageArr, setImageArr] = useState([])
 
   useEffect(() => {
     axios.get('/currentProduct', {
@@ -40,13 +45,46 @@ const App = (props) => {
 
   }, [related])
 
+  useEffect(() => {
+    if (styles.length > 0 && Object.keys(currentStyle).length === 0) {
+      styles.forEach(style => {
+        if (style['default?']) {
+          setCurrentStyle(style)
+
+          let firstPhoto = style.photos[0]
+          setMainImage(firstPhoto.url)
+          setImageArr(style.photos)
+        }
+      })
+    }
+  }, [styles])
+
+
   return (
     <div>
       <h1>Atelier</h1>
-      <Overview productNum={productNum} product={product} styles={styles} metadata={metadata} outfit={yourOutfit} changeOutfit={(arr) => { changeOutfit(arr) }} />
-      <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
-      <Questions productNum={productNum} product={product}/>
-      <Reviews productNum={productNum} metadata={metadata}/>
+      <Overview
+        // initial data
+        productNum={productNum}
+        product={product}
+        metadata={metadata}
+        // styles
+        styles={styles}
+        currentStyle={currentStyle}
+        setCurrentStyle={(style) => { setCurrentStyle(style) }}
+        view={view}
+        setView={(newView) => setView(newView)}
+        mainImage={mainImage}
+        setMainImage={(url) => setMainImage(url)}
+        imageArr={imageArr}
+        setImageArr={(arr) => setImageArr(arr)}
+        // outfit
+        outfit={yourOutfit}
+        changeOutfit={(arr) => { changeOutfit(arr) }}
+      />
+      <Related productNum={productNum} setProductNum={(newNum) => { setProductNum(newNum) }} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => { changeOutfit(arr) }} />
+      <Questions productNum={productNum} product={product} />
+      <Reviews productNum={productNum} metadata={metadata} />
     </div>
   )
 }
