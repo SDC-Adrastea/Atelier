@@ -37,7 +37,7 @@ export const Answer = (props) => {
     <div data-testid="Answer">
       <p>A: {props.answerData.body}</p>
       <p>by: {props.answerData.answerer_name}</p>
-      {props.answerData.photos.map(image =>  <img src={image.url} key ={image.id}/>)}
+      {props.answerData.photos.map(image =>  <img className="answerImages" src={image.url} key ={image.id}/>)}
 
       <p>Helpful? <button onClick={handleAHelpfulness}>Yes</button>{props.answerData.helpfulness}</p>
       {!sentReport && <button onClick={handleReport}>Report</button>}

@@ -2,8 +2,6 @@ import React, {useState, useEffect} from "react";
 
 import axios from "axios";
 
-const max = 5;
-
 export const AddAnswerModal = (props) => {
 
   const [photos, setPhotos] = useState([]);
@@ -13,6 +11,8 @@ export const AddAnswerModal = (props) => {
   const [stateImages, setStateImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
   const [error, setAnswerError] =useState(false);
+  const [underMax, setUnderMax] =useState(true);
+  const [max, setMax] = useState(1);
 
   useEffect(()=> {
     const newImageUrls = imageURLs;
@@ -25,11 +25,8 @@ export const AddAnswerModal = (props) => {
 
 }, [stateImages]);
 
-
-
   function handleSubmitPhotos (event) {
-    // var tempStateImages = stateImages;
-    // tempStateImages.push(event.target.files)
+
     setStateImages([...event.target.files]);
     console.log('stateImages in handleSubmit', stateImages);
 
@@ -44,6 +41,13 @@ export const AddAnswerModal = (props) => {
     setPhotos(tempPhotosArr);
     console.log(photos);
 
+    if (max <= 5) {
+      console.log(max)
+      setMax(max + 1);
+      if (max >= 5) {
+        setUnderMax(false);
+      }
+    }
     })
     .catch(err => console.log(err))
   }
@@ -104,8 +108,9 @@ export const AddAnswerModal = (props) => {
           <div>
           {error && email.length=== 0 && <p style={{ color:'red'}}>email must be entered</p>}
           </div>
+          {/* <img className="addPhotosButton" src="lucy-upload-photo.PNG"  id="uploadImage" style="cursor:pointer"/> */}
+          {underMax && <input id="uploadImage" name="photosInput" type="file" multiple accept="image/*" onChange={handleSubmitPhotos} /> }
 
-          Add Photos <input name="photos" type="file" multiple accept="image/*" onChange={handleSubmitPhotos} />
           <button>Submit Answer</button>
         </form>
         {imageURLs.map((photo, idx)=><img src={photo} key={idx}/>)}
