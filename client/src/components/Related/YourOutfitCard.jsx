@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import ComparisonModal from './ComparisonModal.jsx'
 import { StarRating } from '../shared/StarRating/StarRating.jsx';
 
 const YourOutfitCard = (props) => {
@@ -32,25 +31,19 @@ const YourOutfitCard = (props) => {
   }
 
 
-
-
-
-
   return (
     <div
-    className="related-product-card"
+    className="outfit-product-card"
     data-testid="your-outfit-card"
     >
       <img onClick={() => removeFrom()} className="your-outfit-action-button" src="circleWithX.png"/>
-      <img className="related-product-image" src={cardData.imageUrl} />
+      <img className="your-outfit-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>
       <div>${cardData.originalPrice}</div>
       <StarRating rating={cardData.averageReview}/>
-      {/* {showModal && <ComparisonModal primaryProduct={props.productNum} relatedProductCurrent={id}/>} */}
     </div>
   )
 }
 
 export default YourOutfitCard;
-//

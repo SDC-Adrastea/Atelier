@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import YourOutfitCard from "./YourOutfitCard.jsx"
 
-
 const OutfitCarousel = (props) => {
-
   const addToOutfitList = () => {
     props.changeOutfit((oldArr) => {
       if(oldArr.includes(props.productNum)) {
@@ -23,7 +21,9 @@ const OutfitCarousel = (props) => {
       </div>
       <div className="overflow-window-outfit">
         <div className="youroutfit-carousel-container" style={{ marginLeft: `${leftOffset}px` }}>
-          <button onClick={() => addToOutfitList()}>Add To Outfit List</button>
+          {/* <button onClick={() => addToOutfitList()}>Add To Outfit List</button> */}
+          {/* <div className="outfit-product-card-1"  onClick={() => addToOutfitList()} >Add To Outfit</div> */}
+          <img className="outfit-product-card-1" src="lucyButton.png" onClick={() => addToOutfitList()}/>
           {props.yourOutfit.map((item, index) => {
             return (
               <YourOutfitCard cardInfo={item} key={index} changeOutfit={(arr) => {props.changeOutfit(arr)}}/>

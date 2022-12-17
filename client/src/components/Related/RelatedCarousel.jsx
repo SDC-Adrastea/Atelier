@@ -7,11 +7,12 @@ const RelatedCarousel = (props) => {
 
   const [leftOffset, setLeftOffset] = useState(0)
 
+
   return (
     <div data-testid="related-carousel">
       <div className="related-carousel-transparent-container">
-        <button className="related-next-button" onClick={() => { setLeftOffset(leftOffset - 265) }}>Next</button>
         <div className="overflow-window-related">
+          <img src="rightArrow.PNG" className="related-next-button" onClick={() => { setLeftOffset(leftOffset - 265) }}/>
           <div className="related-carousel-container" style={{ marginLeft: `${leftOffset}px` }}>
             {props.related.map((item, index) => {
               return (
@@ -27,6 +28,8 @@ const RelatedCarousel = (props) => {
     </div>
   )
 }
+
+
 
 
 

@@ -22,25 +22,37 @@
 
 .overflow-window-outfit {
   overflow: hidden;
-  height:332px;
+  height:340px;
   width:1210px;
   border: 1px solid green;
 }
 
-.related-product-card:first-child {
+.outfit-product-card:first-child {
   margin-left: 0px;
 }
 
-
-.related-product-card {
+.outfit-product-card-1 {
+  margin-left: 0px;
+  position:relative;
   width: 250px;
   height: 300px;
   display: inline-block;
   margin-left: 15px;
+  background-color: grey;
+  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, .50);
 }
 
-.related-product-image {
+.outfit-product-card {
+  position: relative;
+  width: 250px;
+  height: 330px;
+  display: inline-block;
+  margin-left: 15px;
+  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, .75);
+}
+
+.your-outfit-product-image {
   object-fit: cover;
-  height: 80%;
+  height: 70%;
   width: 100%;
 }
