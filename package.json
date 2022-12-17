@@ -6,7 +6,8 @@
   "scripts": {
     "client-dev": "webpack --mode development --watch",
     "server-dev": " npx nodemon server/index.js ",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test-coverage": "jest --coverage",
     "test-watch": "npm test -- --watch"
   },
   "repository": {
