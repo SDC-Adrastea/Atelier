@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {AddReviewStars} from './AddReviewStars.jsx';
+import {OverallReviewStars} from './OverallReviewStars.jsx';
 
-export const AddReviewForm = ({ open, children, image, onClose }) => {
+export const AddReviewForm = ({ open, children, image, onClose, product }) => {
 
   const OVERLAY_STYLES = {
     position: 'fixed',
@@ -25,10 +25,6 @@ export const AddReviewForm = ({ open, children, image, onClose }) => {
     zIndex: 1000
   }
 
-  // const IMAGE_STYLES = {
-  //   maxHeight: '80%'
-  // }
-
   if (!open) return null
 
   return (
@@ -37,20 +33,21 @@ export const AddReviewForm = ({ open, children, image, onClose }) => {
       <div style={MODAL_STYLES}>
         <button onClick={onClose}>&#10006;</button>
         <br/>
-        <div>
+        <form>
           <h2>Write Your Review</h2>
-          <h3>About the Product Name Here</h3>
+          <h3>About the {product.name}</h3>
           {/* <form> */}
-            Overall Rating*
+            Overall Rating*<br/>
+            <OverallReviewStars/><br/>
             <br/>
-            Size: <AddReviewStars/><br/>
-            Width: <AddReviewStars/><br/>
-            Comfort: <AddReviewStars/><br/>
-            Quality: <AddReviewStars/><br/>
-            Length: <AddReviewStars/><br/>
-            Fit: <AddReviewStars/><br/>
+            Size: <br/>
+            Width: <br/>
+            Comfort: <br/>
+            Quality: <br/>
+            Length: <br/>
+            Fit: <br/>
           {/* </form> */}
-        </div>
+        </form>
       </div>
       </div>
     </>

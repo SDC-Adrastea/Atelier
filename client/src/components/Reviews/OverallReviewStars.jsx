@@ -1,6 +1,6 @@
 import React, {useState, useEffect}  from 'react';
 
-export const AddReviewStars = ({width = 20}) => {
+export const OverallReviewStars = ({width = 20}) => {
 
   const [starState, setStarState] = useState(0);
   const [ratingDescription, setRatingDescription] = useState('');
