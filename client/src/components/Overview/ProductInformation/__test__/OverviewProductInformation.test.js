@@ -22,25 +22,39 @@ import Price from '../Price.jsx'
 import ProductOverview from '../ProductOverview.jsx'
 import ToggleOutfitStar from '../ToggleOutfitStar.jsx'
 
+// dummyData
+import * as review from '../../../../../../dummyTestData/reviewsDummy.js'
+import * as product from '../../../../../../dummyTestData/productDummy.js'
+
 describe('Product Information: Stars Rating & Reviews', () => {
+  let thisProduct = product.dummyProduct_id
+  let styles = product.dummyProductStyles.results
+  let currentStyle = product.singleDummyProductStyle
+  let id = currentStyle.style_id
+  let photos = currentStyle.photos
+  let skus = currentStyle.skus
+  let features = product.dummyProductData.features
+
+  let ratings = review.dummyMetaReviews.ratings
+
   test('Section should not render when no reivews are present', () => {
     render(<Overview
       // initial data
-      productNum={71699} product={dummyProductData} metadata={dummyMetaReviews}
+      productNum={thisProduct.id} product={thisProduct} metadata={ratings}
       // styles
-      styles={dummyProductStyles.results}
-      currentStyle={dummyProductStyles.results[0]}
+      styles={styles}
+      currentStyle={currentStyle}
       setCurrentStyle={(style) => setCurrentStyle(style)}
       view={'default'}
       setView={(newView) => setView(newView)}
       mainImage={'mainImage'}
       setMainImage={(url) => setMainImage(url)}
-      imageArr={[]}
+      imageArr={photos}
       setImageArr={(arr) => setImageArr(arr)}
       // outfit
       outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
       // cart selection
-      skus={{}} currentSku={'123456'}
+      skus={skus} currentSku={'123456'}
       setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
     />)
     let stars = screen.queryByText(/reviews/i)

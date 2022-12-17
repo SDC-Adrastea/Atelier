@@ -31,6 +31,7 @@ describe('Unit: Initial rendering of all Overview components', () => {
   let thisProduct = product.dummyProduct_id
   let styles = product.dummyProductStyles.results
   let currentStyle = product.singleDummyProductStyle
+  let id = currentStyle.style_id
   let photos = currentStyle.photos
   let skus = currentStyle.skus
   let features = product.dummyProductData.features
@@ -92,7 +93,7 @@ describe('Unit: Initial rendering of all Overview components', () => {
 
   test('Confirm initial load of Features List subcomponent', () => {
     render(<FeaturesList key={1} feature={features[0]} />)
-    const featureElement = screen.getByText(/Fabric/i)
+    const featureElement = screen.getByText(/Rubber/i)
     expect(featureElement).toBeInTheDocument()
   })
 
@@ -106,13 +107,6 @@ describe('Unit: Initial rendering of all Overview components', () => {
     render(<StyleSelector styles={styles} toggledStyle={currentStyle} onClick={() => 'onClick test'} />)
     const h3Element = screen.getByText(/Styles:/i)
     expect(h3Element).toBeInTheDocument()
-  })
-
-  test('Confirm initial load of Style subcomponent', () => {
-    currentStyle.name = "Black"
-    render(<Style key={1} style={currentStyle} toggledStyle={currentStyle} onClick={() => 'onClick test'} />)
-    const styleName = screen.getByText(/Black/i)
-    expect(styleName).toBeInTheDocument()
   })
 
   test('Confirm initial load of Size & Quantity subcomponent', () => {
