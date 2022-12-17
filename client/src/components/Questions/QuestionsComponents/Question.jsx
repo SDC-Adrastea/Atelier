@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { AnswerList } from "./AnswerList.jsx";
 import { AddAnswer } from "./AddAnswer.jsx"
+import { AddAnswerModal } from "./AddAnswerModal.jsx"
+
 import axios from "axios";
 
 
@@ -9,6 +11,7 @@ export const Question = (props) => {
   const question_id = props.data.question_id;
   const [sentHelpful, setHelpful] = useState(false);
   const [returnedAs, setAs] = useState([]);
+  const [ansModalIsOpen, setAnsModalIsOpen] = useState(false);
 
   const handleQHelpfulness = () => {
     if (sentHelpful === false) {
@@ -31,7 +34,13 @@ export const Question = (props) => {
       <h4>Q: {props.data.question_body}</h4>
       <p>Helpful? <button onClick={handleQHelpfulness}>Yes</button>{props.data.question_helpfulness}</p>
       <AnswerList questionId={props.data.question_id} setAs={setAs} returnedAs={returnedAs}/>
-      <AddAnswer data={props.data} product={props.product} questionId={props.data.question_id} setAs={setAs}/>
+      {/* <AddAnswer data={props.data} product={props.product} questionId={props.data.question_id} setAs={setAs}/> */}
+
+
+      <button onClick={() => setAnsModalIsOpen(true)}>
+        Add Answer
+      </button>
+      {ansModalIsOpen && <AddAnswerModal setAnsModalIsOpen={setAnsModalIsOpen} data={props.data} product={props.product} questionId={props.data.question_id} setAs={setAs}/>}
     </div>
   );
 };
