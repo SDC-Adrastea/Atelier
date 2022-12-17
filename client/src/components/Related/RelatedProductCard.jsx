@@ -46,10 +46,6 @@ const RelatedProductCard = (props) => {
      } className="related-product-card"
      data-testid="related-product-card-test"
      >
-
-    {/* <div className="related-product-card"
-      data-testid="related-product-card-test"
-    > */}
       <img className="related-action-button" src="star2.png" onClick={modalSearch}/>
       <img className="related-product-image" src={cardData.imageUrl} />
       <div>{cardData.category}</div>

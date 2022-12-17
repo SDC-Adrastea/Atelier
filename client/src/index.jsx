@@ -7,7 +7,6 @@ import { Related } from './components/Related.jsx';
 import { Questions } from './components/Questions.jsx';
 import { Reviews } from './components/Reviews.jsx';
 
-
 const App = (props) => {
   const sampleID = 71699;
   const [productNum, setProductNum] = useState(sampleID)
@@ -41,7 +40,6 @@ const App = (props) => {
 
   }, [related])
 
-
   return (
     <div>
       <h1>Atelier</h1>
@@ -52,6 +50,5 @@ const App = (props) => {
     </div>
   )
 }
-
 
 ReactDOM.render(<App />, document.getElementById('app'));

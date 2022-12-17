@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import YourOutfitCard from "./YourOutfitCard.jsx"
 
-
 const OutfitCarousel = (props) => {
-
   const addToOutfitList = () => {
     props.changeOutfit((oldArr) => {
       if(oldArr.includes(props.productNum)) {
