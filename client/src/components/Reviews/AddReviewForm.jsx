@@ -25,6 +25,8 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
     zIndex: 1000
   }
 
+  var characteristics = ['size', 'width', 'comfort', 'quality', 'length', 'fit'];
+
   if (!open) return null
 
   return (
@@ -36,17 +38,28 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
         <form>
           <h2>Write Your Review</h2>
           <h3>About the {product.name}</h3>
-          {/* <form> */}
             Overall Rating*<br/>
             <OverallReviewStars/><br/>
             <br/>
-            Size: <br/>
-            Width: <br/>
-            Comfort: <br/>
-            Quality: <br/>
-            Length: <br/>
-            Fit: <br/>
-          {/* </form> */}
+            <div id="recommended">
+              Recommended:
+              <input type="radio" name="recommended" value="true" />Yes
+              <input type="radio" name="recommended" value="false" />No
+              <br/>
+            </div>
+            {characteristics.map((characteristic, index) => {
+              return (
+                <div id={characteristic} key={index}>
+                  {characteristic.charAt(0).toUpperCase() + characteristic.slice(1)} :
+                  <input type="radio" name={characteristic}  value="1" />1
+                  <input type="radio" name={characteristic}  value="2" />2
+                  <input type="radio" name={characteristic}  value="3" />3
+                  <input type="radio" name={characteristic}  value="4" />4
+                  <input type="radio" name={characteristic}  value="5" />5
+                  <br/>
+                </div>
+              )
+            })}
         </form>
       </div>
       </div>
