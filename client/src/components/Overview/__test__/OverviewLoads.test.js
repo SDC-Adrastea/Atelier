@@ -23,10 +23,33 @@ import AddToCart from '../AddToCart/Cart.jsx'
 import DefaultGallery from '../ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from '../ImageGallery/ExpandedGallery.jsx'
 
+// dummyData
+import dummyProductData from '../../../../../dummyTestData/productDummy.js'
+import dummyMetaReviews from '../../../../../dummyTestData/reviewsDummy.js'
+import dummyProductStyles from '../../../../../dummyTestData/productDummy.js'
+
 describe('Unit: Initial rendering of all Overview components', () => {
 
   test('Confirm initial Overview component load', () => {
-    render(<Overview productNum={71697} product={{}} styles={[]} metadata={{}} outfit={[]} toggleStar={() => 'add outfit'} />)
+    render(<Overview
+      // initial data
+      productNum={71699} product={dummyProductData} metadata={dummyMetaReviews}
+      // styles
+      styles={dummyProductStyles.results}
+      currentStyle={dummyProductStyles.results[0]}
+      setCurrentStyle={(style) => setCurrentStyle(style)}
+      view={'default'}
+      setView={(newView) => setView(newView)}
+      mainImage={'mainImage'}
+      setMainImage={(url) => setMainImage(url)}
+      imageArr={[]}
+      setImageArr={(arr) => setImageArr(arr)}
+      // outfit
+      outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
+      // cart selection
+      skus={{}} currentSku={'123456'}
+      setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+    />)
     const divElement = screen.getByTestId('overview-component')
     expect(divElement).toBeInTheDocument()
   })

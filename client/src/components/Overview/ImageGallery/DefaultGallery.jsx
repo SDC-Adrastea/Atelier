@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 
 const DefaultGallery = (props) => {
-  let currentStyle = props.style
-  let currentImage = props.main
-  let imageArr = []
+  let currentStyle = props.style || {}
+  let currentImage = props.main || ''
+  let imageArr = props.images || []
+  let display = []
 
   if (props.style === {}) {
-    currentStyle.photos = []
     currentStyle.name = ''
   } else {
-    currentStyle.photos.map(photo => {
-      imageArr.push(photo.url)
+    imageArr.map(photo => {
+      display.push(photo.url)
     })
   }
 
@@ -35,7 +35,7 @@ const DefaultGallery = (props) => {
       </div>
 
       <div className="default-overlay">
-        {imageArr.map((photo, index) => {
+        {display.map((photo, index) => {
           return (
             <img
               className="thumbnail-image"

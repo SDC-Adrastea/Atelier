@@ -20,6 +20,8 @@ const App = (props) => {
   const [view, setView] = useState('default')
   const [mainImage, setMainImage] = useState('')
   const [imageArr, setImageArr] = useState([])
+  const [skus, setSkus] = useState({})
+  const [currentSku, setCurrentSku] = useState('')
 
   useEffect(() => {
     axios.get('/currentProduct', {
@@ -46,16 +48,26 @@ const App = (props) => {
   }, [related])
 
   useEffect(() => {
-    if (styles.length > 0 && Object.keys(currentStyle).length === 0) {
+    if (styles.length > 0 || Object.keys(currentStyle).length === 0) {
       styles.forEach(style => {
         if (style['default?']) {
           setCurrentStyle(style)
+          setSkus(style.skus)
 
           let firstPhoto = style.photos[0]
           setMainImage(firstPhoto.url)
           setImageArr(style.photos)
         }
       })
+      if (styles.length === 1) {
+        let thisStyle = styles[0]
+        setCurrentStyle(thisStyle)
+        setSkus(thisStyle.skus)
+
+        let firstPhoto = thisStyle.photos[0]
+        setMainImage(firstPhoto.url)
+        setImageArr(thisStyle.photos)
+      }
     }
   }, [styles])
 
@@ -65,13 +77,11 @@ const App = (props) => {
       <h1>Atelier</h1>
       <Overview
         // initial data
-        productNum={productNum}
-        product={product}
-        metadata={metadata}
+        productNum={productNum} product={product} metadata={metadata}
         // styles
         styles={styles}
         currentStyle={currentStyle}
-        setCurrentStyle={(style) => { setCurrentStyle(style) }}
+        setCurrentStyle={(style) => setCurrentStyle(style)}
         view={view}
         setView={(newView) => setView(newView)}
         mainImage={mainImage}
@@ -79,8 +89,10 @@ const App = (props) => {
         imageArr={imageArr}
         setImageArr={(arr) => setImageArr(arr)}
         // outfit
-        outfit={yourOutfit}
-        changeOutfit={(arr) => { changeOutfit(arr) }}
+        outfit={yourOutfit} changeOutfit={(arr) => changeOutfit(arr)}
+        // cart selection
+        skus={skus} currentSku={currentSku}
+        setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
       />
       <Related productNum={productNum} setProductNum={(newNum) => { setProductNum(newNum) }} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => { changeOutfit(arr) }} />
       <Questions productNum={productNum} product={product} />
