@@ -3,7 +3,7 @@ import AddToCart from './Cart.jsx'
 
 
 const SizeQuantity = (props) => {
-  let styleOptions = props.style.skus
+  let styleOptions = props.skus
   // let styleOptions = {} // testing for no data or no stock
   let skus = []
   let sizeOptions = []
