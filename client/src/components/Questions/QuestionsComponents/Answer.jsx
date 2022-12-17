@@ -9,6 +9,7 @@ export const Answer = (props) => {
 
   const [sentAHelpful, setAHelpful] = useState(false);
   const [sentReport, setReported] = useState(false);
+  const [photosExist, setPhotosExist] = useState(false);
 
   const handleAHelpfulness = () => {
     if (sentAHelpful === false) {
@@ -32,12 +33,12 @@ export const Answer = (props) => {
     }
   };
 
-
-
   return (
     <div data-testid="Answer">
       <p>A: {props.answerData.body}</p>
       <p>by: {props.answerData.answerer_name}</p>
+      {props.answerData.photos.map(image =>  <img className="answerImages" src={image.url} key ={image.id}/>)}
+
       <p>Helpful? <button onClick={handleAHelpfulness}>Yes</button>{props.answerData.helpfulness}</p>
       {!sentReport && <button onClick={handleReport}>Report</button>}
       {sentReport && <p style={{ color: 'red' }}>REPORTED</p>}

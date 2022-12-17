@@ -99,9 +99,9 @@ const App = (props) => {
         skus={skus} currentSku={currentSku}
         setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
       />
-      <Related productNum={productNum} setProductNum={(newNum) => { setProductNum(newNum) }} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => { changeOutfit(arr) }} />
-      <Questions productNum={productNum} product={product} />
-      <Reviews productNum={productNum} metadata={metadata} />
+      <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
+      <Questions productNum={productNum} product={product}/>
+      <Reviews productNum={productNum} product={product} metadata={metadata}/>
     </div>
   )
 }
