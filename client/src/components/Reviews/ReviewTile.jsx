@@ -2,15 +2,12 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { format, parseISO } from 'date-fns';
 import { StarRating } from '../shared/StarRating/StarRating.jsx';
+import { ReviewPhotoWrapper } from './ReviewPhotoWrapper.jsx';
 
 export const ReviewTile = (props) => {
   const { review } = props;
 
   const [responseExists, setResponse] = useState(false);
-
-  // useEffect(() => {
-  //   console.log(review);
-  // });
 
   return (
     <div data-testid="reviews-list">
@@ -32,8 +29,13 @@ export const ReviewTile = (props) => {
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? review.photos.map((photo, index)=> {
         // need to resize photo and turn into modal when clicked
-          return (<img key={index} className="reviewImage" hspace="5" src={`${photo.url}`} />);
-        }) : null }
+          return (
+            <div key={index}>
+            <ReviewPhotoWrapper image={photo.url} />
+            </div>
+            )
+          })
+        : null }
         {/* Need to add helpfulness voting function (with cookies maybe?) */}
       <p>Helpful? <u>Yes</u> ({review.helpfulness})</p>
       <hr />
