@@ -33,7 +33,7 @@ const DefaultGallery = (props) => {
   return (
     <div className="default-view">
       Default
-      <div className="default-main">
+      <div style={mainImage}>
         <img src={currentImage} alt={currentStyle.name} height="250" onClick={() => props.onClick()} />
       </div>
 

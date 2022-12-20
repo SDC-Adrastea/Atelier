@@ -13,14 +13,18 @@ import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 
 // CSS styles
 const mainContainer = {
+  display: 'flex'
+}
+
+const imageContainer = {
   display: 'flex',
-  flexWrap: 'nowrap'
+  flex: '2 1 auto'
 }
 
 const productContainer = {
   display: 'flex',
-  flexDirection: 'column',
-  flexWrap: 'nowrap'
+  flexFlow: 'column nowrap',
+  flex: '1 1 auto'
 }
 
 export const Overview = (props) => {
@@ -86,7 +90,7 @@ export const Overview = (props) => {
   return (
     <div data-testid="overview-component">
       <div style={mainContainer}>
-        <div>{currentView}</div>
+        <div style={imageContainer}>{currentView}</div>
         <div style={productContainer}>
           {reviewSection}
           {titleSection}

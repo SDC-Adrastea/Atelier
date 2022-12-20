@@ -20,7 +20,7 @@ const ToggleOutfitStar = (props) => {
   return (
     <>
       <button className="toggle-star" type="button" onClick={() => { handleStar() }} >
-        STAR <img src="star.png" alt="star" width="10" />
+        <img src="star2.png" alt="star" width="20" />
       </button>
     </>
   )

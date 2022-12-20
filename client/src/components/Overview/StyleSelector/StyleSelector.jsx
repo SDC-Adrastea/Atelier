@@ -5,7 +5,7 @@ import Style from './Style.jsx'
 const thumbnailContainer = {
   display: 'flex',
   height: '100px',
-  flexWrap: 'nowrap',
+  flexFlow: 'row nowrap',
   padding: '10px'
 }
 
