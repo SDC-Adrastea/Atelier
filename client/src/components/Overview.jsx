@@ -11,7 +11,21 @@ import SizeQuantity from './Overview/AddToCart/SizeQuantity.jsx'
 import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 
-// API functions
+const mainContainer = {
+  display: 'flex'
+}
+
+const image = {
+
+}
+
+const imageOverlay = {
+
+}
+
+const productSection = {
+
+}
 
 export const Overview = (props) => {
   // console.log('props in Overview', props)
@@ -74,15 +88,17 @@ export const Overview = (props) => {
   }
 
   return (
-    <div data-testid="overview-component" className="subcomponents">
-      {currentView}
-      {reviewSection}
-      {titleSection}
-      {priceSection}
-      {toggleSection}
-      {styleSection}
-      {sizeQuantitySection}
-      {productOverview}
+    <div data-testid="overview-component">
+      <div style={mainContainer}>
+        <div>{currentView}</div>
+        {reviewSection}
+        {titleSection}
+        {priceSection}
+        {toggleSection}
+        {styleSection}
+        {sizeQuantitySection}
+      </div>
+        {productOverview}
     </div>
   )
 }
