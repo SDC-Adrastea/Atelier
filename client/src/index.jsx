@@ -83,21 +83,16 @@ const App = (props) => {
       <Overview
         // initial data
         productNum={productNum} product={product} metadata={metadata}
-        // styles
-        styles={styles}
-        currentStyle={currentStyle}
-        setCurrentStyle={(style) => setCurrentStyle(style)}
-        view={view}
-        setView={(newView) => setView(newView)}
-        mainImage={mainImage}
-        setMainImage={(url) => setMainImage(url)}
-        imageArr={imageArr}
-        setImageArr={(arr) => setImageArr(arr)}
+        // style section
+        styles={styles} currentStyle={currentStyle} setCurrentStyle={(style) => setCurrentStyle(style)}
+        view={view} setView={(newView) => setView(newView)}
+        mainImage={mainImage} setMainImage={(url) => setMainImage(url)}
+        imageArr={imageArr} setImageArr={(arr) => setImageArr(arr)}
         // outfit
         outfit={yourOutfit} changeOutfit={(arr) => changeOutfit(arr)}
         // cart selection
-        skus={skus} currentSku={currentSku}
-        setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+        skus={skus} setSkus={(obj) => setSkus(obj)}
+        currentSku={currentSku} setCurrentSku={(sku) => setCurrentSku(sku)}
       />
       <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
       <Questions productNum={productNum} product={product}/>
