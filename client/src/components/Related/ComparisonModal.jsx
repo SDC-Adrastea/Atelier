@@ -3,32 +3,55 @@ import axios from "axios"
 
 const ComparisonModal = (props) => {
 
+  const getFeatures = (obj1, obj2) => {
+    let obj1Features = obj1.features
+    let obj2Features = obj2.features
+    let features = []
+    obj1Features.forEach((feature) => {
+      if (features.includes(feature)) {
+        console.log('its here')
+      } else {
+        features.push(feature)
+      }
+    })
+    obj2Features.forEach((feature) => {
+      if (features.includes(feature)) {
+        console.log('its here')
+      } else {
+        features.push(feature)
+      }
+    })
+    return features
+  }
+
+
+  const allFeatures = getFeatures(props.primaryProduct, props.relatedProductCurrent);
+
   return (
     <div className="overlay">
       <div className="modalContainer">
         {console.log(props)}
         <button onClick={(value) => props.setModal(false)} >close</button>
-        <div>
-          <h2>{props.primaryProduct.productName}</h2>
-          {props.primaryProduct.features.map((feature, index) => {
-            return (
-              <ul key={index}>feature: {feature.feature} , Value: {feature.value}</ul>
-            )
-          })}
-        </div>
-        <div>
-          <h2>{props.relatedProductCurrent.productName}</h2>
-          {props.relatedProductCurrent.features.map((feature, index) => {
-            return (
-              <ul key={index}>feature: {feature.feature} , Value: {feature.value}</ul>
-            )
-          })}
-        </div>
+        <table className='modal-table'>
+            <th>{props.primaryProduct.productName}</th>
+            <th></th>
+            <th>{props.relatedProductCurrent.productName}</th>
+            <tbody className='modal-table-body'>
+              {allFeatures.map((feature, index) => {
+                return (
+                  <tr className='feature-row' key={index}>
+                    <td className='left-check'>{props.primaryProduct.features.filter(item => item.feature === feature.feature && item.value === feature.value).length > 0 ? '✓' : null}</td>
+                    <td className='feature-cell'>{feature.value} {feature.feature}</td>
+                    <td className='right-check'>{props.relatedProductCurrent.features.filter(item => item.feature === feature.feature && item.value === feature.value).length > 0 ? '✓' : null}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+        </table>
       </div>
     </div>
   )
 }
-
 export default ComparisonModal;
 
 //   const rows = props.primaryProduct.map((rowData, index) => {
@@ -54,3 +77,20 @@ export default ComparisonModal;
 //     </div>
 //   )
 // }
+
+{/* <div>
+          <h2>{props.primaryProduct.productName}</h2>
+          {props.primaryProduct.features.map((feature, index) => {
+            return (
+              <ul key={index}>feature: {feature.feature} , Value: {feature.value}</ul>
+            )
+          })}
+        </div>
+        <div>
+          <h2>{props.relatedProductCurrent.productName}</h2>
+          {props.relatedProductCurrent.features.map((feature, index) => {
+            return (
+              <ul key={index}>feature: {feature.feature} , Value: {feature.value}</ul>
+            )
+          })}
+        </div> */}

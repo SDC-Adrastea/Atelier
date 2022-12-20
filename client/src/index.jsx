@@ -17,6 +17,15 @@ const App = (props) => {
   const [yourOutfit , changeOutfit] = useState([])
 
   useEffect(() => {
+    const data = window.localStorage.getItem('your_outfit_storage')
+    if (data !== null) { changeOutfit(JSON.parse(data)) }
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('your_outfit_storage', JSON.stringify(yourOutfit))
+  }, [yourOutfit])
+
+  useEffect(() => {
     axios.get('/currentProduct', {
       params: { productNum }
     })
@@ -35,10 +44,6 @@ const App = (props) => {
       })
       .catch(err => console.log('err in index.jsx metadata'))
   }, [productNum])
-
-  useEffect(() => {
-
-  }, [related])
 
   return (
     <div>
