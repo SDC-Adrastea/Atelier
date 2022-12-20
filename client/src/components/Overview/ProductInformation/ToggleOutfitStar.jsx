@@ -1,5 +1,12 @@
 import React from 'react'
 
+// CSS Styles
+const starBtn = {
+  padding: '10px',
+  width: '50px',
+  textAlign: 'center'
+}
+
 const ToggleOutfitStar = (props) => {
   let id = props.id
   let outfit = props.outfit
@@ -19,7 +26,7 @@ const ToggleOutfitStar = (props) => {
 
   return (
     <>
-      <button className="toggle-star" type="button" onClick={() => { handleStar() }} >
+      <button type="button" onClick={() => { handleStar() }} style={starBtn}>
         <img src="star2.png" alt="star" width="20" />
       </button>
     </>

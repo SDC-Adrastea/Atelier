@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import AddToCart from './Cart.jsx'
 
 // CSS styles
+const sizeQuantityStyle = {
+  padding: '10px'
+}
 
 const SizeQuantity = (props) => {
   let styleOptions = props.skus
@@ -68,7 +71,7 @@ const SizeQuantity = (props) => {
 
   let quantitySection = (
     <>
-      <select name="quantity" id="quantity-select">
+      <select name="quantity" id="quantity-select" style={sizeQuantityStyle}>
         <option value="">--</option>
       </select>
     </>
@@ -77,7 +80,7 @@ const SizeQuantity = (props) => {
   if (quantity.length > 0) {
     quantitySection = (
       <>
-        <select name="quantity" id="quantity-select" onChange={handleQuantity}>
+        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={sizeQuantityStyle}>
           {mappedQuantity}
         </select>
       </>
@@ -87,7 +90,7 @@ const SizeQuantity = (props) => {
   if (sizes.length > 0) {
     pageLoad = (
       <>
-        <select name="size" id="size-select" onChange={handleSize}>
+        <select name="size" id="size-select" onChange={handleSize} style={sizeQuantityStyle}>
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
@@ -95,7 +98,7 @@ const SizeQuantity = (props) => {
         <AddToCart sku={props.currentSku} size={chosenSize} quantity={chosenQuantity} />
       </>)
   } else {
-    pageLoad = <>OUT OF STOCK</>
+    pageLoad = <div style={sizeQuantityStyle}>OUT OF STOCK</div>
   }
 
 
