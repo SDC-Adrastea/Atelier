@@ -12,7 +12,7 @@ const StyleSelector = (props) => {
         <Style
           key={style.style_id}
           style={style}
-          toggled={toggledStyle}
+          toggled={props.toggledStyle}
           onClick={(selectedStyle) => {
             props.onClick(selectedStyle)
           }}

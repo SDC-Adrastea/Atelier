@@ -31,7 +31,12 @@ export const AddAnswer = (props) => {
         setAnswer('')
         setNickName('')
         setEmail('')
-        handleAnswerCloseClick()
+        axios.get('/answers',{
+          params:{questionId: props.questionId}
+        })
+        .then((data)=>{props.setAs(data.data.results)
+          handleAnswerCloseClick()
+        })
       })
 
     }
