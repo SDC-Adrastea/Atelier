@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const ProductCategoryTitle = (props) => {
   let title = props.title
@@ -6,8 +6,8 @@ const ProductCategoryTitle = (props) => {
 
   return (
     <>
-      <div className="category">{category}</div>
-      <div className="title"><h2>{title}</h2></div>
+      {category}
+      <h2>{title}</h2>
     </>
   )
 }

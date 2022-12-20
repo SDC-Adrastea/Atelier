@@ -11,20 +11,16 @@ import SizeQuantity from './Overview/AddToCart/SizeQuantity.jsx'
 import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 
+// CSS styles
 const mainContainer = {
-  display: 'flex'
+  display: 'flex',
+  flexWrap: 'nowrap'
 }
 
-const image = {
-
-}
-
-const imageOverlay = {
-
-}
-
-const productSection = {
-
+const productContainer = {
+  display: 'flex',
+  flexDirection: 'column',
+  flexWrap: 'nowrap'
 }
 
 export const Overview = (props) => {
@@ -91,14 +87,16 @@ export const Overview = (props) => {
     <div data-testid="overview-component">
       <div style={mainContainer}>
         <div>{currentView}</div>
-        {reviewSection}
-        {titleSection}
-        {priceSection}
-        {toggleSection}
-        {styleSection}
-        {sizeQuantitySection}
+        <div style={productContainer}>
+          {reviewSection}
+          {titleSection}
+          {priceSection}
+          {toggleSection}
+          {styleSection}
+          {sizeQuantitySection}
+        </div>
       </div>
-        {productOverview}
+      {productOverview}
     </div>
   )
 }

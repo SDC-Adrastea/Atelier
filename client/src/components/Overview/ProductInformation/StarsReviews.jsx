@@ -1,10 +1,11 @@
 import React from 'react'
 import { StarRating } from '../../shared/StarRating/StarRating.jsx'
 
+// CSS Styles
+
 const StarsReviews = (props) => {
   let ratings = props.ratings
-  let thisRating
-  let allRatings = 0
+  let thisRating, allRatings
 
   if (ratings !== undefined) {
     let avgStars = (ratings) => {
@@ -24,14 +25,10 @@ const StarsReviews = (props) => {
     }
 
     let average = Number(parseFloat(avgStars(ratings)).toFixed(2))
-    thisRating = <><StarRating rating={average} /> | <a href ="#reviews-anchor">Read all {allRatings} reviews</a></>
+    thisRating = <span><StarRating rating={average} /> | <a href ="#reviews-anchor">Read all {allRatings} reviews</a></span>
   }
 
-  return (
-    <>
-      {thisRating}
-    </>
-  )
+  return <>{thisRating}</>
 }
 
 export default StarsReviews;

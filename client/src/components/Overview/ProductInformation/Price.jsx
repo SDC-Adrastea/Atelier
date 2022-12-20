@@ -1,5 +1,6 @@
 import React from 'react'
 
+// CSS style
 const saleStyle = {
   color: 'red'
 }

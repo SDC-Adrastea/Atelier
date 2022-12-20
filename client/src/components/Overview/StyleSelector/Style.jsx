@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+// CSS styles
 const thumbnail = {
   display: 'inline-block',
   marginLeft: '15px'

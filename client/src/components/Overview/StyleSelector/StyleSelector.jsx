@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Style from './Style.jsx'
 
+// CSS styles
 const thumbnailContainer = {
+  display: 'flex',
   height: '100px',
   flexWrap: 'nowrap',
-  border: '1px solid purple',
   padding: '10px'
 }
 
