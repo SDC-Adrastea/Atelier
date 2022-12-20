@@ -22,7 +22,7 @@ const Style = (props) => {
   return (
     <div style={thumbnail}>
       {styleName}
-      <img src={style.photos[0].thumbnail_url} width="50" height="50" style={styleImage}
+      <img src={style.photos[0].thumbnail_url} width="60" height="60" style={styleImage}
         onClick={() => props.onClick(style)}
       />
     </div>
