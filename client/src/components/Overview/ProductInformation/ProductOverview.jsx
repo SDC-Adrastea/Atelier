@@ -12,12 +12,12 @@ const ProductOverview = (props) => {
   }
 
   return (
-    <div className="product-overview">
+    <>
       <div className="product-slogan"><strong>{slogan}</strong></div>
       <div className="product-description">{description}</div>
       <br></br>
       <div className="product-features">{features}</div>
-    </div>
+    </>
   )
 }
 

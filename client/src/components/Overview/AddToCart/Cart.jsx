@@ -31,9 +31,9 @@ const AddToCart = (props) => {
   }
 
   return (
-    <div>
+    <>
       <button onClick={handleClick}>Add to Cart</button>
-    </div>
+    </>
   )
 }
 

@@ -24,13 +24,13 @@ const StarsReviews = (props) => {
     }
 
     let average = Number(parseFloat(avgStars(ratings)).toFixed(2))
-    thisRating = <div><StarRating rating={average} /> | <a href ="#reviews-anchor">Read all {allRatings} reviews</a></div>
+    thisRating = <><StarRating rating={average} /> | <a href ="#reviews-anchor">Read all {allRatings} reviews</a></>
   }
 
   return (
-    <div>
+    <>
       {thisRating}
-    </div>
+    </>
   )
 }
 

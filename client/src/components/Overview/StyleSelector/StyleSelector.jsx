@@ -23,8 +23,7 @@ const StyleSelector = (props) => {
 
   return (
     <div className="thumbnails-container">
-      <h3>Styles: </h3>
-      {mapStyles}
+      <h3>Styles: </h3> {mapStyles}
     </div>
   )
 }

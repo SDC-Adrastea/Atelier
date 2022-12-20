@@ -18,11 +18,11 @@ const ToggleOutfitStar = (props) => {
 
 
   return (
-    <div className="toggle-star-btn">
+    <>
       <button className="toggle-star" type="button" onClick={() => { handleStar() }} >
         STAR <img src="star.png" alt="star" width="10" />
       </button>
-    </div>
+    </>
   )
 }
 

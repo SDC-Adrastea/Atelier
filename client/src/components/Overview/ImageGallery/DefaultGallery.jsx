@@ -14,8 +14,6 @@ const DefaultGallery = (props) => {
     })
   }
 
-  // console.log('props in default gallery', currentStyle)
-
   let handleClick = (e) => {
     e.preventDefault()
     let url = e.target.src

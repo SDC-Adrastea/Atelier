@@ -5,10 +5,10 @@ const ProductCategoryTitle = (props) => {
   let category = props.category
 
   return (
-    <div className="category-title">
+    <>
       <div className="category">{category}</div>
       <div className="title"><h2>{title}</h2></div>
-    </div>
+    </>
   )
 }
 

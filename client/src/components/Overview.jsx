@@ -66,7 +66,7 @@ export const Overview = (props) => {
   if (view === 'expanded') {
     currentView = (
       <ExpandedGallery
-        currentStyle={currentStyle} main={mainImage} images={imageArr}
+        style={currentStyle} main={mainImage} images={imageArr}
         onClick={() => props.setView('default')}
         thumbnailChange={img => props.setMainImage(img)}
       />
@@ -74,17 +74,15 @@ export const Overview = (props) => {
   }
 
   return (
-    <div data-testid="overview-component">
-      <div className="subcomponents">
-        {currentView}
-        {reviewSection}
-        {titleSection}
-        {priceSection}
-        {toggleSection}
-        {styleSection}
-        {sizeQuantitySection}
-        {productOverview}
-      </div>
+    <div data-testid="overview-component" className="subcomponents">
+      {currentView}
+      {reviewSection}
+      {titleSection}
+      {priceSection}
+      {toggleSection}
+      {styleSection}
+      {sizeQuantitySection}
+      {productOverview}
     </div>
   )
 }

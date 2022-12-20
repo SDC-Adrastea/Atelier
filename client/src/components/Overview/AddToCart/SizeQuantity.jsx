@@ -69,37 +69,35 @@ const SizeQuantity = (props) => {
   })
 
   let quantitySection = (
-    <div>
+    <>
       <select name="quantity" id="quantity-select">
         <option value="">--</option>
       </select>
-    </div>
+    </>
   )
 
   if (quantity.length > 0) {
     quantitySection = (
-      <div>
+      <>
         <select name="quantity" id="quantity-select" onChange={handleQuantity}>
           {mappedQuantity}
         </select>
-      </div>
+      </>
     )
   }
 
   if (sizes.length > 0) {
     pageLoad = (
-      <div>
+      <>
         <select name="size" id="size-select" onChange={handleSize}>
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
         {quantitySection}
         <AddToCart sku={props.currentSku} size={chosenSize} quantity={chosenQuantity} />
-      </div>)
+      </>)
   } else {
-    pageLoad = (
-      <div>OUT OF STOCK</div>
-    )
+    pageLoad = <>OUT OF STOCK</>
   }
 
 

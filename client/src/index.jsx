@@ -78,7 +78,7 @@ const App = (props) => {
 
 
   return (
-    <div>
+    <>
       <h1>Atelier</h1>
       <Overview
         // initial data
@@ -102,7 +102,7 @@ const App = (props) => {
       <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
       <Questions productNum={productNum} product={product}/>
       <Reviews productNum={productNum} product={product} metadata={metadata}/>
-    </div>
+    </>
   )
 }
 
