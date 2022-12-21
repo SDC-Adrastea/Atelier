@@ -2,19 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 // CSS styles
 const thumbnailContainer = {
-  // display: 'flex',
-  // flexWrap: 'wrap',
-  // flexDirection: 'column'
   position: 'relative',
   paddingTop: '1em',
-  textAlign: 'center'
+  alignItems: 'center'
 }
 
 const styleNameText = {
-  // position: 'absolute',
-  // top: '0',
-  // left: '0',
-  // right: '0',
   margin: '0.5em'
 }
 
