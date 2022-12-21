@@ -120,8 +120,10 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
               )
             })}
             <div>
+
             <label htmlFor="reviewSummary">Review Summary: </label>
             <input type="text" id="reviewSummary" name="reviewSummary" placeholder="Example: Best purchase ever!" required maxLength="60" size="65"></input><br/>
+
             <label>Review Body: </label>
             <textarea
               name="reviewBody"
@@ -132,7 +134,19 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
               minLength="50"
               maxLength="1000">
             </textarea><br/>
-            {reviewBody.length < 50 ? `Minimum required characters left: ${50-reviewBody.length}` : 'Minimum reached'}
+            {reviewBody.length < 50 ? `Minimum required characters left: ${50-reviewBody.length}` : 'Minimum reached'}<br/>
+            <br/>
+            IMAGES INPUT
+            <br/>
+            <br/>
+            <label htmlFor="username">Username: </label>
+            <input type="text" id="username" name="username" placeholder="Example: jackson11!" required maxLength="60" size="65"></input><br/>
+
+            <label htmlFor="email">Email: </label>
+            <input type="email" id="email" name="email" placeholder="Example: jackson11@email.com" required maxLength="60" size="65"></input><br/>
+            For authentication reasons, you will not be emailed
+            <br/>
+            <input type="submit" value="Submit" />
             </div>
         </form>
       </div>
