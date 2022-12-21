@@ -12,12 +12,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
     fit: 0
   });
 
-  // const [sizeState, setSizeState] = useState(0);
-  // const [widthState, setWidthState] = useState(0);
-  // const [comfortState, setComfortState] = useState(0);
-  // const [qualityState, setQualityState] = useState(0);
-  // const [lengthState, setLengthState] = useState(0);
-  // const [fitState, setFitState] = useState(0);
+  const [reviewBody, setReviewBody] = useState('');
 
   const OVERLAY_STYLES = {
     position: 'fixed',
@@ -124,6 +119,21 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
                 </div>
               )
             })}
+            <div>
+            <label htmlFor="reviewSummary">Review Summary: </label>
+            <input type="text" id="reviewSummary" name="reviewSummary" placeholder="Example: Best purchase ever!" required maxLength="60" size="65"></input><br/>
+            <label>Review Body: </label>
+            <textarea
+              name="reviewBody"
+              placeholder="Why did you like the product or not?"
+              value={reviewBody}
+              onChange={e => setReviewBody(e.target.value)}
+              required
+              minLength="50"
+              maxLength="1000">
+            </textarea><br/>
+            {reviewBody.length < 50 ? `Minimum required characters left: ${50-reviewBody.length}` : 'Minimum reached'}
+            </div>
         </form>
       </div>
       </div>
