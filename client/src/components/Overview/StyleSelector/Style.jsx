@@ -2,13 +2,20 @@ import React, { useState, useEffect } from 'react';
 
 // CSS styles
 const thumbnailContainer = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  flexDirection: 'column'
+  // display: 'flex',
+  // flexWrap: 'wrap',
+  // flexDirection: 'column'
+  position: 'relative',
+  paddingTop: '1em',
+  textAlign: 'center'
 }
 
 const styleNameText = {
-  marginBottom: '5px'
+  // position: 'absolute',
+  // top: '0',
+  // left: '0',
+  // right: '0',
+  margin: '0.5em'
 }
 
 const thumbnail = {
@@ -25,7 +32,8 @@ const styleImage = {
 const Style = (props) => {
   let style = props.style
   let toggled = props.toggled
-  let styleName = " "
+  let altName = props.style.name
+  let styleName
 
   if (toggled.style_id === style.style_id) {
     styleName = style.name
@@ -35,7 +43,7 @@ const Style = (props) => {
     <div style={thumbnail}>
       <div style={thumbnailContainer}>
         <div style={styleNameText}>{styleName}</div>
-        <img src={style.photos[0].thumbnail_url} width="60" height="60" style={styleImage}
+        <img src={style.photos[0].thumbnail_url} alt={altName} width="60" height="60" style={styleImage}
           onClick={() => props.onClick(style)} />
       </div>
     </div>

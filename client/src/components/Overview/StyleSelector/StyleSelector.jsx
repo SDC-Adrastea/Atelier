@@ -11,7 +11,7 @@ const thumbnailContainer = {
 const StyleSelector = (props) => {
   let currentStyles = props.styles
   let toggledStyle = props.toggledStyle
-  let mapStyles;
+  let mapStyles
 
   if (currentStyles !== undefined || currentStyles.length === 0) {
     mapStyles = currentStyles.map(style => {
