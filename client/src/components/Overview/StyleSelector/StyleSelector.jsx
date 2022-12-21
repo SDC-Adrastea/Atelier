@@ -4,8 +4,7 @@ import Style from './Style.jsx'
 // CSS styles
 const thumbnailContainer = {
   display: 'flex',
-  height: '100px',
-  flexFlow: 'row nowrap',
+  flexWrap: 'wrap',
   padding: '10px'
 }
 
@@ -26,7 +25,6 @@ const StyleSelector = (props) => {
 
   return (
     <div style={thumbnailContainer}>
-      <h3>Styles: </h3>
       {mapStyles}
     </div>
   )
