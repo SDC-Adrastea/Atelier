@@ -9,9 +9,7 @@ const AddToCart = (props) => {
   let handleClick = async (e) => {
     console.log('clicked cart button')
     if (size === '') {
-      alert('Please select a size')
-    } else if (quantity === '') {
-      alert('Please select a quantity')
+      props.setSizeAlert()
     } else if (sku === '') {
       alert('Unknown issue, please try again')
     } else {
