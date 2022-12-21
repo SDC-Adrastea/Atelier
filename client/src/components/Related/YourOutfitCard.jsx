@@ -30,6 +30,9 @@ const YourOutfitCard = (props) => {
     })
   }
 
+  var image = cardData.imageUrl || "noImageCat.PNG"
+  var imageClass = cardData.imageUrl ? "related-product-image" : "missing-image-card"
+
 
   return (
     <div
@@ -37,7 +40,7 @@ const YourOutfitCard = (props) => {
     data-testid="your-outfit-card"
     >
       <img onClick={() => removeFrom()} className="your-outfit-action-button" src="circleWithX.png"/>
-      <img className="your-outfit-product-image" src={cardData.imageUrl} />
+      <img className={imageClass} src={image} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>
       <div>${cardData.originalPrice}</div>
