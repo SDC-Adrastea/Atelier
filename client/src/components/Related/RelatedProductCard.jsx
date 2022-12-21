@@ -40,6 +40,9 @@ const RelatedProductCard = (props) => {
     })
   }
 
+  var image = cardData.imageUrl || "noImageCat.PNG"
+  var imageClass = cardData.imageUrl ? "related-product-image" : "missing-image-card"
+
   return (
     <div onClick={
       (newNum) => {props.setProductNum(id)}
@@ -47,7 +50,7 @@ const RelatedProductCard = (props) => {
      data-testid="related-product-card-test"
      >
       <img className="related-action-button" src="star2.png" onClick={modalSearch}/>
-      <img className="related-product-image" src={cardData.imageUrl} />
+      <img className={imageClass} src={image} />
       <div>{cardData.category}</div>
       <div>{cardData.productName}</div>
       <div>${cardData.originalPrice}</div>

@@ -10,12 +10,13 @@ const SizeQuantity = (props) => {
   let styleOptions = props.skus
   let skus = []
   let sizeOptions = []
-  let pageLoad
+  let pageLoad, sizeAlertLoad
 
   const [sizes, setSizes] = useState([])
   const [quantity, setQuantity] = useState([])
   const [chosenSize, setChosenSize] = useState('')
   const [chosenQuantity, setChosenQuantity] = useState('')
+  const [sizeAlert, setSizeAlert] = useState(false)
 
   useEffect(() => {
     skus = Object.keys(styleOptions)
@@ -51,6 +52,7 @@ const SizeQuantity = (props) => {
         }
         setQuantity(array)
         setChosenQuantity(1)
+        setSizeAlert(false)
       }
     }
   }
@@ -88,15 +90,21 @@ const SizeQuantity = (props) => {
   }
 
   if (sizes.length > 0) {
+    if (sizeAlert) {
+      sizeAlertLoad = 'Please select size'
+    }
+
     pageLoad = (
       <>
+        {sizeAlertLoad}
         <select name="size" id="size-select" onChange={handleSize} style={sizeQuantityStyle}>
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
         {quantitySection}
-        <AddToCart sku={props.currentSku} size={chosenSize} quantity={chosenQuantity} />
-      </>)
+        <AddToCart sku={props.currentSku} size={chosenSize} quantity={chosenQuantity} setSizeAlert={() => setSizeAlert(true)} />
+      </>
+    )
   } else {
     pageLoad = <div style={sizeQuantityStyle}>OUT OF STOCK</div>
   }
