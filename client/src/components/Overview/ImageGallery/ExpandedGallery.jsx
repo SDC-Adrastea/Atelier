@@ -1,4 +1,13 @@
-import React from 'react';
+import React from 'react'
+
+// CSS styles
+const mainImage = {
+
+}
+
+const thumbnailOverlay = {
+
+}
 
 const ExpandedGallery = (props) => {
   let currentStyle = props.style

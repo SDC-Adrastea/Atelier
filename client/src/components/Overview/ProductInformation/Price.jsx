@@ -1,4 +1,9 @@
-import React from 'react';
+import React from 'react'
+
+// CSS style
+const saleStyle = {
+  color: 'red'
+}
 
 const Price = (props) => {
   let defaultPrice = '$' + props.price
@@ -14,7 +19,7 @@ const Price = (props) => {
       sale = sale.substring(0, sale.length - 3)
     }
     defaultPrice = <s data-testid="strike-price">{defaultPrice}</s>
-    salePrice = <span className="sale-price" data-testid="sale-price">${sale}</span>
+    salePrice = <span style={saleStyle} data-testid="sale-price">${sale}</span>
   }
 
   return (

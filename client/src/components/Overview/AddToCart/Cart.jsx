@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+// CSS Styles
+const cartBtn = {
+  padding: '10px'
+}
+
 const AddToCart = (props) => {
   let sku = props.sku
   let size = props.size
@@ -29,9 +34,9 @@ const AddToCart = (props) => {
   }
 
   return (
-    <div>
-      <button onClick={handleClick}>Add to Cart</button>
-    </div>
+    <>
+      <button onClick={handleClick} style={cartBtn}>Add to Cart</button>
+    </>
   )
 }
 

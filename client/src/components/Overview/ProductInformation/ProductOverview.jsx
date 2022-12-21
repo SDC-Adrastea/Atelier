@@ -1,10 +1,11 @@
 import React from 'react'
 import FeaturesList from './FeaturesList.jsx'
 
+// CSS Styles
+
 const ProductOverview = (props) => {
   let slogan = props.slogan
   let description = props.description
-
   let features;
 
   if (props.features !== undefined) {
@@ -12,12 +13,12 @@ const ProductOverview = (props) => {
   }
 
   return (
-    <div className="product-overview">
-      <div className="product-slogan"><strong>{slogan}</strong></div>
-      <div className="product-description">{description}</div>
+    <>
+      <strong>{slogan}</strong>
+      <div>{description}</div>
       <br></br>
-      <div className="product-features">{features}</div>
-    </div>
+      {features}
+    </>
   )
 }
 

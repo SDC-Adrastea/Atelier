@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Style from './Style.jsx'
 
+// CSS styles
+const thumbnailContainer = {
+  display: 'flex',
+  height: '100px',
+  flexFlow: 'row nowrap',
+  padding: '10px'
+}
+
 const StyleSelector = (props) => {
   let currentStyles = props.styles
   let toggledStyle = props.toggledStyle
@@ -9,20 +17,15 @@ const StyleSelector = (props) => {
   if (currentStyles !== undefined || currentStyles.length === 0) {
     mapStyles = currentStyles.map(style => {
       return (
-        <Style
-          key={style.style_id}
-          style={style}
-          toggled={props.toggledStyle}
-          onClick={(selectedStyle) => {
-            props.onClick(selectedStyle)
-          }}
+        <Style key={style.style_id} style={style} toggled={props.toggledStyle}
+          onClick={(selectedStyle) => props.onClick(selectedStyle)}
         />
       )
     })
   }
 
   return (
-    <div className="thumbnails-container">
+    <div style={thumbnailContainer}>
       <h3>Styles: </h3>
       {mapStyles}
     </div>
