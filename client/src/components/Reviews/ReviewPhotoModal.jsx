@@ -23,7 +23,7 @@ export const ReviewPhotoModal = ({ open, children, image, onClose }) => {
   }
 
   const IMAGE_STYLES = {
-    maxHeight: '80%'
+    maxHeight: '80vh'
   }
 
   if (!open) return null
