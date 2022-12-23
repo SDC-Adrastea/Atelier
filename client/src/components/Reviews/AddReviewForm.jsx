@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {OverallReviewStars} from './OverallReviewStars.jsx';
-import "./styles.css";
 
 
 export const AddReviewForm = ({ open, children, image, onClose, product }) => {
@@ -147,7 +146,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
             {reviewBody.length < 50 ? `Minimum required characters left: ${50-reviewBody.length}` : 'Minimum reached'}<br/>
             <br/>
             <input type="file" accept="image/*" multiple onChange={onImageChange} ></input><br/>
-            <img id="target" src={imageURL} heigh={50}/>
+            <img id="target" src={imageURL} className="reviewImage"/><br/>
             <label htmlFor="username">Username: </label>
             <input type="text" id="username" name="username" placeholder="Example: jackson11!" required maxLength="60" size="65"></input><br/>
             <label htmlFor="email">Email: </label>
