@@ -1,15 +1,16 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { format, parseISO } from 'date-fns';
 import axios from "axios";
 
 
 export const Answer = (props) => {
-
   const answer_id = props.answerData.answer_id
+  // sentAHelpful is used to toggle state to disallow reclick of helpful button
+  // sentReport is used to toggle state to disallow reclick of report button
+
 
   const [sentAHelpful, setAHelpful] = useState(false);
   const [sentReport, setReported] = useState(false);
-  const [photosExist, setPhotosExist] = useState(false);
 
   const handleAHelpfulness = () => {
     if (sentAHelpful === false) {
@@ -25,6 +26,7 @@ export const Answer = (props) => {
     }
   }
 
+  // report an answer
   const handleReport = () => {
     if (sentReport === false) {
       axios.put('/answers/report', {
@@ -33,21 +35,19 @@ export const Answer = (props) => {
     }
   };
 
+  //date fns is used to render date
   return (
-    <div data-testid="Answer">
-      <p>A: {props.answerData.body}</p>
-      <p>by: {props.answerData.answerer_name}</p>
-      {props.answerData.photos.map(image =>  <img className="answerImages" src={image.url} key ={image.id}/>)}
-
-      <p>Helpful? <button onClick={handleAHelpfulness}>Yes</button>{props.answerData.helpfulness}</p>
-      {!sentReport && <button onClick={handleReport}>Report</button>}
-      {sentReport && <p style={{ color: 'red' }}>REPORTED</p>}
-      <p>
-      {/* {format ( new Date(), 'do MMMM Y')} */}
-      {format(new Date(props.answerData.date), 'LLLL dd, yyyy')}
-      {}
-      </p>
-
+    <div className="answer" data-testid="Answer">
+      <div className="answerContent">
+        <div> <div>{props.idx === 0 && <div id="aBold">A: </div>}{props.answerData.body}</div>
+          <div>
+          {props.answerData.photos.map(image =>  <img className="answerImages" src={image.url} key ={image.id}/>)}
+          </div>
+        </div>
+      <div className="ansBy">
+        <div>by: {props.answerData.answerer_name}, {format(new Date(props.answerData.date), 'LLLL dd, yyyy')} | Helpful? <button id="aHelpfulBtn" onClick={handleAHelpfulness}> Yes</button> &#40;{props.answerData.helpfulness}&#41; | {!sentReport && <button id="reportBtn" onClick={handleReport}>Report</button>} </div> {sentReport && <div style={{ color: 'red' }}>REPORTED</div>}
+      </div>
+      </div>
     </div>
   );
 };

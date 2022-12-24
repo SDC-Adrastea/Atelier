@@ -1,0 +1,22 @@
+body {
+  font-family: Sans-Serif;
+  color: rgb(42, 42, 42);
+}
+
+.index {
+  margin:0 auto;
+  width: 95%;
+  text-align:center;
+}
+
+#header {
+  background-color: rgb(42, 42, 42);
+  color: white;
+  text-align:left;
+  padding: 10px 0em 10px 1em;
+  font-weight: normal;
+}
+
+h1 {
+  font-weight: lighter;
+}
