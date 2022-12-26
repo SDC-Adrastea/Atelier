@@ -24,9 +24,12 @@ const StyleSelector = (props) => {
   }
 
   return (
-    <div style={thumbnailContainer} data-testid="style-selector">
-      {mapStyles}
-    </div>
+    <>
+      Style > {toggledStyle.name}
+      <div style={thumbnailContainer} data-testid="style-selector">
+        {mapStyles}
+      </div>
+    </>
   )
 }
 
