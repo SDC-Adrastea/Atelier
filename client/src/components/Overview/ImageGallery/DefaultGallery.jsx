@@ -3,19 +3,20 @@ import React, { useState, useEffect } from 'react'
 // CSS styles
 const mainImageContainer = {
   position: 'relative',
-  width: '100%',
-  height: '100%',
-  maxHeight: '500px',
-  maxWidth: '700px',
+  width: '700px',
+  height: '500px',
+  maxHeight: '100%',
+  maxWidth: '100%',
   overflow: 'hidden'
 }
 
 const mainImage = {
-  width: '100%',
-  height: '100%',
-  maxHeight: '700px',
-  maxWidth: '800px',
-  objectFit: 'contain'
+  width: '700px',
+  height: '500px',
+  maxHeight: '100%',
+  maxWidth: '100%',
+  objectFit: 'contain',
+  objectPosition: 'center top'
 }
 
 const thumbnailContainer = {
