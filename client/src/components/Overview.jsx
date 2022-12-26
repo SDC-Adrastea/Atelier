@@ -20,8 +20,9 @@ const imageContainer = {
   position: 'relative',
   display: 'flex',
   flex: '2',
-  height: '100%',
-  overflow: 'hidden'
+  height: '75%',
+  overflow: 'hidden',
+  marginRight: '20px'
 }
 
 const productContainer = {
