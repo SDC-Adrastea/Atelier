@@ -5,7 +5,7 @@ import FeaturesList from './FeaturesList.jsx'
 const descriptionContainer = {
   display: 'flex',
   position: 'relative',
-  paddingTop: '1em',
+  padding: '20px'
 }
 
 const mainDescription = {
@@ -16,14 +16,17 @@ const mainDescription = {
   padding: '10px'
 }
 
+const verticalLine = {
+  borderLeft: '3px solid black',
+  padding: '10px'
+}
+
 const featuresDescription = {
-  flexBasis: '25%',
-  minWidth: '25%',
+  flexBasis: '20%',
+  minWidth: '20%',
   margin: '5px',
   display: 'inline',
   padding: '10px',
-  borderLeft: '3px solid black',
-  height: '100%'
 }
 
 const ProductOverview = (props) => {
@@ -41,7 +44,7 @@ const ProductOverview = (props) => {
       <h3><strong>{slogan}</strong></h3>
       <p>{description}</p>
       </div>
-      {/* <div style={verticalLine}></div> */}
+      <div style={verticalLine}></div>
       <div style={featuresDescription}>{features}</div>
     </div>
   )
