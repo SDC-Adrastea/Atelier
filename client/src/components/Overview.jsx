@@ -20,7 +20,7 @@ const imageContainer = {
   position: 'relative',
   display: 'flex',
   flex: '2',
-  height: '75%',
+  height: '100%',
   overflow: 'hidden',
   marginRight: '20px'
 }

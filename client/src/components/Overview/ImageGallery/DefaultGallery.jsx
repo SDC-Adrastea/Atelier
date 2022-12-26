@@ -4,14 +4,18 @@ import React, { useState, useEffect } from 'react'
 const mainImageContainer = {
   position: 'relative',
   width: '100%',
-  height: '50%',
+  height: '100%',
+  maxHeight: '500px',
+  maxWidth: '700px',
   overflow: 'hidden'
 }
 
 const mainImage = {
   width: '100%',
-  height: '75%',
-  objectFit: 'cover'
+  height: '100%',
+  maxHeight: '700px',
+  maxWidth: '800px',
+  objectFit: 'contain'
 }
 
 const thumbnailContainer = {
