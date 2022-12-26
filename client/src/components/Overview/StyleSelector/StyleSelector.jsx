@@ -24,7 +24,7 @@ const StyleSelector = (props) => {
   }
 
   return (
-    <div style={thumbnailContainer}>
+    <div style={thumbnailContainer} data-testid="style-selector">
       {mapStyles}
     </div>
   )
