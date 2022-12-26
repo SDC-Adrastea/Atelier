@@ -24,7 +24,7 @@ const SizeQuantity = (props) => {
       let array = []
       for (var i = 0; i < skus.length; i++) {
         let thisSize = styleOptions[skus[i]]
-        if (thisSize.quantity >= 1) {
+        if (!array.includes(thisSize.size) && thisSize.quantity >= 1) {
           array.push(thisSize.size)
         }
       }
