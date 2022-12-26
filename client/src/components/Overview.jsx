@@ -15,22 +15,21 @@ import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 const mainContainer = {
   position: 'relative',
   display: 'flex',
-  flexWrap: 'wrap'
+  // flexWrap: 'wrap'
 }
 
 const imageContainer = {
   // position: 'relative',
   display: 'flex',
-  // flex: '2 1 auto'
-  flex: '2 1 auto', /* This will make the main image container take up 2/3 of the width */
-  height: '100%', /* Adjust this to fit your needs */
+  flex: '2',
+  height: '100%',
   overflow: 'hidden'
 }
 
 const productContainer = {
   display: 'flex',
   flexFlow: 'column nowrap',
-  flex: '1 1 auto'
+  flex: '1'
 }
 
 const selectionContainer = {
