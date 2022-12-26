@@ -30,8 +30,8 @@ const checkOverlay = {
 const checkmark = {
   position: 'absolute',
   top: '30%',
-  left: '50%',
-  transform: 'translate(-30%, -50%)'
+  left: '60%',
+  transform: 'translate(-30%, -60%)'
 }
 
 const Style = (props) => {

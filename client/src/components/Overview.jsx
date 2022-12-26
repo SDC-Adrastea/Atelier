@@ -13,13 +13,10 @@ import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 
 // CSS styles
 const mainContainer = {
-  position: 'relative',
-  display: 'flex',
-  // flexWrap: 'wrap'
+  display: 'flex'
 }
 
 const imageContainer = {
-  // position: 'relative',
   display: 'flex',
   flex: '2',
   height: '100%',
@@ -39,7 +36,6 @@ const selectionContainer = {
 }
 
 export const Overview = (props) => {
-  // console.log('props in Overview', props)
   let product = props.product || {}
   let ratings = props.metadata || {}
   // Overview-Specific
