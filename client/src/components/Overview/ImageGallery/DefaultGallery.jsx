@@ -16,7 +16,8 @@ const mainImage = {
   maxHeight: '100%',
   maxWidth: '100%',
   objectFit: 'contain',
-  objectPosition: 'center top'
+  objectPosition: 'center top',
+  cursor: 'zoom-in'
 }
 
 const thumbnailContainer = {
