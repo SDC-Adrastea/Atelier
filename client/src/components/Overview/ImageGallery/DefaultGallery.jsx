@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react'
 
 // CSS styles
+const mainImageContainer = {
+  position: 'relative',
+  width: '100%',
+  height: '100%',
+  overflow: 'hidden'
+}
+
+const mainImage = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover'
+}
 
 
 const DefaultGallery = (props) => {
@@ -24,10 +36,10 @@ const DefaultGallery = (props) => {
   }
 
   return (
-    <div >
+    <>
       Default
-      <div >
-        <img src={currentImage} alt={currentStyle.name} height="250" onClick={() => props.onClick()} />
+      <div style={mainImageContainer}>
+        <img src={currentImage} style={mainImage} alt={currentStyle.name} onClick={() => props.onClick()} />
       </div>
 
       <div>
@@ -37,7 +49,7 @@ const DefaultGallery = (props) => {
           )
         })}
       </div>
-    </div>
+    </>
   )
 }
 

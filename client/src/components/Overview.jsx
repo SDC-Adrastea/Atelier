@@ -17,6 +17,7 @@ const mainContainer = {
 }
 
 const imageContainer = {
+  position: 'relative',
   display: 'flex',
   flex: '2',
   height: '100%',
