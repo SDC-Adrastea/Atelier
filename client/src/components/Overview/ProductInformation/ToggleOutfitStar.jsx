@@ -6,7 +6,7 @@ const selections = {
   minWidth: '20%',
   margin: '5px',
   display: 'inline-block',
-  padding: '10px',
+  padding: '9px',
   width: '50px'
 }
 

@@ -26,7 +26,7 @@ const featuresDescription = {
   minWidth: '20%',
   margin: '5px',
   display: 'inline',
-  padding: '10px',
+  padding: '10px'
 }
 
 const ProductOverview = (props) => {

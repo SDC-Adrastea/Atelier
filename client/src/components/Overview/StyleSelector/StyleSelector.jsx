@@ -5,7 +5,7 @@ import Style from './Style.jsx'
 const thumbnailContainer = {
   display: 'flex',
   flexWrap: 'wrap',
-  padding: '10px'
+  padding: '5px'
 }
 
 const StyleSelector = (props) => {
