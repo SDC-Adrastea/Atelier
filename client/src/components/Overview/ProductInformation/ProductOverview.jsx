@@ -2,6 +2,29 @@ import React from 'react'
 import FeaturesList from './FeaturesList.jsx'
 
 // CSS Styles
+const descriptionContainer = {
+  display: 'flex',
+  position: 'relative',
+  paddingTop: '1em',
+}
+
+const mainDescription = {
+  flexBasis: '70%',
+  minWidth: '70%',
+  margin: '5px',
+  display: 'inline-block',
+  padding: '10px'
+}
+
+const featuresDescription = {
+  flexBasis: '25%',
+  minWidth: '25%',
+  margin: '5px',
+  display: 'inline',
+  padding: '10px',
+  borderLeft: '3px solid black',
+  height: '100%'
+}
 
 const ProductOverview = (props) => {
   let slogan = props.slogan
@@ -13,12 +36,14 @@ const ProductOverview = (props) => {
   }
 
   return (
-    <>
-      <strong>{slogan}</strong>
-      <div>{description}</div>
-      <br></br>
-      {features}
-    </>
+    <div style={descriptionContainer}>
+      <div style={mainDescription}>
+      <h3><strong>{slogan}</strong></h3>
+      <p>{description}</p>
+      </div>
+      {/* <div style={verticalLine}></div> */}
+      <div style={featuresDescription}>{features}</div>
+    </div>
   )
 }
 
