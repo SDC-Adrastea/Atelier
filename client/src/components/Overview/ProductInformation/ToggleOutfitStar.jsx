@@ -1,10 +1,13 @@
 import React from 'react'
 
 // CSS Styles
-const starBtn = {
+const selections = {
+  flexBasis: '20%',
+  minWidth: '20%',
+  margin: '5px',
+  display: 'inline-block',
   padding: '10px',
-  width: '50px',
-  textAlign: 'center'
+  width: '50px'
 }
 
 const ToggleOutfitStar = (props) => {
@@ -26,9 +29,7 @@ const ToggleOutfitStar = (props) => {
 
   return (
     <>
-      <button type="button" onClick={() => { handleStar() }} style={starBtn}>
-        <img src="star2.png" alt="star" width="20" />
-      </button>
+      <button type="button" style={selections} onClick={() => { handleStar() }}>★</button>
     </>
   )
 }

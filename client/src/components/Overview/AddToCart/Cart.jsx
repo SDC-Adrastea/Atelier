@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 // CSS Styles
-const cartBtn = {
+const selections = {
+  flexBasis: '70%',
+  minWidth: '70%',
+  margin: '5px',
+  display: 'inline-block',
   padding: '10px'
 }
 
@@ -35,7 +39,7 @@ const AddToCart = (props) => {
 
   return (
     <>
-      <button onClick={handleClick} style={cartBtn}>Add to Cart</button>
+      <button onClick={handleClick} style={selections}>Add to Cart</button>
     </>
   )
 }

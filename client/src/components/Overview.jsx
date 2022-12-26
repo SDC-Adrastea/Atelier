@@ -27,6 +27,12 @@ const productContainer = {
   flex: '1 1 auto'
 }
 
+const selectionContainer = {
+  position: 'relative',
+  paddingTop: '1em',
+  alignItems: 'center'
+}
+
 export const Overview = (props) => {
   // console.log('props in Overview', props)
   let product = props.product || {}
@@ -95,9 +101,11 @@ export const Overview = (props) => {
           {reviewSection}
           {titleSection}
           {priceSection}
-          {toggleSection}
           {styleSection}
+          <div style={selectionContainer}>
           {sizeQuantitySection}
+          {toggleSection}
+          </div>
         </div>
       </div>
       {productOverview}

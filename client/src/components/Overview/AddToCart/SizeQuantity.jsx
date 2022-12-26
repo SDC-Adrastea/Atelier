@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react'
 import AddToCart from './Cart.jsx'
 
 // CSS styles
-const sizeQuantityStyle = {
+const selections = {
+  flexBasis: '45%',
+  minWidth: '45%',
+  margin: '5px',
+  display: 'inline-block',
   padding: '10px'
 }
 
@@ -73,7 +77,7 @@ const SizeQuantity = (props) => {
 
   let quantitySection = (
     <>
-      <select name="quantity" id="quantity-select" style={sizeQuantityStyle}>
+      <select name="quantity" id="quantity-select" style={selections}>
         <option value="">--</option>
       </select>
     </>
@@ -82,7 +86,7 @@ const SizeQuantity = (props) => {
   if (quantity.length > 0) {
     quantitySection = (
       <>
-        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={sizeQuantityStyle}>
+        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={selections}>
           {mappedQuantity}
         </select>
       </>
@@ -97,7 +101,7 @@ const SizeQuantity = (props) => {
     pageLoad = (
       <>
         {sizeAlertLoad}
-        <select name="size" id="size-select" onChange={handleSize} style={sizeQuantityStyle}>
+        <select name="size" id="size-select" onChange={handleSize} style={selections}>
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
@@ -106,15 +110,11 @@ const SizeQuantity = (props) => {
       </>
     )
   } else {
-    pageLoad = <div style={sizeQuantityStyle}>OUT OF STOCK</div>
+    pageLoad = <div style={selections}>OUT OF STOCK</div>
   }
 
 
-  return (
-    <div className="size-quantity">
-      {pageLoad}
-    </div>
-  )
+  return ( <> {pageLoad} </>)
 }
 
 export  default SizeQuantity ;
