@@ -13,12 +13,18 @@ import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 
 // CSS styles
 const mainContainer = {
-  display: 'flex'
+  position: 'relative',
+  display: 'flex',
+  flexWrap: 'wrap'
 }
 
 const imageContainer = {
+  // position: 'relative',
   display: 'flex',
-  flex: '2 1 auto'
+  // flex: '2 1 auto'
+  flex: '2 1 auto', /* This will make the main image container take up 2/3 of the width */
+  height: '100%', /* Adjust this to fit your needs */
+  overflow: 'hidden'
 }
 
 const productContainer = {

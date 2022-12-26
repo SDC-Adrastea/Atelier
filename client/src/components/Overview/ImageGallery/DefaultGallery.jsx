@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 // CSS styles
-const thumbnailContainer = {
-  position: 'relative'
-}
 
-const mainImage = {
-
-}
-
-const thumbnailOverlay = {
-  display: 'flex',
-  flexDirection: 'column'
-}
 
 const DefaultGallery = (props) => {
   let currentStyle = props.style || {}
@@ -35,9 +24,9 @@ const DefaultGallery = (props) => {
   }
 
   return (
-    <div style={thumbnailContainer}>
+    <div >
       Default
-      <div style={mainImage}>
+      <div >
         <img src={currentImage} alt={currentStyle.name} height="250" onClick={() => props.onClick()} />
       </div>
 
