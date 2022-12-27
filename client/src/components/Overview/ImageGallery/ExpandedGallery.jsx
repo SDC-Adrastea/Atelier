@@ -60,9 +60,9 @@ const arrowOverlay = {
 }
 
 const leftArrowOverlay = {
-  position: 'absolute',
-  left: '-600px',
-  transform: 'translate(0%, -500%)',
+  position: 'relative',
+  left: '95px',
+  transform: 'translateY(-500%)',
   width: '50px',
   height: '50px',
   backgroundImage: 'url("leftArrow.png")',
@@ -72,7 +72,7 @@ const leftArrowOverlay = {
 const rightArrowOverlay = {
   position: 'absolute',
   right: '0',
-  transform: 'translate(0%, -500%)',
+  transform: 'translateY(-500%)',
   width: '50px',
   height: '50px',
   backgroundImage: 'url("rightArrow.png")',
@@ -114,6 +114,10 @@ const ExpandedGallery = (props) => {
         <div style={overlay}>
           <div style={arrowOverlay}>
             <div style={rightArrowOverlay} onClick={() => handleArrowRight()} ></div>
+          </div>
+        </div>
+        <div style={overlay}>
+          <div style={arrowOverlay}>
             <div style={leftArrowOverlay} onClick={() => handleArrowLeft()} ></div>
           </div>
         </div>

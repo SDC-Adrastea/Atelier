@@ -16,6 +16,10 @@ const mainContainer = {
   display: 'flex'
 }
 
+const noContainer = {
+  display: 'block'
+}
+
 const imageContainer = {
   position: 'relative',
   display: 'flex',
@@ -57,7 +61,7 @@ export const Overview = (props) => {
   let view = props.view || 'default'
   let mainImage = props.mainImage || ''
   let imageArr = props.imageArr || []
-  let currentView, productSection, reviewSection, titleSection, priceSection, toggleSection,
+  let defaultContainer, currentView, productSection, reviewSection, titleSection, priceSection, toggleSection,
     productOverview, styleSection, sizeQuantitySection
 
   if (product === {}) {
@@ -105,11 +109,19 @@ export const Overview = (props) => {
         </div>
       </div>
     )
+
+    defaultContainer = (
+      <div style={mainContainer}>
+        {currentView}
+        {productSection}
+      </div>
+    )
   }
 
   if (product.description !== undefined || product.slogan !== undefined || product.features !== undefined) {
     productOverview = <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
   }
+
 
   if (view === 'expanded') {
     currentView = (
@@ -124,14 +136,19 @@ export const Overview = (props) => {
     productSection = (
       <div style={expandedViewReduce}></div>
     )
-  }
-
-  return (
-    <div data-testid="overview-component">
-      <div style={mainContainer}>
+    defaultContainer = (
+      <div style={noContainer}>
         {currentView}
         {productSection}
       </div>
+    )
+  }
+
+
+
+  return (
+    <div data-testid="overview-component">
+      {defaultContainer}
       {productOverview}
     </div>
   )

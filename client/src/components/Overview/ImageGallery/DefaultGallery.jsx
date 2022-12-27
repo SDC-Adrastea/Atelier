@@ -60,9 +60,9 @@ const arrowOverlay = {
 }
 
 const leftArrowOverlay = {
-  position: 'absolute',
-  left: '-575px',
-  transform: 'translate(0%, -500%)',
+  position: 'relative',
+  left: '95px',
+  transform: 'translateY(-500%)',
   width: '50px',
   height: '50px',
   backgroundImage: 'url("leftArrow.png")',
@@ -115,6 +115,10 @@ const DefaultGallery = (props) => {
         <div style={overlay}>
           <div style={arrowOverlay}>
             <div style={rightArrowOverlay} onClick={() => handleArrowRight()} ></div>
+          </div>
+        </div>
+        <div style={overlay}>
+          <div style={arrowOverlay}>
             <div style={leftArrowOverlay} onClick={() => handleArrowLeft()} ></div>
           </div>
         </div>
