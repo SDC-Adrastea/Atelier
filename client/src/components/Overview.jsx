@@ -31,6 +31,17 @@ const productContainer = {
   flex: '1'
 }
 
+const expandedViewReduce = {
+  display: 'none'
+}
+
+const expandedContainer = {
+  position: 'relative',
+  display: 'flex',
+  height: '100%',
+  overflow: 'hidden'
+}
+
 const selectionContainer = {
   position: 'relative',
   paddingTop: '1em',
@@ -46,7 +57,7 @@ export const Overview = (props) => {
   let view = props.view || 'default'
   let mainImage = props.mainImage || ''
   let imageArr = props.imageArr || []
-  let currentView, reviewSection, titleSection, priceSection, toggleSection,
+  let currentView, productSection, reviewSection, titleSection, priceSection, toggleSection,
     productOverview, styleSection, sizeQuantitySection
 
   if (product === {}) {
@@ -74,11 +85,25 @@ export const Overview = (props) => {
       />
     )
     currentView = (
-      <DefaultGallery
-        style={currentStyle} main={mainImage} images={imageArr}
-        onClick={() => props.setView('expanded')}
-        thumbnailChange={img => props.setMainImage(img)}
-      />
+      <div style={imageContainer}>
+        <DefaultGallery
+          style={currentStyle} main={mainImage} images={imageArr}
+          onClick={() => props.setView('expanded')}
+          thumbnailChange={img => props.setMainImage(img)}
+        />
+      </div>
+    )
+    productSection = (
+      <div style={productContainer}>
+        {reviewSection}
+        {titleSection}
+        {priceSection}
+        {styleSection}
+        <div style={selectionContainer}>
+          {sizeQuantitySection}
+          {toggleSection}
+        </div>
+      </div>
     )
   }
 
@@ -88,28 +113,24 @@ export const Overview = (props) => {
 
   if (view === 'expanded') {
     currentView = (
-      <ExpandedGallery
-        style={currentStyle} main={mainImage} images={imageArr}
-        onClick={() => props.setView('default')}
-        thumbnailChange={img => props.setMainImage(img)}
-      />
+      <div style={expandedContainer}>
+        <ExpandedGallery
+          style={currentStyle} main={mainImage} images={imageArr}
+          onClick={() => props.setView('default')}
+          thumbnailChange={img => props.setMainImage(img)}
+        />
+      </div>
+    )
+    productSection = (
+      <div style={expandedViewReduce}></div>
     )
   }
 
   return (
     <div data-testid="overview-component">
       <div style={mainContainer}>
-        <div style={imageContainer}>{currentView}</div>
-        <div style={productContainer}>
-          {reviewSection}
-          {titleSection}
-          {priceSection}
-          {styleSection}
-          <div style={selectionContainer}>
-          {sizeQuantitySection}
-          {toggleSection}
-          </div>
-        </div>
+        {currentView}
+        {productSection}
       </div>
       {productOverview}
     </div>
