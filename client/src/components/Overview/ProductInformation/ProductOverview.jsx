@@ -5,7 +5,9 @@ import FeaturesList from './FeaturesList.jsx'
 const descriptionContainer = {
   display: 'flex',
   position: 'relative',
-  padding: '20px'
+  paddingTop: '50px',
+  paddingLeft: '50px',
+  paddingRight: '50px'
 }
 
 const mainDescription = {
@@ -18,7 +20,8 @@ const mainDescription = {
 
 const verticalLine = {
   borderLeft: '3px solid black',
-  padding: '10px'
+  padding: '10px',
+  margin: '5px'
 }
 
 const featuresDescription = {
