@@ -11,7 +11,21 @@ import SizeQuantity from './Overview/AddToCart/SizeQuantity.jsx'
 import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 
-// API functions
+// CSS styles
+const mainContainer = {
+  display: 'flex'
+}
+
+const imageContainer = {
+  display: 'flex',
+  flex: '2 1 auto'
+}
+
+const productContainer = {
+  display: 'flex',
+  flexFlow: 'column nowrap',
+  flex: '1 1 auto'
+}
 
 export const Overview = (props) => {
   // console.log('props in Overview', props)
@@ -66,7 +80,7 @@ export const Overview = (props) => {
   if (view === 'expanded') {
     currentView = (
       <ExpandedGallery
-        currentStyle={currentStyle} main={mainImage} images={imageArr}
+        style={currentStyle} main={mainImage} images={imageArr}
         onClick={() => props.setView('default')}
         thumbnailChange={img => props.setMainImage(img)}
       />
@@ -75,16 +89,18 @@ export const Overview = (props) => {
 
   return (
     <div data-testid="overview-component">
-      <div className="subcomponents">
-        {currentView}
-        {reviewSection}
-        {titleSection}
-        {priceSection}
-        {toggleSection}
-        {styleSection}
-        {sizeQuantitySection}
-        {productOverview}
+      <div style={mainContainer}>
+        <div style={imageContainer}>{currentView}</div>
+        <div style={productContainer}>
+          {reviewSection}
+          {titleSection}
+          {priceSection}
+          {toggleSection}
+          {styleSection}
+          {sizeQuantitySection}
+        </div>
       </div>
+      {productOverview}
     </div>
   )
 }

@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import AddToCart from './Cart.jsx'
 
+// CSS styles
+const sizeQuantityStyle = {
+  padding: '10px'
+}
 
 const SizeQuantity = (props) => {
   let styleOptions = props.skus
-  // let styleOptions = {} // test for no stock
   let skus = []
   let sizeOptions = []
-  let pageLoad
+  let pageLoad, sizeAlertLoad
 
   const [sizes, setSizes] = useState([])
   const [quantity, setQuantity] = useState([])
   const [chosenSize, setChosenSize] = useState('')
   const [chosenQuantity, setChosenQuantity] = useState('')
+  const [sizeAlert, setSizeAlert] = useState(false)
 
   useEffect(() => {
     skus = Object.keys(styleOptions)
     if (skus.length > 0) {
       let array = []
-
       for (var i = 0; i < skus.length; i++) {
         let thisSize = styleOptions[skus[i]]
         if (thisSize.quantity >= 1) {
           array.push(thisSize.size)
         }
       }
-
       setSizes(array)
     }
   }, [props.skus])
@@ -50,6 +52,7 @@ const SizeQuantity = (props) => {
         }
         setQuantity(array)
         setChosenQuantity(1)
+        setSizeAlert(false)
       }
     }
   }
@@ -69,37 +72,41 @@ const SizeQuantity = (props) => {
   })
 
   let quantitySection = (
-    <div>
-      <select name="quantity" id="quantity-select">
+    <>
+      <select name="quantity" id="quantity-select" style={sizeQuantityStyle}>
         <option value="">--</option>
       </select>
-    </div>
+    </>
   )
 
   if (quantity.length > 0) {
     quantitySection = (
-      <div>
-        <select name="quantity" id="quantity-select" onChange={handleQuantity}>
+      <>
+        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={sizeQuantityStyle}>
           {mappedQuantity}
         </select>
-      </div>
+      </>
     )
   }
 
   if (sizes.length > 0) {
+    if (sizeAlert) {
+      sizeAlertLoad = 'Please select size'
+    }
+
     pageLoad = (
-      <div>
-        <select name="size" id="size-select" onChange={handleSize}>
+      <>
+        {sizeAlertLoad}
+        <select name="size" id="size-select" onChange={handleSize} style={sizeQuantityStyle}>
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
         {quantitySection}
-        <AddToCart sku={props.currentSku} size={chosenSize} quantity={chosenQuantity} />
-      </div>)
-  } else {
-    pageLoad = (
-      <div>OUT OF STOCK</div>
+        <AddToCart sku={props.currentSku} size={chosenSize} quantity={chosenQuantity} setSizeAlert={() => setSizeAlert(true)} />
+      </>
     )
+  } else {
+    pageLoad = <div style={sizeQuantityStyle}>OUT OF STOCK</div>
   }
 
 

@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react'
 
+// CSS styles
+const mainImage = {
+
+}
+
+const thumbnailOverlay = {
+  display: 'flex',
+  flexDirection: 'column'
+}
+
 const DefaultGallery = (props) => {
   let currentStyle = props.style || {}
   let currentImage = props.main || ''
@@ -14,8 +24,6 @@ const DefaultGallery = (props) => {
     })
   }
 
-  // console.log('props in default gallery', currentStyle)
-
   let handleClick = (e) => {
     e.preventDefault()
     let url = e.target.src
@@ -25,26 +33,14 @@ const DefaultGallery = (props) => {
   return (
     <div className="default-view">
       Default
-      <div className="default-main">
-        <img
-          src={currentImage}
-          alt={currentStyle.name}
-          height="250"
-          onClick={() => props.onClick()}
-        />
+      <div style={mainImage}>
+        <img src={currentImage} alt={currentStyle.name} height="250" onClick={() => props.onClick()} />
       </div>
 
-      <div className="default-overlay">
+      <div>
         {display.map((photo, index) => {
           return (
-            <img
-              className="thumbnail-image"
-              key={index}
-              src={photo}
-              alt="thumnail image"
-              height="75"
-              onClick={(e) => handleClick(e)}
-            />
+            <img key={index} src={photo} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} />
           )
         })}
       </div>

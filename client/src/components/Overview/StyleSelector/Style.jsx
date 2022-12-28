@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
+// CSS styles
+const thumbnail = {
+  display: 'inline-block',
+  marginLeft: '15px'
+}
+
+const styleImage = {
+  borderRadius: '50%'
+}
+
 const Style = (props) => {
-  console.log('style props', props)
   let style = props.style
   let toggled = props.toggled
   let styleName
@@ -11,15 +20,10 @@ const Style = (props) => {
   }
 
   return (
-    <div className="thumbnail">
+    <div style={thumbnail}>
       {styleName}
-      <img
-        src={style.photos[0].thumbnail_url}
-        width="50"
-        height="50"
-        onClick={() => {
-          props.onClick(style)
-        }}
+      <img src={style.photos[0].thumbnail_url} width="60" height="60" style={styleImage}
+        onClick={() => props.onClick(style)}
       />
     </div>
   )

@@ -78,19 +78,3 @@ export default ComparisonModal;
 //   )
 // }
 
-{/* <div>
-          <h2>{props.primaryProduct.productName}</h2>
-          {props.primaryProduct.features.map((feature, index) => {
-            return (
-              <ul key={index}>feature: {feature.feature} , Value: {feature.value}</ul>
-            )
-          })}
-        </div>
-        <div>
-          <h2>{props.relatedProductCurrent.productName}</h2>
-          {props.relatedProductCurrent.features.map((feature, index) => {
-            return (
-              <ul key={index}>feature: {feature.feature} , Value: {feature.value}</ul>
-            )
-          })}
-        </div> */}
