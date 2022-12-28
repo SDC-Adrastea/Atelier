@@ -16,6 +16,9 @@ const DIST_DIR = path.join(__dirname, '../client/dist');
 app.use(express.static(DIST_DIR));
 
 
+// Interaction Controller
+const { interactionPost } = require('./api-helpers/InteractionsAPI.js');
+
 // Questions Controllers
 const { QuestionsGet } = require('./api-helpers/QuestionsAPI.js');
 const { AnswersGet } = require('./api-helpers/QuestionsAPI.js');
@@ -33,6 +36,20 @@ const { CartGet, CartPost } = require('./api-helpers/CartAPI.js');
 
 // Ratings and Reviews Controllers
 const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
+
+// ==============================================
+//       Interaction Route
+// ==============================================
+
+app.post('/interactions', function (req, res) {
+  interactionPost(req.body, TOKEN)
+    .then((data) => { res.send(data) })
+    .catch(function (error) {
+      res.send(error);
+      console.error(error);
+    })
+})
+
 
 // ==============================================
 //       Questions Routes
