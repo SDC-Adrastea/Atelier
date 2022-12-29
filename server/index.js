@@ -173,11 +173,11 @@ app.get('/getMetadata', (req, res) => {
 })
 
 app.post('/addReview', (req, res) => {
-  addReview()
+  addReview(req.body)
     .then(data => res.send(data))
     .catch(err => {
       res.send(err)
-      console.lof('err in addReview server-side', err)
+      console.log('err in addReview server-side', err)
     })
 })
 

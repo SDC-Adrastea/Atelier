@@ -2,16 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {OverallReviewStars} from './OverallReviewStars.jsx';
 
 
-export const AddReviewForm = ({ open, children, image, onClose, product }) => {
+export const AddReviewForm = ({ open, children, image, onClose, product, characteristics }) => {
 
-  const [characteristicState, setCharacteristicState] = useState({
-    size: 0,
-    width: 0,
-    comfort: 0,
-    quality: 0,
-    length: 0,
-    fit: 0
-  });
+  const [characteristicState, setCharacteristicState] = useState({});
 
   const [reviewBody, setReviewBody] = useState('');
 
@@ -39,9 +32,9 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
     zIndex: 1000
   }
 
-  var characteristics = [
+  var characteristicsMap = [
     {
-      name: 'size',
+      name: 'Size',
       1: 'A size too small',
       2: '½ a size too small',
       3: 'Perfect',
@@ -49,7 +42,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
       5: 'A size too wide'
     },
     {
-      name: 'width',
+      name: 'Width',
       1: 'Too narrow',
       2: 'Slightly narrow',
       3: 'Perfect',
@@ -57,7 +50,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
       5: 'Too wide',
     },
     {
-      name: 'comfort',
+      name: 'Comfort',
       1: 'Uncomfortable',
       2: 'Slightly uncomfortable',
       3: 'Ok',
@@ -65,7 +58,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
       5: 'Perfect'
     },
     {
-      name: 'quality',
+      name: 'Quality',
       1: 'Poor',
       2: 'Below average',
       3: 'What I expected',
@@ -73,7 +66,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
       5: 'Perfect'
     },
     {
-      name: 'length',
+      name: 'Length',
       1: 'Runs Short',
       2: 'Runs slightly short',
       3: 'Perfect',
@@ -81,7 +74,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
       5: 'Runs long'
     },
     {
-      name: 'fit',
+      name: 'Fit',
       1: 'Runs tight',
       2: 'Runs slightly tight',
       3: 'Perfect',
@@ -95,6 +88,8 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
       setImage(URL.createObjectURL(event.target.files[0]))
     }
   };
+
+  // console.log(characteristics)
 
   if (!open) return null
 
@@ -115,18 +110,25 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
               <input type="radio" name="recommended" value="false" />No
               <br/>
             </div>
-            {characteristics.map((characteristic, index) => {
-              return (
-                <div id={characteristic.name} key={index}>
-                  {characteristic.name.charAt(0).toUpperCase() + characteristic.name.slice(1)}:  {characteristics[index][characteristicState[characteristic.name]] || 'none selected'}<br/>
-                  <input type="radio" name={characteristic.name}  value="1" onClick={() => {characteristicState[characteristic.name] = 1; setCharacteristicState({...characteristicState})}} />1
-                  <input type="radio" name={characteristic.name}  value="2" onClick={() => {characteristicState[characteristic.name] = 2; setCharacteristicState({...characteristicState})}} />2
-                  <input type="radio" name={characteristic.name}  value="3" onClick={() => {characteristicState[characteristic.name] = 3; setCharacteristicState({...characteristicState})}} />3
-                  <input type="radio" name={characteristic.name}  value="4" onClick={() => {characteristicState[characteristic.name] = 4; setCharacteristicState({...characteristicState})}} />4
-                  <input type="radio" name={characteristic.name}  value="5" onClick={() => {characteristicState[characteristic.name] = 5; setCharacteristicState({...characteristicState})}} />5
+            {characteristicsMap.map((characteristic, index) => {
+              // console.log('characteristic.name:', characteristic.name);
+              characteristic.name = characteristic.name.charAt(0).toUpperCase() + characteristic.name.slice(1);
+              console.log('characteristics:', characteristics);
+              if (characteristics[characteristic.name]) {
+                return (
+                  <div id={characteristic.name} key={index}>
+                  {characteristic.name}:  {characteristicsMap[index][characteristicState[characteristic.name]] || 'none selected'}<br/>
+                  <input type="radio" name={characteristic.name}  value="1" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 1; setCharacteristicState({...characteristicState})}} />1
+                  <input type="radio" name={characteristic.name}  value="2" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 2; setCharacteristicState({...characteristicState})}} />2
+                  <input type="radio" name={characteristic.name}  value="3" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 3; setCharacteristicState({...characteristicState})}} />3
+                  <input type="radio" name={characteristic.name}  value="4" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 4; setCharacteristicState({...characteristicState})}} />4
+                  <input type="radio" name={characteristic.name}  value="5" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 5; setCharacteristicState({...characteristicState})}} />5
                   <br/>
                 </div>
-              )
+                )
+              } else {
+                return null;
+              }
             })}
             <div>
 
