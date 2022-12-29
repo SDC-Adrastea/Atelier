@@ -1,16 +1,13 @@
 import React from 'react'
+import * as css from './ProductInformationCSS.jsx'
 
-// CSS Styles
-const pad = {
-  paddingTop: '20px'
-}
 
 const ProductCategoryTitle = (props) => {
   let title = props.title
   let category = props.category
 
   return (
-    <div style={pad}>
+    <div style={css.pad}>
       {category}
       <h2>{title}</h2>
     </div>

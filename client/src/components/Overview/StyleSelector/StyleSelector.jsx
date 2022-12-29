@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Style from './Style.jsx'
+import * as css from './StyleSelectorCSS.jsx'
 
-// CSS styles
-const thumbnailContainer = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  padding: '5px'
-}
 
 const StyleSelector = (props) => {
   let currentStyles = props.styles
@@ -27,7 +22,7 @@ const StyleSelector = (props) => {
     <>
       <br></br>
       <span><strong>Style > </strong>{toggledStyle.name}</span>
-      <div style={thumbnailContainer} data-testid="style-selector">
+      <div style={css.selectThumbnailContainer} data-testid="style-selector">
         {mapStyles}
       </div>
     </>

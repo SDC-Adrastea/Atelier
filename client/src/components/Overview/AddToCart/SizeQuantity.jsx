@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import AddToCart from './Cart.jsx'
+import * as css from './AddToCartCSS.jsx'
 
-// CSS styles
-const selections = {
-  flexBasis: '45%',
-  minWidth: '45%',
-  margin: '5px',
-  display: 'inline-block',
-  padding: '10px'
-}
 
 const SizeQuantity = (props) => {
   let styleOptions = props.skus
@@ -77,7 +70,7 @@ const SizeQuantity = (props) => {
 
   let quantitySection = (
     <>
-      <select name="quantity" id="quantity-select" style={selections}>
+      <select name="quantity" id="quantity-select" style={css.sizeQuantitySelections}>
         <option value="">--</option>
       </select>
     </>
@@ -86,7 +79,7 @@ const SizeQuantity = (props) => {
   if (quantity.length > 0) {
     quantitySection = (
       <>
-        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={selections}>
+        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={css.sizeQuantitySelections}>
           {mappedQuantity}
         </select>
       </>
@@ -101,7 +94,7 @@ const SizeQuantity = (props) => {
     pageLoad = (
       <>
         {sizeAlertLoad}
-        <select name="size" id="size-select" onChange={handleSize} style={selections}>
+        <select name="size" id="size-select" onChange={handleSize} style={css.sizeQuantitySelections}>
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
@@ -110,7 +103,7 @@ const SizeQuantity = (props) => {
       </>
     )
   } else {
-    pageLoad = <div style={selections}>OUT OF STOCK</div>
+    pageLoad = <div style={css.sizeQuantitySelections}>OUT OF STOCK</div>
   }
 
 

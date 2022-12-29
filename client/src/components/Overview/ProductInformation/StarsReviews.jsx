@@ -1,7 +1,6 @@
 import React from 'react'
 import { StarRating } from '../../shared/StarRating/StarRating.jsx'
 
-// CSS Styles
 
 const StarsReviews = (props) => {
   let ratings = props.ratings

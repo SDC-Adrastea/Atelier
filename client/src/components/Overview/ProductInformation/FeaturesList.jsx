@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import * as css from './ProductInformationCSS.jsx'
 
-// CSS Styles
-const individualFeatures = {
-  display: 'inline-block',
-  padding: '5px'
-}
 
 const FeaturesList = (props) => {
 
-  return ( <div style={individualFeatures}> {props.feature.feature}, {props.feature.value} </div> )
+  return ( <div style={css.individualFeatures}> {props.feature.feature}, {props.feature.value} </div> )
 }
 
 export default FeaturesList;

@@ -1,14 +1,6 @@
 import React from 'react'
+import * as css from './ProductInformationCSS.jsx'
 
-// CSS Styles
-const selections = {
-  flexBasis: '20%',
-  minWidth: '20%',
-  margin: '5px',
-  display: 'inline-block',
-  padding: '9px',
-  width: '50px'
-}
 
 const ToggleOutfitStar = (props) => {
   let id = props.id
@@ -29,7 +21,7 @@ const ToggleOutfitStar = (props) => {
 
   return (
     <>
-      <button type="button" style={selections} onClick={() => { handleStar() }}>★</button>
+      <button type="button" style={css.selections} onClick={() => { handleStar() }}>★</button>
     </>
   )
 }

@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import * as css from './AddToCartCSS.jsx'
 
-// CSS Styles
-const selections = {
-  flexBasis: '70%',
-  minWidth: '70%',
-  margin: '5px',
-  display: 'inline-block',
-  padding: '10px'
-}
 
 const AddToCart = (props) => {
   let sku = props.sku
@@ -39,7 +32,7 @@ const AddToCart = (props) => {
 
   return (
     <>
-      <button onClick={handleClick} style={selections}>Add to Cart</button>
+      <button onClick={handleClick} style={css.cartSelections}>Add to Cart</button>
     </>
   )
 }

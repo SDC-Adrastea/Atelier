@@ -10,47 +10,8 @@ import StyleSelector from './Overview/StyleSelector/StyleSelector.jsx'
 import SizeQuantity from './Overview/AddToCart/SizeQuantity.jsx'
 import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
+import * as css from './Overview/OverviewCSS.jsx'
 
-// CSS styles
-const mainContainer = {
-  display: 'flex'
-}
-
-const noContainer = {
-  display: 'block'
-}
-
-const imageContainer = {
-  position: 'relative',
-  display: 'flex',
-  flex: '2',
-  height: '100%',
-  overflow: 'hidden',
-  marginRight: '20px'
-}
-
-const productContainer = {
-  display: 'flex',
-  flexFlow: 'column nowrap',
-  flex: '1'
-}
-
-const expandedViewReduce = {
-  display: 'none'
-}
-
-const expandedContainer = {
-  position: 'relative',
-  display: 'flex',
-  height: '100%',
-  overflow: 'hidden'
-}
-
-const selectionContainer = {
-  position: 'relative',
-  paddingTop: '1em',
-  alignItems: 'center'
-}
 
 export const Overview = (props) => {
   let product = props.product || {}
@@ -89,7 +50,7 @@ export const Overview = (props) => {
       />
     )
     currentView = (
-      <div style={imageContainer}>
+      <div style={css.imageContainer}>
         <DefaultGallery
           style={currentStyle} main={mainImage} images={imageArr}
           onClick={() => props.setView('expanded')}
@@ -98,12 +59,12 @@ export const Overview = (props) => {
       </div>
     )
     productSection = (
-      <div style={productContainer}>
+      <div style={css.productContainer}>
         {reviewSection}
         {titleSection}
         {priceSection}
         {styleSection}
-        <div style={selectionContainer}>
+        <div style={css.selectionContainer}>
           {sizeQuantitySection}
           {toggleSection}
         </div>
@@ -111,7 +72,7 @@ export const Overview = (props) => {
     )
 
     defaultContainer = (
-      <div style={mainContainer}>
+      <div style={css.mainContainer}>
         {currentView}
         {productSection}
       </div>
@@ -125,7 +86,7 @@ export const Overview = (props) => {
 
   if (view === 'expanded') {
     currentView = (
-      <div style={expandedContainer}>
+      <div style={css.expandedContainer}>
         <ExpandedGallery
           style={currentStyle} main={mainImage} images={imageArr}
           onClick={() => props.setView('default')}
@@ -134,10 +95,10 @@ export const Overview = (props) => {
       </div>
     )
     productSection = (
-      <div style={expandedViewReduce}></div>
+      <div style={css.expandedViewReduce}></div>
     )
     defaultContainer = (
-      <div style={noContainer}>
+      <div style={css.noContainer}>
         {currentView}
         {productSection}
       </div>
