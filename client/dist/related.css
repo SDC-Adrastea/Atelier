@@ -33,7 +33,7 @@
   height: 343px;
   width: 1210px;
   z-index: 50;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 60%, rgb(215, 252, 255, 1) 100%);
+  /* background: linear-gradient(to right, rgba(255, 255, 255, 0) 60%, rgb(215, 252, 255, 1) 100%); */
 }
 
 .related-next-button {
@@ -66,7 +66,7 @@
 .related-carousel-container {
   height: 350px;
   flex-wrap: nowrap;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding: 10px;
   transition: margin-left 1s;
 }
@@ -74,15 +74,15 @@
 .overflow-window-icon {
   overflow: hidden;
   height: 340px;
-  width: 1410px;
-  border: 1px solid purple;
+  width: 1310px;
+  /* border: 1px solid purple; */
 }
 
 .overflow-window-related {
   overflow: hidden;
   height: 340px;
   width: 1210px;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 .related-product-card:first-child {

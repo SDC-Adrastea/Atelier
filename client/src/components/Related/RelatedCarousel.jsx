@@ -8,16 +8,7 @@ const RelatedCarousel = (props) => {
   const [leftOffset, setLeftOffset] = useState(0)
   const [cardsClickedThrough , setCardClick] = useState(0)
   const totalOffSet = props.related.length * 265
-  const totalWidth = 265 * 4
-
-
-
-   const numberOfHiddenCardsStarting = ( totalOffSet - 1060 ) / 265 // number of cards not shown
-
-
-
-
-
+  const numberOfHiddenCardsStarting = ( totalOffSet - 1060 ) / 265 // number of cards not shown
 
   return (
     <>
