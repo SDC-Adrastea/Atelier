@@ -4,15 +4,14 @@ import Style from './Style.jsx'
 // CSS styles
 const thumbnailContainer = {
   display: 'flex',
-  height: '100px',
-  flexFlow: 'row nowrap',
+  flexWrap: 'wrap',
   padding: '10px'
 }
 
 const StyleSelector = (props) => {
   let currentStyles = props.styles
   let toggledStyle = props.toggledStyle
-  let mapStyles;
+  let mapStyles
 
   if (currentStyles !== undefined || currentStyles.length === 0) {
     mapStyles = currentStyles.map(style => {
@@ -26,7 +25,6 @@ const StyleSelector = (props) => {
 
   return (
     <div style={thumbnailContainer}>
-      <h3>Styles: </h3>
       {mapStyles}
     </div>
   )
