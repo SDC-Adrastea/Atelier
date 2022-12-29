@@ -6,9 +6,9 @@ import ComparisonModal from './ComparisonModal.jsx'
 const RelatedCarousel = (props) => {
 
   const [leftOffset, setLeftOffset] = useState(0)
-  const [cardsClickedThrough , setCardClick] = useState(0)
+  const [cardsClickedThrough, setCardClick] = useState(0)
   const totalOffSet = props.related.length * 265
-  const numberOfHiddenCardsStarting = ( totalOffSet - 1060 ) / 265 // number of cards not shown
+  const numberOfHiddenCardsStarting = (totalOffSet - 1060) / 265 // number of cards not shown
 
   return (
     <>
@@ -27,11 +27,11 @@ const RelatedCarousel = (props) => {
             }
 
             <div className="overflow-window-related">
-              { cardsClickedThrough < numberOfHiddenCardsStarting &&
-              <img src="rightArrow.PNG" className="related-next-button" onClick={() => {
-                setLeftOffset(leftOffset - 265)
-                setCardClick(cardsClickedThrough + 1)
-              }} />
+              {cardsClickedThrough < numberOfHiddenCardsStarting &&
+                <img src="rightArrow.PNG" className="related-next-button" onClick={() => {
+                  setLeftOffset(leftOffset - 265)
+                  setCardClick(cardsClickedThrough + 1)
+                }} />
               }
               <div className="related-carousel-container" style={{ marginLeft: `${leftOffset}px` }}>
                 {props.related.map((item, index) => {
