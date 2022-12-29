@@ -39,31 +39,32 @@ module.exports.getMetadata = (product_id) => {
     })
 }
 
-// module.exports.addReview = (product_id, rating, summary, body, recommend, name, email, photos, characteristics) => {
-//   options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/`;
-//   options.method = 'get';
-//   options.data = {
-//     product_id: 71697,
-//     rating: 5,
-//     summary: "Best purchase ever!",
-//     body: "Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever!",
-//     recommend: true,
-//     name: "twicestan",
-//     email: "twicestan@twicefanclub.org",
-//     photos: [],
-//     characteristics: {
-//         "14": 5,
-//         "15": 5
-//     }
-//   }
+module.exports.addReview = (product_id, rating, summary, body, recommend, name, email, photos, characteristics) => {
+  options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/`;
+  options.method = 'post';
+  // options.data = {
+  //   product_id: 71697,
+  //   rating: 5,
+  //   summary: "Best purchase ever!",
+  //   body: "Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever!",
+  //   recommend: true,
+  //   name: "twicestan",
+  //   email: "twicestan@twicefanclub.org",
+  //   photos: [],
+  //   characteristics: {
+  //       "14": 5,
+  //       "15": 5
+  //   }
+  // }
+  const requestBody = {};
 
-//   return axios(options)
-//     .then(response => {
-//       console.log('review post success')
-//       console.log(response)
-//       return response.data;
-//     })
-//     .catch(err => {
-//       console.log('error posting reviews:', err);
-//     })
-// }
+  return axios.post(options.url, requestBody, options.headers)
+    .then(response => {
+      console.log('review post success')
+      console.log(response)
+      return response.data;
+    })
+    .catch(err => {
+      console.log('error posting reviews:', err);
+    })
+}
