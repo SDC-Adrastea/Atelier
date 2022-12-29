@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {OverallReviewStars} from './OverallReviewStars.jsx';
+import "./styles.css";
+
 
 export const AddReviewForm = ({ open, children, image, onClose, product }) => {
 
@@ -13,6 +15,8 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
   });
 
   const [reviewBody, setReviewBody] = useState('');
+
+  const [imageURL, setImage] = useState('');
 
   const OVERLAY_STYLES = {
     position: 'fixed',
@@ -87,6 +91,12 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
     }
   ];
 
+  function onImageChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      setImage(URL.createObjectURL(event.target.files[0]))
+    }
+  };
+
   if (!open) return null
 
   return (
@@ -136,12 +146,10 @@ export const AddReviewForm = ({ open, children, image, onClose, product }) => {
             </textarea><br/>
             {reviewBody.length < 50 ? `Minimum required characters left: ${50-reviewBody.length}` : 'Minimum reached'}<br/>
             <br/>
-            IMAGES INPUT
-            <br/>
-            <br/>
+            <input type="file" accept="image/*" multiple onChange={onImageChange} ></input><br/>
+            <img id="target" src={imageURL} heigh={50}/>
             <label htmlFor="username">Username: </label>
             <input type="text" id="username" name="username" placeholder="Example: jackson11!" required maxLength="60" size="65"></input><br/>
-
             <label htmlFor="email">Email: </label>
             <input type="email" id="email" name="email" placeholder="Example: jackson11@email.com" required maxLength="60" size="65"></input><br/>
             For authentication reasons, you will not be emailed
