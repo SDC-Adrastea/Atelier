@@ -10,11 +10,10 @@ import StyleSelector from './Overview/StyleSelector/StyleSelector.jsx'
 import SizeQuantity from './Overview/AddToCart/SizeQuantity.jsx'
 import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
+import * as css from './Overview/OverviewCSS.jsx'
 
-// API functions
 
 export const Overview = (props) => {
-  // console.log('props in Overview', props)
   let product = props.product || {}
   let ratings = props.metadata || {}
   // Overview-Specific
@@ -23,7 +22,7 @@ export const Overview = (props) => {
   let view = props.view || 'default'
   let mainImage = props.mainImage || ''
   let imageArr = props.imageArr || []
-  let currentView, reviewSection, titleSection, priceSection, toggleSection,
+  let defaultContainer, currentView, productSection, reviewSection, titleSection, priceSection, toggleSection,
     productOverview, styleSection, sizeQuantitySection
 
   if (product === {}) {
@@ -51,11 +50,32 @@ export const Overview = (props) => {
       />
     )
     currentView = (
-      <DefaultGallery
-        style={currentStyle} main={mainImage} images={imageArr}
-        onClick={() => props.setView('expanded')}
-        thumbnailChange={img => props.setMainImage(img)}
-      />
+      <div style={css.imageContainer}>
+        <DefaultGallery
+          style={currentStyle} main={mainImage} images={imageArr}
+          onClick={() => props.setView('expanded')}
+          thumbnailChange={img => props.setMainImage(img)}
+        />
+      </div>
+    )
+    productSection = (
+      <div style={css.productContainer}>
+        {reviewSection}
+        {titleSection}
+        {priceSection}
+        {styleSection}
+        <div style={css.selectionContainer}>
+          {sizeQuantitySection}
+          {toggleSection}
+        </div>
+      </div>
+    )
+
+    defaultContainer = (
+      <div style={css.mainContainer}>
+        {currentView}
+        {productSection}
+      </div>
     )
   }
 
@@ -63,28 +83,34 @@ export const Overview = (props) => {
     productOverview = <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
   }
 
+
   if (view === 'expanded') {
     currentView = (
-      <ExpandedGallery
-        currentStyle={currentStyle} main={mainImage} images={imageArr}
-        onClick={() => props.setView('default')}
-        thumbnailChange={img => props.setMainImage(img)}
-      />
+      <div style={css.expandedContainer}>
+        <ExpandedGallery
+          style={currentStyle} main={mainImage} images={imageArr}
+          onClick={() => props.setView('default')}
+          thumbnailChange={img => props.setMainImage(img)}
+        />
+      </div>
+    )
+    productSection = (
+      <div style={css.expandedViewReduce}></div>
+    )
+    defaultContainer = (
+      <div style={css.noContainer}>
+        {currentView}
+        {productSection}
+      </div>
     )
   }
 
+
+
   return (
     <div data-testid="overview-component">
-      <div className="subcomponents">
-        {currentView}
-        {reviewSection}
-        {titleSection}
-        {priceSection}
-        {toggleSection}
-        {styleSection}
-        {sizeQuantitySection}
-        {productOverview}
-      </div>
+      {defaultContainer}
+      {productOverview}
     </div>
   )
 }

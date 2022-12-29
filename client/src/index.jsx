@@ -24,6 +24,15 @@ const App = (props) => {
   const [currentSku, setCurrentSku] = useState('')
 
   useEffect(() => {
+    const data = window.localStorage.getItem('your_outfit_storage')
+    if (data !== null) { changeOutfit(JSON.parse(data)) }
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('your_outfit_storage', JSON.stringify(yourOutfit))
+  }, [yourOutfit])
+
+  useEffect(() => {
     axios.get('/currentProduct', {
       params: { productNum }
     })
@@ -43,9 +52,6 @@ const App = (props) => {
       .catch(err => console.log('err in index.jsx metadata'))
   }, [productNum])
 
-  useEffect(() => {
-
-  }, [related])
 
   useEffect(() => {
     if (styles.length > 0 || Object.keys(currentStyle).length === 0) {
@@ -78,31 +84,27 @@ const App = (props) => {
 
 
   return (
+
     <div className="index">
       <h1 id="header">Atelier</h1>
       <Overview
         // initial data
         productNum={productNum} product={product} metadata={metadata}
-        // styles
-        styles={styles}
-        currentStyle={currentStyle}
-        setCurrentStyle={(style) => setCurrentStyle(style)}
-        view={view}
-        setView={(newView) => setView(newView)}
-        mainImage={mainImage}
-        setMainImage={(url) => setMainImage(url)}
-        imageArr={imageArr}
-        setImageArr={(arr) => setImageArr(arr)}
+        // style section
+        styles={styles} currentStyle={currentStyle} setCurrentStyle={(style) => setCurrentStyle(style)}
+        view={view} setView={(newView) => setView(newView)}
+        mainImage={mainImage} setMainImage={(url) => setMainImage(url)}
+        imageArr={imageArr} setImageArr={(arr) => setImageArr(arr)}
         // outfit
         outfit={yourOutfit} changeOutfit={(arr) => changeOutfit(arr)}
         // cart selection
-        skus={skus} currentSku={currentSku}
-        setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+        skus={skus} setSkus={(obj) => setSkus(obj)}
+        currentSku={currentSku} setCurrentSku={(sku) => setCurrentSku(sku)}
       />
       <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
       <Questions productNum={productNum} product={product}/>
       <Reviews productNum={productNum} product={product} metadata={metadata}/>
-    </div>
+    </>
   )
 }
 

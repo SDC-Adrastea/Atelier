@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import AddToCart from './Cart.jsx'
+import * as css from './AddToCartCSS.jsx'
 
 
 const SizeQuantity = (props) => {
   let styleOptions = props.skus
-  // let styleOptions = {} // test for no stock
   let skus = []
   let sizeOptions = []
   let pageLoad, sizeAlertLoad
@@ -19,14 +19,12 @@ const SizeQuantity = (props) => {
     skus = Object.keys(styleOptions)
     if (skus.length > 0) {
       let array = []
-
       for (var i = 0; i < skus.length; i++) {
         let thisSize = styleOptions[skus[i]]
-        if (thisSize.quantity >= 1) {
+        if (!array.includes(thisSize.size) && thisSize.quantity >= 1) {
           array.push(thisSize.size)
         }
       }
-
       setSizes(array)
     }
   }, [props.skus])
@@ -71,20 +69,20 @@ const SizeQuantity = (props) => {
   })
 
   let quantitySection = (
-    <div>
-      <select name="quantity" id="quantity-select">
+    <>
+      <select name="quantity" id="quantity-select" style={css.sizeQuantitySelections}>
         <option value="">--</option>
       </select>
-    </div>
+    </>
   )
 
   if (quantity.length > 0) {
     quantitySection = (
-      <div>
-        <select name="quantity" id="quantity-select" onChange={handleQuantity}>
+      <>
+        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={css.sizeQuantitySelections}>
           {mappedQuantity}
         </select>
-      </div>
+      </>
     )
   }
 
@@ -94,27 +92,22 @@ const SizeQuantity = (props) => {
     }
 
     pageLoad = (
-      <div>
+      <>
         {sizeAlertLoad}
-        <select name="size" id="size-select" onChange={handleSize}>
+        <select name="size" id="size-select" onChange={handleSize} style={css.sizeQuantitySelections}>
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
         {quantitySection}
         <AddToCart sku={props.currentSku} size={chosenSize} quantity={chosenQuantity} setSizeAlert={() => setSizeAlert(true)} />
-      </div>)
-  } else {
-    pageLoad = (
-      <div>OUT OF STOCK</div>
+      </>
     )
+  } else {
+    pageLoad = <div style={css.sizeQuantitySelections}>OUT OF STOCK</div>
   }
 
 
-  return (
-    <div className="size-quantity">
-      {pageLoad}
-    </div>
-  )
+  return ( <> {pageLoad} </>)
 }
 
 export  default SizeQuantity ;

@@ -1,16 +1,18 @@
-import React from 'react';
+import React from 'react'
+import * as css from './ImageGalleryCSS.jsx'
+
 
 const ExpandedGallery = (props) => {
-  let currentStyle = props.style
-  let currentImage = props.main
-  let imageArr = []
+  let currentStyle = props.style || {}
+  let currentImage = props.main || ''
+  let imageArr = props.images || []
+  let display = []
 
   if (props.style === {}) {
-    currentStyle.photos = []
     currentStyle.name = ''
   } else {
-    currentStyle.photos.map(photo => {
-      imageArr.push(photo.url)
+    imageArr.map(photo => {
+      display.push(photo.url)
     })
   }
 
@@ -20,37 +22,41 @@ const ExpandedGallery = (props) => {
     props.thumbnailChange(url)
   }
 
-  // console.log('props in expanded gallery', props)
+  let handleArrowLeft = () => {
+    console.log('left click')
+  }
+
+  let handleArrowRight = () => {
+    console.log('right click')
+  }
 
   return (
-    <div className="expanded-view" onClick={() => props.onClick()}>
-      Expanded
-      <div className="expanded-main">
-        <img
-          src={currentImage}
-          alt={currentStyle.name}
-          height="250"
-          onClick={() => props.onClick()}
-        />
+    <>
+      <div style={css.expMainImageContainer}>
+        <img src={currentImage} style={css.expMainImage} alt={currentStyle.name} onClick={() => props.onClick()} />
+        <div style={css.overlay}>
+          <div style={css.arrowOverlay}>
+            <div style={css.rightArrowOverlay} onClick={() => handleArrowRight()} ></div>
+          </div>
+        </div>
+        <div style={css.overlay}>
+          <div style={css.arrowOverlay}>
+            <div style={css.leftArrowOverlay} onClick={() => handleArrowLeft()} ></div>
+          </div>
+        </div>
       </div>
 
-      <div className="expanded-overlay">
-        {imageArr.map((photo, index) => {
-          return (
-            <img
-              className="expanded-thumbnail"
-              key={index}
-              src={photo}
-              alt="expanded thumnail"
-              height="75"
-              onClick={(e) => handleClick(e)}
-            />
-          )
+      <div style={css.thumbnailContainer}>
+        {display.map((photo, index) => {
+          if (photo === currentImage) {
+            return <img key={index} src={photo} style={css.thumbnailSelected} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} />
+          } else {
+            return <img key={index} src={photo} style={css.thumbnailImage} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} />
+          }
         })}
       </div>
-    </div>
+    </>
   )
-
 }
 
 export default ExpandedGallery;

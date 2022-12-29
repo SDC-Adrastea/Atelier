@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const StarRating = ({rating = 0, width = 20}) => {
+export const StarRating = ({ rating = 0, width = 20 }) => {
 
   // stars glitch when less than 15
-  if (width < 15) { width = 15}
+  if (width < 15) { width = 15 }
 
   let wholes = Math.floor(rating);
   let decimals = rating - wholes;
@@ -44,12 +44,11 @@ export const StarRating = ({rating = 0, width = 20}) => {
             position: 'relative',
             display: 'inline-block',
           }}>
-                <img src="star.png" style={{
-                  height: `${width}px`,
-                  width: `${width}px`,
-                }} />
+            <img src="star.png" style={{
+              height: `${width}px`,
+              width: `${width}px`,
+            }} />
           </div>
-
         </div>
       ))}
     </div>

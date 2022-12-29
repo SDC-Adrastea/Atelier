@@ -1,4 +1,6 @@
-import React from 'react';
+import React from 'react'
+import * as css from './ProductInformationCSS.jsx'
+
 
 const ToggleOutfitStar = (props) => {
   let id = props.id
@@ -18,11 +20,9 @@ const ToggleOutfitStar = (props) => {
 
 
   return (
-    <div className="toggle-star-btn">
-      <button className="toggle-star" type="button" onClick={() => { handleStar() }} >
-        STAR <img src="star.png" alt="star" width="10" />
-      </button>
-    </div>
+    <>
+      <button type="button" style={css.selections} onClick={() => { handleStar() }}>★</button>
+    </>
   )
 }
 

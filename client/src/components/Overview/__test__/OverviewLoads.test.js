@@ -104,9 +104,9 @@ describe('Unit: Initial rendering of all Overview components', () => {
   })
 
   test('Confirm initial load of Style Selector subcomponent', () => {
-    render(<StyleSelector styles={styles} toggledStyle={currentStyle} onClick={() => 'onClick test'} />)
-    const h3Element = screen.getByText(/Styles:/i)
-    expect(h3Element).toBeInTheDocument()
+    render(<StyleSelector styles={styles} toggledStyle={currentStyle} data-testid="style-selector" onClick={() => 'onClick test'} />)
+    const testID = screen.getByTestId("style-selector")
+    expect(testID).toBeInTheDocument()
   })
 
   test('Confirm initial load of Size & Quantity subcomponent', () => {
