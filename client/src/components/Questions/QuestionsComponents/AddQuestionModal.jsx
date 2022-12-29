@@ -40,7 +40,7 @@ export const AddQuestionModal = (props) => {
         <h1>Ask Your Question</h1>
         <h2>about: {props.product.name}</h2>
         <form onSubmit={handleQuestionSubmit}>
-          Your Question * <input size={1000} name="question" type="text" onChange={event=>setQuestion(event.target.value)} placeholder={"Why did you like the product or not?"}/>
+          Your Question * <input size={1000} id="yourQuestion" name="question" type="text" onChange={event=>setQuestion(event.target.value)} placeholder={"Why did you like the product or not?"}/>
           <div>
           {error && question.length=== 0 && <p style={{ color: 'red' }}>Question must be entered</p>}
           </div>
@@ -57,15 +57,15 @@ export const AddQuestionModal = (props) => {
           {error && email.length === 0 && <p style={{ color:'red'}}>email must be entered</p>}
           </div>
 
-          <button>Submit Question</button>
-        </form>
-          <div >
-              <button
+          <button id="moreQuestionsBtn">Submit Question</button>
+
+              <button id="moreQuestionsBtn"
                 onClick={() => props.setModalIsOpen(false)}
               >
                 Cancel Submission
               </button>
-          </div>
+
+        </form>
         </div>
       </div>
     </>

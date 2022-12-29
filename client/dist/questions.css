@@ -1,24 +1,104 @@
 
+
+
+
 /* *****************Questions*********************** */
 .QuestionsList {
   max-height: 100vh;
-  width: 80vh;
+  width: 90vw;
   overflow-y: scroll;
-  border: 2px solid;
+  text-align: left;
+  display: inline-block;
+}
+
+
+.answerContent {
+  text-align: left;
+  font-size: 1em;
+  display: inline;
+}
+
+#aBold {
+  font-weight: bold;
+  font-size: 1em;
+  display: inline;
+}
+
+#addAnswerBtn {
+  font-size: 1em;
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  text-decoration: underline;
+  font-weight: normal;
+}
+
+#reportBtn {
+  font-size: 1em;
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  text-decoration: underline;
+  font-weight: normal;
 }
 
 .answersList {
-  color: green;
   max-height: 50vh;
-  width: 60vh;
-  border: 2px solid;
+  width: 85vw;
   overflow-y: scroll;
+  text-align: left;
+  padding: 10px;
+  display: flex;
+}
 
+#aHelpfulBtn {
+  font-size: 1em;
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  text-decoration: underline;
+  font-weight: normal;
 }
 
 .Question {
-  color: blue;
   overflow: hidden;
+  font-size: 1em;
+  white-space: nowrap;
+  width: 85vw;
+}
+
+.QuestionContent {
+  display: inline-block;
+}
+
+.qHelpful {
+  display: inline;
+  position: absolute;
+  font-weight: lighter;
+  font-size: 1em;
+  right: 5vw;
+  padding-right: 5%;
+  overflow: auto;
+}
+
+#qHelpfulBtn {
+  font-size: 1em;
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  text-decoration: underline;
+  overflow: auto;
+
+}
+
+.questionText {
+  float: left;
+  display: inline;
+  font-weight: bold;
 }
 
 .answerImages {
@@ -26,10 +106,43 @@
   height: 15vh;
 }
 
+#qAHeader {
+  font-size: 1.5em;
+  text-align:left;
+}
 
+#aListHeading {
+  font-weight: bold;
+}
+
+
+.answer{
+  font-size: .8em;
+  font-weight: lighter;
+  padding: 5px;
+}
+
+.ansBy{
+  font-size: .5m;
+}
+
+#loadAnswersbtn {
+  font-size: .75em;
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  font-weight: bold;
+}
 /****************** MODAL STYLES ******************/
 
-
+#yourQuestion{
+  text-align: left;
+  border: 1px solid #333333;
+  width: 400px;
+  height: 50px;
+  overflow: auto;
+}
 
 .questionCentered {
   position: fixed;
@@ -39,7 +152,11 @@
   transform: translate(-50%, -50%);
 }
 
+
+
 .questionModal {
+  text-align: left;
+  padding: 2em;
   width: 80vw;
   height: 80vh;
   background: white;
@@ -50,6 +167,26 @@
 .addPhotosButton {
   width: 5vw;
   height: 5vh;
+}
 
+#moreQuestionsBtn {
+  color: rgb(42, 42, 42);
+  border: 2px solid rgb(15, 8, 8);
+  padding: 15px 16px;
+  display: inline-flex;
+  margin: 5px;
+}
+
+
+/****************** SEARCH QUEUSTIONS STYLES ******************/
+
+#searchQuestions {
+  width: 95%;
+  height: 4em;
+  font-size: 1em;
+  background-image: url("https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  margin: 10px 10px 10px 0px;
 }
 

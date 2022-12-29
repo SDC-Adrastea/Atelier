@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 
-import { AddAnswer } from "./Questions/QuestionsComponents/AddAnswer.jsx";
-import { AddQuestion } from "./Questions/QuestionsComponents/AddQuestion.jsx";
 import { Answer } from "./Questions/QuestionsComponents/Answer.jsx";
 import { AnswerList } from "./Questions/QuestionsComponents/AnswerList.jsx";
 import { Question } from "./Questions/QuestionsComponents/Question.jsx";
@@ -13,11 +11,24 @@ import { AddQuestionModal } from  "./Questions/QuestionsComponents/AddQuestionMo
 
 export const Questions = (props) => {
 
+  // returnedQs is set to the returned list of questions from axios call using the product number
+  // setSearch is passed to the SearchQuestions component and searchQ is then passed to questionsList component
+  // modalIsOpen toggles the view of the AddQuestion Modal component
 
   const [returnedQs, setQs] = useState([]);
   const [searchQ, setSearch] =useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const handleTrackClick = (target) => {
+    console.log(target);
+    console.log(target.id);
+    axios.post('/interactions', {
+      widget: target.className,
+      element: target.id,
+      time: Date.now()
+    })
+    .then((response) => {console.log(response.data)})
+  }
 
   useEffect(() => {
     axios.get('/qa/questions',{
@@ -31,15 +42,13 @@ export const Questions = (props) => {
 // data.data.results the second ".data" could fail and .catch will not save
 
   return (
-    <div data-testid="Questions Component" className="Questions">
-      <h1>Questions & Answers</h1>
+    <div onClick={(event)=>handleTrackClick(event.target)} data-testid="Questions Component" className="Questions">
+      <h1 id="qAHeader">Questions & Answers</h1>
       <SearchQuestions setSearch={setSearch} />
 
-      {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} product={props.product} returnedQs={returnedQs} searchQ={searchQ} setQs={setQs}/>}
-      <button onClick={() => setModalIsOpen(true)}>
-        Add Question
-      </button>
+      {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} setModalIsOpen={setModalIsOpen} product={props.product} returnedQs={returnedQs} searchQ={searchQ} setQs={setQs}/>}
       {modalIsOpen && <AddQuestionModal setModalIsOpen={setModalIsOpen} product={props.product} productNum={props.productNum}/>}
+      {/* <button onClick={(event)=>handleTrackClick(event.target)}>Send Click Track</button> */}
     </div>
   )
 };
