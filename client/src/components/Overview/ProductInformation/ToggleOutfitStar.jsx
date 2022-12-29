@@ -1,11 +1,6 @@
 import React from 'react'
+import * as css from './ProductInformationCSS.jsx'
 
-// CSS Styles
-const starBtn = {
-  padding: '10px',
-  width: '50px',
-  textAlign: 'center'
-}
 
 const ToggleOutfitStar = (props) => {
   let id = props.id
@@ -26,9 +21,7 @@ const ToggleOutfitStar = (props) => {
 
   return (
     <>
-      <button type="button" onClick={() => { handleStar() }} style={starBtn}>
-        <img src="star2.png" alt="star" width="20" />
-      </button>
+      <button type="button" style={css.selections} onClick={() => { handleStar() }}>★</button>
     </>
   )
 }

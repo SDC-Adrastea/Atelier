@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import AddToCart from './Cart.jsx'
+import * as css from './AddToCartCSS.jsx'
 
-// CSS styles
-const sizeQuantityStyle = {
-  padding: '10px'
-}
 
 const SizeQuantity = (props) => {
   let styleOptions = props.skus
@@ -24,7 +21,7 @@ const SizeQuantity = (props) => {
       let array = []
       for (var i = 0; i < skus.length; i++) {
         let thisSize = styleOptions[skus[i]]
-        if (thisSize.quantity >= 1) {
+        if (!array.includes(thisSize.size) && thisSize.quantity >= 1) {
           array.push(thisSize.size)
         }
       }
@@ -73,7 +70,7 @@ const SizeQuantity = (props) => {
 
   let quantitySection = (
     <>
-      <select name="quantity" id="quantity-select" style={sizeQuantityStyle}>
+      <select name="quantity" id="quantity-select" style={css.sizeQuantitySelections}>
         <option value="">--</option>
       </select>
     </>
@@ -82,7 +79,7 @@ const SizeQuantity = (props) => {
   if (quantity.length > 0) {
     quantitySection = (
       <>
-        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={sizeQuantityStyle}>
+        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={css.sizeQuantitySelections}>
           {mappedQuantity}
         </select>
       </>
@@ -97,7 +94,7 @@ const SizeQuantity = (props) => {
     pageLoad = (
       <>
         {sizeAlertLoad}
-        <select name="size" id="size-select" onChange={handleSize} style={sizeQuantityStyle}>
+        <select name="size" id="size-select" onChange={handleSize} style={css.sizeQuantitySelections}>
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
@@ -106,15 +103,11 @@ const SizeQuantity = (props) => {
       </>
     )
   } else {
-    pageLoad = <div style={sizeQuantityStyle}>OUT OF STOCK</div>
+    pageLoad = <div style={css.sizeQuantitySelections}>OUT OF STOCK</div>
   }
 
 
-  return (
-    <div className="size-quantity">
-      {pageLoad}
-    </div>
-  )
+  return ( <> {pageLoad} </>)
 }
 
 export  default SizeQuantity ;
