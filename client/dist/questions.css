@@ -4,9 +4,10 @@
 
 /* *****************Questions*********************** */
 .QuestionsList {
-  max-height: 100vh;
+  max-height: 85vh;
   width: 90vw;
   overflow-y: scroll;
+  overflow: scroll;
   text-align: left;
   display: inline-block;
 }
@@ -70,17 +71,15 @@
   width: 85vw;
 }
 
-.QuestionContent {
+/* .QuestionContent {
   display: inline-block;
-}
+} */
 
-.qHelpful {
+#qHelpful {
   display: inline;
-  position: absolute;
+  position: relative;
   font-weight: lighter;
   font-size: 1em;
-  right: 5vw;
-  padding-right: 5%;
   overflow: auto;
 }
 
@@ -91,7 +90,7 @@
   margin:0;
   padding:0;
   text-decoration: underline;
-  overflow: auto;
+  overflow: hidden;
 
 }
 
