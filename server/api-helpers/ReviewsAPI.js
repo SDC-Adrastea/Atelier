@@ -42,29 +42,43 @@ module.exports.getMetadata = (product_id) => {
 module.exports.addReview = (product_id, rating, summary, body, recommend, name, email, photos, characteristics) => {
   options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/`;
   options.method = 'post';
-  // options.data = {
-  //   product_id: 71697,
-  //   rating: 5,
-  //   summary: "Best purchase ever!",
-  //   body: "Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever! Best purchase ever!",
-  //   recommend: true,
-  //   name: "twicestan",
-  //   email: "twicestan@twicefanclub.org",
-  //   photos: [],
-  //   characteristics: {
-  //       "14": 5,
-  //       "15": 5
-  //   }
-  // }
-  const requestBody = {};
 
-  return axios.post(options.url, requestBody, options.headers)
+  options.data = {
+    product_id: 71699,
+    rating: 5,
+    summary: 'I have become reborn after these.',
+    body: 'They fit soooo good. Really attracting all people with these.',
+    recommend: true,
+    name: 'Tommy',
+    email: 'tommy@tommy.com',
+    photos:[],
+    characteristics:{
+      "240587": 5, // Fit
+      "240588": 5, // Length
+      "240589": 5, // Comfort
+      "240590": 5  // Quality
+      // Size
+      // Width
+    }
+  };
+
+  return axios(options)
     .then(response => {
-      console.log('review post success')
+      console.log(`review post successful for ${options.data.product_id}`)
       console.log(response)
       return response.data;
     })
     .catch(err => {
       console.log('error posting reviews:', err);
     })
+
+//   return axios.post(options.url, requestBody, options.headers)
+//     .then(response => {
+//       console.log(`review post successful for ${requestBody.product_id}`)
+//       console.log(response)
+//       return response.data;
+//     })
+//     .catch(err => {
+//       console.log('error posting reviews:', err);
+//     })
 }

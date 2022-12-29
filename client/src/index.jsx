@@ -85,7 +85,7 @@ const App = (props) => {
 
   return (
     <>
-      <nav><h1>Atelier</h1></nav>
+      {/* <nav><h1>Atelier</h1></nav>
       <Overview
         // initial data
         productNum={productNum} product={product} metadata={metadata}
