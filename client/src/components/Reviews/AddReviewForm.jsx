@@ -10,7 +10,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
   const [characteristicState, setCharacteristicState] = useState({});
 
 
-  const [imageURL, setImage] = useState('');
+  const [imageURL, setImage] = useState([]);
 
   const OVERLAY_STYLES = {
     position: 'fixed',
@@ -86,10 +86,26 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
   ];
 
   function onImageChange(event) {
-    if (event.target.files && event.target.files[0]) {
-      setImage(URL.createObjectURL(event.target.files[0]))
-    }
+    const tempArry = [];
+    [...e.target.files].forEach(file => {
+      console.log("file >>> ", file);
+
+      tempArr.push({
+        data: file,
+        url: URL.createObjectURL(file)
+      });
+      console.log("pictures >> ", pictures);
+    });
+
+    setImage(tempArr);
   };
+
+
+  // function onImageChange(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     setImage(URL.createObjectURL(event.target.files[0]))
+  //   }
+  // };
 
   function onChangeRecommend(event) {
     spreadReviewFunc('recommend', event.target.value);
@@ -173,7 +189,12 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             {reviewBody.length < 50 ? `Minimum required characters left: ${50-reviewBody.length}` : 'Minimum reached'}<br/>
             <br/>
             <input type="file" accept="image/*" multiple onChange={onImageChange} ></input><br/>
-            <img id="target" src={imageURL} className="reviewImage"/><br/>
+            {/* {imageURL.map((image, index) => {
+              <>
+              <img id="target" src={image.thumbnail_url} className="reviewImage"/>
+              <br/>
+              </>
+            })} */}
             <label htmlFor="username">Username: </label>
             <input type="text" onChange={e => spreadReviewFunc('name', e.target.value)} id="username" name="username" placeholder="Example: jackson11!" required maxLength="60" size="65"></input><br/>
             <label htmlFor="email">Email: </label>
