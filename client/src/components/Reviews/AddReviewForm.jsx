@@ -122,10 +122,14 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             Overall Rating*<br/>
             <OverallReviewStars/><br/>
             <div id="recommended">
-              Recommended:
-              <input type="radio" name="recommended" value="true" />Yes
-              <input type="radio" name="recommended" value="false" />No
-              <br/>
+              <label>
+                Recommended:
+                <input type="radio" name="recommended" value="true" />
+                Yes
+                <input type="radio" name="recommended" value="false" />
+                No
+                <br/>
+              </label>
             </div>
             {characteristicsMap.map((characteristic, index) => {
               characteristic.name = characteristic.name.charAt(0).toUpperCase() + characteristic.name.slice(1);
