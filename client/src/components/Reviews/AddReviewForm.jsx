@@ -138,7 +138,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
               if (characteristics[characteristic.name]) {
                 return (
                   <div id={characteristic.name} key={index}>
-                  {characteristic.name}:  {characteristicsMap[index][characteristicState[characteristic.name]] || 'none selected'}<br/>
+                  {characteristic.name}:  {characteristicsMap[index][characteristicState[characteristics[characteristic.name].id]] || 'none selected'}<br/>
                   <input type="radio" name={characteristic.name}  value="1" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 1; setCharacteristicState({...characteristicState})}} />1
                   <input type="radio" name={characteristic.name}  value="2" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 2; setCharacteristicState({...characteristicState})}} />2
                   <input type="radio" name={characteristic.name}  value="3" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 3; setCharacteristicState({...characteristicState})}} />3
