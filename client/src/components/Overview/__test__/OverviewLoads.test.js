@@ -38,7 +38,7 @@ describe('Unit: Initial rendering of all Overview components', () => {
 
   let ratings = review.dummyMetaReviews.ratings
 
-  test('Confirm initial Overview component load', () => {
+  test('Confirm initial Overview component load with default view', () => {
     render(<Overview
       // initial data
       productNum={thisProduct.id} product={thisProduct} metadata={ratings}
@@ -58,6 +58,32 @@ describe('Unit: Initial rendering of all Overview components', () => {
       skus={skus} currentSku={'123456'}
       setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
     />)
+
+    const divElement = screen.getByTestId('overview-component')
+    expect(divElement).toBeInTheDocument()
+  })
+
+  test('Confirm initial Overview component load with expanded view', () => {
+    render(<Overview
+      // initial data
+      productNum={thisProduct.id} product={thisProduct} metadata={ratings}
+      // styles
+      styles={styles}
+      currentStyle={currentStyle}
+      setCurrentStyle={(style) => setCurrentStyle(style)}
+      view={'expanded'}
+      setView={(newView) => setView(newView)}
+      mainImage={'mainImage'}
+      setMainImage={(url) => setMainImage(url)}
+      imageArr={photos}
+      setImageArr={(arr) => setImageArr(arr)}
+      // outfit
+      outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
+      // cart selection
+      skus={skus} currentSku={'123456'}
+      setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+    />)
+
     const divElement = screen.getByTestId('overview-component')
     expect(divElement).toBeInTheDocument()
   })
