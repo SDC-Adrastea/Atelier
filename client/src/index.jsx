@@ -86,7 +86,7 @@ const App = (props) => {
   return (
 
     <div className="index">
-      <h1 id="header">Atelier</h1>
+      <nav><h1 id="header">Atelier</h1></nav>
       <Overview
         // initial data
         productNum={productNum} product={product} metadata={metadata}
