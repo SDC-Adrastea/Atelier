@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { queries } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
@@ -38,7 +38,7 @@ describe('Unit: Initial rendering of all Overview components', () => {
 
   let ratings = review.dummyMetaReviews.ratings
 
-  test('Confirm initial Overview component load', () => {
+  test('Confirm initial Overview component load with default view', () => {
     render(<Overview
       // initial data
       productNum={thisProduct.id} product={thisProduct} metadata={ratings}
@@ -58,6 +58,32 @@ describe('Unit: Initial rendering of all Overview components', () => {
       skus={skus} currentSku={'123456'}
       setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
     />)
+
+    const divElement = screen.getByTestId('overview-component')
+    expect(divElement).toBeInTheDocument()
+  })
+
+  test('Confirm initial Overview component load with expanded view', () => {
+    render(<Overview
+      // initial data
+      productNum={thisProduct.id} product={thisProduct} metadata={ratings}
+      // styles
+      styles={styles}
+      currentStyle={currentStyle}
+      setCurrentStyle={(style) => setCurrentStyle(style)}
+      view={'expanded'}
+      setView={(newView) => setView(newView)}
+      mainImage={'mainImage'}
+      setMainImage={(url) => setMainImage(url)}
+      imageArr={photos}
+      setImageArr={(arr) => setImageArr(arr)}
+      // outfit
+      outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
+      // cart selection
+      skus={skus} currentSku={'123456'}
+      setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+    />)
+
     const divElement = screen.getByTestId('overview-component')
     expect(divElement).toBeInTheDocument()
   })
@@ -107,6 +133,12 @@ describe('Unit: Initial rendering of all Overview components', () => {
     render(<StyleSelector styles={styles} toggledStyle={currentStyle} data-testid="style-selector" onClick={() => 'onClick test'} />)
     const testID = screen.getByTestId("style-selector")
     expect(testID).toBeInTheDocument()
+  })
+
+  test('Confirm initial load of Style subcomponent', () => {
+    render(<Style key={currentStyle.style_id} style={currentStyle} toggled={currentStyle} onClick={() => 'onClick test'} />)
+    const image = screen.getByTestId("style-image")
+    expect(image).toBeInTheDocument()
   })
 
   test('Confirm initial load of Size & Quantity subcomponent', () => {

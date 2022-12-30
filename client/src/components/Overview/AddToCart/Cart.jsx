@@ -9,7 +9,6 @@ const AddToCart = (props) => {
   let quantity = props.quantity
 
   let handleClick = async (e) => {
-    console.log('clicked cart button')
     if (size === '') {
       props.setSizeAlert()
     } else if (sku === '') {
