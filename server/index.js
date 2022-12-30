@@ -35,7 +35,7 @@ const { currentProduct, SingleProductGet } = require('./api-helpers/ProductsAPI.
 const { CartGet, CartPost } = require('./api-helpers/CartAPI.js');
 
 // Ratings and Reviews Controllers
-const { getReviews, getMetadata } = require('./api-helpers/ReviewsAPI.js');
+const { getReviews, getMetadata, addReview } = require('./api-helpers/ReviewsAPI.js');
 
 // ==============================================
 //       Interaction Route
@@ -186,6 +186,15 @@ app.get('/getMetadata', (req, res) => {
     .catch(err => {
       res.send(err)
       console.lof('err in getMetadata server-side', err)
+    })
+})
+
+app.post('/addReview', (req, res) => {
+  addReview(req.body)
+    .then(data => res.send(data))
+    .catch(err => {
+      res.send(err)
+      console.log('err in addReview server-side', err)
     })
 })
 

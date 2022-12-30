@@ -13,25 +13,41 @@ const OutfitCarousel = (props) => {
 
   //state for viewing window
   const [leftOffset, setLeftOffset] = useState(0)
+  const [cardsClickedThrough, setCardClick] = useState(0)
+  const totalOffSet = props.yourOutfit.length * 265
+  const numberOfHiddenCardsStarting = (totalOffSet - 795) / 265 // number of cards not shown
 
   return (
     <div className="your-outfit-carousel-transparent-container">
       <div data-testid="outfit-carousel">
-        <div className="overflow-window-outfit">
-          <img src="rightArrow.PNG" className="related-next-button" onClick={() => { setLeftOffset(leftOffset - 265) }} />
-          <div className="youroutfit-carousel-container" style={{ marginLeft: `${leftOffset}px` }}>
-            {/* <button onClick={() => addToOutfitList()}>Add To Outfit List</button> */}
-            {/* <div className="outfit-product-card-1"  onClick={() => addToOutfitList()} >Add To Outfit</div> */}
-            <img className="outfit-product-card-1" src="lucyButton.png" onClick={() => addToOutfitList()} />
-            {props.yourOutfit.map((item, index) => {
-              return (
-                <YourOutfitCard cardInfo={item} key={index} changeOutfit={(arr) => { props.changeOutfit(arr) }} />
-              )
-            })}
+        <div className="overflow-window-icon-outfit">
+          {leftOffset < 0 &&
+            <img src="leftArrow.png" className="related-previous-button" onClick={() => {
+              setLeftOffset(leftOffset + 265)
+              setCardClick(cardsClickedThrough - 1)
+            }} />
+          }
+          {leftOffset >= 0 &&
+            <img src="blank.png" className="related-previous-button" />
+          }
+          <img className="outfit-product-card-1" src="lucyButton.png" onClick={() => addToOutfitList()} />
+          <div className="overflow-window-outfit">
+            {
+              cardsClickedThrough < numberOfHiddenCardsStarting &&
+            <img src="rightArrow.PNG" className="yourOutfit-next-button" onClick={() => {
+              setLeftOffset(leftOffset - 265)
+              setCardClick(cardsClickedThrough + 1)
+            }
+            } />
+            }
+            <div className="youroutfit-carousel-container" style={{ marginLeft: `${leftOffset}px` }}>
+              {props.yourOutfit.map((item, index) => {
+                return (
+                  <YourOutfitCard cardInfo={item} key={index} changeOutfit={(arr) => { props.changeOutfit(arr) }} />
+                )
+              })}
+            </div>
           </div>
-        </div>
-        <div>
-          <button onClick={() => { setLeftOffset(leftOffset + 265) }}>Back</button>
         </div>
       </div>
     </div>
