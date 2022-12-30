@@ -42,7 +42,7 @@
 
 .outfit-product-card-1 {
   margin-left: 0px;
-  position:relative;
+  /* position:relative; */
   width: 250px;
   height: 300px;
   display: inline-block;

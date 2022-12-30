@@ -33,16 +33,25 @@
   height: 343px;
   width: 1210px;
   z-index: 50;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 60%, rgb(215, 252, 255, 1) 100%);
+  /* background: linear-gradient(to right, rgba(255, 255, 255, 0) 60%, rgb(215, 252, 255, 1) 100%); */
 }
 
 .related-next-button {
   position: relative;
-  top: 33%;
+  top: 40%;
   align-items: center;
   float: right;
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
+}
+
+.related-previous-button {
+  position: relative;
+  top: 40%;
+  align-items: center;
+  float: left;
+  height: 50px;
+  width: 50px;
 }
 
 .related-action-button {
@@ -57,16 +66,23 @@
 .related-carousel-container {
   height: 350px;
   flex-wrap: nowrap;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding: 10px;
   transition: margin-left 1s;
+}
+
+.overflow-window-icon {
+  overflow: hidden;
+  height: 340px;
+  width: 1310px;
+  /* border: 1px solid purple; */
 }
 
 .overflow-window-related {
   overflow: hidden;
   height: 340px;
-  width: 1210px;
-  border: 1px solid green;
+  width: 1110px;
+  /* border: 1px solid green; */
 }
 
 .related-product-card:first-child {
