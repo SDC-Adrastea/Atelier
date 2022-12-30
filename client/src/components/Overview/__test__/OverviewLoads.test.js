@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { queries } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
@@ -107,6 +107,12 @@ describe('Unit: Initial rendering of all Overview components', () => {
     render(<StyleSelector styles={styles} toggledStyle={currentStyle} data-testid="style-selector" onClick={() => 'onClick test'} />)
     const testID = screen.getByTestId("style-selector")
     expect(testID).toBeInTheDocument()
+  })
+
+  test('Confirm initial load of Style subcomponent', () => {
+    render(<Style key={currentStyle.style_id} style={currentStyle} toggled={currentStyle} onClick={() => 'onClick test'} />)
+    const image = screen.getByTestId("style-image")
+    expect(image).toBeInTheDocument()
   })
 
   test('Confirm initial load of Size & Quantity subcomponent', () => {
