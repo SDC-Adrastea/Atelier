@@ -175,9 +175,9 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             <input type="file" accept="image/*" multiple onChange={onImageChange} ></input><br/>
             <img id="target" src={imageURL} className="reviewImage"/><br/>
             <label htmlFor="username">Username: </label>
-            <input type="text" id="username" name="username" placeholder="Example: jackson11!" required maxLength="60" size="65"></input><br/>
+            <input type="text" onChange={e => spreadReviewFunc('name', e.target.value)} id="username" name="username" placeholder="Example: jackson11!" required maxLength="60" size="65"></input><br/>
             <label htmlFor="email">Email: </label>
-            <input type="email" id="email" name="email" placeholder="Example: jackson11@email.com" required maxLength="60" size="65"></input><br/>
+            <input type="email" onChange={e => spreadReviewFunc('email', e.target.value)} id="email" name="email" placeholder="Example: jackson11@email.com" required maxLength="60" size="65"></input><br/>
             For authentication reasons, you will not be emailed
             <br/>
             <input type="submit" value="Submit" />
