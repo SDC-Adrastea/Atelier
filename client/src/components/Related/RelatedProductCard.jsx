@@ -50,7 +50,7 @@ const RelatedProductCard = (props) => {
      } className="related-product-card"
      data-testid="related-product-card-test"
      >
-      {console.log(cardData)}
+      {/* {console.log(cardData)} */}
       <img className="related-action-button" src="star2.png" onClick={modalSearch}/>
       <img className={imageClass} src={image} />
       <div>{cardData.category}</div>
