@@ -4,7 +4,7 @@ import {OverallReviewStars} from './OverallReviewStars.jsx';
 
 export const AddReviewForm = ({ open, children, image, onClose, product, characteristics }) => {
 
-  const [reviewObject, setReviewObject] = useState({product_id: 0, recommended: false});
+  const [reviewObject, setReviewObject] = useState({product_id: 0, recommend: false});
 
   const [characteristicState, setCharacteristicState] = useState({});
 
@@ -91,6 +91,10 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
     }
   };
 
+  function onChangeRecommend(event) {
+    spreadReviewFunc('recommend', event.target.value);
+  }
+
   function spreadReviewFunc(key, value) {
     setReviewObject(prevReviewObject => {
       return {
@@ -121,15 +125,13 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
           <h3>About the {product.name}</h3>
             Overall Rating*<br/>
             <OverallReviewStars/><br/>
-            <div id="recommended">
-              <label>
+            <div id="recommended" onChange={onChangeRecommend}>
                 Recommended:
                 <input type="radio" name="recommended" value="true" />
                 Yes
                 <input type="radio" name="recommended" value="false" />
                 No
                 <br/>
-              </label>
             </div>
             {characteristicsMap.map((characteristic, index) => {
               characteristic.name = characteristic.name.charAt(0).toUpperCase() + characteristic.name.slice(1);
