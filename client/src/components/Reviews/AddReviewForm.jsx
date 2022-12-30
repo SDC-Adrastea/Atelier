@@ -3,12 +3,12 @@ import {OverallReviewStars} from './OverallReviewStars.jsx';
 
 
 export const AddReviewForm = ({ open, children, image, onClose, product, characteristics }) => {
+  const [reviewBody, setReviewBody] = useState('');
 
-  const [reviewObject, setReviewObject] = useState({product_id: 0, recommend: false});
+  const [reviewObject, setReviewObject] = useState({product_id: 0, recommend: false, body: reviewBody});
 
   const [characteristicState, setCharacteristicState] = useState({});
 
-  const [reviewBody, setReviewBody] = useState('');
 
   const [imageURL, setImage] = useState('');
 
@@ -112,6 +112,10 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
     spreadReviewFunc('characteristics', characteristicState)
   },[characteristicState]);
 
+  useEffect(() => {
+    spreadReviewFunc('body', reviewBody)
+  },[reviewBody]);
+
   if (!open) return null
 
   return (
@@ -154,7 +158,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             <div>
 
             <label htmlFor="reviewSummary">Review Summary: </label>
-            <input type="text" id="reviewSummary" name="reviewSummary" placeholder="Example: Best purchase ever!" required maxLength="60" size="65"></input><br/>
+            <input type="text" id="reviewSummary" name="reviewSummary" placeholder="Example: Best purchase ever!" required maxLength="60" size="65" onChange={e => spreadReviewFunc('summary', e.target.value)}></input><br/>
 
             <label>Review Body: </label>
             <textarea
