@@ -17,17 +17,17 @@ const OutfitCarousel = (props) => {
   return (
     <div className="your-outfit-carousel-transparent-container">
       <div data-testid="outfit-carousel">
-        <div className="overflow-window-icon">
+        <div className="overflow-window-icon-outfit">
           {leftOffset < 0 &&
             <img src="leftArrow.png" className="related-previous-button" onClick={() => { setLeftOffset(leftOffset + 265) }} />
           }
           {leftOffset >= 0 &&
             <img src="blank.png" className="related-previous-button" />
           }
+          <img className="outfit-product-card-1" src="lucyButton.png" onClick={() => addToOutfitList()} />
           <div className="overflow-window-outfit">
-            <img src="rightArrow.PNG" className="related-next-button" onClick={() => { setLeftOffset(leftOffset - 265) }} />
+            <img src="rightArrow.PNG" className="yourOutfit-next-button" onClick={() => { setLeftOffset(leftOffset - 265) }} />
             <div className="youroutfit-carousel-container" style={{ marginLeft: `${leftOffset}px` }}>
-              <img className="outfit-product-card-1" src="lucyButton.png" onClick={() => addToOutfitList()} />
               {props.yourOutfit.map((item, index) => {
                 return (
                   <YourOutfitCard cardInfo={item} key={index} changeOutfit={(arr) => { props.changeOutfit(arr) }} />
