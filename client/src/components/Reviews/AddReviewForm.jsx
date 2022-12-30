@@ -4,6 +4,8 @@ import {OverallReviewStars} from './OverallReviewStars.jsx';
 
 export const AddReviewForm = ({ open, children, image, onClose, product, characteristics }) => {
 
+  const [reviewObject, setReviewObject] = useState({product_id: 0, recommended: false});
+
   const [characteristicState, setCharacteristicState] = useState({});
 
   const [reviewBody, setReviewBody] = useState('');
@@ -89,7 +91,22 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
     }
   };
 
-  // console.log(characteristics)
+  function spreadReviewFunc(key, value) {
+    setReviewObject(prevReviewObject => {
+      return {
+        ...prevReviewObject,
+        [key]: value
+      }
+    })
+  }
+
+  useEffect(() => {
+    spreadReviewFunc('product_id', product.id)
+  },[product]);
+
+  useEffect(() => {
+    spreadReviewFunc('characteristics', characteristicState)
+  },[characteristicState]);
 
   if (!open) return null
 
@@ -111,9 +128,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
               <br/>
             </div>
             {characteristicsMap.map((characteristic, index) => {
-              // console.log('characteristic.name:', characteristic.name);
               characteristic.name = characteristic.name.charAt(0).toUpperCase() + characteristic.name.slice(1);
-              console.log('characteristics:', characteristics);
               if (characteristics[characteristic.name]) {
                 return (
                   <div id={characteristic.name} key={index}>
