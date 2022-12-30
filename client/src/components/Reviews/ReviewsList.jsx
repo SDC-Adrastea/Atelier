@@ -12,7 +12,7 @@ export const ReviewsList = (props) => {
   var reviewsSortBy = props.reviewsSortBy;
   var setSort = props.setSort;
 
-  // console.log(props.product);
+  // console.log(props.metadata);
 
   return (
     <div data-testid="reviews-list">
@@ -31,7 +31,7 @@ export const ReviewsList = (props) => {
         }) }
       { reviews.length > 2 && reviewsShowing < reviews.length ? <button onClick={() => setReviewsShowing(reviewsShowing+2)}>More Reviews</button> : null }
       {/* <button>Add a Review</button> */}
-      <AddReviewWrapper product={props.product} />
+      <AddReviewWrapper product={props.product} metadata={props.metadata} />
     </div>
   )
 };

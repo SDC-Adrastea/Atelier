@@ -4,3 +4,5 @@ node_modules
 client/dist/bundle.js
 .env
 token.js
+
+.DS_Store

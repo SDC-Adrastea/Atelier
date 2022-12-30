@@ -40,7 +40,7 @@ export const Reviews = (props) => {
         <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} metadata={props.metadata}/>
       </div>
       <div>
-        <ReviewsList productNum={props.productNum} product={props.product} reviews={reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} />
+        <ReviewsList productNum={props.productNum} product={props.product} reviews={reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} metadata={props.metadata}/>
       </div>
     </div>
   </div>
