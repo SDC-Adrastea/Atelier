@@ -77,7 +77,9 @@
 
 #qHelpful {
   display: inline;
-  position: relative;
+  position: sticky;
+  right: auto;
+  float: right;
   font-weight: lighter;
   font-size: 1em;
   overflow: auto;
