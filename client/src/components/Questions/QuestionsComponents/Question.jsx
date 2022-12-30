@@ -36,10 +36,9 @@ export const Question = (props) => {
 
   return (
     <div className="Question" data-testid="QuestionComponent">
-      <div className="QuestionContent">
-        <div className="questionText">Q: {props.data.question_body}</div> <div className="qHelpful">Helpful?  |  <button id="qHelpfulBtn" onClick={handleQHelpfulness}>Yes</button>  &#40;{props.data.question_helpfulness}&#41; | <button id="addAnswerBtn" onClick={() => setAnsModalIsOpen(true)}>
-        Add Answer
-      </button> </div>
+          <div className="questionText">Q: {props.data.question_body}</div>
+          <div id="qHelpful"> Helpful?  |  <button id="qHelpfulBtn" onClick={handleQHelpfulness}>Yes</button>  &#40;{props.data.question_helpfulness}&#41; |
+            <button id="addAnswerBtn" onClick={() => setAnsModalIsOpen(true)}> Add Answer</button>
       </div>
       <AnswerList questionId={props.data.question_id} setAs={setAs} returnedAs={returnedAs}/>
       {ansModalIsOpen && <AddAnswerModal setAnsModalIsOpen={setAnsModalIsOpen} data={props.data} product={props.product} questionId={props.data.question_id} setAs={setAs}/>}
