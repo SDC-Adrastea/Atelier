@@ -66,7 +66,39 @@ describe('Product Information: Stars Rating & Reviews', () => {
 })
 
 describe('Product Information: Category & Title', () => {
-  test('sample', () => { })
+  let thisProduct = product.dummyProduct_id
+  let styles = product.dummyProductStyles.results
+  let currentStyle = product.singleDummyProductStyle
+  let id = currentStyle.style_id
+  let photos = currentStyle.photos
+  let skus = currentStyle.skus
+  let features = product.dummyProductData.features
+
+  let ratings = review.dummyMetaReviews.ratings
+
+  // test('Category does not load when no style is present', () => {
+  //   render(<Overview
+  //     // initial data
+  //     productNum={thisProduct.id} product={thisProduct} metadata={ratings}
+  //     // styles
+  //     styles={[]}
+  //     currentStyle={currentStyle}
+  //     setCurrentStyle={(style) => setCurrentStyle(style)}
+  //     view={'default'}
+  //     setView={(newView) => setView(newView)}
+  //     mainImage={'mainImage'}
+  //     setMainImage={(url) => setMainImage(url)}
+  //     imageArr={photos}
+  //     setImageArr={(arr) => setImageArr(arr)}
+  //     // outfit
+  //     outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
+  //     // cart selection
+  //     skus={skus} currentSku={'123456'}
+  //     setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+  //   />)
+  //   const category = screen.queryByText(/Basketball Shoes/i)
+  //   expect(category.length).toBe(0)
+  // })
 
   // check that the category is displayed; in the correct area
   // check that the title is displayed; in the correct area

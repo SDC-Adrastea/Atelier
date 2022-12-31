@@ -125,7 +125,7 @@ describe('Unit: Initial rendering of all Overview components', () => {
 
   test('Confirm initial load of Toggle the Outfit Star subcomponent', () => {
     render(<ToggleOutfitStar id={thisProduct.id} outfit={[]} onClick={() => 'onClick test'} />)
-    const starButton = screen.getByRole('button')
+    const starButton = screen.getByRole('button', { id: 'star' })
     expect(starButton).toBeInTheDocument()
   })
 
