@@ -70,7 +70,7 @@ const SizeQuantity = (props) => {
 
   let quantitySection = (
     <>
-      <select name="quantity" id="quantity-select" style={css.sizeQuantitySelections}>
+      <select role="quantity" name="quantity" id="quantity-select" style={css.sizeQuantitySelections}>
         <option value="">--</option>
       </select>
     </>
@@ -79,7 +79,7 @@ const SizeQuantity = (props) => {
   if (quantity.length > 0) {
     quantitySection = (
       <>
-        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={css.sizeQuantitySelections}>
+        <select role="quantity" name="quantity" id="quantity-select" onChange={handleQuantity} style={css.sizeQuantitySelections}>
           {mappedQuantity}
         </select>
       </>
@@ -94,7 +94,7 @@ const SizeQuantity = (props) => {
     pageLoad = (
       <>
         {sizeAlertLoad}
-        <select name="size" id="size-select" onChange={handleSize} style={css.sizeQuantitySelections}>
+        <select role="size" name="size" id="size-select" onChange={handleSize} style={css.sizeQuantitySelections}>
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
