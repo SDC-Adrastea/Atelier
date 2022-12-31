@@ -14,7 +14,7 @@ import dummyProductsData from '../../../../../../dummyTestData/productDummy.js'
 import dummyMetaReviews from '../../../../../../dummyTestData/reviewsDummy.js'
 
 // app
-// import App from '../../../../index.jsx'
+import App from '../../../../atelier.jsx'
 // component
 import { Overview } from '../../../Overview.jsx'
 // subcomponents
@@ -153,7 +153,9 @@ describe('Product Information: Toggle Outfit Star', () => {
 
   let ratings = review.dummyMetaReviews.ratings
 
-  test('sample', () => { })
+  // test('sample', () => {
+  //   render(<App />)
+  // })
 
   // Toggling once adds the item to the outfit carousel (or the props/state?)
   // Toggling twice removes the item from the outfit carousel (or the props/state?)

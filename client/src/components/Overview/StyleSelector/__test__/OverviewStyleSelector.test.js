@@ -26,7 +26,3 @@ describe('Style Selector: Style Selector', () => {
   // Check that the first item in the list is selected by default
   // Check that only one style can be selected at a time.
 })
-
-// IDEAS
-// test for props
-// test for state
