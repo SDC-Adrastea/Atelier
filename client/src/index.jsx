@@ -1,112 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
+import { App } from './atelier.jsx';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
-// Components
-import { Overview } from './components/Overview.jsx';
-import { Related } from './components/Related.jsx';
-import { Questions } from './components/Questions.jsx';
-import { Reviews } from './components/Reviews.jsx';
 
-const App = (props) => {
-  const sampleID = 71699;
-  const [productNum, setProductNum] = useState(sampleID)
-  const [product, setProduct] = useState({})
-  const [styles, setStyles] = useState([])
-  const [related, setRelated] = useState([])
-  const [metadata, setMetadata] = useState({})
-  const [yourOutfit, changeOutfit] = useState([])
-  // Overview-Specific State
-  const [currentStyle, setCurrentStyle] = useState({})
-  const [view, setView] = useState('default')
-  const [mainImage, setMainImage] = useState('')
-  const [imageArr, setImageArr] = useState([])
-  const [skus, setSkus] = useState({})
-  const [currentSku, setCurrentSku] = useState('')
 
-  useEffect(() => {
-    const data = window.localStorage.getItem('your_outfit_storage')
-    if (data !== null) { changeOutfit(JSON.parse(data)) }
-  }, [])
+class ErrorBoundary extends React.Component {
 
-  useEffect(() => {
-    window.localStorage.setItem('your_outfit_storage', JSON.stringify(yourOutfit))
-  }, [yourOutfit])
+  constructor(props) {
+    super(props);
+    this.state = { error: null, errorInfo: null };
+  }
 
-  useEffect(() => {
-    axios.get('/currentProduct', {
-      params: { productNum }
+  componentDidCatch(error, errorInfo) {
+    // Catch errors in any components below and
+    // re-render with error message
+    this.setState({
+      error: error,
+      errorInfo: errorInfo
     })
-      .then(data => {
-        setProduct(data.data.product)
-        setStyles(data.data.styles.results)
-        setRelated(data.data.related)
-      })
-      .catch(err => console.log('err in index.jsx getProduct', err))
+    console.log(error, errorInfo);
+  }
 
-    axios.get('/getMetadata', {
-      params: { productNum }
-    })
-      .then(data => {
-        setMetadata(data.data)
-      })
-      .catch(err => console.log('err in index.jsx metadata'))
-  }, [productNum])
+  // This will render this component wherever called
+  render() {
+    if (this.state.errorInfo) {
 
-
-  useEffect(() => {
-    if (styles.length > 0 || Object.keys(currentStyle).length === 0) {
-      styles.forEach(style => {
-        if (style['default?']) {
-          setCurrentStyle(style)
-          setSkus(style.skus)
-
-          let firstPhoto = style.photos[0]
-          setMainImage(firstPhoto.url)
-          setImageArr(style.photos)
-        }
-      })
-      if (styles.length === 1) {
-        let thisStyle = styles[0]
-        setCurrentStyle(thisStyle)
-        setSkus(thisStyle.skus)
-
-        let firstPhoto = thisStyle.photos[0]
-        setMainImage(firstPhoto.url)
-        setImageArr(thisStyle.photos)
-      }
+      // Error path
+      return (
+        <div>
+          <h2>Uh Oh... Atelier is having technical Troubles</h2>
+          <p>Please try again in a few moments and hopefully we will be back.</p>
+        </div>
+      );
     }
-  }, [styles])
 
-  useEffect(() => {
-    let photos = currentStyle.photos
-    setImageArr(photos)
-  }, [currentStyle])
-
-
-  return (
-
-    <div className="index">
-      <nav><h1 id="header">Atelier</h1></nav>
-      <Overview
-        // initial data
-        productNum={productNum} product={product} metadata={metadata}
-        // style section
-        styles={styles} currentStyle={currentStyle} setCurrentStyle={(style) => setCurrentStyle(style)}
-        view={view} setView={(newView) => setView(newView)}
-        mainImage={mainImage} setMainImage={(url) => setMainImage(url)}
-        imageArr={imageArr} setImageArr={(arr) => setImageArr(arr)}
-        // outfit
-        outfit={yourOutfit} changeOutfit={(arr) => changeOutfit(arr)}
-        // cart selection
-        skus={skus} setSkus={(obj) => setSkus(obj)}
-        currentSku={currentSku} setCurrentSku={(sku) => setCurrentSku(sku)}
-      />
-      <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
-      <Questions productNum={productNum} product={product}/>
-      <Reviews productNum={productNum} product={product} metadata={metadata}/>
-    </div>
-  )
+    return <App />;
+  }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
-
+ReactDOM.render(<ErrorBoundary />, document.getElementById('app'));

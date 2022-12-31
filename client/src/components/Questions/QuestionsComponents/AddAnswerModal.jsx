@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import ReactDOM from 'react-dom';
 
 import axios from "axios";
 
@@ -95,41 +96,39 @@ export const AddAnswerModal = (props) => {
 
   return (
     <>
-      <div className="questionCentered" >
-        <div className="questionModal" >
-        <h1>Submit Your Answer</h1>
-        <h2>{props.product.name}: {props.data.question_body}</h2>
-        <form onSubmit={handleAnswerSubmit}>
+      <div className="questionCentered" widgetname='Questions'>
+        <div className="questionModal" widgetname='Questions'>
+        <h1 widgetname='Questions' id="submitAnswerHeading">Submit Your Answer</h1>
+        <h2 widgetname='Questions' id="submiAnswertitle">{props.product.name}: {props.data.question_body}</h2>
+        <form onSubmit={handleAnswerSubmit} widgetname='Questions' id="answerForm">
           Your Answer * <input size={1000} id="yourQuestion" name="answer" type="text" onChange={event=>setAnswer(event.target.value)} />
-          <div>
+          <div widgetname='Questions'>
           {error && answer.length === 0 && <p style={{ color:'red'}}>Answer must be entered</p>}
           </div>
 
           What is your nickname * <input size={60} name="nickname" type="text" onChange={event=>setNickName(event.target.value)} placeholder={"Example: jack543!"}/>
-          <p>For privacy reasons, do not use your full name or email address</p>
-          <div>
+          <p widgetname='Questions' id="AnswerDisclaimer">For privacy reasons, do not use your full name or email address</p>
+          <div widgetname='Questions'>
           {error && nickname.length === 0 && <p style={{ color:'red'}}>Nickname must be entered</p>}
           </div>
 
-          Your Email * <input size={60} name="email" type="email" onChange={event=>setEmail(event.target.value)} placeholder={"Example: jack@email.com"}/>
-          <p>For authentication reasons, you will not be emailed</p>
-          <div>
+          Your Email * <input size={60} widgetname='Questions' name="email" type="email" onChange={event=>setEmail(event.target.value)} placeholder={"Example: jack@email.com"}/>
+          <p widgetname='Questions'>For authentication reasons, you will not be emailed</p>
+          <div widgetname='Questions'>
           {error && email.length=== 0 && <p style={{ color:'red'}}>email must be entered</p>}
           </div>
           {/* <img className="addPhotosButton" src="lucy-upload-photo.PNG"  id="uploadImage" style="cursor:pointer"/> */}
           {underMax && <input name="photosInput" type="file" multiple accept="image/*" onChange={handleSubmitPhotos} /> }
-          <div>
-          <button id="moreQuestionsBtn">Submit Answer</button> <button id="moreQuestionsBtn"
+          <div widgetname='Questions'>
+          <button id="moreQuestionsBtn" widgetname='Questions'>Submit Answer</button> <button id="moreQuestionsBtn"
               onClick={() => props.setAnsModalIsOpen(false)}
+              widgetname='Questions'
             >
               Cancel Submission
             </button>
             </div>
         </form>
         {imageURLs.map((photo, idx)=><img src={photo} key={idx}/>)}
-
-          <div>
-          </div>
         </div>
       </div>
     </>

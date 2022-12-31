@@ -10,7 +10,7 @@ module.exports.interactionPost = async (clickTrackFormData, TOKEN) => {
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/interactions`,
     headers: { "Authorization": TOKEN },
     data: {
-      widget: `${clickTrackFormData.widget}`,
+      widget: `${clickTrackFormData.widgetname}`,
       element: `${clickTrackFormData.element}`,
       time: `${clickTrackFormData.time}`
     }
