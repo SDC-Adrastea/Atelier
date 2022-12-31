@@ -12,6 +12,10 @@ import React, { useEffect, useState } from "react";
 import { Reviews } from '../../Reviews.jsx'
 import { RatingsColumn } from '../../Reviews/RatingsColumn.jsx'
 import { ReviewsList } from '../../Reviews/ReviewsList.jsx'
+import { AddReviewForm } from '../../Reviews/AddReviewForm.jsx'
+import { ReviewPhotoWrapper } from '../../Reviews/ReviewPhotoWrapper.jsx'
+import { ReviewPhotoModal } from '../../Reviews/ReviewPhotoModal.jsx'
+import { ReviewTile } from '../../Reviews/ReviewTile.jsx'
 
 // dummy data
 import { dummyReviews, dummyMetaReviews } from "../../../../../dummyTestData/reviewsDummy.js";
@@ -26,28 +30,60 @@ describe('Unit Test: Reviews', () => {
   })
 
   test('Confirm initial load of RatingsColumn component', () => {
-    render(<RatingsColumn productNum={11} averageRating={4.2} reviews={[dummyReviews]} metadata={dummyMetaReviews}/>)
+    render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
+    // render(<RatingsColumn productNum={11} averageRating={4.2} reviews={[dummyReviews]} metadata={dummyMetaReviews}/>)
     const RatingsColumnElement = screen.getByTestId('ratings-column')
     expect(RatingsColumnElement).toBeInTheDocument()
   })
 
   test('Confirm initial load of ReviewsList component', () => {
     render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
+    // render(<ReviewsListElement productNum={props.productNum} product={props.product} reviews={reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} metadata={props.metadata} />)
     const ReviewsListElement = screen.getByTestId('reviews-list')
     expect(ReviewsListElement).toBeInTheDocument()
   })
 
-  // test('Confirm initial load of RatingsBreakdown component', () => {
-  //   render(<Reviews productNum={71700} metadata={dummyMetaReviews} />)
-  //   const RatingsBreakdownElement = screen.getByTestId('ratings-breakdown')
-  //   expect(RatingsBreakdownElement).toBeInTheDocument()
-  // })
+  test('Confirm initial load of ReviewsTile component', () => {
+    render(<ReviewTile review={dummyReviews.results[0]} />)
+    const ReviewTileElement = screen.getByTestId('review-tile')
+    expect(ReviewTileElement).toBeInTheDocument()
+  })
 
-  // test('Confirm initial load of ProductBreakdown component', () => {
-  //   render(<Reviews productNum={71700} metadata={dummyMetaReviews} />)
-  //   const ProductBreakdownElement = screen.getByTestId('product-breakdown')
-  //   expect(ProductBreakdownElement).toBeInTheDocument()
-  // })
+  test('Confirm initial load of RatingsBreakdown component', () => {
+    render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
+    const RatingsBreakdownElement = screen.getByTestId('ratings-breakdown')
+    expect(RatingsBreakdownElement).toBeInTheDocument()
+  })
+
+  test('Confirm initial load of ProductBreakdown component', () => {
+    render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
+    const ProductBreakdownElement = screen.getByTestId('product-breakdown')
+    expect(ProductBreakdownElement).toBeInTheDocument()
+  })
+
+  test('Confirm initial load of AddReviewForm component', () => {
+    render(<AddReviewForm open={true} product={dummyProductData} characteristics={dummyMetaReviews.characteristics} onClose={() => setModalIsOpen(false)}/>)
+    const AddReviewFormElement = screen.getByTestId('add-review-form')
+    expect(AddReviewFormElement).toBeInTheDocument()
+  })
+
+  test('Confirm initial load of AddReviewWrapper component', () => {
+    render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
+    const AddReviewWrapperElement = screen.getByTestId('add-review-wrapper')
+    expect(AddReviewWrapperElement).toBeInTheDocument()
+  })
+
+  test('Confirm initial load of ReviewPhotoWrapper component', () => {
+    render(<ReviewPhotoWrapper image={"urlplaceholder/review_5_photo_number_1.jpg"} />)
+    const ReviewPhotoWrapperElement = screen.getByTestId('review-photo-wrapper')
+    expect(ReviewPhotoWrapperElement).toBeInTheDocument()
+  })
+
+  test('Confirm initial load of ReviewPhotoModal component', () => {
+    render(<ReviewPhotoModal open={true} image={"urlplaceholder/review_5_photo_number_1.jpg"} onClose={() => setModalIsOpen(false)} />)
+    const ReviewPhotoModalElement = screen.getByTestId('review-photo-modal')
+    expect(ReviewPhotoModalElement).toBeInTheDocument()
+  })
 
 
 

@@ -10,7 +10,7 @@ export const ReviewTile = (props) => {
   const [responseExists, setResponse] = useState(false);
 
   return (
-    <div data-testid="reviews-list">
+    <div data-testid="review-tile">
       <StarRating rating={review.rating} />
       {review.reviewer_name}
       <br/>

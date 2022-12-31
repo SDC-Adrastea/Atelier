@@ -140,7 +140,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
       <div style={MODAL_STYLES}>
         <button onClick={onClose}>&#10006;</button>
         <br/>
-        <form>
+        <form data-testid="add-review-form">
           <h2>Write Your Review</h2>
           <h3>About the {product.name}</h3>
             Overall Rating*<br/>
