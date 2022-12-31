@@ -28,6 +28,7 @@ describe('Size & Quantity Options', () => {
   let photos = currentStyle.photos
   let skus = currentStyle.skus
   let features = product.dummyProductData.features
+
   let ratings = review.dummyMetaReviews.ratings
 
   test('Correct default options selected', () => {
@@ -45,20 +46,21 @@ describe('Size & Quantity Options', () => {
 
   test('If no sizes are present, size alert is present', async () => {
     render(<SizeQuantity skus={skus} currentSku={'123456'} style={currentStyle} setSkus={(obj) => props.setSkus(obj)} setCurrentSku={(sku) => props.setCurrentSku(sku)} />)
-    await userEvent.click(screen.getByRole('button', {name: 'Add to Cart'}))
+    await userEvent.click(screen.getByRole('button', { name: 'Add to Cart' }))
     const notice = screen.getByText(/Please select size/i)
     expect(notice).toBeInTheDocument()
   })
 
   // when a size is selected it sets quantity to 1
-  test('Selecting a size should update the selected quantity to 1', async () => {
-    render(<App />)
-    await (userEvent.selectOptions(
-      screen.getByRole('size'),
-      screen.getByRole('option', { name: 'XS' }),
-    ))
-    expect(screen.getByRole('option', { name: 'XS' }).selected).toBe(true)
-  })
+
+  // test('Selecting a size should update the selected quantity to 1', async () => {
+  //   render(<App />)
+  //   await (userEvent.selectOptions(
+  //     screen.getByRole('size'),
+  //     screen.getByRole('option', { name: 'XS' }),
+  //   ))
+  //   expect(screen.getByRole('option', { name: 'XS' }).selected).toBe(true)
+  // })
 })
 
 describe('Add to Cart Functionality', () => {
@@ -69,6 +71,7 @@ describe('Add to Cart Functionality', () => {
   let photos = currentStyle.photos
   let skus = currentStyle.skus
   let features = product.dummyProductData.features
+
   let ratings = review.dummyMetaReviews.ratings
 
   let outOfStock = product.outOfStock
@@ -90,11 +93,9 @@ describe('Add to Cart Functionality', () => {
     expect(stock).toBeInTheDocument()
   })
 
-  // if a size and a quantity are present
-    // test adding to the cart
+  test('If size and quantity are present, add product to the cart', () => {
+    // check if size and quantity are not the default
 
-  // test clicking the add to cart button
-  test('Adding product to the cart', () => {
-
+    // add to the cart and confirm it works properly
   })
 })
