@@ -25,7 +25,3 @@ describe('Image Gallery: Expanded View', () => {
 
   //
 })
-
-// IDEAS
-// test for props
-// test for state

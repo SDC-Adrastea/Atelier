@@ -48,6 +48,8 @@ describe('Size & Quantity Options', () => {
     expect(notice).toBeInTheDocument()
   })
 
+  // when a size is selected it sets quantity to 1
+
   // test('Selecting a size should update the selected quantity to 1', async () => {
   //   render(<SizeQuantity skus={skus} currentSku={'37'} style={currentStyle} setSkus={(obj) => props.setSkus(obj)} setCurrentSku={(sku) => props.setCurrentSku(sku)} />)
   //   await userEvent.selectOptions(
@@ -56,7 +58,6 @@ describe('Size & Quantity Options', () => {
   //   )
   //   expect(screen.getByRole('option', { name: 'XS' }).selected).toBe(true)
   // })
-  // when a size is selected it sets quantity to 1
 })
 
 describe('Add to Cart Functionality', () => {
@@ -69,17 +70,30 @@ describe('Add to Cart Functionality', () => {
   let features = product.dummyProductData.features
   let ratings = review.dummyMetaReviews.ratings
 
+  let outOfStock = product.outOfStock
+  let outOfStockSkus = outOfStock.skus
+
   test('Add to Cart button is present', () => {
     render(<SizeQuantity skus={skus} currentSku={'123456'} style={currentStyle} setSkus={(obj) => props.setSkus(obj)} setCurrentSku={(sku) => props.setCurrentSku(sku)} />)
-    expect(screen.getByRole('button', { name: 'Add to Cart' })).toBeInTheDocument
+    expect(screen.getByRole('button', { name: 'Add to Cart' })).toBeInTheDocument()
+  })
+
+  test('Add to Cart button - unknown issue alert', () => {
+    render(<SizeQuantity skus={skus} currentSku={'123456'} style={currentStyle} setSkus={(obj) => props.setSkus(obj)} setCurrentSku={(sku) => props.setCurrentSku(sku)} />)
+    expect(screen.getByRole('button', { name: 'Add to Cart' })).toBeInTheDocument()
+  })
+
+  test('No Add to Cart button when there is no stock and \'Out of Stock\' message shows instead', () => {
+    render(<SizeQuantity skus={outOfStockSkus} currentSku={'123456'} style={outOfStock} setSkus={(obj) => props.setSkus(obj)} setCurrentSku={(sku) => props.setCurrentSku(sku)} />)
+    const stock = screen.getByText(/OUT OF STOCK/i)
+    expect(stock).toBeInTheDocument()
   })
 
   // if a size and a quantity are present
     // test adding to the cart
 
-  // should not be present when no stock is available
-})
+  // test clicking the add to cart button
+  // test('Adding product to the cart', () => {
 
-// IDEAS
-// test for props
-// test for state
+  // })
+})

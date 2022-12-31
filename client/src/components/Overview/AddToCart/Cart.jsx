@@ -11,8 +11,6 @@ const AddToCart = (props) => {
   let handleClick = async (e) => {
     if (size === '') {
       props.setSizeAlert()
-    } else if (sku === '') {
-      alert('Unknown issue, please try again')
     } else {
       let total = 0
       while (total < quantity) {

@@ -88,7 +88,7 @@ const SizeQuantity = (props) => {
 
   if (sizes.length > 0) {
     if (sizeAlert) {
-      sizeAlertLoad = 'Please select size'
+      sizeAlertLoad = <><span style={css.needInfo}>Please select size</span><br /></>
     }
 
     pageLoad = (
