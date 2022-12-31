@@ -13,6 +13,8 @@ import dummyProductData from '../../../../../../dummyTestData/productDummy.js'
 import dummyProductsData from '../../../../../../dummyTestData/productDummy.js'
 import dummyMetaReviews from '../../../../../../dummyTestData/reviewsDummy.js'
 
+// app
+// import App from '../../../../index.jsx'
 // component
 import { Overview } from '../../../Overview.jsx'
 // subcomponents
@@ -66,13 +68,52 @@ describe('Product Information: Stars Rating & Reviews', () => {
 })
 
 describe('Product Information: Category & Title', () => {
-  test('sample', () => { })
+  let thisProduct = product.dummyProduct_id
+  let styles = product.dummyProductStyles.results
+  let currentStyle = product.singleDummyProductStyle
+  let id = currentStyle.style_id
+  let photos = currentStyle.photos
+  let skus = currentStyle.skus
+  let features = product.dummyProductData.features
 
-  // check that the category is displayed; in the correct area
-  // check that the title is displayed; in the correct area
+  let ratings = review.dummyMetaReviews.ratings
+
+  // test('Category does not load when no style is present', () => {
+  //   render(<Overview
+  //     // initial data
+  //     productNum={thisProduct.id} product={thisProduct} metadata={ratings}
+  //     // styles
+  //     styles={[]}
+  //     currentStyle={currentStyle}
+  //     setCurrentStyle={(style) => setCurrentStyle(style)}
+  //     view={'default'}
+  //     setView={(newView) => setView(newView)}
+  //     mainImage={'mainImage'}
+  //     setMainImage={(url) => setMainImage(url)}
+  //     imageArr={photos}
+  //     setImageArr={(arr) => setImageArr(arr)}
+  //     // outfit
+  //     outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
+  //     // cart selection
+  //     skus={skus} currentSku={'123456'}
+  //     setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+  //   />)
+  //   const category = screen.queryByText(/Basketball Shoes/i)
+  //   expect(category.length).toBe(0)
+  // })
 })
 
 describe('Product Information: Price', () => {
+  let thisProduct = product.dummyProduct_id
+  let styles = product.dummyProductStyles.results
+  let currentStyle = product.singleDummyProductStyle
+  let id = currentStyle.style_id
+  let photos = currentStyle.photos
+  let skus = currentStyle.skus
+  let features = product.dummyProductData.features
+
+  let ratings = review.dummyMetaReviews.ratings
+
   test('Price section does not render when no price is present', () => {
     render(<Price price={""} sale={""} styles={[]} />)
     let priceSection = screen.queryByTestId('price-section')
@@ -102,12 +143,18 @@ describe('Product Information: Price', () => {
 })
 
 describe('Product Information: Toggle Outfit Star', () => {
+  let thisProduct = product.dummyProduct_id
+  let styles = product.dummyProductStyles.results
+  let currentStyle = product.singleDummyProductStyle
+  let id = currentStyle.style_id
+  let photos = currentStyle.photos
+  let skus = currentStyle.skus
+  let features = product.dummyProductData.features
+
+  let ratings = review.dummyMetaReviews.ratings
+
   test('sample', () => { })
 
   // Toggling once adds the item to the outfit carousel (or the props/state?)
   // Toggling twice removes the item from the outfit carousel (or the props/state?)
 })
-
-// IDEAS
-// test for props
-// test for state

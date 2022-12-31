@@ -21,7 +21,7 @@ const ToggleOutfitStar = (props) => {
 
   return (
     <>
-      <button type="button" style={css.selections} onClick={() => { handleStar() }}>★</button>
+      <button type="button" id="star" style={css.selections} onClick={() => { handleStar() }}>★</button>
     </>
   )
 }

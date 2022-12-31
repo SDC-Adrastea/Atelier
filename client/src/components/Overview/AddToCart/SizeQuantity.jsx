@@ -65,30 +65,26 @@ const SizeQuantity = (props) => {
   })
 
   let mappedQuantity = quantity.map(q => {
-    return <option key={q} value ={q}>{q}</option>
+    return <option key={q} value={q}>{q}</option>
   })
 
   let quantitySection = (
-    <>
-      <select name="quantity" id="quantity-select" style={css.sizeQuantitySelections}>
+    <select name="quantity" id="quantity-select" style={css.sizeQuantitySelections}>
         <option value="">--</option>
-      </select>
-    </>
+    </select>
   )
 
   if (quantity.length > 0) {
     quantitySection = (
-      <>
-        <select name="quantity" id="quantity-select" onChange={handleQuantity} style={css.sizeQuantitySelections}>
+      <select name="quantity" id="quantity-select" onChange={handleQuantity} style={css.sizeQuantitySelections}>
           {mappedQuantity}
-        </select>
-      </>
+      </select>
     )
   }
 
   if (sizes.length > 0) {
     if (sizeAlert) {
-      sizeAlertLoad = 'Please select size'
+      sizeAlertLoad = <><span style={css.needInfo}>Please select size</span><br /></>
     }
 
     pageLoad = (
@@ -110,4 +106,4 @@ const SizeQuantity = (props) => {
   return ( <> {pageLoad} </>)
 }
 
-export  default SizeQuantity ;
+export default SizeQuantity;

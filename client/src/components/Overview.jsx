@@ -83,7 +83,6 @@ export const Overview = (props) => {
     productOverview = <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
   }
 
-
   if (view === 'expanded') {
     currentView = (
       <div style={css.expandedContainer}>

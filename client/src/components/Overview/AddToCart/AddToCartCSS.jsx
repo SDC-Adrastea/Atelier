@@ -13,3 +13,7 @@ export const sizeQuantitySelections = {
   display: 'inline-block',
   padding: '10px'
 }
+
+export const needInfo = {
+  color: 'red'
+}

@@ -17,15 +17,19 @@ import ExpandedGallery from '../ExpandedGallery.jsx'
 describe('Image Gallery: Default View', () => {
   test('sample', () => { })
 
-  //
+  // click arrow left
+
+  // click arrow right
 })
 
 describe('Image Gallery: Expanded View', () => {
   test('sample', () => { })
 
-  //
-})
+  // click arrow left
 
-// IDEAS
-// test for props
-// test for state
+  // click arrow right
+
+  // test for expanded imaging
+    // need to mock mouse over a certain point on a screen
+    // test to see if zoomed image shows
+})
