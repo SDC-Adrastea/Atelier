@@ -27,6 +27,7 @@
   /* border: 1px solid red; */
   padding: 10px;
   transition: margin-left 1s;
+  text-align: justify;
 }
 
 .your-outfit-action-button{

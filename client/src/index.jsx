@@ -35,6 +35,7 @@ class ErrorBoundary extends React.Component {
 
     return <App />;
   }
+
 }
 
 ReactDOM.render(<ErrorBoundary />, document.getElementById('app'));
