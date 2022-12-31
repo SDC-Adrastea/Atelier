@@ -8,7 +8,7 @@
     "server-dev": " npx nodemon server/index.js ",
     "test": "jest",
     "test-coverage": "jest --coverage",
-    "test-watch": "npm test -- --watch"
+    "test-watch": "npm test -- --watch --maxWorkers 2"
   },
   "repository": {
     "type": "git",

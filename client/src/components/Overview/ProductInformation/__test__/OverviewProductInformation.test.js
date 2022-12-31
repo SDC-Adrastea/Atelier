@@ -14,7 +14,7 @@ import dummyProductsData from '../../../../../../dummyTestData/productDummy.js'
 import dummyMetaReviews from '../../../../../../dummyTestData/reviewsDummy.js'
 
 // app
-// import App from '../../../../index.jsx'
+import App from '../../../../atelier.jsx'
 // component
 import { Overview } from '../../../Overview.jsx'
 // subcomponents
@@ -78,29 +78,53 @@ describe('Product Information: Category & Title', () => {
 
   let ratings = review.dummyMetaReviews.ratings
 
-  // test('Category does not load when no style is present', () => {
-  //   render(<Overview
-  //     // initial data
-  //     productNum={thisProduct.id} product={thisProduct} metadata={ratings}
-  //     // styles
-  //     styles={[]}
-  //     currentStyle={currentStyle}
-  //     setCurrentStyle={(style) => setCurrentStyle(style)}
-  //     view={'default'}
-  //     setView={(newView) => setView(newView)}
-  //     mainImage={'mainImage'}
-  //     setMainImage={(url) => setMainImage(url)}
-  //     imageArr={photos}
-  //     setImageArr={(arr) => setImageArr(arr)}
-  //     // outfit
-  //     outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
-  //     // cart selection
-  //     skus={skus} currentSku={'123456'}
-  //     setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
-  //   />)
-  //   const category = screen.queryByText(/Basketball Shoes/i)
-  //   expect(category.length).toBe(0)
-  // })
+  test('Category does not load when no style is present', () => {
+    render(<Overview
+      // initial data
+      productNum={thisProduct.id} product={thisProduct} metadata={ratings}
+      // styles
+      styles={[]}
+      currentStyle={currentStyle}
+      setCurrentStyle={(style) => setCurrentStyle(style)}
+      view={'default'}
+      setView={(newView) => setView(newView)}
+      mainImage={'mainImage'}
+      setMainImage={(url) => setMainImage(url)}
+      imageArr={photos}
+      setImageArr={(arr) => setImageArr(arr)}
+      // outfit
+      outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
+      // cart selection
+      skus={skus} currentSku={'123456'}
+      setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+    />)
+    const category = screen.queryByText(/Basketball Shoes/i)
+    expect(category).toBe(null)
+  })
+
+  test('Title name does not load when no style is present', () => {
+    render(<Overview
+      // initial data
+      productNum={thisProduct.id} product={thisProduct} metadata={ratings}
+      // styles
+      styles={[]}
+      currentStyle={currentStyle}
+      setCurrentStyle={(style) => setCurrentStyle(style)}
+      view={'default'}
+      setView={(newView) => setView(newView)}
+      mainImage={'mainImage'}
+      setMainImage={(url) => setMainImage(url)}
+      imageArr={photos}
+      setImageArr={(arr) => setImageArr(arr)}
+      // outfit
+      outfit={[]} changeOutfit={(arr) => changeOutfit(arr)}
+      // cart selection
+      skus={skus} currentSku={'123456'}
+      setSkus={(obj) => setSkus(obj)} setCurrentSku={(sku) => setCurrentSku(sku)}
+    />)
+    const title = screen.queryByText(/Air Minis 250/i)
+    expect(title).toBe(null)
+  })
 })
 
 describe('Product Information: Price', () => {
@@ -136,10 +160,8 @@ describe('Product Information: Price', () => {
     expect(salePrice).toBeInTheDocument()
   })
 
-  // Confirm default style is selected and price matches
   // Confirm that changing a style will update to the accurate price
-  // Confirm that selected the current style doesn’t break the app or change anything
-  // Test an on sale item, ensure the text is red and followed by the original price which is struck through
+  // Confirm that selecting the current style doesn’t break the app or change anything
 })
 
 describe('Product Information: Toggle Outfit Star', () => {
@@ -153,8 +175,13 @@ describe('Product Information: Toggle Outfit Star', () => {
 
   let ratings = review.dummyMetaReviews.ratings
 
-  test('sample', () => { })
-
   // Toggling once adds the item to the outfit carousel (or the props/state?)
+  test('Selecting the star button adds the item to the outfit array', () => {
+    // render(<App />)
+  })
+
   // Toggling twice removes the item from the outfit carousel (or the props/state?)
+  test('Selecting the star button twice adds then removes the item from the outfit array', () => {
+    // render(<App />)
+  })
 })
