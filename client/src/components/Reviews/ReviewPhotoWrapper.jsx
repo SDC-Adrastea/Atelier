@@ -6,7 +6,7 @@ export const ReviewPhotoWrapper = ({ image }) => {
 
   return (
     <>
-      <img onClick={() => setModalIsOpen(!modalIsOpen)} className="reviewImage" hspace="5" src={`${image}`} />
+      <img  data-testid="review-photo-wrapper" onClick={() => setModalIsOpen(!modalIsOpen)} className="reviewImage" hspace="5" src={`${image}`} />
       <ReviewPhotoModal open={modalIsOpen} image={image} onClose={() => setModalIsOpen(false)} />
     </>
   )

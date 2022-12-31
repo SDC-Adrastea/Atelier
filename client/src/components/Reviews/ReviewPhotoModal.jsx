@@ -30,7 +30,7 @@ export const ReviewPhotoModal = ({ open, children, image, onClose }) => {
 
   return (
     <>
-      <div style={OVERLAY_STYLES}>
+      <div style={OVERLAY_STYLES} data-testid="review-photo-modal">
       <div style={MODAL_STYLES}>
         <button onClick={onClose}>&#10006;</button>
         <br/>

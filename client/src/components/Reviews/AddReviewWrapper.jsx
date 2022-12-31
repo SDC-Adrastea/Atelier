@@ -8,8 +8,8 @@ export const AddReviewWrapper = ({ product, image, metadata }) => {
 
   return (
     <>
-      <button onClick={() => setModalIsOpen(!modalIsOpen)}>Add a Review</button>
-      <AddReviewForm open={modalIsOpen} product={product} characteristics={metadata.characteristics} onClose={() => setModalIsOpen(false)}/>
+      <button onClick={() => setModalIsOpen(!modalIsOpen)} data-testid="add-review-wrapper">Add a Review</button>
+      <AddReviewForm open={modalIsOpen} product={product} characteristics={metadata.characteristics} onClose={() => setModalIsOpen(false)} />
     </>
   )
 };
