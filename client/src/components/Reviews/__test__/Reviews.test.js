@@ -16,6 +16,7 @@ import { AddReviewForm } from '../../Reviews/AddReviewForm.jsx'
 import { ReviewPhotoWrapper } from '../../Reviews/ReviewPhotoWrapper.jsx'
 import { ReviewPhotoModal } from '../../Reviews/ReviewPhotoModal.jsx'
 import { ReviewTile } from '../../Reviews/ReviewTile.jsx'
+import { RatingsBreakdown } from '../../Reviews/RatingsBreakdown.jsx'
 
 // dummy data
 import { dummyReviews, dummyMetaReviews } from "../../../../../dummyTestData/reviewsDummy.js";
@@ -37,8 +38,8 @@ describe('Unit Test: Reviews', () => {
   })
 
   test('Confirm initial load of ReviewsList component', () => {
-    render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
-    // render(<ReviewsListElement productNum={props.productNum} product={props.product} reviews={reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} metadata={props.metadata} />)
+    // render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
+    render(<ReviewsList productNum={11} product={dummyProductData} reviews={dummyReviews.results} setReviews={() => null} reviewsShowing={2} setReviewsShowing={() => null} reviewsSortBy={'relevant'} setSort={() => null} metadata={dummyMetaReviews} />)
     const ReviewsListElement = screen.getByTestId('reviews-list')
     expect(ReviewsListElement).toBeInTheDocument()
   })
@@ -50,7 +51,8 @@ describe('Unit Test: Reviews', () => {
   })
 
   test('Confirm initial load of RatingsBreakdown component', () => {
-    render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
+    render(<RatingsBreakdown reviews={dummyReviews.results}/>)
+    // render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
     const RatingsBreakdownElement = screen.getByTestId('ratings-breakdown')
     expect(RatingsBreakdownElement).toBeInTheDocument()
   })
@@ -66,6 +68,13 @@ describe('Unit Test: Reviews', () => {
     const AddReviewFormElement = screen.getByTestId('add-review-form')
     expect(AddReviewFormElement).toBeInTheDocument()
   })
+
+  // test('Confirm AddReviewForm component does not load when false modal', () => {
+  //   // render(<AddReviewForm open={false} product={dummyProductData} characteristics={dummyMetaReviews.characteristics} onClose={() => setModalIsOpen(false)}/>)
+  //   render(<ReviewsList productNum={11} product={dummyProductData} reviews={dummyReviews.results} setReviews={() => null} reviewsShowing={2} setReviewsShowing={() => null} reviewsSortBy={'relevant'} setSort={() => null} metadata={dummyMetaReviews} />)
+  //   // const AddReviewFormElement = screen.getByTestId('add-review-form')
+  //   expect(screen.getByTestId('add-review-form')).not.toBeInTheDocument()
+  // })
 
   test('Confirm initial load of AddReviewWrapper component', () => {
     render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
@@ -84,8 +93,5 @@ describe('Unit Test: Reviews', () => {
     const ReviewPhotoModalElement = screen.getByTestId('review-photo-modal')
     expect(ReviewPhotoModalElement).toBeInTheDocument()
   })
-
-
-
 
 })
