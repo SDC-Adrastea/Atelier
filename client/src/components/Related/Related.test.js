@@ -24,44 +24,42 @@ import { dummyProductData } from "../../../../dummyTestData/productDummy.js";
 
 
   test("Renders Related Component without crashing", ()=> {
-    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[]}/>)
+    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[]} yourOutfit={[]}/>)
     const RCompElement = screen.getByTestId("related")
     expect(RCompElement).toBeInTheDocument()
   })
 
 
   test("Renders Related Carousel Component without crashing", ()=> {
-    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[]}/>)
+    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[]} yourOutfit={[]}/>)
     const RCarouselComponent = screen.getByTestId("related-carousel")
     expect(RCarouselComponent).toBeInTheDocument()
   })
 
   test("Renders Related Product Card Component without crashing", ()=> {
-    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[71697]}/>)
+    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[71697]} yourOutfit={[]}/>)
     const RRelatedProductCardComponent = screen.getByTestId("related-product-card-test")
     expect(RRelatedProductCardComponent).toBeInTheDocument()
   })
 
 
   test("Renders Related Your Outfit Component without crashing", ()=> {
-    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[]}/>)
+    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[]} yourOutfit={[]}/>)
     const RYourOutfitComponent = screen.getByTestId("your-outfit")
     expect(RYourOutfitComponent).toBeInTheDocument()
   })
 
   test("Renders Related Your Outfit Carousel Component without crashing", ()=> {
-    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[]}/>)
+    render(<Related productNum={71700} product={dummyProductData} styles={[]} related={[]} yourOutfit={[]}/>)
     const ROutfitCarouselComponent = screen.getByTestId("outfit-carousel")
     expect(ROutfitCarouselComponent).toBeInTheDocument()
   })
 
   test("Renders Related Your Outfit Product Card Component without crashing", ()=> {
-    render(<OutfitCarousel productNum={71700} dummyData={[71697]}/>)
+    render(<OutfitCarousel productNum={71700} dummyData={[71697]} yourOutfit={[71697]}/>)
     const ROutfitProductCardComponent = screen.getByTestId("your-outfit-card")
     expect(ROutfitProductCardComponent).toBeInTheDocument()
   })
-
-
 
 })
 
