@@ -19,17 +19,6 @@ export const Questions = (props) => {
   const [searchQ, setSearch] =useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleTrackClick = (target) => {
-    console.log(target);
-    console.log(target.id);
-    axios.post('/interactions', {
-      widget: target.className,
-      element: target.id,
-      time: Date.now()
-    })
-    .then((response) => {console.log(response.data)})
-  }
-
   useEffect(() => {
     axios.get('/qa/questions',{
       params:{productNum: props.productNum}
@@ -42,8 +31,8 @@ export const Questions = (props) => {
 // data.data.results the second ".data" could fail and .catch will not save
 
   return (
-    <div onClick={(event)=>handleTrackClick(event.target)} data-testid="Questions Component" className="Questions">
-      <h1 id="qAHeader">Questions & Answers</h1>
+    <div data-testid="Questions Component" widgetname='Questions' className="Questions">
+      <h1 id="qAHeader" widgetname='Questions'>Questions & Answers</h1>
       <SearchQuestions setSearch={setSearch} />
 
       {returnedQs.length > 0 && <QuestionsList productNum={props.productNum} setModalIsOpen={setModalIsOpen} product={props.product} returnedQs={returnedQs} searchQ={searchQ} setQs={setQs}/>}
