@@ -13,6 +13,8 @@ import dummyProductData from '../../../../../../dummyTestData/productDummy.js'
 import dummyProductsData from '../../../../../../dummyTestData/productDummy.js'
 import dummyMetaReviews from '../../../../../../dummyTestData/reviewsDummy.js'
 
+// app
+// import App from '../../../../index.jsx'
 // component
 import { Overview } from '../../../Overview.jsx'
 // subcomponents
@@ -99,12 +101,19 @@ describe('Product Information: Category & Title', () => {
   //   const category = screen.queryByText(/Basketball Shoes/i)
   //   expect(category.length).toBe(0)
   // })
-
-  // check that the category is displayed; in the correct area
-  // check that the title is displayed; in the correct area
 })
 
 describe('Product Information: Price', () => {
+  let thisProduct = product.dummyProduct_id
+  let styles = product.dummyProductStyles.results
+  let currentStyle = product.singleDummyProductStyle
+  let id = currentStyle.style_id
+  let photos = currentStyle.photos
+  let skus = currentStyle.skus
+  let features = product.dummyProductData.features
+
+  let ratings = review.dummyMetaReviews.ratings
+
   test('Price section does not render when no price is present', () => {
     render(<Price price={""} sale={""} styles={[]} />)
     let priceSection = screen.queryByTestId('price-section')
@@ -134,12 +143,18 @@ describe('Product Information: Price', () => {
 })
 
 describe('Product Information: Toggle Outfit Star', () => {
+  let thisProduct = product.dummyProduct_id
+  let styles = product.dummyProductStyles.results
+  let currentStyle = product.singleDummyProductStyle
+  let id = currentStyle.style_id
+  let photos = currentStyle.photos
+  let skus = currentStyle.skus
+  let features = product.dummyProductData.features
+
+  let ratings = review.dummyMetaReviews.ratings
+
   test('sample', () => { })
 
   // Toggling once adds the item to the outfit carousel (or the props/state?)
   // Toggling twice removes the item from the outfit carousel (or the props/state?)
 })
-
-// IDEAS
-// test for props
-// test for state
