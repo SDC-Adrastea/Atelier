@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 // subcomponents
 import { Reviews } from '../../Reviews.jsx'
 import { RatingsColumn } from '../../Reviews/RatingsColumn.jsx'
+import { ReviewsList } from '../../Reviews/ReviewsList.jsx'
 
 // dummy data
 import { dummyReviews, dummyMetaReviews } from "../../../../../dummyTestData/reviewsDummy.js";
@@ -30,11 +31,11 @@ describe('Unit Test: Reviews', () => {
     expect(RatingsColumnElement).toBeInTheDocument()
   })
 
-  // test('Confirm initial load of ReviewsList component', () => {
-  //   render(<Reviews productNum={71700} metadata={dummyMetaReviews} />)
-  //   const ReviewsListElement = screen.getByTestId('reviews-list')
-  //   expect(ReviewsListElement).toBeInTheDocument()
-  // })
+  test('Confirm initial load of ReviewsList component', () => {
+    render(<Reviews productNum={11} product={dummyProductData} metadata={dummyMetaReviews} />)
+    const ReviewsListElement = screen.getByTestId('reviews-list')
+    expect(ReviewsListElement).toBeInTheDocument()
+  })
 
   // test('Confirm initial load of RatingsBreakdown component', () => {
   //   render(<Reviews productNum={71700} metadata={dummyMetaReviews} />)
