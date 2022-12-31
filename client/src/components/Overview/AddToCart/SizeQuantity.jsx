@@ -65,7 +65,7 @@ const SizeQuantity = (props) => {
   })
 
   let mappedQuantity = quantity.map(q => {
-    return <option key={q} value ={q}>{q}</option>
+    return <option key={q} value={q}>{q}</option>
   })
 
   let quantitySection = (
