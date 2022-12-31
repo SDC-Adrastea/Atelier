@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { StarRating } from '../shared/StarRating/StarRating.jsx';
+import Price from '../Overview/ProductInformation/Price.jsx';
 
 const YourOutfitCard = (props) => {
   const id = props.cardInfo
@@ -40,10 +41,11 @@ const YourOutfitCard = (props) => {
     data-testid="your-outfit-card"
     >
       <img onClick={() => removeFrom()} className="your-outfit-action-button" src="circleWithX.png"/>
-      <img className={imageClass} src={image} />
-      <div>{cardData.category}</div>
-      <div>{cardData.productName}</div>
-      <div>${cardData.originalPrice}</div>
+      <img className={imageClass} src={image} data-testid="your-outfit-card-image"/>
+      <div data-testid="your-outfit-card-category">{cardData.category}</div>
+      <div data-testid="your-outfit-card-product-name">{cardData.productName}</div>
+      <div data-testid="your-outfit-card-price">${cardData.originalPrice}</div>
+      <Price price={cardData.originalPrice} sale={cardData.salePrice}/>
       <StarRating rating={cardData.averageReview}/>
     </div>
   )

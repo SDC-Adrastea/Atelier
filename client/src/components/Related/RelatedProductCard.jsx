@@ -50,10 +50,10 @@ const RelatedProductCard = (props) => {
      } className="related-product-card"
      data-testid="related-product-card-test"
      >
-      <img className="related-action-button" src="star2.png" onClick={modalSearch}/>
-      <img className={imageClass} src={image} />
-      <div>{cardData.category}</div>
-      <div>{cardData.productName}</div>
+      <img className="related-action-button" src="star2.png" onClick={modalSearch} />
+      <img className={imageClass} src={image} data-testid="related-product-card-image"/>
+      <div data-testid="related-product-card-category">{cardData.category}</div>
+      <div data-testid="related-product-card-name">{cardData.productName}</div>
       <Price price={cardData.originalPrice} sale={cardData.salePrice}/>
       <StarRating rating={cardData.averageReview} />
       {showModal && <ComparisonModal primaryProduct={productComparisonData[0]} relatedProductCurrent={productComparisonData[1]} setModal={(value) => setModal(value)} />}
