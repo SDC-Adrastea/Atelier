@@ -17,7 +17,7 @@ const Style = (props) => {
     <div style={css.thumbnail}>
       <div style={css.thumbnailContainer}>
         <img src={style.photos[0].thumbnail_url} alt={altName} width="60" height="60" style={css.styleImage}
-          data-testid="style-image" onClick={() => props.onClick(style)} />
+          data-testid="style-image" onClick={() => props.onClick(style)} id="style-image-change" widgetname="Overview" />
           {checked}
       </div>
     </div>

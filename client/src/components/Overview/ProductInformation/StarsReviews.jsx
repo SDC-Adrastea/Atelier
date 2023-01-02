@@ -24,7 +24,7 @@ const StarsReviews = (props) => {
     }
 
     let average = Number(parseFloat(avgStars(ratings)).toFixed(2))
-    thisRating = <><StarRating rating={average} /><a href="#reviews-anchor">Read all {allRatings} reviews</a></>
+    thisRating = <><StarRating rating={average} id="toggle-outfit-star" widgetname="Overview" /><a href="#reviews-anchor">Read all {allRatings} reviews</a></>
   }
 
   return <> {thisRating} </>

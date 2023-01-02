@@ -29,7 +29,7 @@ const AddToCart = (props) => {
 
   return (
     <>
-      <button onClick={handleClick} style={css.cartSelections}>Add to Cart</button>
+      <button onClick={handleClick} style={css.cartSelections} id="add-to-cart-btn" widgetname="Overview">Add to Cart</button>
     </>
   )
 }
