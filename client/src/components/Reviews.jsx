@@ -3,7 +3,6 @@ import axios from 'axios';
 import { ReviewsList } from './Reviews/ReviewsList.jsx';
 import { RatingsColumn } from './Reviews/RatingsColumn.jsx';
 
-
 export const Reviews = (props) => {
 
   const [reviews, setReviews] = useState([]);

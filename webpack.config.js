@@ -1,8 +1,10 @@
 const path = require("path");
 const dotEnv = require('dotenv-webpack')
 
+
 module.exports = {
-   entry: '/client/src/index.jsx',
+   entry: {
+      bundle: path.resolve(__dirname, '/client/src/index.jsx')},
    output: {
       path: path.join(__dirname, '/client/dist'),
       filename: 'bundle.js'
@@ -17,7 +19,7 @@ module.exports = {
          },
          {
             test: /\.css$/,
-            use: [ 'style-loader', 'css-loader' ]
+            use: [ 'style-loader', 'css-loader' ],
         }
       ]
    },
