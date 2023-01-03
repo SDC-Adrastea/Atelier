@@ -33,15 +33,15 @@ const DefaultGallery = (props) => {
   return (
     <>
       <div style={css.mainImageContainer}>
-        <img src={currentImage} style={css.mainImage} alt={currentStyle.name} onClick={() => props.onClick()} />
+        <img src={currentImage} style={css.mainImage} alt={currentStyle.name} onClick={() => props.onClick()} id="default-view-click" widgetname="Overview" />
         <div style={css.overlay}>
           <div style={css.arrowOverlay}>
-            <div style={css.rightArrowOverlay} onClick={() => handleArrowRight()} ></div>
+            <div style={css.rightArrowOverlay} onClick={() => handleArrowRight()} id="default-right-arrow" widgetname="Overview"></div>
           </div>
         </div>
         <div style={css.overlay}>
           <div style={css.arrowOverlay}>
-            <div style={css.leftArrowOverlay} onClick={() => handleArrowLeft()} ></div>
+            <div style={css.leftArrowOverlay} onClick={() => handleArrowLeft()} id="default-left-arrow" widgetname="Overview"></div>
           </div>
         </div>
       </div>
@@ -49,9 +49,9 @@ const DefaultGallery = (props) => {
       <div style={css.thumbnailContainer}>
         {display.map((photo, index) => {
           if (photo === currentImage) {
-            return <img key={index} src={photo} style={css.thumbnailSelected} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} />
+            return <img key={index} src={photo} style={css.thumbnailSelected} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumnail-img-selected" widgetname="Overview" />
           } else {
-            return <img key={index} src={photo} style={css.thumbnailImage} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} />
+            return <img key={index} src={photo} style={css.thumbnailImage} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumbnail-img" widgetname="Overview" />
           }
         })}
       </div>
