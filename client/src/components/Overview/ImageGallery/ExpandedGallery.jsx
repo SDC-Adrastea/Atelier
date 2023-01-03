@@ -7,6 +7,7 @@ const ExpandedGallery = (props) => {
   let currentImage = props.main || ''
   let imageArr = props.images || []
   let display = []
+  let leftArrowOption, rightArrowOption
 
   if (props.style === {}) {
     currentStyle.name = ''
@@ -16,6 +17,22 @@ const ExpandedGallery = (props) => {
     })
   }
 
+  display.forEach((photo, index) => {
+    if (photo === currentImage) {
+      if (index === 0) {
+        leftArrowOption = photo
+      } else {
+        leftArrowOption = display[index - 1]
+      }
+
+      if (index === imageArr.length - 1) {
+        rightArrowOption = photo
+      } else {
+        rightArrowOption = display[index + 1]
+      }
+    }
+  })
+
   let handleClick = (e) => {
     e.preventDefault()
     let url = e.target.src
@@ -23,11 +40,11 @@ const ExpandedGallery = (props) => {
   }
 
   let handleArrowLeft = () => {
-    console.log('left click')
+    props.thumbnailChange(leftArrowOption)
   }
 
   let handleArrowRight = () => {
-    console.log('right click')
+    props.thumbnailChange(rightArrowOption)
   }
 
   return (

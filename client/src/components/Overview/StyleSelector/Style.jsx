@@ -10,7 +10,7 @@ const Style = (props) => {
 
   if (toggled.style_id === style.style_id) {
     styleName = style.name
-    checked = <div style={css.checkOverlay}><div style={css.checkmark}><img src="checkmark.png" alt="checkmark" width="20" /></div></div>
+    checked = <div style={css.checkOverlay}><div style={css.checkmark}><img src="checkmark.png" alt="checkmark" width="20" height="100%" /></div></div>
   }
 
   return (
