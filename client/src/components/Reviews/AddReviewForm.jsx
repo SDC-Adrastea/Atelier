@@ -9,7 +9,6 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
 
   const [characteristicState, setCharacteristicState] = useState({});
 
-
   const [imageURL, setImage] = useState([]);
 
   const OVERLAY_STYLES = {
@@ -85,27 +84,20 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
     }
   ];
 
-  function onImageChange(event) {
-    const tempArry = [];
+  function onImageChange(e) {
+    const tempArr = [];
     [...e.target.files].forEach(file => {
-      console.log("file >>> ", file);
+      console.log("file:", file);
 
       tempArr.push({
         data: file,
         url: URL.createObjectURL(file)
       });
-      console.log("pictures >> ", pictures);
+      console.log("pictures:", file);
     });
 
     setImage(tempArr);
   };
-
-
-  // function onImageChange(event) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     setImage(URL.createObjectURL(event.target.files[0]))
-  //   }
-  // };
 
   function onChangeRecommend(event) {
     spreadReviewFunc('recommend', event.target.value);
@@ -172,7 +164,6 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
               }
             })}
             <div>
-
             <label htmlFor="reviewSummary">Review Summary: </label>
             <input type="text" id="reviewSummary" name="reviewSummary" placeholder="Example: Best purchase ever!" required maxLength="60" size="65" onChange={e => spreadReviewFunc('summary', e.target.value)}></input><br/>
 
@@ -189,12 +180,13 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             {reviewBody.length < 50 ? `Minimum required characters left: ${50-reviewBody.length}` : 'Minimum reached'}<br/>
             <br/>
             <input type="file" accept="image/*" multiple onChange={onImageChange} ></input><br/>
-            {/* {imageURL.map((image, index) => {
-              <>
-              <img id="target" src={image.thumbnail_url} className="reviewImage"/>
+            {imageURL.map((image, index) => {
+              return (
+              <div key={index}>
+              <img id="target" src={image.url} className="reviewImage"/>
               <br/>
-              </>
-            })} */}
+              </div>
+            )})}
             <label htmlFor="username">Username: </label>
             <input type="text" onChange={e => spreadReviewFunc('name', e.target.value)} id="username" name="username" placeholder="Example: jackson11!" required maxLength="60" size="65"></input><br/>
             <label htmlFor="email">Email: </label>
