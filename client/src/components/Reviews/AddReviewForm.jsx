@@ -85,6 +85,12 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
   ];
 
   function onImageChange(e) {
+    const MAX_UPLOAD_COUNT = 5
+    if (Array.from(e.target.files).length > MAX_UPLOAD_COUNT) {
+      e.preventDefault();
+      alert(`Cannot upload more than ${MAX_UPLOAD_COUNT} files`);
+      return;
+    }
     const tempArr = [];
     [...e.target.files].forEach(file => {
       console.log("file:", file);
