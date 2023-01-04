@@ -77,18 +77,23 @@ export const AddAnswerModal = (props) => {
       axios.post('/answers',{
         formInfo
       })
-      .then((data)=>{console.log(data.data)
-        alert('Answer posted!')
-        setAnswer('')
-        setNickName('')
-        setEmail('')
-        setPhotos([])
-        axios.get('/answers',{
-          params:{questionId: props.questionId}
-        })
-        .then((data)=>{props.setAs(data.data.results)
-          props.setAnsModalIsOpen(false)
-        })
+      .then((data)=>{
+        if (data.data === "Created") {
+            console.log(data.data)
+          alert('Answer posted!')
+          setAnswer('')
+          setNickName('')
+          setEmail('')
+          setPhotos([])
+          axios.get('/answers',{
+            params:{questionId: props.questionId}
+          })
+          .then((data)=>{props.setAs(data.data.results)
+            props.setAnsModalIsOpen(false)
+          })
+        } else {
+          alert('answer did not post, please try again.')
+        }
       })
 
     }

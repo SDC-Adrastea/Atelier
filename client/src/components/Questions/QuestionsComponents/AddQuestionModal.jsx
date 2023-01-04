@@ -24,9 +24,13 @@ export const AddQuestionModal = (props) => {
       axios.post('/qa/questions',{
         formInfo
       })
-      .then((data)=>{console.log(data.data)
+      .then((data)=>{
+        if (data.data === "Created") {
         alert('Question posted!')
         props.setModalIsOpen(false)
+        } else {
+          alert('question did not post, please try again.')
+        }
       })
     }
   };
