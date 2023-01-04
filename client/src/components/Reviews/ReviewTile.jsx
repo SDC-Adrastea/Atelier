@@ -10,7 +10,7 @@ export const ReviewTile = (props) => {
   const [responseExists, setResponse] = useState(false);
 
   return (
-    <div data-testid="review-tile">
+    <div data-testid="review-tile" widgetname="Reviews">
       <StarRating rating={review.rating} />
       {review.reviewer_name}
       <br/>
@@ -23,8 +23,8 @@ export const ReviewTile = (props) => {
       {review.review}
       <br/>
       {review.body}
-      {review.recommend ? <p>&#10003; I recommend this product</p> : null}
-      {review.response ? (<p> {review.response} </p>) : null}
+      {review.recommend ? <p widgetname="Reviews">&#10003; I recommend this product</p> : null}
+      {review.response ? (<p widgetname="Reviews"> {review.response} </p>) : null}
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? review.photos.map((photo, index)=> {
