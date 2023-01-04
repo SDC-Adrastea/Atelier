@@ -50,7 +50,7 @@ const RelatedProductCard = (props) => {
      } className="related-product-card"
      data-testid="related-product-card-test"
      >
-      <img className="related-action-button" src="star2.png" onClick={modalSearch} widgetname="Related" id="related-modal-button-icon"/>
+      <img className="related-action-button" src="star-2.png" onClick={modalSearch} widgetname="Related" id="related-modal-button-icon"/>
       <img className={imageClass} src={image} data-testid="related-product-card-image" widgetname="Related" id="related-product-image"/>
       <div data-testid="related-product-card-category" widgetname="Related" id="related-product-card-category">{cardData.category}</div>
       <div data-testid="related-product-card-name" widgetname="Related" id="related-product-name">{cardData.productName}</div>
