@@ -7,6 +7,8 @@ import { queries } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import React, { useEffect, useState } from "react";
+import axios from 'axios';
+
 
 // Questions components
 import { Questions } from '../../Questions.jsx';
@@ -71,5 +73,40 @@ describe('Unit: Initial rendering of all Questions components', () => {
     const AnswerCompId = screen.getByTestId('Answer')
     expect(AnswerCompId).toBeInTheDocument()
   })
+
+
+
+  /** Search Questions */
+
+  const setSearch = jest.fn();
+
+  it('has the correct input attributes', () => {
+    const { getByTestId } = render(<SearchQuestions setSearch={setSearch} />);
+    const input = getByTestId('SearchComponent').querySelector('input');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('placeholder', 'Have a question? Search for answers…');
+    expect(input).toHaveAttribute('id', 'searchQuestions');
+    expect(input).toHaveAttribute('name', 'searchQuestions');
+  });
+
+  it('triggers the onChange event when the user types in the input field', () => {
+    const { getByTestId } = render(<SearchQuestions setSearch={setSearch} />);
+    const input = getByTestId('SearchComponent').querySelector('input');
+    fireEvent.change(input, { target: { value: 'abc' } });
+    expect(setSearch).toHaveBeenCalled();
+  });
+
+  it('calls setSearch with the correct value when the user types in the input field', () => {
+    const { getByTestId } = render(<SearchQuestions setSearch={setSearch} />);
+    const input = getByTestId('SearchComponent').querySelector('input');
+    fireEvent.change(input, { target: { value: 'abc' } });
+    expect(setSearch).toHaveBeenCalledWith('abc');
+  });
+
+
+
+
+
+
 
 })

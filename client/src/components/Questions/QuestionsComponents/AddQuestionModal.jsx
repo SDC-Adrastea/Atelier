@@ -24,9 +24,13 @@ export const AddQuestionModal = (props) => {
       axios.post('/qa/questions',{
         formInfo
       })
-      .then((data)=>{console.log(data.data)
+      .then((data)=>{
+        if (data.data === "Created") {
         alert('Question posted!')
         props.setModalIsOpen(false)
+        } else {
+          alert('question did not post, please try again.')
+        }
       })
     }
   };
@@ -39,7 +43,7 @@ export const AddQuestionModal = (props) => {
         <div className="questionModal" >
         <h1>Ask Your Question</h1>
         <h2>about: {props.product.name}</h2>
-        <form onSubmit={handleQuestionSubmit}>
+        <form onSubmit={handleQuestionSubmit} data-testid="form">
           Your Question * <input size={1000} id="yourQuestion" name="question" type="text" onChange={event=>setQuestion(event.target.value)} placeholder={"Why did you like the product or not?"}/>
           <div>
           {error && question.length=== 0 && <p style={{ color: 'red' }}>Question must be entered</p>}
