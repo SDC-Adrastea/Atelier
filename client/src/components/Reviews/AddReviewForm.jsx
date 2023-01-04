@@ -89,6 +89,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
     if (Array.from(e.target.files).length > MAX_UPLOAD_COUNT) {
       e.preventDefault();
       alert(`Cannot upload more than ${MAX_UPLOAD_COUNT} files`);
+      e.target.value = null;
       return;
     }
 
