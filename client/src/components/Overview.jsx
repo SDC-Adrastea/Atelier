@@ -10,10 +10,12 @@ import StyleSelector from './Overview/StyleSelector/StyleSelector.jsx'
 import SizeQuantity from './Overview/AddToCart/SizeQuantity.jsx'
 import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
-import * as css from './Overview/OverviewCSS.jsx'
+
+import '../styles/overview.css'
 
 
 export const Overview = (props) => {
+  // variables stated and defaults set when there is no data
   let product = props.product || {}
   let ratings = props.metadata || {}
   // Overview-Specific
@@ -30,11 +32,13 @@ export const Overview = (props) => {
     product.styles = []
   }
 
+  // if ratings are currently empty, set the amount if present or an empty array
   if (ratings !== {} || ratings !== undefined) {
     ratings = ratings.ratings || {}
     reviewSection = <StarsReviews ratings={ratings} />
   }
 
+  // if there is style data to show, set all of the jsx file contents here
   if (props.styles.length > 0) {
     titleSection = <ProductCategoryTitle title={product.name} category={product.category} />
     priceSection = <Price price={currentStyle.original_price} sale={currentStyle.sale_price} styles={props.styles} />
@@ -50,7 +54,7 @@ export const Overview = (props) => {
       />
     )
     currentView = (
-      <div style={css.imageContainer}>
+      <div className="image-container">
         <DefaultGallery
           style={currentStyle} main={mainImage} images={imageArr}
           onClick={() => props.setView('expanded')}
@@ -59,12 +63,12 @@ export const Overview = (props) => {
       </div>
     )
     productSection = (
-      <div style={css.productContainer}>
+      <div className="product-container">
         {reviewSection}
         {titleSection}
         {priceSection}
         {styleSection}
-        <div style={css.selectionContainer}>
+        <div className="selection-container">
           {sizeQuantitySection}
           {toggleSection}
         </div>
@@ -72,20 +76,22 @@ export const Overview = (props) => {
     )
 
     defaultContainer = (
-      <div style={css.mainContainer}>
+      <div className="main-container">
         {currentView}
         {productSection}
       </div>
     )
   }
 
+  // if any of these items are present, set the product overview section
   if (product.description !== undefined || product.slogan !== undefined || product.features !== undefined) {
     productOverview = <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
   }
 
+  // if the view has been set to expanded via a state change, update the view content
   if (view === 'expanded') {
     currentView = (
-      <div style={css.expandedContainer}>
+      <div className="expanded-container">
         <ExpandedGallery
           style={currentStyle} main={mainImage} images={imageArr}
           onClick={() => props.setView('default')}
@@ -94,16 +100,15 @@ export const Overview = (props) => {
       </div>
     )
     productSection = (
-      <div style={css.expandedViewReduce}></div>
+      <div className="expanded-view-reduce"></div>
     )
     defaultContainer = (
-      <div style={css.noContainer}>
+      <div className="no-container">
         {currentView}
         {productSection}
       </div>
     )
   }
-
 
 
   return (

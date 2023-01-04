@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import * as css from './AddToCartCSS.jsx'
 
+import '../../../styles/overview.css'
 
 const AddToCart = (props) => {
   let sku = props.sku
   let size = props.size
   let quantity = props.quantity
 
+  // add to cart button click
   let handleClick = async (e) => {
     if (size === '') {
+      // if no size has been selected, notify the user
       props.setSizeAlert()
     } else {
+      // the api doesn't allow for a quantity
+      // this adds the selected amount to the cart in the api
       let total = 0
       while (total < quantity) {
         await axios.post('/cart', { sku })
@@ -19,17 +23,12 @@ const AddToCart = (props) => {
           .catch(err => console.log('err in Cart.jsx post', err))
         total++
       }
-      await axios.get('/cart')
-      .then(data => {
-        console.log('get after post', data.data)
-      })
-      .catch(err => console.log('err in Cart.jsx get', err))
     }
   }
 
   return (
     <>
-      <button onClick={handleClick} style={css.cartSelections} id="add-to-cart-btn" widgetname="Overview">Add to Cart</button>
+      <button onClick={handleClick} className="cart-selections" id="add-to-cart-btn" widgetname="Overview">Add to Cart</button>
     </>
   )
 }
