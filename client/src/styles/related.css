@@ -101,7 +101,7 @@
 }
 
 .missing-image-card {
-  object-fit:contain;
+  object-fit:cover;
   height: 70%;
   width: 100%;
 }

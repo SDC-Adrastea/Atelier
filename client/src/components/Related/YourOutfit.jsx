@@ -10,7 +10,8 @@ const YourOutfit = (props) => {
         <OutfitCarousel
           productNum={props.productNum}
           yourOutfit={props.yourOutfit}
-          changeOutfit={(arr) => {props.changeOutfit(arr)}}/>
+          changeOutfit={(arr) => {props.changeOutfit(arr)}}
+          />
     </div>
   )
 }
