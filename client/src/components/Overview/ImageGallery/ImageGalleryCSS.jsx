@@ -93,6 +93,6 @@ export const rightArrowOverlay = {
   transform: 'translate(0%, -500%)',
   width: '50px',
   height: '50px',
-  backgroundImage: 'url("rightarrow.png")',
+  backgroundImage: 'url("right-arrow.png")',
   backgroundSize: 'cover'
 }

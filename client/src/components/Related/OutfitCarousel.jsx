@@ -34,7 +34,7 @@ const OutfitCarousel = (props) => {
           <div className="overflow-window-outfit">
             {
               cardsClickedThrough < numberOfHiddenCardsStarting &&
-            <img src="rightarrow.png" className="yourOutfit-next-button" widgetname="Related" id="your-outfit-right-arrow" onClick={() => {
+            <img src="right-arrow.png" className="yourOutfit-next-button" widgetname="Related" id="your-outfit-right-arrow" onClick={() => {
               setLeftOffset(leftOffset - 265)
               setCardClick(cardsClickedThrough + 1)
             }

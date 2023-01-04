@@ -28,7 +28,7 @@ const RelatedCarousel = (props) => {
 
             <div className="overflow-window-related">
               {cardsClickedThrough < numberOfHiddenCardsStarting &&
-                <img src="rightarrow.png" className="related-next-button" widgetname="Related" id="related-right-button" onClick={() => {
+                <img src="right-arrow.png" className="related-next-button" widgetname="Related" id="related-right-button" onClick={() => {
                   setLeftOffset(leftOffset - 265)
                   setCardClick(cardsClickedThrough + 1)
                 }} />
