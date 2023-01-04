@@ -6,7 +6,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
 
   const [reviewBody, setReviewBody] = useState('');
 
-  const [reviewObject, setReviewObject] = useState({product_id: 0, recommend: false, body: reviewBody});
+  const [reviewObject, setReviewObject] = useState({product_id: 0, rating: starState, recommend: false, body: reviewBody});
 
   const [characteristicState, setCharacteristicState] = useState({});
 
@@ -98,10 +98,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
     [...e.target.files].forEach(file => {
       console.log("file:", file);
 
-      tempArr.push({
-        data: file,
-        url: URL.createObjectURL(file)
-      });
+      tempArr.push(URL.createObjectURL(file));
       console.log("pictures:", file);
     });
 
@@ -130,8 +127,16 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
   },[characteristicState]);
 
   useEffect(() => {
+    spreadReviewFunc('rating', starState)
+  },[starState]);
+
+  useEffect(() => {
     spreadReviewFunc('body', reviewBody)
   },[reviewBody]);
+
+  useEffect(() => {
+    spreadReviewFunc('photos', imageURL)
+  },[imageURL]);
 
   if (!open) return null
 
@@ -192,7 +197,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             {imageURL.map((image, index) => {
               return (
               <div key={index}>
-              <img id="target" src={image.url} className="reviewImage"/>
+              <img id="target" src={image} className="reviewImage"/>
               <br/>
               </div>
             )})}
