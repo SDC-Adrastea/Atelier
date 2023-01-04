@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {OverallReviewStars} from './OverallReviewStars.jsx';
+import axios from 'axios';
 
 export const AddReviewForm = ({ open, children, image, onClose, product, characteristics }) => {
   const [starState, setStarState] = useState(0);
@@ -106,7 +107,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
   };
 
   function onChangeRecommend(event) {
-    spreadReviewFunc('recommend', event.target.value);
+    spreadReviewFunc('recommend', Boolean.parseBoolean(event.target.value));
   }
 
   function spreadReviewFunc(key, value) {
@@ -116,6 +117,11 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
         [key]: value
       }
     })
+  }
+
+  function formSubmit() {
+    axios.post('/addReview', reviewObject)
+      .then((response) => {console.log('Add review response:',response.data)})
   }
 
   useEffect(() => {
@@ -146,7 +152,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
       <div style={MODAL_STYLES}>
         <button onClick={onClose}>&#10006;</button>
         <br/>
-        <form data-testid="add-review-form" widgetname="Reviews" >
+        <form data-testid="add-review-form" widgetname="Reviews" onSubmit={formSubmit} >
           <h2>Write Your Review</h2>
           <h3>About the {product.name}</h3>
             Overall Rating*<br/>
