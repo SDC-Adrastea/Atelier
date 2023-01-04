@@ -41,7 +41,7 @@ export const Answer = (props) => {
       <div className="answerContent">
         <div> <div>{props.idx === 0 && <div id="aBold">A: </div>}{props.answerData.body}</div>
           <div>
-          {props.answerData.photos.map(image =>  <img className="answerImages" src={image.url} key ={image.id}/>)}
+          {props.answerData.photos.map(image =>  <img className="answerImages" src={image.url} key ={image.id} alt="answer image"/>)}
           </div>
         </div>
       <div className="ansBy">

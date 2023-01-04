@@ -100,7 +100,7 @@ export const AddAnswerModal = (props) => {
         <div className="questionModal" widgetname='Questions'>
         <h1 widgetname='Questions' id="submitAnswerHeading">Submit Your Answer</h1>
         <h2 widgetname='Questions' id="submiAnswertitle">{props.product.name}: {props.data.question_body}</h2>
-        <form onSubmit={handleAnswerSubmit} widgetname='Questions' id="answerForm">
+        <form onSubmit={handleAnswerSubmit} widgetname='Questions' id="answerForm" data-testid="answerForm">
           Your Answer * <input size={1000} id="yourQuestion" name="answer" type="text" onChange={event=>setAnswer(event.target.value)} />
           <div widgetname='Questions'>
           {error && answer.length === 0 && <p style={{ color:'red'}}>Answer must be entered</p>}
@@ -128,7 +128,7 @@ export const AddAnswerModal = (props) => {
             </button>
             </div>
         </form>
-        {imageURLs.map((photo, idx)=><img src={photo} key={idx}/>)}
+        {imageURLs.map((photo, idx)=><img src={photo} key={idx} alt="uploaded Answer Image"/>)}
         </div>
       </div>
     </>
