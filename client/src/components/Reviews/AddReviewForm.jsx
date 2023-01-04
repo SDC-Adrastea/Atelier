@@ -91,6 +91,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
       alert(`Cannot upload more than ${MAX_UPLOAD_COUNT} files`);
       return;
     }
+
     const tempArr = [];
     [...e.target.files].forEach(file => {
       console.log("file:", file);
@@ -185,7 +186,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             </textarea><br/>
             {reviewBody.length < 50 ? `Minimum required characters left: ${50-reviewBody.length}` : 'Minimum reached'}<br/>
             <br/>
-            <input type="file" accept="image/*" multiple onChange={onImageChange} ></input><br/>
+            { imageURL.length < 5 ? <><input type="file" multiple accept="image/*" onChange={onImageChange} ></input><br/></> : null}
             {imageURL.map((image, index) => {
               return (
               <div key={index}>
@@ -197,7 +198,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             <input type="text" onChange={e => spreadReviewFunc('name', e.target.value)} id="username" name="username" placeholder="Example: jackson11!" required maxLength="60" size="65"></input><br/>
             <label htmlFor="email">Email: </label>
             <input type="email" onChange={e => spreadReviewFunc('email', e.target.value)} id="email" name="email" placeholder="Example: jackson11@email.com" required maxLength="60" size="65"></input><br/>
-            For authentication reasons, you will not be emailed
+            For authentication reasons, you will not be emailed.
             <br/>
             <input type="submit" value="Submit" />
             </div>
