@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {OverallReviewStars} from './OverallReviewStars.jsx';
 
-
 export const AddReviewForm = ({ open, children, image, onClose, product, characteristics }) => {
+  const [starState, setStarState] = useState(0);
+
   const [reviewBody, setReviewBody] = useState('');
 
   const [reviewObject, setReviewObject] = useState({product_id: 0, recommend: false, body: reviewBody});
@@ -144,12 +145,12 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
           <h2>Write Your Review</h2>
           <h3>About the {product.name}</h3>
             Overall Rating*<br/>
-            <OverallReviewStars/><br/>
+            <OverallReviewStars starState={starState} setStarState={setStarState} /><br/>
             <div id="recommended" onChange={onChangeRecommend}>
                 Recommended:
-                <input type="radio" name="recommended" value="true" />
+                <input id="yes-recommend-radio" widgetname="Reviews" type="radio" name="recommended" value="true" />
                 Yes
-                <input type="radio" name="recommended" value="false" />
+                <input id="no-recommend-radio" widgetname="Reviews" type="radio" name="recommended" value="false" />
                 No
                 <br/>
             </div>
@@ -159,11 +160,11 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
                 return (
                   <div id={characteristic.name} key={index}>
                   {characteristic.name}:  {characteristicsMap[index][characteristicState[characteristics[characteristic.name].id]] || 'none selected'}<br/>
-                  <input type="radio" name={characteristic.name}  value="1" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 1; setCharacteristicState({...characteristicState})}} />1
-                  <input type="radio" name={characteristic.name}  value="2" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 2; setCharacteristicState({...characteristicState})}} />2
-                  <input type="radio" name={characteristic.name}  value="3" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 3; setCharacteristicState({...characteristicState})}} />3
-                  <input type="radio" name={characteristic.name}  value="4" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 4; setCharacteristicState({...characteristicState})}} />4
-                  <input type="radio" name={characteristic.name}  value="5" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 5; setCharacteristicState({...characteristicState})}} />5
+                  <input type="radio" name={characteristic.name} id={`1-${characteristic.name}-radio`} widgetname="Reviews" value="1" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 1; setCharacteristicState({...characteristicState})}} />1
+                  <input type="radio" name={characteristic.name} id={`2-${characteristic.name}-radio`} widgetname="Reviews" value="2" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 2; setCharacteristicState({...characteristicState})}} />2
+                  <input type="radio" name={characteristic.name} id={`3-${characteristic.name}-radio`} widgetname="Reviews" value="3" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 3; setCharacteristicState({...characteristicState})}} />3
+                  <input type="radio" name={characteristic.name} id={`4-${characteristic.name}-radio`} widgetname="Reviews" value="4" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 4; setCharacteristicState({...characteristicState})}} />4
+                  <input type="radio" name={characteristic.name} id={`5-${characteristic.name}-radio`} widgetname="Reviews" value="5" onClick={() => {characteristicState[characteristics[characteristic.name].id] = 5; setCharacteristicState({...characteristicState})}} />5
                   <br/>
                 </div>
                 )

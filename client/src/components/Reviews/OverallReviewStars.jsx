@@ -1,8 +1,8 @@
 import React, {useState, useEffect}  from 'react';
 
-export const OverallReviewStars = ({width = 20}) => {
+export const OverallReviewStars = ({starState, setStarState, width = 20}) => {
 
-  const [starState, setStarState] = useState(0);
+  // const [starState, setStarState] = useState(0);
   const [ratingDescription, setRatingDescription] = useState('');
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export const OverallReviewStars = ({width = 20}) => {
             position: 'relative',
             display: 'inline-block',
           }}>
-                <img src="star.png" onMouseEnter={() => setStarState(index+1)} onMouseLeave={() => setStarState(0)} onClick={() => setStarState(index+1)}
+                <img src="star.png" id={`${index+1}-star-overall`} widgetname="Reviews" onClick={() => setStarState(index+1)}
                   style={{
                     height: `${width}px`,
                     width: `${width}px`,

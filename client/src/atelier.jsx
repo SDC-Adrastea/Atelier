@@ -7,11 +7,11 @@ import { Related } from './components/Related.jsx';
 import { Questions } from './components/Questions.jsx';
 import { Reviews } from './components/Reviews.jsx';
 
-import './styles/questions.css';
-import './styles/related.css';
+// import './styles/questions.css';
+// import './styles/related.css';
 import './styles/reviews.css';
-import './styles/styles.css';
-import './styles/yourOutfit.css';
+// import './styles/styles.css';
+// import './styles/yourOutfit.css';
 
 export const App = (props) => {
   const sampleID = 71699;
@@ -104,7 +104,7 @@ export const App = (props) => {
 
     <div className="index" onClick={(event)=>handleTrackClick(event.target)}>
       <nav><h1 id="header">Atelier</h1></nav>
-      <Overview
+      {/* <Overview
         // initial data
         productNum={productNum} product={product} metadata={metadata}
         // style section
@@ -119,7 +119,7 @@ export const App = (props) => {
         currentSku={currentSku} setCurrentSku={(sku) => setCurrentSku(sku)}
       />
       <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
-      <Questions productNum={productNum} product={product}/>
+      <Questions productNum={productNum} product={product}/> */}
       <Reviews productNum={productNum} product={product} metadata={metadata} />
     </div>
   )
