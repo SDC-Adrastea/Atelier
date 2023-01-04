@@ -22,7 +22,7 @@ const OutfitCarousel = (props) => {
       <div data-testid="outfit-carousel">
         <div className="overflow-window-icon-outfit">
           {leftOffset < 0 &&
-            <img src="leftArrow.png" className="related-previous-button" onClick={() => {
+            <img src="leftarrow.png" className="related-previous-button" onClick={() => {
               setLeftOffset(leftOffset + 265)
               setCardClick(cardsClickedThrough - 1)
             }} />
@@ -34,7 +34,7 @@ const OutfitCarousel = (props) => {
           <div className="overflow-window-outfit">
             {
               cardsClickedThrough < numberOfHiddenCardsStarting &&
-            <img src="rightArrow.png" className="yourOutfit-next-button" widgetname="Related" id="your-outfit-right-arrow" onClick={() => {
+            <img src="rightarrow.png" className="yourOutfit-next-button" widgetname="Related" id="your-outfit-right-arrow" onClick={() => {
               setLeftOffset(leftOffset - 265)
               setCardClick(cardsClickedThrough + 1)
             }

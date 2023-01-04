@@ -17,7 +17,7 @@ const RelatedCarousel = (props) => {
         <div className="related-carousel-transparent-container">
           <div className="overflow-window-icon">
             {leftOffset < 0 &&
-              <img src="leftArrow.png" className="related-previous-button" widgetname="Related" id="related-left-arrow" onClick={() => {
+              <img src="leftarrow.png" className="related-previous-button" widgetname="Related" id="related-left-arrow" onClick={() => {
                 setLeftOffset(leftOffset + 265)
                 setCardClick(cardsClickedThrough - 1)
               }} />
@@ -28,7 +28,7 @@ const RelatedCarousel = (props) => {
 
             <div className="overflow-window-related">
               {cardsClickedThrough < numberOfHiddenCardsStarting &&
-                <img src="rightArrow.png" className="related-next-button" widgetname="Related" id="related-right-button" onClick={() => {
+                <img src="rightarrow.png" className="related-next-button" widgetname="Related" id="related-right-button" onClick={() => {
                   setLeftOffset(leftOffset - 265)
                   setCardClick(cardsClickedThrough + 1)
                 }} />
