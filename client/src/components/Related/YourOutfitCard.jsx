@@ -31,7 +31,7 @@ const YourOutfitCard = (props) => {
     })
   }
 
-  var image = cardData.imageUrl || "noImageCat.PNG"
+  var image = cardData.imageUrl || "noimage.png"
   var imageClass = cardData.imageUrl ? "related-product-image" : "missing-image-card"
 
 
@@ -40,13 +40,12 @@ const YourOutfitCard = (props) => {
     className="outfit-product-card"
     data-testid="your-outfit-card"
     >
-      <img onClick={() => removeFrom()} className="your-outfit-action-button" src="circleWithX.png"/>
-      <img className={imageClass} src={image} data-testid="your-outfit-card-image"/>
-      <div data-testid="your-outfit-card-category">{cardData.category}</div>
-      <div data-testid="your-outfit-card-product-name">{cardData.productName}</div>
-      <div data-testid="your-outfit-card-price">${cardData.originalPrice}</div>
-      <Price price={cardData.originalPrice} sale={cardData.salePrice}/>
-      <StarRating rating={cardData.averageReview}/>
+      <img onClick={() => removeFrom()} className="your-outfit-action-button" src="circle-with-x.png" widgetname="Related" id="your-outfit-remove-icon"/>
+      <img className={imageClass} src={image} data-testid="your-outfit-card-image" widgetname="Related" id="your-outfit-product-image"/>
+      <div data-testid="your-outfit-card-category" widgetname="Related" id="your-outfit-card-category">{cardData.category}</div>
+      <div data-testid="your-outfit-card-product-name" widgetname="Related" id="your-outfit-product-name">{cardData.productName}</div>
+      <Price price={cardData.originalPrice} sale={cardData.salePrice} widgetname="Related"/>
+      <StarRating rating={cardData.averageReview} widgetname="Related"/>
     </div>
   )
 }

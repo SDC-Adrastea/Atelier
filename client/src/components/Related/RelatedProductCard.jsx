@@ -41,7 +41,7 @@ const RelatedProductCard = (props) => {
     })
   }
 
-  var image = cardData.imageUrl || "noImageCat.PNG"
+  var image = cardData.imageUrl || "noimage.png"
   var imageClass = cardData.imageUrl ? "related-product-image" : "missing-image-card"
 
   return (
@@ -50,12 +50,12 @@ const RelatedProductCard = (props) => {
      } className="related-product-card"
      data-testid="related-product-card-test"
      >
-      <img className="related-action-button" src="star2.png" onClick={modalSearch} />
-      <img className={imageClass} src={image} data-testid="related-product-card-image"/>
-      <div data-testid="related-product-card-category">{cardData.category}</div>
-      <div data-testid="related-product-card-name">{cardData.productName}</div>
-      <Price price={cardData.originalPrice} sale={cardData.salePrice}/>
-      <StarRating rating={cardData.averageReview} />
+      <img className="related-action-button" src="star-2.png" onClick={modalSearch} widgetname="Related" id="related-modal-button-icon"/>
+      <img className={imageClass} src={image} data-testid="related-product-card-image" widgetname="Related" id="related-product-image"/>
+      <div data-testid="related-product-card-category" widgetname="Related" id="related-product-card-category">{cardData.category}</div>
+      <div data-testid="related-product-card-name" widgetname="Related" id="related-product-name">{cardData.productName}</div>
+      <Price price={cardData.originalPrice} sale={cardData.salePrice} widgetname="Related" id="related-product-price"/>
+      <StarRating rating={cardData.averageReview} widgetname="Related" id="related-star-rating"/>
       {showModal && <ComparisonModal primaryProduct={productComparisonData[0]} relatedProductCurrent={productComparisonData[1]} setModal={(value) => setModal(value)} />}
     </div>
   )
