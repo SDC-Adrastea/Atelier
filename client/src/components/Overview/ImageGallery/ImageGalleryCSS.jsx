@@ -83,7 +83,7 @@ export const leftArrowOverlay = {
   transform: 'translateY(-500%)',
   width: '50px',
   height: '50px',
-  backgroundImage: 'url("leftArrow.png")',
+  backgroundImage: 'url("leftarrow.png")',
   backgroundSize: 'cover'
 }
 
