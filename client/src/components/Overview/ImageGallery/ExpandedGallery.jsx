@@ -1,5 +1,4 @@
 import React from 'react'
-import * as views from './ViewFuncs.jsx'
 import * as css from './ImageGalleryCSS.jsx'
 
 
@@ -41,6 +40,15 @@ const ExpandedGallery = (props) => {
     e.preventDefault()
     let url = e.target.src
     props.thumbnailChange(url)
+  }
+
+  // user clicks arrows to update thumbnail and main image selections
+  let handleArrowLeft = () => {
+    props.thumbnailChange(leftArrowOption)
+  }
+
+  let handleArrowRight = () => {
+    props.thumbnailChange(rightArrowOption)
   }
 
   return (
