@@ -15,7 +15,7 @@ const AddToCart = (props) => {
       props.setSizeAlert()
     } else {
       // the api doesn't allow for a quantity
-      // this adds the selected amount to the cart in the api
+      // add the selected quantity to the cart in the api
       let total = 0
       while (total < quantity) {
         await axios.post('/cart', { sku })

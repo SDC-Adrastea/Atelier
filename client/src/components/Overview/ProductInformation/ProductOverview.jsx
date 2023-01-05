@@ -1,7 +1,7 @@
 import React from 'react'
 import FeaturesList from './FeaturesList.jsx'
-import * as css from './ProductInformationCSS.jsx'
 
+import '../../../styles/overview.css'
 
 const ProductOverview = (props) => {
   let slogan = props.slogan
@@ -13,13 +13,13 @@ const ProductOverview = (props) => {
   }
 
   return (
-    <div style={css.descriptionContainer}>
-      <div style={css.mainDescription}>
+    <div className="description-container">
+      <div className="main-description">
       <h3><strong>{slogan}</strong></h3>
       <p>{description}</p>
       </div>
-      <div style={css.verticalLine}></div>
-      <div style={css.featuresDescription}>{features}</div>
+      <div className="vertical-line"></div>
+      <div className="features-description">{features}</div>
     </div>
   )
 }

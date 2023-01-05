@@ -1,12 +1,12 @@
 import React from 'react'
-import * as css from './ProductInformationCSS.jsx'
 
+import '../../../styles/overview.css'
 
 const ToggleOutfitStar = (props) => {
   let id = props.id
   let outfit = props.outfit
 
-  // function to handle star click
+  // function to handle star click, add/remove outfit
   const handleStar = () => {
     props.changeOutfit((outfit) => {
       if (outfit.includes(id)) {
@@ -21,7 +21,7 @@ const ToggleOutfitStar = (props) => {
 
   return (
     <>
-      <button type="button" id="star" style={css.selections} onClick={() => { handleStar() }}>★</button>
+      <button type="button" id="toggle-outfit-star" className="selections" onClick={() => { handleStar() }}>★</button>
     </>
   )
 }
