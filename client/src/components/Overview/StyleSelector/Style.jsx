@@ -17,7 +17,7 @@ const Style = (props) => {
   return (
     <div className="style-thumbnail">
       <div className="style-thumbnail-container">
-        <img src={style.photos[0].thumbnail_url} alt={altName} width="60" height="60" className="style-image"
+        <img src={style.photos[0].thumbnail_url} alt={altName} className="style-image"
           data-testid="style-image" onClick={() => props.onClick(style)} id="style-image-change" widgetname="Overview" />
           {checked}
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import * as views from './ViewFuncs.jsx'
 
 import '../../../styles/overview.css'
 
@@ -42,31 +43,11 @@ const DefaultGallery = (props) => {
     props.thumbnailChange(url)
   }
 
-  // user clicks arrows to update thumbnail and main image selections
-  let handleArrowLeft = () => {
-    props.thumbnailChange(leftArrowOption)
-  }
-  let handleArrowRight = () => {
-    props.thumbnailChange(rightArrowOption)
-  }
 
   return (
     <>
-      <div className="main-image-container">
-        <img src={currentImage} className="main-image" alt={currentStyle.name} onClick={() => props.onClick()} id="default-view-click" widgetname="Overview" />
-        <div className="view-overlay">
-          <div className="arrow-overlay">
-            <div className="right-arrow-overlay" onClick={() => handleArrowRight()} id="default-right-arrow" widgetname="Overview"></div>
-          </div>
-        </div>
-        <div className="view-overlay">
-          <div className="arrow-overlay">
-            <div className="left-arrow-overlay" onClick={() => handleArrowLeft()} id="default-left-arrow" widgetname="Overview"></div>
-          </div>
-        </div>
-      </div>
 
-      <div className="thumbanil-container">
+      <div className="thumbanail-container">
         {display.map((photo, index) => {
           if (photo === currentImage) {
             return <img key={index} src={photo} className="thumbnail-selected" alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumnail-img-selected" widgetname="Overview" />
@@ -75,6 +56,22 @@ const DefaultGallery = (props) => {
           }
         })}
       </div>
+
+      <div className="main-image-container">
+        <div className="view-overlay">
+          <div className="arrow-overlay">
+            <div className="right-arrow-overlay" onClick={() => views.handleArrowRight()} id="default-right-arrow" widgetname="Overview"></div>
+          </div>
+        </div>
+        <div className="view-overlay">
+          <div className="arrow-overlay">
+            <div className="left-arrow-overlay" onClick={() => views.handleArrowLeft()} id="default-left-arrow" widgetname="Overview"></div>
+          </div>
+        </div>
+      </div>
+
+      <img src={currentImage} className="main-image" alt={currentStyle.name} onClick={() => props.onClick()} id="default-view-click" widgetname="Overview" />
+
     </>
   )
 }

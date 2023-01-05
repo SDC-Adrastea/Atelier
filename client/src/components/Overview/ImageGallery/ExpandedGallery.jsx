@@ -67,7 +67,7 @@ const ExpandedGallery = (props) => {
         </div>
       </div>
 
-      <div className="thumbanil-container">
+      <div className="thumbanail-container">
         {display.map((photo, index) => {
           if (photo === currentImage) {
             return <img key={index} src={photo} className="thumbnail-selected" alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="expanded-view-thumnail-img-selected" widgetname="Overview" />

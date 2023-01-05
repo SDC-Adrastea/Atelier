@@ -10,9 +10,9 @@
 .image-container {
   position: relative;
   display: flex;
-  flex: 2;
   height: 100%;
   overflow: hidden;
+  flex: 2 1 0%;
   margin-right: 20px;
 }
 
@@ -229,6 +229,9 @@
 }
 
 .style-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
   border-radius: 50%;
 }
 
