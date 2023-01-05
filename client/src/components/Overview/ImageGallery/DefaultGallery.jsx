@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import * as views from './ViewFuncs.jsx'
-
-import '../../../styles/overview.css'
+import * as css from './ImageGalleryCSS.jsx'
 
 const DefaultGallery = (props) => {
   let currentStyle = props.style || {}
@@ -43,35 +42,31 @@ const DefaultGallery = (props) => {
     props.thumbnailChange(url)
   }
 
-
   return (
     <>
+      <div style={css.mainImageContainer}>
+        <img src={currentImage} style={css.mainImage} alt={currentStyle.name} onClick={() => props.onClick()} id="default-view-click" widgetname="Overview" />
+        <div style={css.overlay}>
+          <div style={css.arrowOverlay}>
+            <div style={css.rightArrowOverlay} onClick={() => handleArrowRight()} id="default-right-arrow" widgetname="Overview"></div>
+          </div>
+        </div>
+        <div style={css.overlay}>
+          <div style={css.arrowOverlay}>
+            <div style={css.leftArrowOverlay} onClick={() => handleArrowLeft()} id="default-left-arrow" widgetname="Overview"></div>
+          </div>
+        </div>
+      </div>
 
-      <div className="thumbanail-container">
+      <div style={css.thumbnailContainer}>
         {display.map((photo, index) => {
           if (photo === currentImage) {
-            return <img key={index} src={photo} className="thumbnail-selected" alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumnail-img-selected" widgetname="Overview" />
+            return <img key={index} src={photo} style={css.thumbnailSelected} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumnail-img-selected" widgetname="Overview" />
           } else {
-            return <img key={index} src={photo} className="thumnail-image" alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumbnail-img" widgetname="Overview" />
+            return <img key={index} src={photo} style={css.thumbnailImage} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumbnail-img" widgetname="Overview" />
           }
         })}
       </div>
-
-      <div className="main-image-container">
-        <div className="view-overlay">
-          <div className="arrow-overlay">
-            <div className="right-arrow-overlay" onClick={() => views.handleArrowRight()} id="default-right-arrow" widgetname="Overview"></div>
-          </div>
-        </div>
-        <div className="view-overlay">
-          <div className="arrow-overlay">
-            <div className="left-arrow-overlay" onClick={() => views.handleArrowLeft()} id="default-left-arrow" widgetname="Overview"></div>
-          </div>
-        </div>
-      </div>
-
-      <img src={currentImage} className="main-image" alt={currentStyle.name} onClick={() => props.onClick()} id="default-view-click" widgetname="Overview" />
-
     </>
   )
 }

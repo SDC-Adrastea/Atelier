@@ -1,7 +1,7 @@
 import React from 'react'
 import * as views from './ViewFuncs.jsx'
+import * as css from './ImageGalleryCSS.jsx'
 
-import '../../../styles/overview.css'
 
 const ExpandedGallery = (props) => {
   let currentStyle = props.style || {}
@@ -45,26 +45,26 @@ const ExpandedGallery = (props) => {
 
   return (
     <>
-      <div className="exp-main-image-container">
-        <img src={currentImage} className="exp-main-image" alt={currentStyle.name} onClick={() => props.onClick()} id="expanded-view-click" widgetname="Overview" />
-        <div className="view-overlay">
-          <div className="arrow-overlay">
-            <div className="right-arrow-overlay" onClick={() => views.handleArrowRight()} id="expanded-right-arrow" widgetname="Overview"></div>
+      <div style={css.expMainImageContainer}>
+        <img src={currentImage} style={css.expMainImage} alt={currentStyle.name} onClick={() => props.onClick()} id="expanded-view-click" widgetname="Overview" />
+        <div style={css.overlay}>
+          <div style={css.arrowOverlay}>
+            <div style={css.rightArrowOverlay} onClick={() => handleArrowRight()} id="expanded-right-arrow" widgetname="Overview"></div>
           </div>
         </div>
-        <div className="view-overlay">
-          <div className="arrow-overlay">
-            <div className="left-arrow-overlay" onClick={() => views.handleArrowLeft()} id="expanded-left-arrow" widgetname="Overview"></div>
+        <div style={css.overlay}>
+          <div style={css.arrowOverlay}>
+            <div style={css.leftArrowOverlay} onClick={() => handleArrowLeft()} id="expanded-left-arrow" widgetname="Overview"></div>
           </div>
         </div>
       </div>
 
-      <div className="thumbanail-container">
+      <div style={css.thumbnailContainer}>
         {display.map((photo, index) => {
           if (photo === currentImage) {
-            return <img key={index} src={photo} className="thumbnail-selected" alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="expanded-view-thumnail-img-selected" widgetname="Overview" />
+            return <img key={index} src={photo} style={css.thumbnailSelected} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="expanded-view-thumnail-img-selected" widgetname="Overview" />
           } else {
-            return <img key={index} src={photo} className="thumbnail-image" alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="expanded-view-thumnail-img-selected" widgetname="Overview" />
+            return <img key={index} src={photo} style={css.thumbnailImage} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="expanded-view-thumnail-img-selected" widgetname="Overview" />
           }
         })}
       </div>

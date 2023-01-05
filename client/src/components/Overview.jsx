@@ -12,6 +12,7 @@ import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
 
 import '../styles/overview.css'
+import * as css from '../components/Overview/ImageGallery/ImageGalleryCSS.jsx'
 
 
 export const Overview = (props) => {
@@ -54,7 +55,7 @@ export const Overview = (props) => {
       />
     )
     currentView = (
-      <div className="image-container">
+      <div style={css.imageContainer}>
         <DefaultGallery
           style={currentStyle} main={mainImage} images={imageArr}
           onClick={() => props.setView('expanded')}
@@ -63,12 +64,12 @@ export const Overview = (props) => {
       </div>
     )
     productSection = (
-      <div className="product-container">
+      <div style={css.productContainer}>
         {reviewSection}
         {titleSection}
         {priceSection}
         {styleSection}
-        <div className="selection-container">
+        <div style={css.selectionContainer}>
           {sizeQuantitySection}
           {toggleSection}
         </div>
@@ -76,7 +77,7 @@ export const Overview = (props) => {
     )
 
     defaultContainer = (
-      <div className="main-container">
+      <div style={css.mainContainer}>
         {currentView}
         {productSection}
       </div>
@@ -88,10 +89,10 @@ export const Overview = (props) => {
     productOverview = <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
   }
 
-  // if the view has been set to expanded via a state change, update the view content
+  // if the view has been set to expanded via a state change, update the view information
   if (view === 'expanded') {
     currentView = (
-      <div className="expanded-container">
+      <div style={css.expandedContainer}>
         <ExpandedGallery
           style={currentStyle} main={mainImage} images={imageArr}
           onClick={() => props.setView('default')}
@@ -100,16 +101,15 @@ export const Overview = (props) => {
       </div>
     )
     productSection = (
-      <div className="expanded-view-reduce"></div>
+      <div style={css.expandedViewReduce}></div>
     )
     defaultContainer = (
-      <div className="no-container">
+      <div style={css.noContainer}>
         {currentView}
         {productSection}
       </div>
     )
   }
-
 
   return (
     <div data-testid="overview-component">
