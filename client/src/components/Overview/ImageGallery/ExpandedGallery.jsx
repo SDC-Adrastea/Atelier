@@ -1,7 +1,7 @@
 import React from 'react'
+import * as views from './ViewFuncs.jsx'
 
 import '../../../styles/overview.css'
-
 
 const ExpandedGallery = (props) => {
   let currentStyle = props.style || {}
@@ -43,26 +43,18 @@ const ExpandedGallery = (props) => {
     props.thumbnailChange(url)
   }
 
-  // user clicks arrows to update thumbnail and main image selections
-  let handleArrowLeft = () => {
-    props.thumbnailChange(leftArrowOption)
-  }
-  let handleArrowRight = () => {
-    props.thumbnailChange(rightArrowOption)
-  }
-
   return (
     <>
       <div className="exp-main-image-container">
         <img src={currentImage} className="exp-main-image" alt={currentStyle.name} onClick={() => props.onClick()} id="expanded-view-click" widgetname="Overview" />
         <div className="view-overlay">
           <div className="arrow-overlay">
-            <div className="right-arrow-overlay" onClick={() => handleArrowRight()} id="expanded-right-arrow" widgetname="Overview"></div>
+            <div className="right-arrow-overlay" onClick={() => views.handleArrowRight()} id="expanded-right-arrow" widgetname="Overview"></div>
           </div>
         </div>
         <div className="view-overlay">
           <div className="arrow-overlay">
-            <div className="left-arrow-overlay" onClick={() => handleArrowLeft()} id="expanded-left-arrow" widgetname="Overview"></div>
+            <div className="left-arrow-overlay" onClick={() => views.handleArrowLeft()} id="expanded-left-arrow" widgetname="Overview"></div>
           </div>
         </div>
       </div>
