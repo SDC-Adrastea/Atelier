@@ -49,20 +49,6 @@ module.exports.getMetadata = (product_id) => {
 }
 
 module.exports.addReview = (data) => {
-  // console.log('data1:', data);
-  // data = {
-  //   "product_id": data.product_id,
-  //   "rating": data.rating,
-  //   "summary": data.summary,
-  //   "body": data.body,
-  //   "recommend": data.recommend,
-  //   "name": data.name,
-  //   "email": data.email,
-  //   "photos":data.photos,
-  //   "characteristics": data.characteristics
-  // };
-  console.log('data2:', data);
-
   const options = {
     method: 'post',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/`,
@@ -78,5 +64,25 @@ module.exports.addReview = (data) => {
     })
     .catch(err => {
       console.log('error posting reviews:', err);
+    })
+}
+
+module.exports.helpfulReview = (review_id) => {
+  const options = {
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${review_id}/helpful`,
+    headers: { "Authorization": process.env.API_TOKEN },
+    params: {
+      review_id: review_id
+    }
+  };
+
+  return axios(options)
+    .then(response => {
+      console.log(`review id ${review_id} marked as successful`)
+      return response;
+    })
+    .catch(err => {
+      console.log('error marking review as helpful:', err);
     })
 }

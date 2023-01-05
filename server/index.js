@@ -35,7 +35,7 @@ const { currentProduct, SingleProductGet } = require('./api-helpers/ProductsAPI.
 const { CartGet, CartPost } = require('./api-helpers/CartAPI.js');
 
 // Ratings and Reviews Controllers
-const { getReviews, getMetadata, addReview } = require('./api-helpers/ReviewsAPI.js');
+const { getReviews, getMetadata, addReview, helpfulReview } = require('./api-helpers/ReviewsAPI.js');
 
 // ==============================================
 //       Interaction Route
@@ -195,6 +195,17 @@ app.post('/addReview', (req, res) => {
     .catch(err => {
       res.send(err)
       console.log('err in addReview server-side', err)
+    })
+})
+
+app.put('/reviewHelpful', (req, res) => {
+  console.log(req.body.review_id);
+  let review_id = parseInt(req.body.review_id)
+  helpfulReview(review_id)
+    .then(data => res.status(204))
+    .catch(err => {
+      res.send(err)
+      console.log('err in helpfulReview server-side', err)
     })
 })
 
