@@ -32,7 +32,7 @@ export const Reviews = (props) => {
   },[reviews]);
 
   return (
-    <div data-testid="reviews" widgetname="Reviews">
+    <div data-testid="reviews" widgetname="Reviews" className="review">
     <h1 id="reviews-anchor" widgetname="Reviews">Ratings & Reviews</h1>
     <div style={{ display: "grid", gridTemplateColumns: "300px 60%", gridGap: 20 }}>
       <div>
