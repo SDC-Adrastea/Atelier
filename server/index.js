@@ -199,10 +199,9 @@ app.post('/addReview', (req, res) => {
 })
 
 app.put('/reviewHelpful', (req, res) => {
-  console.log(req.body.review_id);
   let review_id = parseInt(req.body.review_id)
   helpfulReview(review_id)
-    .then(data => res.status(204))
+    .then(data => res.sendStatus(204))
     .catch(err => {
       res.send(err)
       console.log('err in helpfulReview server-side', err)

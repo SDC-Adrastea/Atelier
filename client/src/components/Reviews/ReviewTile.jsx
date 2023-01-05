@@ -8,19 +8,25 @@ export const ReviewTile = (props) => {
   const { review } = props;
 
   const [responseExists, setResponse] = useState(false);
+  const [helpfulClicked, setHelpfulClicked] = useState(false);
+  const [helpfulCount, setHelpfulCount] = useState(props.review.helpfulness);
 
   console.log('review id:', props.review.review_id);
+  console.log('helpfullness', props.review.helpfulness);
 
   const reviewHelpful = (review_id) => {
-    console.log('helpful')
-    console.log(review_id)
-    return axios({
-      method: 'put',
-      url: '/reviewHelpful',
-      data: {'review_id': review_id}
-    })
-    .then((response) => {console.log(response.data)})
-    // .catch(err => console.log('error', err))
+    if (!helpfulClicked) {
+      return axios({
+        method: 'put',
+        url: '/reviewHelpful',
+        data: {'review_id': review_id}
+      })
+      .then(() => {
+        setHelpfulCount(helpfulCount+1)
+        setHelpfulClicked(true);
+      })
+      .catch(err => console.log('error', err))
+    }
   }
 
   return (
@@ -50,7 +56,7 @@ export const ReviewTile = (props) => {
           })
         : null }
         {/* Need to add helpfulness voting function (with cookies maybe?) */}
-      <p>Helpful? <u onClick={() =>  reviewHelpful(props.review.review_id)}>Yes</u> ({review.helpfulness})</p>
+      <p>Helpful? <u onClick={() =>  reviewHelpful(props.review.review_id)}>Yes</u> ({helpfulCount})</p>
       <hr />
     </div>
   )
