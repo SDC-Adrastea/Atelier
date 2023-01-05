@@ -23,7 +23,7 @@ export const Reviews = (props) => {
       .then((results) => {
         setReviews(results.data.results);
       });
-  },[reviewsSortBy]);
+  },[reviewsSortBy, props.productNum]);
 
   useEffect(() => {
     var reviewsLength = reviews.length || 1;
