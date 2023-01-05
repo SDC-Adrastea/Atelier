@@ -1,13 +1,13 @@
 import React from 'react'
-import * as css from './ProductInformationCSS.jsx'
 
+import '../../../styles/overview.css'
 
 const ProductCategoryTitle = (props) => {
   let title = props.title
   let category = props.category
 
   return (
-    <div style={css.pad}>
+    <div className="pad">
       {category}
       <h2>{title}</h2>
     </div>

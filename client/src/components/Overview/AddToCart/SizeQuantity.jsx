@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import AddToCart from './Cart.jsx'
-import * as css from './AddToCartCSS.jsx'
 
+import '../../../styles/overview.css'
 
 const SizeQuantity = (props) => {
   let styleOptions = props.skus
@@ -15,6 +15,7 @@ const SizeQuantity = (props) => {
   const [chosenQuantity, setChosenQuantity] = useState('')
   const [sizeAlert, setSizeAlert] = useState(false)
 
+  // update the size options based on the selected sku
   useEffect(() => {
     skus = Object.keys(styleOptions)
     if (skus.length > 0) {
@@ -29,6 +30,7 @@ const SizeQuantity = (props) => {
     }
   }, [props.skus])
 
+  // update the sku and quantity along with state based on size selection
   let handleSize = (e) => {
     e.preventDefault();
     let selectedSize = e.target.value
@@ -54,6 +56,7 @@ const SizeQuantity = (props) => {
     }
   }
 
+  // update quantity selection to set state for later cart addition
   let handleQuantity = (e) => {
     e.preventDefault();
     let selectedQuantity = e.target.value
@@ -68,29 +71,34 @@ const SizeQuantity = (props) => {
     return <option key={q} value={q}>{q}</option>
   })
 
+  // default quantity defined and setup
   let quantitySection = (
-    <select role="quantity" name="quantity" id="quantity-select" widgetname="Overview" style={css.sizeQuantitySelections}>
+    <select name="quantity" id="quantity-select" widgetname="Overview" className="size-quantity-selections">
         <option value="">--</option>
     </select>
   )
 
+  // quantity setup
   if (quantity.length > 0) {
     quantitySection = (
-      <select role="quantity" name="quantity" id="quantity-select" widgetname="Overview" onChange={handleQuantity} style={css.sizeQuantitySelections}>
+      <select name="quantity" id="quantity-select" widgetname="Overview" onChange={handleQuantity} className="size-quantity-selections">
           {mappedQuantity}
       </select>
     )
   }
 
+  // sizes setup when in stock
   if (sizes.length > 0) {
+    // triggers when a user clicks cart button with no size selected
     if (sizeAlert) {
-      sizeAlertLoad = <><span style={css.needInfo}>Please select size</span><br /></>
+      sizeAlertLoad = <><span className="need-info">Please select size</span><br /></>
     }
 
+    // the sizes and options are available
     pageLoad = (
       <>
         {sizeAlertLoad}
-        <select role="size" name="size" id="size-select" widgetname="Overview" onChange={handleSize} style={css.sizeQuantitySelections}>
+        <select name="size" id="size-select" widgetname="Overview" onChange={handleSize} className="size-quantity-selections">
           <option value="">Select Size</option>
           {mappedSizes}
         </select>
@@ -99,7 +107,8 @@ const SizeQuantity = (props) => {
       </>
     )
   } else {
-    pageLoad = <div style={css.sizeQuantitySelections}>OUT OF STOCK</div>
+    // there is no stock, display 'OUT OF STOCK'
+    pageLoad = <div className="size-quantity-selections">OUT OF STOCK</div>
   }
 
 

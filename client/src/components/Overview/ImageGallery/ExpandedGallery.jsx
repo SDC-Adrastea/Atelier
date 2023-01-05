@@ -12,11 +12,13 @@ const ExpandedGallery = (props) => {
   if (props.style === {}) {
     currentStyle.name = ''
   } else {
+    // map the image urls
     imageArr.map(photo => {
       display.push(photo.url)
     })
   }
 
+  // set the left and right arrow options for the view displays
   display.forEach((photo, index) => {
     if (photo === currentImage) {
       if (index === 0) {
@@ -33,12 +35,14 @@ const ExpandedGallery = (props) => {
     }
   })
 
+  // user clicks the thumbnail images directly
   let handleClick = (e) => {
     e.preventDefault()
     let url = e.target.src
     props.thumbnailChange(url)
   }
 
+  // user clicks arrows to update thumbnail and main image selections
   let handleArrowLeft = () => {
     props.thumbnailChange(leftArrowOption)
   }

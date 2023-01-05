@@ -2,6 +2,8 @@ import React from "react";
 import { App } from './atelier.jsx';
 import ReactDOM from 'react-dom';
 
+import './styles/styles.css';
+
 
 class ErrorBoundary extends React.Component {
 
@@ -26,7 +28,7 @@ class ErrorBoundary extends React.Component {
 
       // Error path
       return (
-        <div>
+        <div className="index">
           <h2>Uh Oh... Atelier is having technical Troubles</h2>
           <p>Please try again in a few moments and hopefully we will be back.</p>
         </div>

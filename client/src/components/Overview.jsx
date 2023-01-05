@@ -10,10 +10,13 @@ import StyleSelector from './Overview/StyleSelector/StyleSelector.jsx'
 import SizeQuantity from './Overview/AddToCart/SizeQuantity.jsx'
 import DefaultGallery from './Overview/ImageGallery/DefaultGallery.jsx'
 import ExpandedGallery from './Overview/ImageGallery/ExpandedGallery.jsx'
-import * as css from './Overview/OverviewCSS.jsx'
+
+import '../styles/overview.css'
+import * as css from '../components/Overview/ImageGallery/ImageGalleryCSS.jsx'
 
 
 export const Overview = (props) => {
+  // variables stated and defaults set when there is no data
   let product = props.product || {}
   let ratings = props.metadata || {}
   // Overview-Specific
@@ -30,11 +33,13 @@ export const Overview = (props) => {
     product.styles = []
   }
 
+  // if ratings are currently empty, set the amount if present or an empty array
   if (ratings !== {} || ratings !== undefined) {
     ratings = ratings.ratings || {}
     reviewSection = <StarsReviews ratings={ratings} />
   }
 
+  // if there is style data to show, set all of the jsx file contents here
   if (props.styles.length > 0) {
     titleSection = <ProductCategoryTitle title={product.name} category={product.category} />
     priceSection = <Price price={currentStyle.original_price} sale={currentStyle.sale_price} styles={props.styles} />
@@ -79,10 +84,12 @@ export const Overview = (props) => {
     )
   }
 
+  // if any of these items are present, set the product overview section
   if (product.description !== undefined || product.slogan !== undefined || product.features !== undefined) {
     productOverview = <ProductOverview slogan={product.slogan} description={product.description} features={product.features} />
   }
 
+  // if the view has been set to expanded via a state change, update the view information
   if (view === 'expanded') {
     currentView = (
       <div style={css.expandedContainer}>
@@ -103,8 +110,6 @@ export const Overview = (props) => {
       </div>
     )
   }
-
-
 
   return (
     <div data-testid="overview-component">

@@ -7,6 +7,7 @@ const StarsReviews = (props) => {
   let thisRating, allRatings
 
   if (ratings !== undefined) {
+    // helper function for averaging out the metadata ratings
     let avgStars = (ratings) => {
       let keys = Object.keys(ratings)
       let total = 0
@@ -24,7 +25,7 @@ const StarsReviews = (props) => {
     }
 
     let average = Number(parseFloat(avgStars(ratings)).toFixed(2))
-    thisRating = <><StarRating rating={average} id="toggle-outfit-star" widgetname="Overview" /><a href="#reviews-anchor">Read all {allRatings} reviews</a></>
+    thisRating = <><StarRating rating={average} id="read-all-reviews" widgetname="Overview" /><a href="#reviews-anchor">Read all {allRatings} reviews</a></>
   }
 
   return <> {thisRating} </>

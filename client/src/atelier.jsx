@@ -12,6 +12,7 @@ import './styles/related.css';
 import './styles/reviews.css';
 import './styles/styles.css';
 import './styles/yourOutfit.css';
+import './styles/overview.css';
 
 export const App = (props) => {
   const sampleID = 71699;
@@ -69,7 +70,6 @@ export const App = (props) => {
       .catch(err => console.log('err in index.jsx metadata'))
   }, [productNum])
 
-
   useEffect(() => {
     if (styles.length > 0 || Object.keys(currentStyle).length === 0) {
       styles.forEach(style => {
@@ -101,7 +101,6 @@ export const App = (props) => {
 
 
   return (
-
     <div className="index" onClick={(event)=>handleTrackClick(event.target)}>
       <nav><h1 id="header">Atelier</h1></nav>
       <Overview

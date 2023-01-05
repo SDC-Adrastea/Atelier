@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Style from './Style.jsx'
-import * as css from './StyleSelectorCSS.jsx'
 
+import '../../../styles/overview.css'
 
 const StyleSelector = (props) => {
   let currentStyles = props.styles
   let toggledStyle = props.toggledStyle
   let mapStyles
 
+  // style icon setup
   if (currentStyles !== undefined || currentStyles.length === 0) {
     mapStyles = currentStyles.map(style => {
       return (
@@ -22,7 +23,7 @@ const StyleSelector = (props) => {
     <>
       <br />
       <span><strong>Style > </strong>{toggledStyle.name}</span>
-      <div style={css.selectThumbnailContainer} data-testid="style-selector">
+      <div className="select-thumbnail-container" data-testid="style-selector">
         {mapStyles}
       </div>
     </>
