@@ -1,16 +1,18 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const port = 3000;
-app.use(express.json());
-const axios = require('axios');
 require('dotenv').config();
+const compression = require('compression');
+const express = require('express');
+const app = express();
+const path = require('path');
+const port = 3000;
+const axios = require('axios');
 const fileupload = require("express-fileupload");
 
+// compress all responses
+app.use(compression())
+
+app.use(express.json());
 
 const TOKEN = process.env.API_TOKEN;
-
-//TECH DEBT add routers
 
 const DIST_DIR = path.join(__dirname, '../client/dist');
 app.use(express.static(DIST_DIR));
