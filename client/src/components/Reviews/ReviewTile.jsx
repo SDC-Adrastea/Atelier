@@ -11,8 +11,8 @@ export const ReviewTile = (props) => {
   const [helpfulClicked, setHelpfulClicked] = useState(false);
   const [helpfulCount, setHelpfulCount] = useState(props.review.helpfulness);
 
-  console.log('review id:', props.review.review_id);
-  console.log('helpfullness', props.review.helpfulness);
+  // console.log('review id:', props.review.review_id);
+  // console.log('helpfullness', props.review.helpfulness);
 
   const reviewHelpful = (review_id) => {
     if (!helpfulClicked) {
