@@ -100,9 +100,10 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
     var cloudinaryURLS = []
     console.log(e.target.files);
     const photos = e.target.files;
-    for (const photo in photos) {
+
+    for (let i = 0; i < photos.length; i++) {
       const data = new FormData()
-      data.append("file", photos[photo])
+      data.append("file", photos[i])
       data.append("upload_preset", "kuzmabr")
       axios.post("https://api.cloudinary.com/v1_1/dblteitfp/image/upload", data)
       .then(res => {
@@ -112,7 +113,6 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
         console.log(cloudinaryURLS);
       })
     }
-
 
     const tempArr = [];
     [...e.target.files].forEach(file => {
