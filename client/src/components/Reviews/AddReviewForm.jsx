@@ -95,15 +95,31 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
       return;
     }
 
+    var cloudinaryURLS = []
+    console.log(e.target.files);
+    const photos = e.target.files;
+    for (const photo in photos) {
+      const data = new FormData()
+      data.append("file", photos[photo])
+      data.append("upload_preset", "kuzmabr")
+      axios.post("https://api.cloudinary.com/v1_1/dblteitfp/image/upload", data)
+      .then(res => {
+        console.log('cloudinary response OK', res.data.secure_url);
+        // const tempPhotosArr = photos;
+        cloudinaryURLS.push(res.data.secure_url);
+        console.log(cloudinaryURLS);
+      })
+    }
+
+
     const tempArr = [];
     [...e.target.files].forEach(file => {
-      console.log("file:", file);
+      // console.log("file:", file);
 
       tempArr.push(URL.createObjectURL(file));
-      console.log("pictures:", file);
     });
 
-    setImage(tempArr);
+    setImage(cloudinaryURLS);
   };
 
   function onChangeRecommend(event) {
