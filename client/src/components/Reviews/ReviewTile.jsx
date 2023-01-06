@@ -8,9 +8,29 @@ export const ReviewTile = (props) => {
   const { review } = props;
 
   const [responseExists, setResponse] = useState(false);
+  const [helpfulClicked, setHelpfulClicked] = useState(false);
+  const [helpfulCount, setHelpfulCount] = useState(props.review.helpfulness);
+
+  console.log('review id:', props.review.review_id);
+  console.log('helpfullness', props.review.helpfulness);
+
+  const reviewHelpful = (review_id) => {
+    if (!helpfulClicked) {
+      return axios({
+        method: 'put',
+        url: '/reviewHelpful',
+        data: {'review_id': review_id}
+      })
+      .then(() => {
+        setHelpfulCount(helpfulCount+1)
+        setHelpfulClicked(true);
+      })
+      .catch(err => console.log('error', err))
+    }
+  }
 
   return (
-    <div data-testid="review-tile">
+    <div data-testid="review-tile" widgetname="Reviews">
       <StarRating rating={review.rating} />
       {review.reviewer_name}
       <br/>
@@ -23,12 +43,11 @@ export const ReviewTile = (props) => {
       {review.review}
       <br/>
       {review.body}
-      {review.recommend ? <p>&#10003; I recommend this product</p> : null}
-      {review.response ? (<p> {review.response} </p>) : null}
+      {review.recommend ? <p widgetname="Reviews">&#10003; I recommend this product</p> : null}
+      {review.response ? (<p widgetname="Reviews"> {review.response} </p>) : null}
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? review.photos.map((photo, index)=> {
-        // need to resize photo and turn into modal when clicked
           return (
             <div key={index}>
             <ReviewPhotoWrapper image={photo.url} />
@@ -37,7 +56,7 @@ export const ReviewTile = (props) => {
           })
         : null }
         {/* Need to add helpfulness voting function (with cookies maybe?) */}
-      <p>Helpful? <u>Yes</u> ({review.helpfulness})</p>
+      <p>Helpful? <u onClick={() =>  reviewHelpful(props.review.review_id)}>Yes</u> ({helpfulCount})</p>
       <hr />
     </div>
   )

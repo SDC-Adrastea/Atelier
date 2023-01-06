@@ -1,3 +1,8 @@
+.review {
+  text-align:left;
+}
+
+
 #parent { white-space: nowrap; }
 
 .child { display: inline-block; }

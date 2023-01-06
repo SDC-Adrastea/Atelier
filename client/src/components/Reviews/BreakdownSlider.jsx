@@ -30,12 +30,12 @@ export const BreakdownSlider = ({rating = 0, width = 20}) => {
   return (
     <div>
       {stars.map((star, index) => (
-        <div style={{
+        <div widgetname="Reviews" style={{
           height: `${width}px`,
           width: `${width}px`,
           display: 'inline-block',
         }} key={index}>
-          <div style={{
+          <div  widgetname="Reviews" style={{
             height: `${width}px`,
             width: `${parseInt(star * width, 10)}px`,
             backgroundColor: 'black',

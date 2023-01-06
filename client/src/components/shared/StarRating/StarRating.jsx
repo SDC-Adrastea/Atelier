@@ -30,21 +30,21 @@ export const StarRating = ({ rating = 0, width = 20 }) => {
   }
 
   return (
-    <div data-testid="StarRating">
+    <div data-testid="StarRating"  widgetname="StarRating" >
       {stars.map((star, index) => (
-        <div style={{
+        <div  widgetname="StarRating" style={{
           height: `${width}px`,
           width: `${width}px`,
           display: 'inline-block',
         }} key={index}>
-          <div style={{
+          <div widgetname="StarRating" style={{
             height: `${width}px`,
             width: `${parseInt(star * width, 10)}px`,
             backgroundColor: 'black',
             position: 'relative',
             display: 'inline-block',
           }}>
-            <img src="star.png" style={{
+            <img  widgetname="StarRating" src="star.png" style={{
               height: `${width}px`,
               width: `${width}px`,
             }} />

@@ -23,7 +23,7 @@ export const Reviews = (props) => {
       .then((results) => {
         setReviews(results.data.results);
       });
-  },[reviewsSortBy]);
+  },[reviewsSortBy, props.productNum]);
 
   useEffect(() => {
     var reviewsLength = reviews.length || 1;
@@ -32,8 +32,8 @@ export const Reviews = (props) => {
   },[reviews]);
 
   return (
-    <div data-testid="reviews">
-    <h1 id="reviews-anchor">Ratings & Reviews</h1>
+    <div data-testid="reviews" widgetname="Reviews" className="review">
+    <h1 id="reviews-anchor" widgetname="Reviews">Ratings & Reviews</h1>
     <div style={{ display: "grid", gridTemplateColumns: "300px 60%", gridGap: 20 }}>
       <div>
         <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} metadata={props.metadata}/>
