@@ -9,4 +9,9 @@
 
 .reviewImage {
   height: 200px;
+  margin: 0 5px;
+   }
+
+.thumbnailDiv {
+  display: inline;
    }

@@ -11,6 +11,8 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
 
   const [characteristicState, setCharacteristicState] = useState({});
 
+  const [previewImages, setPreviewImages] = useState([]);
+
   const [imageURL, setImage] = useState([]);
 
   const OVERLAY_STYLES = {
@@ -118,6 +120,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
 
       tempArr.push(URL.createObjectURL(file));
     });
+    setPreviewImages(tempArr);
 
     setImage(cloudinaryURLS);
   };
@@ -216,13 +219,13 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             {reviewBody.length < 50 ? `Minimum required characters left: ${50-reviewBody.length}` : 'Minimum reached'}<br/>
             <br/>
             { imageURL.length < 5 ? <><input type="file" multiple accept="image/*" onChange={onImageChange} ></input><br/></> : null}
-            {imageURL.map((image, index) => {
+            {previewImages.map((image, index) => {
               return (
-              <div key={index}>
+              <div key={index} className="thumbnailDiv">
               <img id="target" src={image} alt="review image" className="reviewImage"/>
-              <br/>
               </div>
             )})}
+            <br/>
             <label htmlFor="username">Username: </label>
             <input type="text" onChange={e => spreadReviewFunc('name', e.target.value)} id="username" name="username" placeholder="Example: jackson11!" required maxLength="60" size="65"></input><br/>
             <label htmlFor="email">Email: </label>
