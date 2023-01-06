@@ -203,7 +203,7 @@ export const AddReviewForm = ({ open, children, image, onClose, product, charact
             {imageURL.map((image, index) => {
               return (
               <div key={index}>
-              <img id="target" src={image} className="reviewImage"/>
+              <img id="target" src={image} alt="review image" className="reviewImage"/>
               <br/>
               </div>
             )})}

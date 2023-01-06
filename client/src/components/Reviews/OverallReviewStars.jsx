@@ -33,7 +33,7 @@ export const OverallReviewStars = ({starState, setStarState, width = 20}) => {
             position: 'relative',
             display: 'inline-block',
           }}>
-                <img src="star.png" id={`${index+1}-star-overall`} widgetname="Reviews" onClick={() => setStarState(index+1)}
+                <img src="star.png" alt="review star" id={`${index+1}-star-overall`} widgetname="Reviews" onClick={() => setStarState(index+1)}
                   style={{
                     height: `${width}px`,
                     width: `${width}px`,

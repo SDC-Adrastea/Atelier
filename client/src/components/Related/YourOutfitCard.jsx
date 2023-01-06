@@ -40,8 +40,8 @@ const YourOutfitCard = (props) => {
     className="outfit-product-card"
     data-testid="your-outfit-card"
     >
-      <img onClick={() => removeFrom()} className="your-outfit-action-button" src="circle-with-x.png" widgetname="Related" id="your-outfit-remove-icon"/>
-      <img className={imageClass} src={image} data-testid="your-outfit-card-image" widgetname="Related" id="your-outfit-product-image"/>
+      <img onClick={() => removeFrom()} alt="add to outfit button" className="your-outfit-action-button" src="circle-with-x.png" widgetname="Related" id="your-outfit-remove-icon"/>
+      <img className={imageClass} src={image} alt="your outfit image" data-testid="your-outfit-card-image" widgetname="Related" id="your-outfit-product-image"/>
       <div data-testid="your-outfit-card-category" widgetname="Related" id="your-outfit-card-category">{cardData.category}</div>
       <div data-testid="your-outfit-card-product-name" widgetname="Related" id="your-outfit-product-name">{cardData.productName}</div>
       <Price price={cardData.originalPrice} sale={cardData.salePrice} widgetname="Related"/>

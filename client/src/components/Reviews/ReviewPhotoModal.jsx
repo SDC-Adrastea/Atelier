@@ -35,7 +35,7 @@ export const ReviewPhotoModal = ({ open, children, image, onClose }) => {
         <button onClick={onClose}>&#10006;</button>
         <br/>
         <br/>
-        <img src={`${image}`} style={IMAGE_STYLES}></img>
+        <img src={`${image}`} alt="review image" style={IMAGE_STYLES}></img>
       </div>
       </div>
     </>
