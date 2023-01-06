@@ -49,9 +49,9 @@ export const ReviewTile = (props) => {
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? review.photos.map((photo, index)=> {
           return (
-            <>
-            <ReviewPhotoWrapper key={index} image={photo.url} />
-            </>
+            <div key={index} className="thumbnailDiv">
+            <ReviewPhotoWrapper image={photo.url} />
+            </div>
             )
           })
         : null }
