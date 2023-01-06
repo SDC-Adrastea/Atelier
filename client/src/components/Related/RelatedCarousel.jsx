@@ -17,13 +17,13 @@ const RelatedCarousel = (props) => {
         <div className="related-carousel-transparent-container">
           <div className="overflow-window-icon">
             {leftOffset < 0 &&
-              <img src="leftarrow.png" className="related-previous-button" widgetname="Related" id="related-left-arrow" onClick={() => {
+              <img src="left-arrow.png" className="related-previous-button" widgetname="Related" id="related-left-arrow" onClick={() => {
                 setLeftOffset(leftOffset + 265)
                 setCardClick(cardsClickedThrough - 1)
               }} />
             }
             {leftOffset >= 0 &&
-              <img src="blank.png" className="related-previous-button" />
+              <img src="blank-item.png" className="related-previous-button" />
             }
 
             <div className="overflow-window-related">
