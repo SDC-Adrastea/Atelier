@@ -160,9 +160,3 @@
 .up-down-arrows {
   align-items: center;
 }
-
-/* Expanded Zoom */
-
-.box-container {
-  box-sizing: border-box;
-}

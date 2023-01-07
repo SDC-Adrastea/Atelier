@@ -88,6 +88,8 @@ const ExpandedGallery = (props) => {
             alt={currentStyle.name}
             src={currentImage}
             style={css.expMainImage}
+            id="expanded-view-click"
+            widgetname="Overview"
           />
         </Zoom>
         {/* <img src={currentImage} style={css.expMainImage} alt={currentStyle.name} onClick={() => props.onClick()} id="expanded-view-click" widgetname="Overview" /> */}
@@ -96,6 +98,14 @@ const ExpandedGallery = (props) => {
       </div>
 
       <div style={css.thumbnailContainer}>
+        <button
+          id="back-to-product"
+          widgetname="Overview"
+          onClick={() => props.onClick()}
+          style={{ padding: '10px' }} >
+          Back to Product
+        </button>
+        <br />
         {needFirstArrow}
         {display.map((photo, index) => {
           if (index >= thumbnailIndexStart && index <= thumbnailIndexEnd) {
