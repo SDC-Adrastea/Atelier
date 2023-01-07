@@ -32,7 +32,6 @@ export const Reviews = (props) => {
   },[reviews]);
 
   // --------- RATINGS FILTERING --------- //
-
   // filter status
   const [ratingFilterStatus, setRatingFilterStatus] = useState(false);
   // filtered list
