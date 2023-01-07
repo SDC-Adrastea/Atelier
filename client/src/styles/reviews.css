@@ -32,4 +32,30 @@
 
 progress {
   accent-color: green;
+  height: 10px !important;
+  border-radius: 0px !important;
+}
+
+.characteristics-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.characteristics-flex-container p {
+  font-weight: 600;
+  margin-top: 5;
+  margin-bottom: 0;
+}
+
+.characteristics-flex-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.characteristics-flex-item p {
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 0;
 }
