@@ -44,7 +44,7 @@ export const StarRating = ({ rating = 0, width = 20 }) => {
             position: 'relative',
             display: 'inline-block',
           }}>
-            <img  widgetname="StarRating" src="star.png" style={{
+            <img  widgetname="StarRating" alt="review star" src="star.png" style={{
               height: `${width}px`,
               width: `${width}px`,
             }} />
