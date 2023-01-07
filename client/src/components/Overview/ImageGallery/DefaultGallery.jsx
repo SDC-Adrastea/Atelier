@@ -6,6 +6,8 @@ const DefaultGallery = (props) => {
   let currentImage = props.main || ''
   let imageArr = props.images || []
   let display = []
+  let thumbnailIndexStart = 0
+  let thumbnailIndexEnd = 5
   let leftArrowOption, rightArrowOption
 
   if (props.style === {}) {
@@ -20,6 +22,10 @@ const DefaultGallery = (props) => {
   // set the left and right arrow options for the view displays
   display.forEach((photo, index) => {
     if (photo === currentImage) {
+      if (index > 5) {
+        thumbnailIndexEnd = index
+        thumbnailIndexStart = index - 5
+      }
       if (index === 0) {
         leftArrowOption = photo
       } else {
@@ -67,13 +73,17 @@ const DefaultGallery = (props) => {
       </div>
 
       <div style={css.thumbnailContainer}>
+      <img src="up-arrow.png" alt="up arrow" height="25px" width="25px" onClick={() => handleArrowLeft()} id="default-up-arrow" widgetname="Overview" className="up-down-arrows" />
         {display.map((photo, index) => {
-          if (photo === currentImage) {
-            return <img key={index} src={photo} style={css.thumbnailSelected} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumnail-img-selected" widgetname="Overview" />
-          } else {
-            return <img key={index} src={photo} style={css.thumbnailImage} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumbnail-img" widgetname="Overview" />
+          if (index >= thumbnailIndexStart && index <= thumbnailIndexEnd) {
+            if (photo === currentImage) {
+              return <img key={index} src={photo} style={css.thumbnailSelected} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumnail-img-selected" widgetname="Overview" />
+            } else {
+              return <img key={index} src={photo} style={css.thumbnailImage} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumbnail-img" widgetname="Overview" />
+            }
           }
         })}
+        <img src="down-arrow.png" alt="down arrow" height="25px" width="25px" onClick={() => handleArrowRight()} id="default-down-arrow" widgetname="Overview" className="up-down-arrows" />
       </div>
     </>
   )

@@ -156,3 +156,7 @@
   flex-wrap: wrap;
   padding: 5px;
 }
+
+.up-down-arrows {
+  align-items: center;
+}

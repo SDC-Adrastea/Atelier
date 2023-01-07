@@ -1,7 +1,7 @@
 export const mainImageContainer = {
   position: 'relative',
-  width: '700px',
-  height: '500px',
+  width: '100%',
+  height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
   overflow: 'hidden',
@@ -11,7 +11,7 @@ export const mainImageContainer = {
 export const expMainImageContainer = {
   position: 'relative',
   width: '100%',
-  height: '500px',
+  height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
   overflow: 'hidden',
@@ -19,18 +19,20 @@ export const expMainImageContainer = {
 }
 
 export const mainImage = {
-  width: '700px',
-  height: '500px',
+  width: '100%',
+  height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
   objectFit: 'contain',
+  display: 'flex',
+  alignItems: 'center',
   objectPosition: 'center top',
   cursor: 'zoom-in'
 }
 
 export const expMainImage = {
   width: '3000px',
-  height: '500px',
+  height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
   objectFit: 'contain',
@@ -44,7 +46,7 @@ export const thumbnailContainer = {
   left: '0',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'flex-start',
+  alignItems: 'center',
   justifyContent: 'center',
   zIndex: '1',
   overflow: 'hidden'
@@ -69,7 +71,7 @@ export const thumbnailSelected = {
 
 export const overlay = {
   position: 'relative',
-  display: 'inline-block'
+  display: 'block'
 }
 
 export const arrowOverlay = {
@@ -79,7 +81,7 @@ export const arrowOverlay = {
 
 export const leftArrowOverlay = {
   position: 'relative',
-  left: '95px',
+  left: '100px',
   transform: 'translateY(-500%)',
   width: '50px',
   height: '50px',
