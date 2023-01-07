@@ -1,6 +1,8 @@
 import React from 'react'
 import { StarRating } from '../../shared/StarRating/StarRating.jsx'
 
+import * as css from '../../../styles/overview.css'
+
 
 const StarsReviews = (props) => {
   let ratings = props.ratings
@@ -25,10 +27,14 @@ const StarsReviews = (props) => {
     }
 
     let average = Number(parseFloat(avgStars(ratings)).toFixed(2))
-    thisRating = <><StarRating rating={average} id="read-all-reviews" widgetname="Overview" /><a href="#reviews-anchor">Read all {allRatings} reviews</a></>
+    thisRating = <><StarRating rating={average} /> | <a href="#reviews-anchor" id="read-all-reviews" widgetname="Overview" >Read all {allRatings} reviews</a></>
   }
 
-  return <> {thisRating} </>
+  return (
+    <div style={{ display: 'flex',  justifyContent: 'space-evenly' }}>
+      {thisRating}
+    </div>
+  )
 }
 
 export default StarsReviews;
