@@ -6,7 +6,7 @@ const DefaultGallery = (props) => {
   let currentImage = props.main || ''
   let imageArr = props.images || []
   let display = []
-  let leftArrowOption, rightArrowOption
+  let leftArrowOption, rightArrowOption, thumbnailIndex
 
   if (props.style === {}) {
     currentStyle.name = ''
@@ -20,6 +20,7 @@ const DefaultGallery = (props) => {
   // set the left and right arrow options for the view displays
   display.forEach((photo, index) => {
     if (photo === currentImage) {
+      thumbnailIndex = index
       if (index === 0) {
         leftArrowOption = photo
       } else {
@@ -67,6 +68,7 @@ const DefaultGallery = (props) => {
       </div>
 
       <div style={css.thumbnailContainer}>
+      <img src="up-arrow.png" alt="up arrow" height="25px" width="25px" onClick={() => handleArrowLeft()} id="default-up-arrow" widgetname="Overview" style={css.upDownArrows} />
         {display.map((photo, index) => {
           if (photo === currentImage) {
             return <img key={index} src={photo} style={css.thumbnailSelected} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumnail-img-selected" widgetname="Overview" />
@@ -74,6 +76,7 @@ const DefaultGallery = (props) => {
             return <img key={index} src={photo} style={css.thumbnailImage} alt="thumnail image" height="75" onClick={(e) => handleClick(e)} id="default-view-thumbnail-img" widgetname="Overview" />
           }
         })}
+        <img src="down-arrow.png" alt="down arrow" height="25px" width="25px" onClick={() => handleArrowRight()} id="default-down-arrow" widgetname="Overview" style={css.upDownArrows} />
       </div>
     </>
   )

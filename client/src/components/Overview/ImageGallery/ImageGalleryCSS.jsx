@@ -1,7 +1,7 @@
 export const mainImageContainer = {
   position: 'relative',
   width: '700px',
-  height: '500px',
+  height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
   overflow: 'hidden',
@@ -11,7 +11,7 @@ export const mainImageContainer = {
 export const expMainImageContainer = {
   position: 'relative',
   width: '100%',
-  height: '500px',
+  height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
   overflow: 'hidden',
@@ -20,7 +20,7 @@ export const expMainImageContainer = {
 
 export const mainImage = {
   width: '700px',
-  height: '500px',
+  height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
   objectFit: 'contain',
@@ -30,7 +30,7 @@ export const mainImage = {
 
 export const expMainImage = {
   width: '3000px',
-  height: '500px',
+  height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
   objectFit: 'contain',
@@ -95,6 +95,10 @@ export const rightArrowOverlay = {
   height: '50px',
   backgroundImage: 'url("right-arrow.png")',
   backgroundSize: 'cover'
+}
+
+export const upDownArrows = {
+  alignItems: 'center'
 }
 
 export const mainContainer = {
