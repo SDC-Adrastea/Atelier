@@ -8,7 +8,7 @@ const DefaultGallery = (props) => {
   let display = []
   let thumbnailIndexStart = 0
   let thumbnailIndexEnd = 5
-  let leftArrowOption, rightArrowOption
+  let leftArrowOption, rightArrowOption, needFirstArrow, needLastArrow
 
   if (props.style === {}) {
     currentStyle.name = ''
@@ -26,19 +26,24 @@ const DefaultGallery = (props) => {
         thumbnailIndexEnd = index
         thumbnailIndexStart = index - 5
       }
+
       if (index === 0) {
         leftArrowOption = photo
       } else {
         leftArrowOption = display[index - 1]
+        needFirstArrow = <img src="up-arrow.png" alt="up arrow" height="25px" width="25px" onClick={() => handleArrowLeft()} id="default-up-arrow" widgetname="Overview" className="up-down-arrows" />
       }
 
       if (index === imageArr.length - 1) {
         rightArrowOption = photo
       } else {
         rightArrowOption = display[index + 1]
+        needLastArrow = <img src="down-arrow.png" alt="down arrow" height="25px" width="25px" onClick={() => handleArrowRight()} id="default-down-arrow" widgetname="Overview" className="up-down-arrows" />
       }
     }
   })
+
+
 
   // user clicks the thumbnail images directly
   let handleClick = (e) => {
@@ -73,7 +78,7 @@ const DefaultGallery = (props) => {
       </div>
 
       <div style={css.thumbnailContainer}>
-      <img src="up-arrow.png" alt="up arrow" height="25px" width="25px" onClick={() => handleArrowLeft()} id="default-up-arrow" widgetname="Overview" className="up-down-arrows" />
+        {needFirstArrow}
         {display.map((photo, index) => {
           if (index >= thumbnailIndexStart && index <= thumbnailIndexEnd) {
             if (photo === currentImage) {
@@ -83,7 +88,7 @@ const DefaultGallery = (props) => {
             }
           }
         })}
-        <img src="down-arrow.png" alt="down arrow" height="25px" width="25px" onClick={() => handleArrowRight()} id="default-down-arrow" widgetname="Overview" className="up-down-arrows" />
+        {needLastArrow}
       </div>
     </>
   )
