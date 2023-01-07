@@ -23,43 +23,56 @@ export const RatingsBreakdown = (props) => {
       1: 0
     };
     var recommend = 0;
-    var maxRatingCount = 1;
 
     props.reviews.forEach(review => {
       tempObj[review.rating]++;
       if (review.recommend) {
         recommend++;
       }
-      maxRatingCount = Math.max(...Object.values(tempObj));
     })
     setRatings(tempObj);
     setRecommend(recommend);
-    setMaxRatingCount(props.reviews.length);
   },[props.reviews])
 
-  return (
-    <div data-testid="ratings-breakdown" id="ratings-breakdown" widgetname="Reviews">
-      <h4>{parseInt(Math.round((recommendCount/props.reviews.length)*100))}% of reviews recommend this product</h4>
-      <div id="parent" widgetname="Reviews" >
-        <p className="child" widgetname="Reviews" >5 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[5]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[5]} reviews
-      </div>
-      <div id="parent" widgetname="Reviews" >
-        <p className="child" widgetname="Reviews" >4 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[4]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[4]} reviews
-      </div>
-      <div id="parent" widgetname="Reviews" >
-        <p className="child" widgetname="Reviews" >3 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[3]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[3]} reviews
-      </div>
-      <div id="parent" widgetname="Reviews" >
-        <p className="child" widgetname="Reviews" >2 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[2]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[2]} reviews
-      </div>
-      <div id="parent" widgetname="Reviews" >
-        <p className="child" widgetname="Reviews" >1 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[1]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[1]} reviews
-      </div>
+  let element;
+
+  if (props.reviews.length > 0) {
+    element = (
+      <div data-testid="ratings-breakdown" id="ratings-breakdown" widgetname="Reviews">
+    <h4>{parseInt(Math.round((recommendCount/props.reviews.length)*100))}% of reviews recommend this product</h4>
+    <div id="parent" widgetname="Reviews" >
+      <p className="child" widgetname="Reviews" >5 Stars</p>
+      <progress className="child" id="file" value={ratingsObject[5]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[5]} reviews
     </div>
+    <div id="parent" widgetname="Reviews" >
+      <p className="child" widgetname="Reviews" >4 Stars</p>
+      <progress className="child" id="file" value={ratingsObject[4]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[4]} reviews
+    </div>
+    <div id="parent" widgetname="Reviews" >
+      <p className="child" widgetname="Reviews" >3 Stars</p>
+      <progress className="child" id="file" value={ratingsObject[3]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[3]} reviews
+    </div>
+    <div id="parent" widgetname="Reviews" >
+      <p className="child" widgetname="Reviews" >2 Stars</p>
+      <progress className="child" id="file" value={ratingsObject[2]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[2]} reviews
+    </div>
+    <div id="parent" widgetname="Reviews" >
+      <p className="child" widgetname="Reviews" >1 Stars</p>
+      <progress className="child" id="file" value={ratingsObject[1]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[1]} reviews
+    </div>
+  </div>
+  )
+}
+
+if (props.reviews === undefined) {
+  element = (
+    <div data-testid="ratings-breakdown" id="ratings-breakdown" widgetname="Reviews"></div>
+  )
+}
+
+  return (
+    <>
+    {element}
+    </>
   )
 };

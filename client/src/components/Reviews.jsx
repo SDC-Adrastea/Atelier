@@ -10,6 +10,7 @@ export const Reviews = (props) => {
   const [reviewsSortBy, setSort] = useState('relevant');
   const [averageRating, setAverageRating] = useState(0);
 
+
   // --------- RATINGS FILTERING --------- //
 
   // filter status
@@ -83,6 +84,7 @@ export const Reviews = (props) => {
   }, [filteredReviewList]);
 
   // ------------------------------------------ //
+
 
   var metadata = props.metadata;
 
