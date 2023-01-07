@@ -6,7 +6,7 @@ import { Overview } from './components/Overview.jsx';
 import { Related } from './components/Related.jsx';
 import { Questions } from './components/Questions.jsx';
 import { Reviews } from './components/Reviews.jsx';
-import MetaTags from 'react-meta-tags';
+// import MetaTags from 'react-meta-tags';
 
 import './styles/questions.css';
 import './styles/related.css';
@@ -103,10 +103,10 @@ export const App = (props) => {
 
   return (
     <div className="index" onClick={(event)=>handleTrackClick(event.target)}>
-      <MetaTags>
+      {/* <MetaTags>
         <title>Atelier-Goldeneye</title>
         <meta name="description" content="Our Product page for Atelier. Now we are massively SEO." />
-      </MetaTags>
+      </MetaTags> */}
       <nav><h1 id="header">Atelier</h1></nav>
       <Overview
         // initial data
