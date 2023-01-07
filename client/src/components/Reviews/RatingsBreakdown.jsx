@@ -39,7 +39,14 @@ export const RatingsBreakdown = (props) => {
   if (props.reviews.length > 0) {
     element = (
       <div data-testid="ratings-breakdown" id="ratings-breakdown" widgetname="Reviews">
-    <h4>{parseInt(Math.round((recommendCount/props.reviews.length)*100))}% of reviews recommend this product</h4>
+      <h2>Ratings Breakdown</h2>
+      {props.fiveStarFilter ? <button className="reviewBtn" widgetname="Reviews" id="five-filter-btn" onClick={() => props.ratingFilterFunc(5)} >5 Star</button>: null}
+      {props.fourStarFilter ? <button className="reviewBtn" widgetname="Reviews" id="four-filter-btn" onClick={() => props.ratingFilterFunc(4)} >4 Star</button>: null}
+      {props.threeStarFilter ? <button className="reviewBtn" widgetname="Reviews" id="three-filter-btn" onClick={() => props.ratingFilterFunc(3)} >3 Star</button>: null}
+      {props.twoStarFilter ? <button className="reviewBtn" widgetname="Reviews" id="two-filter-btn" onClick={() => props.ratingFilterFunc(2)} >2 Star</button>: null}
+      {props.oneStarFilter ? <button className="reviewBtn" widgetname="Reviews" id="one-filter-btn" onClick={() => props.ratingFilterFunc(1)} >1 Star</button>: null}
+      {props.ratingFilterStatus ? <button className="reviewBtn" widgetname="Reviews" id="clear-filter-btn" onClick={() => props.clearFilters()} >Clear filters</button>: null}
+    <p>{parseInt(Math.round((recommendCount/props.reviews.length)*100))}% of reviews recommend this product</p>
     <div id="parent" widgetname="Reviews" onClick={() => props.ratingFilterFunc(5)} >
       <p className="child" widgetname="Reviews" >5 Stars</p>
       <progress className="child" id="file" value={ratingsObject[5]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[5]} reviews

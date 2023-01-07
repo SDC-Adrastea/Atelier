@@ -17,7 +17,7 @@ export const RatingsColumn = (props) => {
       <br />
       <br />
       <br />
-      <RatingsBreakdown reviews={props.reviews} ratingFilterFunc={props.ratingFilterFunc}/>
+      <RatingsBreakdown reviews={props.reviews} ratingFilterFunc={props.ratingFilterFunc} fiveStarFilter={props.fiveStarFilter} fourStarFilter={props.fourStarFilter} threeStarFilter={props.threeStarFilter} twoStarFilter={props.twoStarFilter} oneStarFilter={props.oneStarFilter} clearFilters={props.clearFilters} ratingFilterStatus={props.ratingFilterStatus} />
       <br />
       <br />
       <ProductBreakdown metadata={props.metadata}/>
