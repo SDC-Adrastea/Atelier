@@ -34,7 +34,7 @@ export const RatingsBreakdown = (props) => {
     })
     setRatings(tempObj);
     setRecommend(recommend);
-    setMaxRatingCount(maxRatingCount);
+    setMaxRatingCount(props.reviews.length);
   },[props.reviews])
 
   return (
@@ -42,23 +42,23 @@ export const RatingsBreakdown = (props) => {
       <h4>{parseInt(Math.round((recommendCount/props.reviews.length)*100))}% of reviews recommend this product</h4>
       <div id="parent" widgetname="Reviews" >
         <p className="child" widgetname="Reviews" >5 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[5]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress>
+        <progress className="child" id="file" value={ratingsObject[5]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[5]} reviews
       </div>
       <div id="parent" widgetname="Reviews" >
         <p className="child" widgetname="Reviews" >4 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[4]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress>
+        <progress className="child" id="file" value={ratingsObject[4]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[4]} reviews
       </div>
       <div id="parent" widgetname="Reviews" >
         <p className="child" widgetname="Reviews" >3 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[3]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress>
+        <progress className="child" id="file" value={ratingsObject[3]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[3]} reviews
       </div>
       <div id="parent" widgetname="Reviews" >
         <p className="child" widgetname="Reviews" >2 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[2]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress>
+        <progress className="child" id="file" value={ratingsObject[2]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[2]} reviews
       </div>
       <div id="parent" widgetname="Reviews" >
         <p className="child" widgetname="Reviews" >1 Stars</p>
-        <progress className="child" id="file" value={ratingsObject[1]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress>
+        <progress className="child" id="file" value={ratingsObject[1]/maxRatingCount*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[1]} reviews
       </div>
     </div>
   )

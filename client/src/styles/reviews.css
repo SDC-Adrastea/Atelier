@@ -3,15 +3,33 @@
 }
 
 
-#parent { white-space: nowrap; }
+#parent {
+  white-space: nowrap;
+}
+
+#parent:hover {
+  background: rgb(238, 236, 236);
+}
 
 .child { display: inline-block; }
 
 .reviewImage {
   height: 200px;
   margin: 0 5px;
-   }
+}
 
 .thumbnailDiv {
   display: inline;
-   }
+}
+
+.reviewBtn {
+  color: rgb(42, 42, 42);
+  border: 2px solid rgb(15, 8, 8);
+  padding: 15px 16px;
+  display: inline-flex;
+  margin: 5px;
+}
+
+progress {
+  accent-color: green;
+}

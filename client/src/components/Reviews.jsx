@@ -10,6 +10,37 @@ export const Reviews = (props) => {
   const [reviewsSortBy, setSort] = useState('relevant');
   const [averageRating, setAverageRating] = useState(0);
 
+  // RATINGS FILTERING
+
+  // filter status
+  const [ratingFilterStatus, setRatingFilterStatus] = useState(false);
+  // filtered list
+  const [filterList, setFilterList] = useState([]);
+  // fiveStars
+  const [fiveStarFilter, setFiveStarFilter] = useState(false);
+  // fourStars
+  const [fourStarFilter, setFourStarFilter] = useState(false);
+  // threeStars
+  const [threeStarFilter, setThreeStarFilter] = useState(false);
+  // twoStars
+  const [twoStarFilter, setTwoStarFilter] = useState(false);
+  // oneStars
+  const [oneStarFilter, setOneStarFilter] = useState(false);
+
+  const ratingFilterFunc = (star) => {
+  }
+
+  const clearFilters = () => {
+    setFiveStarFilter(false);
+    setFourStarFilter(false);
+    setThreeStarFilter(false);
+    setTwoStarFilter(false);
+    setOneStarFilter(false);
+    setRatingFilterStatus(false);
+
+  }
+
+
   var metadata = props.metadata;
 
   useEffect(() => {
