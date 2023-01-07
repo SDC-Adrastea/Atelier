@@ -30,7 +30,7 @@ export const StarRating = ({ rating = 0, width = 20 }) => {
   }
 
   return (
-    <div data-testid="StarRating" widgetname="StarRating" >
+    <div data-testid="StarRating"  widgetname="StarRating" style={{ textAlign: 'justify' }} >
       {stars.map((star, index) => (
         <div  widgetname="StarRating" style={{
           height: `${width}px`,
@@ -44,7 +44,7 @@ export const StarRating = ({ rating = 0, width = 20 }) => {
             position: 'relative',
             display: 'inline-block',
           }}>
-            <img  widgetname="StarRating" alt="review star" src="star.png" style={{
+            <img  widgetname="StarRating" src="star.png" style={{
               height: `${width}px`,
               width: `${width}px`,
             }} />

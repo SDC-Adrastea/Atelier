@@ -8,7 +8,8 @@ const DefaultGallery = (props) => {
   let display = []
   let thumbnailIndexStart = 0
   let thumbnailIndexEnd = 5
-  let leftArrowOption, rightArrowOption
+  let leftArrowOption, rightArrowOption, needFirstArrow, needLastArrow,
+    needLeftArrow, needRightArrow
 
   if (props.style === {}) {
     currentStyle.name = ''
@@ -26,19 +27,38 @@ const DefaultGallery = (props) => {
         thumbnailIndexEnd = index
         thumbnailIndexStart = index - 5
       }
+
       if (index === 0) {
         leftArrowOption = photo
       } else {
         leftArrowOption = display[index - 1]
+        needFirstArrow = <img src="up-arrow.png" alt="up arrow" height="25px" width="25px" onClick={() => handleArrowLeft()} id="default-up-arrow" widgetname="Overview" className="up-down-arrows" />
+        needLeftArrow = (
+          <div style={css.overlay}>
+            <div style={css.arrowOverlay}>
+              <div style={css.leftArrowOverlay} onClick={() => handleArrowLeft()} id="default-left-arrow" widgetname="Overview"></div>
+            </div>
+          </div>
+        )
       }
 
       if (index === imageArr.length - 1) {
         rightArrowOption = photo
       } else {
         rightArrowOption = display[index + 1]
+        needLastArrow = <img src="down-arrow.png" alt="down arrow" height="25px" width="25px" onClick={() => handleArrowRight()} id="default-down-arrow" widgetname="Overview" className="up-down-arrows" />
+        needRightArrow = (
+          <div style={css.overlay}>
+            <div style={css.arrowOverlay}>
+              <div style={css.rightArrowOverlay} onClick={() => handleArrowRight()} id="default-right-arrow" widgetname="Overview"></div>
+            </div>
+          </div>
+        )
       }
     }
   })
+
+
 
   // user clicks the thumbnail images directly
   let handleClick = (e) => {
@@ -60,20 +80,12 @@ const DefaultGallery = (props) => {
     <>
       <div style={css.mainImageContainer}>
         <img src={currentImage} style={css.mainImage} alt={currentStyle.name} onClick={() => props.onClick()} id="default-view-click" widgetname="Overview" />
-        <div style={css.overlay}>
-          <div style={css.arrowOverlay}>
-            <div style={css.rightArrowOverlay} onClick={() => handleArrowRight()} id="default-right-arrow" widgetname="Overview"></div>
-          </div>
-        </div>
-        <div style={css.overlay}>
-          <div style={css.arrowOverlay}>
-            <div style={css.leftArrowOverlay} onClick={() => handleArrowLeft()} id="default-left-arrow" widgetname="Overview"></div>
-          </div>
-        </div>
+        {needRightArrow}
+        {needLeftArrow}
       </div>
 
       <div style={css.thumbnailContainer}>
-      <img src="up-arrow.png" alt="up arrow" height="25px" width="25px" onClick={() => handleArrowLeft()} id="default-up-arrow" widgetname="Overview" className="up-down-arrows" />
+        {needFirstArrow}
         {display.map((photo, index) => {
           if (index >= thumbnailIndexStart && index <= thumbnailIndexEnd) {
             if (photo === currentImage) {
@@ -83,7 +95,7 @@ const DefaultGallery = (props) => {
             }
           }
         })}
-        <img src="down-arrow.png" alt="down arrow" height="25px" width="25px" onClick={() => handleArrowRight()} id="default-down-arrow" widgetname="Overview" className="up-down-arrows" />
+        {needLastArrow}
       </div>
     </>
   )

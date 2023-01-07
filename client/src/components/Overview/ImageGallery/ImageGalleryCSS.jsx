@@ -37,7 +37,7 @@ export const expMainImage = {
   maxWidth: '100%',
   objectFit: 'contain',
   objectPosition: 'center top',
-  cursor: 'zoom-out'
+  cursor: 'zoom-in'
 }
 
 export const thumbnailContainer = {
@@ -118,7 +118,8 @@ export const imageContainer = {
 
 export const productContainer = {
   display: 'flex',
-  flexFlow: 'column nowrap',
+  justifyContent: 'center',
+  flexFlow: 'column',
   flex: '1'
 }
 
@@ -138,3 +139,4 @@ export const selectionContainer = {
   paddingTop: '1em',
   alignItems: 'center'
 }
+
