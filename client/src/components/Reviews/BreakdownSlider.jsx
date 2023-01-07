@@ -1,52 +1,50 @@
 import React from 'react';
+import { VscTriangleDown } from 'react-icons/vsc'
 
-export const BreakdownSlider = ({rating = 0, width = 20}) => {
+export const BreakdownSlider = ({ rating }) => {
 
-  // stars glitch when less than 15
-  if (width < 15) { width = 15}
-
-  let wholes = Math.floor(rating);
-  let decimals = rating - wholes;
-
-  const stars = [];
-
-  // push whole stars into array
-  while (wholes > 0) {
-    stars.push(1.0);
-    wholes -= 1;
+  const OUTER_STYLES = {
+    width: '100%',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    backgroundColor: "white",
+    textAlign: 'center',
+    position: "relative"
+  }
+  const MIDDLE_STYLES = {
+    height: 6,
+    width: '91%',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    backgroundColor: "lightgray",
+    textAlign: 'center',
+    position: "relative"
   }
 
-  // push partial stars rounded to the nearest .25 into array
-  stars.push((Math.round(parseFloat(decimals) * 4) / 4).toFixed(2))
-
-  // push partial stars rounded to the nearest .10 into array
-  // stars.push((Math.round(parseFloat(decimals) * 10) / 10).toFixed(2))
-
-  // push empty stars into array
-  while (stars.length < 5) {
-    stars.push(0)
+  const INNER_STYLES = {
+    height: 28,
+    top: '0%',
+    transform: 'translateY(0%)',
+    width: `${rating * 20}%`,
+    textAlign: 'right',
+    position: 'absolute'
   }
+
+  const ARROW_STYLES = {
+    top: -9,
+    transform: 'translateY(0%)',
+    textAlign: 'center',
+    position: 'relative'
+  }
+
 
   return (
-    <div>
-      {stars.map((star, index) => (
-        <div widgetname="Reviews" style={{
-          height: `${width}px`,
-          width: `${width}px`,
-          display: 'inline-block',
-        }} key={index}>
-          <div  widgetname="Reviews" style={{
-            height: `${width}px`,
-            width: `${parseInt(star * width, 10)}px`,
-            backgroundColor: 'black',
-            position: 'relative',
-            display: 'inline-block',
-          }}>
-
-          </div>
-
-        </div>
-      ))}
+    <div id="outer-div" style={OUTER_STYLES}>
+      <div id="outer-div" style={MIDDLE_STYLES}>
+      </div>
+      <div id="inner-div" style={INNER_STYLES}>
+        <VscTriangleDown style={ARROW_STYLES} size={28} />
+      </div>
     </div>
   )
-};
+}
