@@ -10,6 +10,26 @@ export const Reviews = (props) => {
   const [reviewsSortBy, setSort] = useState('relevant');
   const [averageRating, setAverageRating] = useState(0);
 
+  var metadata = props.metadata;
+
+  useEffect(() => {
+    axios.get('/reviews',{
+      params:{
+        product_id: props.productNum,
+        count: 999999999,
+        sort: reviewsSortBy
+      }
+    })
+      .then((results) => {
+        setReviews(results.data.results);
+      });
+  },[reviewsSortBy, props.productNum]);
+
+  useEffect(() => {
+    var reviewsLength = reviews.length || 1;
+    var average = (reviews.reduce((accumulator, currentReview) => accumulator + currentReview.rating, 0) / reviewsLength).toFixed(2);
+    setAverageRating(average);
+  },[reviews]);
 
   // --------- RATINGS FILTERING --------- //
 
@@ -53,15 +73,68 @@ export const Reviews = (props) => {
       // toggle rating filter status
       setFiveStarFilter(!fiveStarFilter)
     } else if (clicked === 4) {
+      if (fourStarFilter) {
+        tempFilterList.forEach((review, index) => {
+          if (review.rating === 4) {
+            tempFilterList.splice(index, 1);
+          }
+        })
+      } else {
+        reviews.forEach((review) => {
+          if (review.rating === 4) {
+            tempFilterList.push(review);
+          }
+        })
+      }
       setFourStarFilter(!fourStarFilter)
     } else if (clicked === 3) {
+      if (threeStarFilter) {
+        tempFilterList.forEach((review, index) => {
+          if (review.rating === 3) {
+            tempFilterList.splice(index, 1);
+          }
+        })
+      } else {
+        reviews.forEach((review) => {
+          if (review.rating === 3) {
+            tempFilterList.push(review);
+          }
+        })
+      }
       setThreeStarFilter(!threeStarFilter)
     } else if (clicked === 2) {
+      if (twoStarFilter) {
+        tempFilterList.forEach((review, index) => {
+          if (review.rating === 2) {
+            tempFilterList.splice(index, 1);
+          }
+        })
+      } else {
+        reviews.forEach((review) => {
+          if (review.rating === 2) {
+            tempFilterList.push(review);
+          }
+        })
+      }
       setTwoStarFilter(!twoStarFilter)
     } else if (clicked === 1) {
+      if (oneStarFilter) {
+        tempFilterList.forEach((review, index) => {
+          if (review.rating === 1) {
+            tempFilterList.splice(index, 1);
+          }
+        })
+      } else {
+        reviews.forEach((review) => {
+          if (review.rating === 1) {
+            tempFilterList.push(review);
+          }
+        })
+      }
       setOneStarFilter(!oneStarFilter)
     }
     // replace filtered list with new filtered list
+    // console.log(tempFilterList);
     setFilteredReviewList(tempFilterList);
   }
 
@@ -86,33 +159,16 @@ export const Reviews = (props) => {
   // ------------------------------------------ //
 
 
-  var metadata = props.metadata;
-
-  useEffect(() => {
-    axios.get('/reviews',{
-      params:{
-        product_id: props.productNum,
-        count: 999999999,
-        sort: reviewsSortBy
-      }
-    })
-      .then((results) => {
-        setReviews(results.data.results);
-      });
-  },[reviewsSortBy, props.productNum]);
-
-  useEffect(() => {
-    var reviewsLength = reviews.length || 1;
-    var average = (reviews.reduce((accumulator, currentReview) => accumulator + currentReview.rating, 0) / reviewsLength).toFixed(2);
-    setAverageRating(average);
-  },[reviews]);
+  // useEffect(() => {
+  //   ratingFilterFunc(5)
+  // }, [props.productNum, reviews]);
 
   return (
     <div data-testid="reviews" widgetname="Reviews" className="review">
     <h1 id="reviews-anchor" widgetname="Reviews">Ratings & Reviews</h1>
     <div style={{ display: "grid", gridTemplateColumns: "300px 60%", gridGap: 20 }}>
       <div>
-        <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} metadata={props.metadata}/>
+        <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} metadata={props.metadata} ratingFilterFunc={ratingFilterFunc}/>
       </div>
       <div>
         <ReviewsList productNum={props.productNum} product={props.product} reviews={ratingFilterStatus ? filteredReviewList : reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} metadata={props.metadata}/>

@@ -40,23 +40,23 @@ export const RatingsBreakdown = (props) => {
     element = (
       <div data-testid="ratings-breakdown" id="ratings-breakdown" widgetname="Reviews">
     <h4>{parseInt(Math.round((recommendCount/props.reviews.length)*100))}% of reviews recommend this product</h4>
-    <div id="parent" widgetname="Reviews" >
+    <div id="parent" widgetname="Reviews" onClick={() => props.ratingFilterFunc(5)} >
       <p className="child" widgetname="Reviews" >5 Stars</p>
       <progress className="child" id="file" value={ratingsObject[5]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[5]} reviews
     </div>
-    <div id="parent" widgetname="Reviews" >
+    <div id="parent" widgetname="Reviews" onClick={() => props.ratingFilterFunc(4)} >
       <p className="child" widgetname="Reviews" >4 Stars</p>
       <progress className="child" id="file" value={ratingsObject[4]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[4]} reviews
     </div>
-    <div id="parent" widgetname="Reviews" >
+    <div id="parent" widgetname="Reviews"  onClick={() => props.ratingFilterFunc(3)} >
       <p className="child" widgetname="Reviews" >3 Stars</p>
       <progress className="child" id="file" value={ratingsObject[3]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[3]} reviews
     </div>
-    <div id="parent" widgetname="Reviews" >
+    <div id="parent" widgetname="Reviews"  onClick={() => props.ratingFilterFunc(2)} >
       <p className="child" widgetname="Reviews" >2 Stars</p>
       <progress className="child" id="file" value={ratingsObject[2]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[2]} reviews
     </div>
-    <div id="parent" widgetname="Reviews" >
+    <div id="parent" widgetname="Reviews"  onClick={() => props.ratingFilterFunc(1)} >
       <p className="child" widgetname="Reviews" >1 Stars</p>
       <progress className="child" id="file" value={ratingsObject[1]/props.reviews.length*100} max="100" widgetname="Reviews" > </progress> {ratingsObject[1]} reviews
     </div>
