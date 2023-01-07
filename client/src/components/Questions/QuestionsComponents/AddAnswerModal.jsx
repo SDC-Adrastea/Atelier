@@ -29,7 +29,7 @@ export const AddAnswerModal = (props) => {
     stateImages.forEach(image =>  newImageUrls.push(URL.createObjectURL(image)));
     setImageURLs([...newImageUrls]);
 
-}, [stateImages, props.data]);
+  }, [stateImages, props.data]);
 
   // handleSubmitPhotos uploads photos to third party cloudinary.com and thenr returns the URL to be sent to heroku
   function handleSubmitPhotos (event) {
@@ -37,27 +37,30 @@ export const AddAnswerModal = (props) => {
     setStateImages([...event.target.files]);
     console.log('stateImages in handleSubmit', stateImages);
 
+    var cloudinaryURLS = []
     const files = event.target.files;
-    const data = new FormData()
-    data.append("file", files[0])
-    data.append("upload_preset", "kuzmabr")
-    axios.post("https://api.cloudinary.com/v1_1/dblteitfp/image/upload", data)
-    .then(res => {
-      const tempPhotosArr = photos;
-      tempPhotosArr.push(res.data.secure_url);
-    setPhotos(tempPhotosArr);
-    console.log(photos);
 
-    if (max <= 5) {
-      console.log(max)
-      setMax(max + 1);
-      if (max >= 5) {
-        setUnderMax(false);
-      }
-    }
-    })
+    for (let i = 0; i < files.length; i++) {
+      const data = new FormData()
+      data.append("file", files[i])
+      data.append("upload_preset", "kuzmabr")
+      axios.post("https://api.cloudinary.com/v1_1/dblteitfp/image/upload", data)
+      .then(res => {
+        const tempPhotosArr = photos;
+        tempPhotosArr.push(res.data.secure_url);
+        setPhotos(tempPhotosArr);
+        console.log(photos);
+        if (max <= 5) {
+          console.log(max)
+          setMax(max + 1);
+            if (max >= 5) {
+              setUnderMax(false);
+            }
+        }
+      })
     .catch(err => console.log(err))
-  }
+    }
+  };
 
 
   // note that state is set to initial state once answer is submitted
@@ -99,6 +102,7 @@ export const AddAnswerModal = (props) => {
     }
   };
 
+
   return (
     <>
       <div className="questionCentered" widgetname='Questions'>
@@ -133,7 +137,7 @@ export const AddAnswerModal = (props) => {
             </button>
             </div>
         </form>
-        {imageURLs.map((photo, idx)=><img src={photo} key={idx} alt="uploaded Answer Image"/>)}
+        {imageURLs.map((photo, idx)=><img src={photo} className="answerImages" key={idx} alt="uploaded Answer Image"/>)}
         </div>
       </div>
     </>
