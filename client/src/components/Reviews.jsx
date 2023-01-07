@@ -152,6 +152,12 @@ export const Reviews = (props) => {
     <div style={{ display: "grid", gridTemplateColumns: "300px 60%", gridGap: 20 }}>
       <div>
         <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} metadata={props.metadata} ratingFilterStatus={ratingFilterStatus} ratingFilterFunc={ratingFilterFunc} fiveStarFilter={fiveStarFilter} fourStarFilter={fourStarFilter} threeStarFilter={threeStarFilter} twoStarFilter={twoStarFilter} oneStarFilter={oneStarFilter} clearFilters={clearFilters}  />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       </div>
       <div>
         <ReviewsList productNum={props.productNum} product={props.product} reviews={ratingFilterStatus ? filteredReviewList : reviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} metadata={props.metadata}/>
