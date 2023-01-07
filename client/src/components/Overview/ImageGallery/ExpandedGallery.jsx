@@ -1,5 +1,7 @@
 import React from 'react'
+
 import * as css from './ImageGalleryCSS.jsx'
+import '../../../styles/overview.css'
 
 
 const ExpandedGallery = (props) => {
@@ -56,6 +58,7 @@ const ExpandedGallery = (props) => {
   let handleArrowRight = () => {
     props.thumbnailChange(rightArrowOption)
   }
+
 
   return (
     <>
