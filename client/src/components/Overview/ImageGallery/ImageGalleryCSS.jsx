@@ -44,7 +44,7 @@ export const thumbnailContainer = {
   left: '0',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'flex-start',
+  alignItems: 'center',
   justifyContent: 'center',
   zIndex: '1',
   overflow: 'hidden'
@@ -79,7 +79,7 @@ export const arrowOverlay = {
 
 export const leftArrowOverlay = {
   position: 'relative',
-  left: '95px',
+  left: '100px',
   transform: 'translateY(-500%)',
   width: '50px',
   height: '50px',
@@ -95,10 +95,6 @@ export const rightArrowOverlay = {
   height: '50px',
   backgroundImage: 'url("right-arrow.png")',
   backgroundSize: 'cover'
-}
-
-export const upDownArrows = {
-  alignItems: 'center'
 }
 
 export const mainContainer = {
