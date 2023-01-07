@@ -48,9 +48,11 @@ export const Reviews = (props) => {
   // oneStars
   const [oneStarFilter, setOneStarFilter] = useState(false);
 
+
   const ratingFilterFunc = (clicked) => {
+    let tempFilterList = [...filteredReviewList];
     // copy of existing filtered list that will be modified and used to reset state
-    let tempFilterList = [...filteredReviewList]
+    console.log('temp filter list before click:', tempFilterList)
 
     if (clicked === 5) {
       // if filter for this rating is on
@@ -119,11 +121,17 @@ export const Reviews = (props) => {
       setTwoStarFilter(!twoStarFilter)
     } else if (clicked === 1) {
       if (oneStarFilter) {
-        tempFilterList.forEach((review, index) => {
-          if (review.rating === 1) {
-            tempFilterList.splice(index, 1);
+        for (let i = tempFilterList.length - 1; i >= 0; i--) {
+          if (tempFilterList[i] === 1) {
+            tempFilterList.splice(i, 1);
+
           }
-        })
+        }
+        // tempFilterList.forEach((review, index) => {
+        //   if (review.rating === 1) {
+        //     tempFilterList.splice(index, 1);
+        //   }
+        // })
       } else {
         reviews.forEach((review) => {
           if (review.rating === 1) {
@@ -134,8 +142,9 @@ export const Reviews = (props) => {
       setOneStarFilter(!oneStarFilter)
     }
     // replace filtered list with new filtered list
-    // console.log(tempFilterList);
+    console.log('temp filter list after click:', tempFilterList)
     setFilteredReviewList(tempFilterList);
+    console.log('filtered review list after click:', filteredReviewList)
   }
 
   const clearFilters = () => {
