@@ -30,7 +30,7 @@ export const StarRating = ({ rating = 0, width = 20 }) => {
   }
 
   return (
-    <div data-testid="StarRating"  widgetname="StarRating" >
+    <div data-testid="StarRating" widgetname="StarRating" >
       {stars.map((star, index) => (
         <div  widgetname="StarRating" style={{
           height: `${width}px`,

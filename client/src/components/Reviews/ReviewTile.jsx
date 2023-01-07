@@ -49,14 +49,14 @@ export const ReviewTile = (props) => {
       { review.photos.length > 0 ? <br /> : null }
       { review.photos.length > 0 ? review.photos.map((photo, index)=> {
           return (
-            <div key={index}>
+            <div key={index} className="thumbnailDiv">
             <ReviewPhotoWrapper image={photo.url} />
             </div>
             )
           })
         : null }
         {/* Need to add helpfulness voting function (with cookies maybe?) */}
-      <p>Helpful? <u onClick={() =>  reviewHelpful(props.review.review_id)}>Yes</u> ({helpfulCount})</p>
+      <p>Helpful? <u onClick={() =>  reviewHelpful(props.review.review_id)}>Yes</u> ({helpfulCount}) &nbsp; | &nbsp; <u onClick={() =>  alert('Review reported.')}>Report</u></p>
       <hr />
     </div>
   )
