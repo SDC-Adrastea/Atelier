@@ -1,4 +1,6 @@
 import React from 'react'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 import * as css from './ImageGalleryCSS.jsx'
 import '../../../styles/overview.css'
@@ -62,8 +64,15 @@ const ExpandedGallery = (props) => {
 
   return (
     <>
-      <div style={css.expMainImageContainer}>
-        <img src={currentImage} style={css.expMainImage} alt={currentStyle.name} onClick={() => props.onClick()} id="expanded-view-click" widgetname="Overview" />
+      <div style={css.expMainImageContainer} className="box-container" >
+        <Zoom>
+          <img
+            alt={currentStyle.name}
+            src={currentImage}
+            style={css.expMainImage}
+          />
+        </Zoom>
+        {/* <img src={currentImage} style={css.expMainImage} alt={currentStyle.name} onClick={() => props.onClick()} id="expanded-view-click" widgetname="Overview" /> */}
         <div style={css.overlay}>
           <div style={css.arrowOverlay}>
             <div style={css.rightArrowOverlay} onClick={() => handleArrowRight()} id="expanded-right-arrow" widgetname="Overview"></div>

@@ -163,3 +163,6 @@
 
 /* Expanded Zoom */
 
+.box-container {
+  box-sizing: border-box;
+}
