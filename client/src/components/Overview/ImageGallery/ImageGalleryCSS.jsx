@@ -1,6 +1,6 @@
 export const mainImageContainer = {
   position: 'relative',
-  width: '700px',
+  width: '100%',
   height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
@@ -19,11 +19,13 @@ export const expMainImageContainer = {
 }
 
 export const mainImage = {
-  width: '700px',
+  width: '100%',
   height: '600px',
   maxHeight: '100%',
   maxWidth: '100%',
   objectFit: 'contain',
+  display: 'flex',
+  alignItems: 'center',
   objectPosition: 'center top',
   cursor: 'zoom-in'
 }
@@ -69,7 +71,7 @@ export const thumbnailSelected = {
 
 export const overlay = {
   position: 'relative',
-  display: 'inline-block'
+  display: 'block'
 }
 
 export const arrowOverlay = {
