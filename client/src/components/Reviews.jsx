@@ -37,32 +37,27 @@ export const Reviews = (props) => {
   const [ratingFilterStatus, setRatingFilterStatus] = useState(false);
   // filtered list
   const [filteredReviewList, setFilteredReviewList] = useState([]);
-  // fiveStars
+  // fiveStars filter Status
   const [fiveStarFilter, setFiveStarFilter] = useState(false);
-  // fourStars
+  // fourStars filter Status
   const [fourStarFilter, setFourStarFilter] = useState(false);
-  // threeStars
+  // threeStars filter Status
   const [threeStarFilter, setThreeStarFilter] = useState(false);
-  // twoStars
+  // twoStars filter Status
   const [twoStarFilter, setTwoStarFilter] = useState(false);
-  // oneStars
+  // oneStars filter Status
   const [oneStarFilter, setOneStarFilter] = useState(false);
 
 
   const ratingFilterFunc = (clicked) => {
     let tempFilterList = [...filteredReviewList];
     // copy of existing filtered list that will be modified and used to reset state
-    console.log('temp filter list before click:', tempFilterList)
 
     if (clicked === 5) {
       // if filter for this rating is on
       if (fiveStarFilter) {
         // remove all reviews with rating of 5 from the list
-        tempFilterList.forEach((review, index) => {
-          if (review.rating === 5) {
-            tempFilterList.splice(index, 1);
-          }
-        })
+        tempFilterList = filteredReviewList.filter((review) => review.rating != 5);
       // if filter for this rating is off
       } else {
         // add all reviews with rating of 5 to the filtered list
@@ -76,11 +71,7 @@ export const Reviews = (props) => {
       setFiveStarFilter(!fiveStarFilter)
     } else if (clicked === 4) {
       if (fourStarFilter) {
-        tempFilterList.forEach((review, index) => {
-          if (review.rating === 4) {
-            tempFilterList.splice(index, 1);
-          }
-        })
+        tempFilterList = filteredReviewList.filter((review) => review.rating != 4);
       } else {
         reviews.forEach((review) => {
           if (review.rating === 4) {
@@ -91,11 +82,7 @@ export const Reviews = (props) => {
       setFourStarFilter(!fourStarFilter)
     } else if (clicked === 3) {
       if (threeStarFilter) {
-        tempFilterList.forEach((review, index) => {
-          if (review.rating === 3) {
-            tempFilterList.splice(index, 1);
-          }
-        })
+        tempFilterList = filteredReviewList.filter((review) => review.rating != 3);
       } else {
         reviews.forEach((review) => {
           if (review.rating === 3) {
@@ -106,11 +93,7 @@ export const Reviews = (props) => {
       setThreeStarFilter(!threeStarFilter)
     } else if (clicked === 2) {
       if (twoStarFilter) {
-        tempFilterList.forEach((review, index) => {
-          if (review.rating === 2) {
-            tempFilterList.splice(index, 1);
-          }
-        })
+        tempFilterList = filteredReviewList.filter((review) => review.rating != 2);
       } else {
         reviews.forEach((review) => {
           if (review.rating === 2) {
@@ -121,17 +104,7 @@ export const Reviews = (props) => {
       setTwoStarFilter(!twoStarFilter)
     } else if (clicked === 1) {
       if (oneStarFilter) {
-        for (let i = tempFilterList.length - 1; i >= 0; i--) {
-          if (tempFilterList[i] === 1) {
-            tempFilterList.splice(i, 1);
-
-          }
-        }
-        // tempFilterList.forEach((review, index) => {
-        //   if (review.rating === 1) {
-        //     tempFilterList.splice(index, 1);
-        //   }
-        // })
+        tempFilterList = filteredReviewList.filter((review) => review.rating != 1);
       } else {
         reviews.forEach((review) => {
           if (review.rating === 1) {
@@ -142,9 +115,7 @@ export const Reviews = (props) => {
       setOneStarFilter(!oneStarFilter)
     }
     // replace filtered list with new filtered list
-    console.log('temp filter list after click:', tempFilterList)
     setFilteredReviewList(tempFilterList);
-    console.log('filtered review list after click:', filteredReviewList)
   }
 
   const clearFilters = () => {
@@ -163,7 +134,11 @@ export const Reviews = (props) => {
     } else {
       setRatingFilterStatus(false);
     }
-  }, [filteredReviewList]);
+  }, [filteredReviewList, props.productNum]);
+
+  useEffect(() => {
+    clearFilters();
+  }, [props.productNum]);
 
   // ------------------------------------------ //
 
@@ -180,7 +155,7 @@ export const Reviews = (props) => {
         <RatingsColumn productNum={props.productNum} averageRating={averageRating} reviews={reviews} metadata={props.metadata} ratingFilterStatus={ratingFilterStatus} ratingFilterFunc={ratingFilterFunc} fiveStarFilter={fiveStarFilter} fourStarFilter={fourStarFilter} threeStarFilter={threeStarFilter} twoStarFilter={twoStarFilter} oneStarFilter={oneStarFilter} clearFilters={clearFilters}  />
       </div>
       <div>
-        <ReviewsList productNum={props.productNum} product={props.product} reviews={ratingFilterStatus ? filteredReviewList : reviews} setReviews={setReviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} metadata={props.metadata}/>
+        <ReviewsList productNum={props.productNum} product={props.product} reviews={ratingFilterStatus ? filteredReviewList : reviews} reviewsShowing={reviewsShowing} setReviewsShowing={setReviewsShowing} reviewsSortBy={reviewsSortBy} setSort={setSort} metadata={props.metadata}/>
       </div>
     </div>
   </div>
