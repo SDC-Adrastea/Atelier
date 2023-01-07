@@ -37,7 +37,7 @@ export const expMainImage = {
   maxWidth: '100%',
   objectFit: 'contain',
   objectPosition: 'center top',
-  cursor: 'zoom-out'
+  cursor: 'zoom-in'
 }
 
 export const thumbnailContainer = {
