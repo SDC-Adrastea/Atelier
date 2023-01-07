@@ -20,21 +20,26 @@ Users can view a detailed description of the product and see its price, availabi
 ![Image](./README-Photos/overview-1.png)
 
 The far left side of the widget holds a vertical thumbnail gallery to see the product in different settings and angles. The up and down arrows only appear dependant on the current thumbnail selection. That is, the arrows appear when the user can travel "up" or "down" in the thumbnail selection.
+
 ![Image](./README-Photos/overview-2.png)
 ![Image](./README-Photos/overview-3.png)
 
 The main image had similarly functioning left and right arrows, again only displaying when the option is available for the user. Upon clicking the main image, the user is taken to an expanded view where they can continue to navigate throught the images or they can zoom the image to view it better.
+
 ![Image](./README-Photos/overview-4.png)
 ![Image](./README-Photos/overview-5.png)
 
 The right side shows its total star rating, a link to read all reviews (toward the bottom of the page) and some of the initial details about the product like the title of the style and the category. Below this is a style selector where the user can toggle through styles which also renders several photos that correlate with that style.
+
 ![Image](./README-Photos/overview-6.png)
 ![Image](./README-Photos/overview-7.png)
 
 Finally, in this section you can see a set of selections, a star button to toggle your outfit to the carousel below, and an "Add-To-Cart button" to add the sku(s) to the cart.
+
 ![Image](./README-Photos/overview-8.png)
 
 Underneath these two sections is a product slogan, description, and a few features.
+
 ![Image](./README-Photos/overview-9.png)
 
 
