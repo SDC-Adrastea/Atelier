@@ -56,7 +56,7 @@ export const ReviewTile = (props) => {
           })
         : null }
         {/* Need to add helpfulness voting function (with cookies maybe?) */}
-      <p>Helpful? <u onClick={() =>  reviewHelpful(props.review.review_id)}>Yes</u> ({helpfulCount})</p>
+      <p>Helpful? <u onClick={() =>  reviewHelpful(props.review.review_id)}>Yes</u> ({helpfulCount}) &nbsp; | &nbsp; <u onClick={() =>  alert('Review reported.')}>Report</u></p>
       <hr />
     </div>
   )
