@@ -3,7 +3,7 @@ let axios = require('axios');
 
 let options = {
   method: 'get',
-  url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/`,
+  url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/`,  // must replace
   headers: { "Authorization": process.env.API_TOKEN },
 };
 
