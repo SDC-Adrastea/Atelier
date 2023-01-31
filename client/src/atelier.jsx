@@ -122,9 +122,9 @@ export const App = (props) => {
         skus={skus} setSkus={(obj) => setSkus(obj)}
         currentSku={currentSku} setCurrentSku={(sku) => setCurrentSku(sku)}
       />
-      <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
+      {/* <Related productNum={productNum} setProductNum={(newNum) => {setProductNum(newNum)}} product={product} styles={styles} related={related} yourOutfit={yourOutfit} changeOutfit={(arr) => {changeOutfit(arr)}}/>
       <Questions productNum={productNum} product={product}/>
-      <Reviews productNum={productNum} product={product} metadata={metadata} />
+      <Reviews productNum={productNum} product={product} metadata={metadata} /> */}
     </div>
   )
 }
